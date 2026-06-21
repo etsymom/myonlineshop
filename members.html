@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dashboard | InkwellMedia</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --aubergine: #2D1B4E;
+      --amber: #F5A623;
+      --amber-dark: #D4891A;
+      --parchment: #FAF7F2;
+      --white: #FFFFFF;
+      --slate: #8A7FA0;
+      --slate-light: #EDE9F5;
+      --success: #059669;
+      --danger: #E3394A;
+      --radius: 16px;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'DM Sans', sans-serif; background: var(--parchment); color: var(--aubergine); }
+
+    /* ---- HEADER ---- */
+    .header {
+      background: var(--aubergine);
+      padding: 14px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .brand-icon {
+      width: 36px; height: 36px;
+      background: var(--amber);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+    }
+    .brand-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 20px;
+      font-weight: 900;
+      color: var(--white);
+    }
+    .brand-name span { color: var(--amber); }
+
+    .header-sub {
+      font-size: 12px;
+      color: var(--slate);
+      margin-top: 1px;
+    }
+
+    .header-actions { display: flex; gap: 8px; flex-wrap: wrap; }
+
+    .hbtn {
+      padding: 9px 16px;
+      border-radius: 10px;
+      border: none;
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 700;
+      font-size: 13px;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: opacity 0.15s;
+    }
+    .hbtn:hover { opacity: 0.85; }
+    .hbtn-ghost { background: rgba(255,255,255,0.12); color: var(--white); }
+    .hbtn-amber { background: var(--amber); color: var(--aubergine); }
+    .hbtn-danger { background: var(--danger); color: var(--white); }
+    .hbtn-admin { background: #5B8DEF; color: var(--white); }
+
+    /* ---- LAYOUT ---- */
+    .container { max-width: 1080px; margin: 32px auto; padding: 0 20px 60px; }
+
+    .page-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 32px;
+      font-weight: 900;
+      margin-bottom: 4px;
+    }
+    .page-sub { color: var(--slate); font-size: 15px; margin-bottom: 28px; }
+
+    /* ---- WALLET CARD ---- */
+    .wallet-card {
+      background: var(--aubergine);
+      border-radius: 20px;
+      padding: 28px 30px;
+      margin-bottom: 32px;
+      color: var(--white);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 24px;
+      align-items: center;
+      justify-content: space-between;
+      position: relative;
+      overflow: hidden;
+    }
+    .wallet-card::before {
+      content: '🖋️';
+      position: absolute;
+      right: 28px;
+      top: 20px;
+      font-size: 72px;
+      opacity: 0.08;
+      pointer-events: none;
+    }
+
+    .wallet-label { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--slate); margin-bottom: 6px; }
+    .wallet-amount { font-family: 'Playfair Display', serif; font-size: 44px; font-weight: 900; color: var(--white); line-height: 1; }
+    .wallet-usd { font-size: 13px; color: var(--slate); margin-top: 4px; }
+
+    .wallet-actions { display: flex; gap: 10px; flex-wrap: wrap; }
+    .wallet-btn {
+      padding: 12px 20px;
+      border-radius: 12px;
+      border: none;
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 900;
+      font-size: 14px;
+      cursor: pointer;
+      transition: transform 0.1s, opacity 0.15s;
+    }
+    .wallet-btn:active { transform: scale(0.97); }
+    .wallet-btn-amber { background: var(--amber); color: var(--aubergine); }
+    .wallet-btn-ghost { background: rgba(255,255,255,0.1); color: var(--white); border: 1.5px solid rgba(255,255,255,0.2); }
+    .wallet-btn:hover { opacity: 0.85; }
+
+    /* ---- SECTION HEADING ---- */
+    .section-head {
+      font-family: 'Playfair Display', serif;
+      font-size: 22px;
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+    .section-sub { color: var(--slate); font-size: 14px; margin-bottom: 20px; }
+
+    /* ---- PRODUCT GRID ---- */
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+      margin-bottom: 40px;
+    }
+
+    .product-card {
+      background: var(--white);
+      border-radius: var(--radius);
+      padding: 24px;
+      box-shadow: 0 2px 12px rgba(45,27,78,0.07);
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      border: 2px solid transparent;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    .product-card:hover { border-color: var(--amber); box-shadow: 0 6px 24px rgba(245,166,35,0.15); }
+
+    .product-icon {
+      font-size: 28px;
+      width: 52px; height: 52px;
+      background: var(--slate-light);
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .product-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--aubergine);
+    }
+    .product-desc { font-size: 13px; color: var(--slate); line-height: 1.5; flex: 1; }
+
+    .price-badge {
+      display: inline-flex;
+      align-items: center;
+      padding: 5px 12px;
+      border-radius: 999px;
+      background: var(--slate-light);
+      color: var(--aubergine);
+      font-weight: 700;
+      font-size: 13px;
+    }
+
+    .buy-btn {
+      padding: 12px 16px;
+      border-radius: 12px;
+      border: none;
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 900;
+      font-size: 14px;
+      cursor: pointer;
+      background: var(--aubergine);
+      color: var(--white);
+      width: 100%;
+      margin-top: 4px;
+      transition: opacity 0.15s, transform 0.1s;
+    }
+    .buy-btn:hover { opacity: 0.85; }
+    .buy-btn:active { transform: scale(0.98); }
+    .buy-btn.subscribed { background: var(--success); cursor: default; }
+    .buy-btn:disabled { opacity: 0.55; cursor: not-allowed; }
+
+    /* ---- MODAL ---- */
+    .modal-bg {
+      position: fixed; inset: 0;
+      background: rgba(20,10,35,0.65);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 50;
+      padding: 20px;
+      backdrop-filter: blur(4px);
+    }
+    .modal {
+      background: var(--white);
+      border-radius: 20px;
+      padding: 28px;
+      width: min(400px, 100%);
+      box-shadow: 0 24px 60px rgba(0,0,0,0.3);
+    }
+    .modal h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 22px;
+      font-weight: 700;
+      margin-bottom: 6px;
+      color: var(--aubergine);
+    }
+    .modal p { font-size: 14px; color: var(--slate); margin-bottom: 18px; line-height: 1.5; }
+
+    .modal input {
+      width: 100%;
+      padding: 12px 14px;
+      border: 2px solid var(--slate-light);
+      border-radius: 12px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 15px;
+      color: var(--aubergine);
+      background: var(--parchment);
+      outline: none;
+      margin-bottom: 12px;
+    }
+    .modal input:focus { border-color: var(--amber); }
+
+    .modal-btn {
+      width: 100%;
+      padding: 13px;
+      border-radius: 12px;
+      border: none;
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 900;
+      font-size: 15px;
+      cursor: pointer;
+      margin-top: 4px;
+    }
+    .modal-btn-amber { background: var(--amber); color: var(--aubergine); }
+    .modal-btn-dark { background: var(--aubergine); color: var(--white); margin-top: 8px; }
+    .modal-btn-ghost { background: var(--slate-light); color: var(--aubergine); margin-top: 8px; }
+
+    .deposit-options { display: flex; flex-direction: column; gap: 10px; margin-top: 8px; }
+    .deposit-opt-btn {
+      padding: 14px 18px;
+      border-radius: 12px;
+      border: 2px solid var(--slate-light);
+      background: var(--parchment);
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 700;
+      font-size: 14px;
+      cursor: pointer;
+      text-align: left;
+      transition: border-color 0.15s;
+      color: var(--aubergine);
+    }
+    .deposit-opt-btn:hover { border-color: var(--amber); background: var(--white); }
+    .deposit-opt-btn span { display: block; font-size: 12px; font-weight: 500; color: var(--slate); margin-top: 2px; }
+
+    .modal-close {
+      position: absolute;
+      top: 18px; right: 20px;
+      background: none; border: none;
+      font-size: 20px; cursor: pointer;
+      color: var(--slate);
+    }
+
+    /* Asset list */
+    .asset-list { display: flex; flex-direction: column; gap: 8px; margin-top: 12px; }
+    .asset-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      padding: 10px 14px;
+      border: 1.5px solid var(--slate-light);
+      border-radius: 12px;
+      background: var(--parchment);
+    }
+    .asset-name { font-size: 13px; font-weight: 700; color: var(--aubergine); }
+    .asset-dl {
+      padding: 8px 14px;
+      border-radius: 9px;
+      border: none;
+      background: var(--aubergine);
+      color: var(--white);
+      font-weight: 700;
+      font-size: 13px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="header">
+    <div>
+      <div class="brand">
+        <div class="brand-icon">🖋️</div>
+        <div class="brand-name">Inkwell<span>Media</span></div>
+      </div>
+      <div class="header-sub" id="welcome-line"></div>
+    </div>
+    <div class="header-actions">
+      <button class="hbtn hbtn-ghost" onclick="goProfile()">My Profile</button>
+      <button class="hbtn hbtn-admin" id="admin-btn" style="display:none;" onclick="goAdmin()">Admin</button>
+      <button class="hbtn hbtn-danger" onclick="logout()">Log out</button>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="page-title">Your Dashboard</div>
+    <p class="page-sub">Manage your wallet and memberships.</p>
+
+    <!-- WALLET -->
+    <div class="wallet-card">
+      <div>
+        <div class="wallet-label">Your Balance</div>
+        <div class="wallet-amount" id="balance">–</div>
+        <div class="wallet-usd" id="balanceSub"></div>
+      </div>
+      <div class="wallet-actions">
+        <button class="wallet-btn wallet-btn-amber" onclick="openDeposit()">+ Add Funds</button>
+        <button class="wallet-btn wallet-btn-ghost" onclick="openPayout()">Request Payout</button>
+      </div>
+    </div>
+
+    <!-- MEMBERSHIPS -->
+    <div class="section-head">Membership Options</div>
+    <p class="section-sub">Mix and match — subscribe to any combination as long as your wallet is funded.</p>
+
+    <div class="product-grid">
+      <div class="product-card">
+        <div class="product-icon">📅</div>
+        <div class="product-name">Weekly Syndicate</div>
+        <p class="product-desc">Join our weekly pooled trades with regular updates and insights from the team.</p>
+        <div id="price-weekly" class="price-badge"></div>
+        <button id="btn-weekly" class="buy-btn" onclick="buyProduct('weekly')">Join Weekly</button>
+      </div>
+
+      <div class="product-card">
+        <div class="product-icon">💬</div>
+        <div class="product-name">Signals Group</div>
+        <p class="product-desc">Get real-time WhatsApp trade signals delivered straight to your phone.</p>
+        <div id="price-signals" class="price-badge"></div>
+        <button id="btn-signals" class="buy-btn" onclick="buyProduct('signals')">Join Signals</button>
+      </div>
+
+      <div class="product-card">
+        <div class="product-icon">🗓️</div>
+        <div class="product-name">Monthly Syndicate</div>
+        <p class="product-desc">Full-month pooled trading access with monthly performance reports.</p>
+        <div id="price-monthly" class="price-badge"></div>
+        <button id="btn-monthly" class="buy-btn" onclick="buyProduct('monthly')">Join Monthly</button>
+      </div>
+
+      <div class="product-card">
+        <div class="product-icon">🤖</div>
+        <div class="product-name">AutoTrader RSI Bot</div>
+        <p class="product-desc">Our proprietary MT5 RSI bot. One-time purchase, yours to keep and download.</p>
+        <div id="price-bot" class="price-badge"></div>
+        <button id="btn-bot" class="buy-btn" onclick="buyProduct('bot_rsi')">Buy Trading Bot</button>
+        <div id="bot-info-btn" style="font-size:12px;color:var(--slate);cursor:pointer;text-decoration:underline;text-align:center;">What does this bot do?</div>
+
+        <div id="bot-download-section" style="display:none;">
+          <div class="asset-list">
+            <div class="asset-item">
+              <div class="asset-name">AutoTrader RSI Engine Pro (MT5)</div>
+              <button class="asset-dl" onclick="openBotDownloadModal()">Download</button>
+            </div>
+          </div>
+        </div>
+        <div id="no-tools" style="font-size:12px;color:var(--slate);margin-top:6px;display:none;">Purchase to unlock your download.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- DEPOSIT MODAL -->
+  <div class="modal-bg" id="depositModal" style="display:none;">
+    <div class="modal" style="position:relative;">
+      <button class="modal-close" onclick="closeDeposit()">✕</button>
+      <h2>Add Funds</h2>
+      <p>Choose how you'd like to deposit. Minimum deposit is $50 USD.</p>
+      <div class="deposit-options">
+        <button class="deposit-opt-btn" onclick="showBank()">
+          🏦 Bank Transfer (EFT)
+          <span>ZAR via South African bank</span>
+        </button>
+        <button class="deposit-opt-btn" onclick="showXRP()">
+          🪙 Crypto (XRP)
+          <span>Send XRP equivalent to USD amount</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- BANK MODAL -->
+  <div class="modal-bg" id="bankModal" style="display:none;">
+    <div class="modal" style="position:relative;">
+      <button class="modal-close" onclick="closeBank()">✕</button>
+      <h2>Bank Transfer</h2>
+      <p>Enter the USD amount you're depositing. Admin will confirm once payment is received.</p>
+      <input type="number" id="bankAmount" placeholder="Amount in USD e.g. 100" min="50" />
+      <button class="modal-btn modal-btn-amber" onclick="submitDeposit('bank')">Submit Deposit Request</button>
+      <button class="modal-btn modal-btn-ghost" onclick="closeBank()">Cancel</button>
+    </div>
+  </div>
+
+  <!-- XRP MODAL -->
+  <div class="modal-bg" id="xrpModal" style="display:none;">
+    <div class="modal" style="position:relative;">
+      <button class="modal-close" onclick="closeXRP()">✕</button>
+      <h2>Crypto (XRP)</h2>
+      <p>Enter the USD amount you're sending in XRP. Admin will verify and approve.</p>
+      <input type="number" id="xrpAmount" placeholder="Amount in USD e.g. 100" min="50" />
+      <button class="modal-btn modal-btn-amber" onclick="submitDeposit('xrp')">Submit Deposit Request</button>
+      <button class="modal-btn modal-btn-ghost" onclick="closeXRP()">Cancel</button>
+    </div>
+  </div>
+
+  <!-- PAYOUT MODAL -->
+  <div class="modal-bg" id="payoutModal" style="display:none;">
+    <div class="modal" style="position:relative;">
+      <button class="modal-close" onclick="closePayout()">✕</button>
+      <h2>Request Payout</h2>
+      <p>Enter the USD amount you'd like to withdraw. Make sure your banking details are saved in your profile.</p>
+      <input type="number" id="payoutAmount" placeholder="Amount in USD" min="1" />
+      <button class="modal-btn modal-btn-amber" onclick="submitPayout()">Request Payout</button>
+      <button class="modal-btn modal-btn-ghost" onclick="closePayout()">Cancel</button>
+    </div>
+  </div>
+
+  <!-- BOT DOWNLOAD MODAL -->
+  <div class="modal-bg" id="botDownloadModal" style="display:none;">
+    <div class="modal" style="position:relative;">
+      <button class="modal-close" onclick="closeBotDownloadModal()">✕</button>
+      <h2>Download Your Bot</h2>
+      <p>You own the AutoTrader RSI Engine Pro. Download it below and install in your MT5 platform.</p>
+      <div class="asset-list">
+        <div class="asset-item">
+          <div class="asset-name">AutoTrader_RSI_Engine_Pro.ex5</div>
+          <a href="https://whnnyuozicuphrpgomno.supabase.co/storage/v1/object/public/bots/autotrader_rsi_engine_pro.ex5" download>
+            <button class="asset-dl">⬇ Download</button>
+          </a>
+        </div>
+      </div>
+      <button class="modal-btn modal-btn-ghost" style="margin-top:14px;" onclick="closeBotDownloadModal()">Close</button>
+    </div>
+  </div>
+
+  <!-- BOT INFO MODAL -->
+  <div class="modal-bg" id="botInfoModal" style="display:none;">
+    <div class="modal" style="position:relative;">
+      <button class="modal-close" onclick="closeBotInfoModal()">✕</button>
+      <h2>About the RSI Bot</h2>
+      <p>The AutoTrader RSI Engine Pro is a MetaTrader 5 Expert Advisor that automatically trades based on RSI signals. It includes configurable entry/exit rules, risk management settings, and works on any MT5-supported pair.</p>
+      <p style="margin-top:10px;">This is a one-time purchase with lifetime access to the file.</p>
+      <button class="modal-btn modal-btn-dark" onclick="closeBotInfoModal()">Got it</button>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script>
+    const supabaseClient = supabase.createClient(
+      "https://whnnyuozicuphrpgomno.supabase.co",
+      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Indobm55dW96aWN1cGhycGdvbW5vIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjM1Mjk3MDAsImV4cCI6MjA3OTEwNTcwMH0.XTS5-ELx7sUmZmkyoXG1B1zOqVMJQsO5Kvk-brBW8EQ",
+      { auth: { persistSession: true, autoRefreshToken: true } }
+    );
+
+    const ADMIN_EMAILS = ["iedereesfrancis@gmail.com"];
+    const PRICES_USD = { weekly: 20, signals: 15, monthly: 60, bot_rsi: 100 };
+
+    let currentUser = null;
+
+    function formatAmount(usd) {
+      return "$" + Number(usd).toFixed(2);
+    }
+
+    async function loadUser() {
+      const { data: { session } } = await supabaseClient.auth.getSession();
+      if (!session) { window.location.href = "index.html"; return; }
+      currentUser = session.user;
+      document.getElementById("welcome-line").innerText = "Hi, " + (currentUser.email || "");
+      if (ADMIN_EMAILS.includes(currentUser.email)) {
+        document.getElementById("admin-btn").style.display = "inline-block";
+      }
+      await ensureBalanceRow();
+      await loadBalance();
+      updatePrices();
+      await markSubscriptions();
+      await checkBotOwnership();
+    }
+
+    async function ensureBalanceRow() {
+      const { data } = await supabaseClient.from("user_balances").select("id").eq("id", currentUser.id).maybeSingle();
+      if (!data) await supabaseClient.from("user_balances").insert({ id: currentUser.id, balance: 0 });
+    }
+
+    async function loadBalance() {
+      const { data } = await supabaseClient.from("user_balances").select("balance").eq("id", currentUser.id).single();
+      const usd = Number(data?.balance || 0);
+      document.getElementById("balance").innerText = formatAmount(usd);
+      document.getElementById("balanceSub").innerText = "Balance in USD: $" + usd.toFixed(2);
+    }
+
+    function updatePrices() {
+      document.getElementById("price-weekly").innerText = "Weekly: " + formatAmount(PRICES_USD.weekly);
+      document.getElementById("price-signals").innerText = "Signals: " + formatAmount(PRICES_USD.signals);
+      document.getElementById("price-monthly").innerText = "Monthly: " + formatAmount(PRICES_USD.monthly);
+      document.getElementById("price-bot").innerText = "One-time: " + formatAmount(PRICES_USD.bot_rsi);
+    }
+
+    async function hasBotPurchase() {
+      const { data } = await supabaseClient.from("purchases").select("id").eq("user_id", currentUser.id).eq("product_key", "bot_rsi").limit(1);
+      return !!(data && data.length);
+    }
+
+    async function buyProduct(key) {
+      const cost = PRICES_USD[key];
+      if (!cost) return alert("Unknown product.");
+      if (key === "bot_rsi") {
+        const already = await hasBotPurchase();
+        if (already) { openBotDownloadModal(); return; }
+      }
+      const { data } = await supabaseClient.from("user_balances").select("balance").eq("id", currentUser.id).single();
+      const usd = Number(data?.balance || 0);
+      if (usd < cost) { alert("Insufficient funds. Please add funds first."); openDeposit(); return; }
+      let productName = "";
+      let isBot = false;
+      if (key === "weekly") productName = "Weekly Trade Syndicate";
+      else if (key === "signals") productName = "WhatsApp Signals Group";
+      else if (key === "monthly") productName = "Monthly Syndicate";
+      else if (key === "bot_rsi") { productName = "AutoTrader RSI Engine Pro (MT5 Bot)"; isBot = true; }
+      const { error: pe } = await supabaseClient.from("purchases").insert({ user_id: currentUser.id, purchaser_email: currentUser.email, product_key: key, product_name: productName, amount: cost });
+      if (pe) { alert("Purchase failed: " + pe.message); return; }
+      const { error: be } = await supabaseClient.from("user_balances").update({ balance: usd - cost }).eq("id", currentUser.id);
+      if (be) { alert("Balance update failed: " + be.message); return; }
+      await loadBalance();
+      if (isBot) {
+        alert("Purchase successful ✅ Your bot is ready to download.");
+        await checkBotOwnership();
+        openBotDownloadModal();
+      } else {
+        const { error: se } = await supabaseClient.from("subscriptions").upsert({ user_id: currentUser.id, product_key: key, product_name: productName, status: "active" }, { onConflict: "user_id,product_key" });
+        if (se) { alert("Subscription failed: " + se.message); return; }
+        alert("You're now subscribed to " + productName + " ✅");
+        await markSubscriptions();
+      }
+    }
+
+    async function markSubscriptions() {
+      const { data } = await supabaseClient.from("subscriptions").select("product_key,status").eq("user_id", currentUser.id);
+      const active = new Set((data || []).filter(r => r.status === "active").map(r => r.product_key));
+      ["weekly","signals","monthly"].forEach(k => {
+        if (active.has(k)) {
+          const btn = document.getElementById("btn-" + k);
+          if (btn) { btn.innerText = "✓ Active"; btn.classList.add("subscribed"); }
+        }
+      });
+    }
+
+    async function checkBotOwnership() {
+      const hasBot = await hasBotPurchase();
+      document.getElementById("bot-download-section").style.display = hasBot ? "block" : "none";
+      document.getElementById("no-tools").style.display = hasBot ? "none" : "none";
+      const btn = document.getElementById("btn-bot");
+      if (hasBot) { btn.innerText = "✓ Owned"; btn.disabled = true; btn.classList.add("subscribed"); }
+    }
+
+    function openBotDownloadModal() { document.getElementById("botDownloadModal").style.display = "flex"; }
+    function closeBotDownloadModal() { document.getElementById("botDownloadModal").style.display = "none"; }
+    function closeBotInfoModal() { document.getElementById("botInfoModal").style.display = "none"; }
+    function openDeposit() { document.getElementById("depositModal").style.display = "flex"; }
+    function closeDeposit() { document.getElementById("depositModal").style.display = "none"; }
+    function showBank() { closeDeposit(); document.getElementById("bankModal").style.display = "flex"; }
+    function closeBank() { document.getElementById("bankModal").style.display = "none"; }
+    function showXRP() { closeDeposit(); document.getElementById("xrpModal").style.display = "flex"; }
+    function closeXRP() { document.getElementById("xrpModal").style.display = "none"; }
+    function openPayout() { document.getElementById("payoutModal").style.display = "flex"; }
+    function closePayout() { document.getElementById("payoutModal").style.display = "none"; }
+
+    async function submitDeposit(type) {
+      const amount = type === "bank" ? Number(document.getElementById("bankAmount").value) : Number(document.getElementById("xrpAmount").value);
+      if (!amount || amount <= 0) return alert("Enter a valid amount.");
+      const { error } = await supabaseClient.from("deposits").insert({ user_id: currentUser.id, method: type, amount, currency: "USD", status: "pending" });
+      if (error) { alert("Deposit failed: " + error.message); return; }
+      alert("Deposit submitted! Admin will approve shortly.");
+      if (type === "bank") { document.getElementById("bankAmount").value = ""; closeBank(); }
+      else { document.getElementById("xrpAmount").value = ""; closeXRP(); }
+    }
+
+    async function submitPayout() {
+      const amount = Number(document.getElementById("payoutAmount").value);
+      if (!amount || amount <= 0) return alert("Enter a valid amount.");
+      const { data } = await supabaseClient.from("user_balances").select("balance").eq("id", currentUser.id).single();
+      if (amount > Number(data?.balance || 0)) return alert("Amount exceeds your balance.");
+      const { error } = await supabaseClient.from("payouts").insert({ user_id: currentUser.id, amount, status: "pending" });
+      if (error) { alert("Payout failed: " + error.message); return; }
+      alert("Payout request submitted!");
+      closePayout();
+    }
+
+    function goProfile() { window.location.href = "profile.html"; }
+    function goAdmin() { window.location.href = "admin.html"; }
+    async function logout() { await supabaseClient.auth.signOut(); window.location.href = "index.html"; }
+
+    document.addEventListener("DOMContentLoaded", () => {
+      const infoBtn = document.getElementById("bot-info-btn");
+      if (infoBtn) infoBtn.addEventListener("click", () => { document.getElementById("botInfoModal").style.display = "flex"; });
+    });
+
+    loadUser();
+  </script>
+</body>
+</html>

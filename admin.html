@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin | InkwellMedia</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --aubergine: #2D1B4E;
+      --amber: #F5A623;
+      --amber-dark: #D4891A;
+      --parchment: #FAF7F2;
+      --white: #FFFFFF;
+      --slate: #8A7FA0;
+      --slate-light: #EDE9F5;
+      --success: #059669;
+      --danger: #E3394A;
+      --radius: 16px;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'DM Sans', sans-serif; background: var(--parchment); color: var(--aubergine); }
+
+    /* HEADER */
+    .header {
+      background: var(--aubergine);
+      padding: 14px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .brand { display: flex; align-items: center; gap: 10px; }
+    .brand-icon { width: 36px; height: 36px; background: var(--amber); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 18px; }
+    .brand-name { font-family: 'Playfair Display', serif; font-size: 20px; font-weight: 900; color: var(--white); }
+    .brand-name span { color: var(--amber); }
+    .header-sub { font-size: 12px; color: var(--slate); margin-top: 1px; }
+
+    .hbtn {
+      padding: 9px 16px;
+      border-radius: 10px;
+      border: none;
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 700;
+      font-size: 13px;
+      cursor: pointer;
+      white-space: nowrap;
+    }
+    .hbtn-ghost { background: rgba(255,255,255,0.12); color: var(--white); }
+    .hbtn-danger { background: var(--danger); color: var(--white); }
+
+    /* LAYOUT */
+    .container { max-width: 1080px; margin: 32px auto; padding: 0 20px 60px; }
+    .page-title { font-family: 'Playfair Display', serif; font-size: 32px; font-weight: 900; margin-bottom: 4px; }
+    .page-sub { color: var(--slate); font-size: 15px; margin-bottom: 28px; }
+
+    /* STAT GRID */
+    .stat-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 16px;
+      margin-bottom: 32px;
+    }
+    .stat-card {
+      background: var(--white);
+      border-radius: var(--radius);
+      padding: 20px 22px;
+      box-shadow: 0 2px 10px rgba(45,27,78,0.07);
+      border-left: 4px solid var(--amber);
+    }
+    .stat-label { font-size: 11px; font-weight: 900; text-transform: uppercase; letter-spacing: 0.08em; color: var(--slate); margin-bottom: 8px; }
+    .stat-value { font-family: 'Playfair Display', serif; font-size: 34px; font-weight: 900; color: var(--aubergine); }
+
+    /* PANEL */
+    .panel {
+      background: var(--white);
+      border-radius: 20px;
+      padding: 24px;
+      margin-bottom: 20px;
+      box-shadow: 0 2px 10px rgba(45,27,78,0.07);
+    }
+    .panel-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 20px;
+      font-weight: 700;
+      margin-bottom: 18px;
+      padding-bottom: 14px;
+      border-bottom: 2px solid var(--slate-light);
+    }
+
+    /* TABLE */
+    .table-wrap { overflow-x: auto; }
+    table { width: 100%; border-collapse: collapse; font-size: 13px; min-width: 500px; }
+    th { font-size: 11px; font-weight: 900; text-transform: uppercase; letter-spacing: 0.06em; color: var(--slate); padding: 10px 10px; text-align: left; }
+    td { padding: 12px 10px; border-top: 1px solid var(--slate-light); vertical-align: middle; }
+    tr:hover td { background: var(--parchment); }
+
+    /* STATUS BADGES */
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      padding: 4px 10px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 700;
+    }
+    .badge-pending { background: #FFF8EC; color: #92600A; }
+    .badge-approved { background: #ECFDF5; color: #065F46; }
+    .badge-rejected { background: #FEF2F2; color: #991B1B; }
+
+    /* ACTION BUTTONS */
+    .action-row { display: flex; gap: 8px; flex-wrap: wrap; }
+    .abtn {
+      padding: 8px 14px;
+      border-radius: 9px;
+      border: none;
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 700;
+      font-size: 12px;
+      cursor: pointer;
+      transition: opacity 0.15s;
+      white-space: nowrap;
+    }
+    .abtn:hover { opacity: 0.8; }
+    .abtn-approve { background: var(--success); color: var(--white); }
+    .abtn-reject { background: var(--slate-light); color: var(--aubergine); }
+
+    /* EMPTY / WARN */
+    .empty { color: var(--slate); font-size: 14px; padding: 8px 0; }
+    .rls-warn {
+      margin-top: 12px;
+      padding: 12px 14px;
+      border-radius: 12px;
+      background: #FFF8EC;
+      border: 1.5px solid var(--amber);
+      font-size: 13px;
+      color: #92600A;
+      font-weight: 500;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="header">
+    <div>
+      <div class="brand">
+        <div class="brand-icon">🖋️</div>
+        <div class="brand-name">Inkwell<span>Media</span></div>
+      </div>
+      <div class="header-sub" id="welcome-line"></div>
+    </div>
+    <div style="display:flex;gap:8px;flex-wrap:wrap;">
+      <button class="hbtn hbtn-ghost" onclick="window.location.href='members.html'">Dashboard</button>
+      <button class="hbtn hbtn-ghost" onclick="window.location.href='profile.html'">Profile</button>
+      <button class="hbtn hbtn-danger" onclick="logout()">Log out</button>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="page-title">Admin Dashboard</div>
+    <p class="page-sub">Review and approve deposits, payouts, and recent purchases.</p>
+
+    <div class="stat-grid">
+      <div class="stat-card">
+        <div class="stat-label">Pending Deposits</div>
+        <div class="stat-value" id="stat-deposits">–</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">Pending Payouts</div>
+        <div class="stat-value" id="stat-payouts">–</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">Recent Purchases</div>
+        <div class="stat-value" id="stat-purchases">–</div>
+      </div>
+    </div>
+
+    <div class="panel">
+      <div class="panel-title">Pending Deposits</div>
+      <div class="table-wrap" id="deposits-wrap">Loading…</div>
+      <div class="rls-warn" id="rls-warn-deposits">Permission denied? Check your Supabase RLS policies for the deposits table.</div>
+    </div>
+
+    <div class="panel">
+      <div class="panel-title">Pending Payouts</div>
+      <div class="table-wrap" id="payouts-wrap">Loading…</div>
+      <div class="rls-warn" id="rls-warn-payouts">Permission denied? Check your Supabase RLS policies for the payouts table.</div>
+    </div>
+
+    <div class="panel">
+      <div class="panel-title">Recent Purchases</div>
+      <div class="table-wrap" id="purchases-wrap">Loading…</div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script>
+    const supabaseClient = supabase.createClient(
+      "https://whnnyuozicuphrpgomno.supabase.co",
+      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Indobm55dW96aWN1cGhycGdvbW5vIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjM1Mjk3MDAsImV4cCI6MjA3OTEwNTcwMH0.XTS5-ELx7sUmZmkyoXG1B1zOqVMJQsO5Kvk-brBW8EQ",
+      { auth: { persistSession: true, autoRefreshToken: true } }
+    );
+
+    const ADMIN_EMAILS = ["iedereesfrancis@gmail.com"];
+    let currentUser = null;
+
+    function badge(status) {
+      const s = String(status || "").toLowerCase();
+      if (s === "approved") return `<span class="badge badge-approved">Approved</span>`;
+      if (s === "rejected") return `<span class="badge badge-rejected">Rejected</span>`;
+      return `<span class="badge badge-pending">Pending</span>`;
+    }
+
+    function fmtDate(iso) {
+      try { return new Date(iso).toLocaleString(); } catch(e) { return iso || ""; }
+    }
+
+    async function requireAdmin() {
+      const { data: { session } } = await supabaseClient.auth.getSession();
+      if (!session) return window.location.href = "index.html";
+      currentUser = session.user;
+      if (!ADMIN_EMAILS.includes(currentUser.email)) {
+        alert("Access denied.");
+        return window.location.href = "members.html";
+      }
+      document.getElementById("welcome-line").innerText = "Signed in as " + currentUser.email;
+    }
+
+    async function loadStats() {
+      const { data: dep } = await supabaseClient.from("deposits").select("id").eq("status","pending");
+      const { data: pay } = await supabaseClient.from("payouts").select("id").eq("status","pending");
+      const { data: pur } = await supabaseClient.from("purchases").select("id").order("created_at",{ascending:false}).limit(20);
+      document.getElementById("stat-deposits").innerText = (dep || []).length;
+      document.getElementById("stat-payouts").innerText = (pay || []).length;
+      document.getElementById("stat-purchases").innerText = (pur || []).length;
+    }
+
+    async function loadDeposits() {
+      const wrap = document.getElementById("deposits-wrap");
+      const { data, error } = await supabaseClient.from("deposits").select("*").eq("status","pending").order("created_at",{ascending:false});
+      if (error) { wrap.innerHTML = `<div class="empty">Error: ${error.message}</div>`; return; }
+      if (!data?.length) { wrap.innerHTML = `<div class="empty">No pending deposits.</div>`; return; }
+      wrap.innerHTML = `<table>
+        <thead><tr><th>Date</th><th>User</th><th>Method</th><th>Amount</th><th>Status</th><th>Actions</th></tr></thead>
+        <tbody>${data.map(d => `<tr>
+          <td>${fmtDate(d.created_at)}</td>
+          <td style="font-size:12px;max-width:160px;overflow:hidden;text-overflow:ellipsis;">${d.user_id||""}</td>
+          <td><strong>${d.method||""}</strong></td>
+          <td><strong>$${Number(d.amount||0).toFixed(2)}</strong></td>
+          <td>${badge(d.status)}</td>
+          <td><div class="action-row">
+            <button class="abtn abtn-approve" onclick="approveDeposit('${d.id}','${d.user_id}',${Number(d.amount||0)})">✓ Approve</button>
+            <button class="abtn abtn-reject" onclick="rejectDeposit('${d.id}')">Reject</button>
+          </div></td>
+        </tr>`).join("")}</tbody>
+      </table>`;
+    }
+
+    async function loadPayouts() {
+      const wrap = document.getElementById("payouts-wrap");
+      const { data, error } = await supabaseClient.from("payouts").select("*").eq("status","pending").order("created_at",{ascending:false});
+      if (error) { wrap.innerHTML = `<div class="empty">Error: ${error.message}</div>`; return; }
+      if (!data?.length) { wrap.innerHTML = `<div class="empty">No pending payouts.</div>`; return; }
+      wrap.innerHTML = `<table>
+        <thead><tr><th>Date</th><th>User</th><th>Amount</th><th>Status</th><th>Actions</th></tr></thead>
+        <tbody>${data.map(p => `<tr>
+          <td>${fmtDate(p.created_at)}</td>
+          <td style="font-size:12px;max-width:160px;overflow:hidden;text-overflow:ellipsis;">${p.user_id||""}</td>
+          <td><strong>$${Number(p.amount||0).toFixed(2)}</strong></td>
+          <td>${badge(p.status)}</td>
+          <td><div class="action-row">
+            <button class="abtn abtn-approve" onclick="approvePayout('${p.id}','${p.user_id}',${Number(p.amount||0)})">✓ Approve</button>
+            <button class="abtn abtn-reject" onclick="rejectPayout('${p.id}')">Reject</button>
+          </div></td>
+        </tr>`).join("")}</tbody>
+      </table>`;
+    }
+
+    async function loadPurchases() {
+      const wrap = document.getElementById("purchases-wrap");
+      const { data, error } = await supabaseClient.from("purchases").select("*").order("created_at",{ascending:false}).limit(20);
+      if (error) { wrap.innerHTML = `<div class="empty">Error: ${error.message}</div>`; return; }
+      if (!data?.length) { wrap.innerHTML = `<div class="empty">No purchases yet.</div>`; return; }
+      wrap.innerHTML = `<table>
+        <thead><tr><th>Date</th><th>Buyer</th><th>Product</th><th>Amount</th></tr></thead>
+        <tbody>${data.map(x => `<tr>
+          <td>${fmtDate(x.created_at)}</td>
+          <td style="font-size:12px;">${x.purchaser_email||x.user_id||""}</td>
+          <td>${x.product_name||x.product_key||""}</td>
+          <td><strong>$${Number(x.amount||0).toFixed(2)}</strong></td>
+        </tr>`).join("")}</tbody>
+      </table>`;
+    }
+
+    async function incrementBalance(userId, amount) {
+      const { data, error } = await supabaseClient.from("user_balances").select("balance").eq("id", userId).single();
+      if (error) throw error;
+      const { error: upErr } = await supabaseClient.from("user_balances").update({ balance: Number(data?.balance||0) + Number(amount||0) }).eq("id", userId);
+      if (upErr) throw upErr;
+    }
+
+    async function decrementBalance(userId, amount) {
+      const { data, error } = await supabaseClient.from("user_balances").select("balance").eq("id", userId).single();
+      if (error) throw error;
+      const { error: upErr } = await supabaseClient.from("user_balances").update({ balance: Math.max(0, Number(data?.balance||0) - Number(amount||0)) }).eq("id", userId);
+      if (upErr) throw upErr;
+    }
+
+    window.approveDeposit = async (id, userId, amount) => {
+      try {
+        const { error } = await supabaseClient.from("deposits").update({ status: "approved" }).eq("id", id);
+        if (error) throw error;
+        await incrementBalance(userId, amount);
+        alert("Deposit approved ✅");
+        await refreshAll();
+      } catch(e) {
+        document.getElementById("rls-warn-deposits").style.display = "block";
+        alert("Failed: " + (e?.message || e));
+      }
+    };
+
+    window.rejectDeposit = async (id) => {
+      try {
+        const { error } = await supabaseClient.from("deposits").update({ status: "rejected" }).eq("id", id);
+        if (error) throw error;
+        alert("Deposit rejected.");
+        await refreshAll();
+      } catch(e) {
+        document.getElementById("rls-warn-deposits").style.display = "block";
+        alert("Failed: " + (e?.message || e));
+      }
+    };
+
+    window.approvePayout = async (id, userId, amount) => {
+      try {
+        const { error } = await supabaseClient.from("payouts").update({ status: "approved" }).eq("id", id);
+        if (error) throw error;
+        await decrementBalance(userId, amount);
+        alert("Payout approved ✅");
+        await refreshAll();
+      } catch(e) {
+        document.getElementById("rls-warn-payouts").style.display = "block";
+        alert("Failed: " + (e?.message || e));
+      }
+    };
+
+    window.rejectPayout = async (id) => {
+      try {
+        const { error } = await supabaseClient.from("payouts").update({ status: "rejected" }).eq("id", id);
+        if (error) throw error;
+        alert("Payout rejected.");
+        await refreshAll();
+      } catch(e) {
+        document.getElementById("rls-warn-payouts").style.display = "block";
+        alert("Failed: " + (e?.message || e));
+      }
+    };
+
+    async function refreshAll() {
+      await loadStats();
+      await loadDeposits();
+      await loadPayouts();
+      await loadPurchases();
+    }
+
+    async function logout() { await supabaseClient.auth.signOut(); window.location.href = "index.html"; }
+
+    (async () => {
+      await requireAdmin();
+      await refreshAll();
+    })();
+  </script>
+</body>
+</html>

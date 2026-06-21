@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Your Profile | InkwellMedia</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --aubergine: #2D1B4E;
+      --amber: #F5A623;
+      --amber-dark: #D4891A;
+      --parchment: #FAF7F2;
+      --white: #FFFFFF;
+      --slate: #8A7FA0;
+      --slate-light: #EDE9F5;
+      --success: #059669;
+      --radius: 16px;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'DM Sans', sans-serif; background: var(--parchment); color: var(--aubergine); }
+
+    /* HEADER */
+    .header {
+      background: var(--aubergine);
+      padding: 14px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .brand { display: flex; align-items: center; gap: 10px; }
+    .brand-icon { width: 36px; height: 36px; background: var(--amber); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 18px; }
+    .brand-name { font-family: 'Playfair Display', serif; font-size: 20px; font-weight: 900; color: var(--white); }
+    .brand-name span { color: var(--amber); }
+
+    .hbtn {
+      padding: 9px 16px;
+      border-radius: 10px;
+      border: none;
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 700;
+      font-size: 13px;
+      cursor: pointer;
+    }
+    .hbtn-ghost { background: rgba(255,255,255,0.12); color: var(--white); }
+    .hbtn-danger { background: #E3394A; color: var(--white); }
+
+    /* MAIN */
+    .container { max-width: 700px; margin: 36px auto; padding: 0 20px 60px; }
+
+    .page-title { font-family: 'Playfair Display', serif; font-size: 32px; font-weight: 900; margin-bottom: 4px; }
+    .page-sub { color: var(--slate); font-size: 15px; margin-bottom: 32px; }
+
+    /* SECTION CARDS */
+    .section-card {
+      background: var(--white);
+      border-radius: 20px;
+      padding: 28px 28px;
+      margin-bottom: 20px;
+      box-shadow: 0 2px 12px rgba(45,27,78,0.07);
+    }
+
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--aubergine);
+      margin-bottom: 20px;
+      padding-bottom: 14px;
+      border-bottom: 2px solid var(--slate-light);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .section-icon {
+      width: 36px; height: 36px;
+      background: var(--slate-light);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      flex-shrink: 0;
+    }
+
+    /* FORM GRID */
+    .field-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    @media (max-width: 520px) { .field-grid { grid-template-columns: 1fr; } }
+    .field-full { grid-column: 1 / -1; }
+
+    .field { display: flex; flex-direction: column; gap: 6px; }
+    label {
+      font-size: 11px;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      color: var(--slate);
+    }
+    input, select {
+      padding: 12px 14px;
+      border: 2px solid var(--slate-light);
+      border-radius: 12px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 15px;
+      color: var(--aubergine);
+      background: var(--parchment);
+      outline: none;
+      transition: border-color 0.2s, box-shadow 0.2s;
+      width: 100%;
+    }
+    input:focus, select:focus {
+      border-color: var(--amber);
+      box-shadow: 0 0 0 4px rgba(245,166,35,0.12);
+      background: var(--white);
+    }
+
+    /* BUTTONS */
+    .btn-save {
+      width: 100%;
+      padding: 15px;
+      background: var(--amber);
+      color: var(--aubergine);
+      border: none;
+      border-radius: 14px;
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 900;
+      font-size: 16px;
+      cursor: pointer;
+      margin-top: 8px;
+      transition: background 0.2s, transform 0.1s;
+    }
+    .btn-save:hover { background: var(--amber-dark); }
+    .btn-save:active { transform: scale(0.99); }
+
+    .btn-logout {
+      width: 100%;
+      padding: 14px;
+      background: var(--white);
+      color: var(--aubergine);
+      border: 2px solid var(--slate-light);
+      border-radius: 14px;
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 700;
+      font-size: 15px;
+      cursor: pointer;
+      margin-top: 10px;
+      transition: border-color 0.15s;
+    }
+    .btn-logout:hover { border-color: #E3394A; color: #E3394A; }
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--slate);
+      cursor: pointer;
+      margin-bottom: 20px;
+      text-decoration: none;
+    }
+    .back-link:hover { color: var(--aubergine); }
+  </style>
+</head>
+<body>
+
+  <div class="header">
+    <div class="brand">
+      <div class="brand-icon">🖋️</div>
+      <div class="brand-name">Inkwell<span>Media</span></div>
+    </div>
+    <div style="display:flex;gap:8px;">
+      <button class="hbtn hbtn-ghost" onclick="window.location.href='members.html'">← Dashboard</button>
+      <button class="hbtn hbtn-danger" onclick="logout()">Log out</button>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="page-title">Your Profile</div>
+    <p class="page-sub">Keep your details up to date so we can process payouts smoothly.</p>
+
+    <!-- PERSONAL INFO -->
+    <div class="section-card">
+      <div class="section-title">
+        <div class="section-icon">👤</div>
+        Personal Information
+      </div>
+      <div class="field-grid">
+        <div class="field">
+          <label>First Name</label>
+          <input id="first_name" placeholder="Jane" />
+        </div>
+        <div class="field">
+          <label>Last Name</label>
+          <input id="last_name" placeholder="Smith" />
+        </div>
+        <div class="field">
+          <label>Date of Birth</label>
+          <input id="dob" type="date" />
+        </div>
+        <div class="field">
+          <label>Mobile Number</label>
+          <input id="mobile" placeholder="+27 82 123 4567" />
+        </div>
+        <div class="field field-full">
+          <label>Home Address</label>
+          <input id="address" placeholder="123 Main Street, Cape Town" />
+        </div>
+      </div>
+    </div>
+
+    <!-- BANKING DETAILS -->
+    <div class="section-card">
+      <div class="section-title">
+        <div class="section-icon">🏦</div>
+        Banking Details
+      </div>
+      <div class="field-grid">
+        <div class="field">
+          <label>Bank Name</label>
+          <input id="bank_name" placeholder="FNB, Nedbank, etc." />
+        </div>
+        <div class="field">
+          <label>Account Holder</label>
+          <input id="account_name" placeholder="Jane Smith" />
+        </div>
+        <div class="field">
+          <label>Account Number</label>
+          <input id="account_number" placeholder="123456789" />
+        </div>
+        <div class="field">
+          <label>Account Type</label>
+          <select id="account_type">
+            <option value="Cheque">Cheque</option>
+            <option value="Savings">Savings</option>
+            <option value="Transmission">Transmission</option>
+          </select>
+        </div>
+        <div class="field">
+          <label>Branch Code</label>
+          <input id="branch_code" placeholder="250655" />
+        </div>
+        <div class="field field-full">
+          <label>Additional Notes</label>
+          <input id="payout_notes" placeholder="Any notes for admin (optional)" />
+        </div>
+      </div>
+    </div>
+
+    <!-- ACTIONS -->
+    <button class="btn-save" onclick="saveProfile()">Save Profile</button>
+    <button class="btn-logout" onclick="logout()">Log Out</button>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script>
+    const supabaseClient = supabase.createClient(
+      "https://whnnyuozicuphrpgomno.supabase.co",
+      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Indobm55dW96aWN1cGhycGdvbW5vIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjM1Mjk3MDAsImV4cCI6MjA3OTEwNTcwMH0.XTS5-ELx7sUmZmkyoXG1B1zOqVMJQsO5Kvk-brBW8EQ",
+      { auth: { persistSession: true, autoRefreshToken: true } }
+    );
+
+    let sessionUser = null;
+
+    async function loadProfile() {
+      const { data: { session } } = await supabaseClient.auth.getSession();
+      if (!session) { window.location.href = "index.html"; return; }
+      sessionUser = session.user;
+      const { data } = await supabaseClient.from("profiles").select("*").eq("id", sessionUser.id).maybeSingle();
+      if (data) {
+        ["first_name","last_name","dob","mobile","address","bank_name","account_name","account_number","account_type","branch_code","payout_notes"].forEach(f => {
+          const el = document.getElementById(f);
+          if (el) el.value = data[f] || "";
+        });
+      }
+    }
+
+    async function saveProfile() {
+      const payload = {
+        id: sessionUser.id,
+        first_name: document.getElementById("first_name").value,
+        last_name: document.getElementById("last_name").value,
+        dob: document.getElementById("dob").value,
+        mobile: document.getElementById("mobile").value,
+        address: document.getElementById("address").value,
+        bank_name: document.getElementById("bank_name").value,
+        account_name: document.getElementById("account_name").value,
+        account_number: document.getElementById("account_number").value,
+        account_type: document.getElementById("account_type").value,
+        branch_code: document.getElementById("branch_code").value,
+        payout_notes: document.getElementById("payout_notes").value
+      };
+      const { error } = await supabaseClient.from("profiles").upsert(payload);
+      if (error) { alert("Save failed: " + error.message); return; }
+      alert("Profile saved! ✅");
+      window.location.href = "members.html";
+    }
+
+    async function logout() {
+      await supabaseClient.auth.signOut();
+      window.location.href = "index.html";
+    }
+
+    loadProfile();
+  </script>
+</body>
+</html>
