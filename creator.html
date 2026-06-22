@@ -122,7 +122,7 @@
 
     .wallet-label { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--slate); margin-bottom: 6px; }
     .wallet-amount { font-family: 'Playfair Display', serif; font-size: 44px; font-weight: 900; color: var(--white); line-height: 1; }
-    .wallet-usd { font-size: 13px; color: var(--slate); margin-top: 4px; }
+    .wallet-zar { font-size: 13px; color: var(--slate); margin-top: 4px; }
 
     .wallet-actions { display: flex; gap: 10px; flex-wrap: wrap; }
     .wallet-btn {
@@ -352,7 +352,7 @@
       <div>
         <div class="wallet-label">Your Balance</div>
         <div class="wallet-amount" id="balance">–</div>
-        <div class="wallet-usd" id="balanceSub"></div>
+        <div class="wallet-zar" id="balanceSub"></div>
       </div>
       <div class="wallet-actions">
         <button class="wallet-btn wallet-btn-amber" onclick="openDeposit()">+ Add Funds</button>
@@ -374,7 +374,7 @@
     <div class="modal" style="position:relative;">
       <button class="modal-close" onclick="closeDeposit()">✕</button>
       <h2>Add Funds</h2>
-      <p>Choose how you'd like to deposit. Minimum deposit is $50 USD.</p>
+      <p>Choose how you'd like to deposit. Minimum deposit is R100 ZAR.</p>
       <div class="deposit-options">
         <button class="deposit-opt-btn" onclick="showBank()">
           🏦 Bank Transfer (EFT)
@@ -382,7 +382,7 @@
         </button>
         <button class="deposit-opt-btn" onclick="showXRP()">
           🪙 Crypto (XRP)
-          <span>Send XRP equivalent to USD amount</span>
+          <span>Send XRP equivalent to ZAR amount</span>
         </button>
       </div>
     </div>
@@ -393,8 +393,8 @@
     <div class="modal" style="position:relative;">
       <button class="modal-close" onclick="closeBank()">✕</button>
       <h2>Bank Transfer</h2>
-      <p>Enter the USD amount you're depositing. Admin will confirm once payment is received.</p>
-      <input type="number" id="bankAmount" placeholder="Amount in USD e.g. 100" min="50" />
+      <p>Enter the ZAR amount you're depositing. Admin will confirm once payment is received.</p>
+      <input type="number" id="bankAmount" placeholder="Amount in ZAR e.g. 100" min="50" />
       <button class="modal-btn modal-btn-amber" onclick="submitDeposit('bank')">Submit Deposit Request</button>
       <button class="modal-btn modal-btn-ghost" onclick="closeBank()">Cancel</button>
     </div>
@@ -405,8 +405,8 @@
     <div class="modal" style="position:relative;">
       <button class="modal-close" onclick="closeXRP()">✕</button>
       <h2>Crypto (XRP)</h2>
-      <p>Enter the USD amount you're sending in XRP. Admin will verify and approve.</p>
-      <input type="number" id="xrpAmount" placeholder="Amount in USD e.g. 100" min="50" />
+      <p>Enter the ZAR amount you're sending in XRP. Admin will verify and approve.</p>
+      <input type="number" id="xrpAmount" placeholder="Amount in ZAR e.g. 100" min="50" />
       <button class="modal-btn modal-btn-amber" onclick="submitDeposit('xrp')">Submit Deposit Request</button>
       <button class="modal-btn modal-btn-ghost" onclick="closeXRP()">Cancel</button>
     </div>
@@ -417,8 +417,8 @@
     <div class="modal" style="position:relative;">
       <button class="modal-close" onclick="closePayout()">✕</button>
       <h2>Request Payout</h2>
-      <p>Enter the USD amount you'd like to withdraw. Make sure your banking details are saved in your profile.</p>
-      <input type="number" id="payoutAmount" placeholder="Amount in USD" min="1" />
+      <p>Enter the ZAR amount you'd like to withdraw. Make sure your banking details are saved in your profile.</p>
+      <input type="number" id="payoutAmount" placeholder="Amount in ZAR" min="1" />
       <button class="modal-btn modal-btn-amber" onclick="submitPayout()">Request Payout</button>
       <button class="modal-btn modal-btn-ghost" onclick="closePayout()">Cancel</button>
     </div>
@@ -438,7 +438,7 @@
     );
 
     const ADMIN_EMAILS = ["iedereesfrancis@gmail.com"];
-    const PRICES_USD = { weekly: 20, signals: 15, monthly: 60, bot_rsi: 100 };
+    const PRICES_ZAR = { weekly: 20, signals: 15, monthly: 60, bot_rsi: 100 };
 
     let currentUser = null;
 
@@ -466,9 +466,9 @@
 
     async function loadBalance() {
       const { data } = await supabaseClient.from("user_balances").select("balance").eq("id", currentUser.id).single();
-      const usd = Number(data?.balance || 0);
-      document.getElementById("balance").innerText = await formatAmount(usd);
-      document.getElementById("balanceSub").innerText = "Balance in USD: $" + usd.toFixed(2);
+      const zar = Number(data?.balance || 0);
+      document.getElementById("balance").innerText = await formatAmount(zar);
+      document.getElementById("balanceSub").innerText = "Balance in ZAR: R" + zar.toFixed(2);
     }
 
     async function loadAlbums() {
@@ -626,10 +626,10 @@
       }
       
       const { data } = await supabaseClient.from("user_balances").select("balance").eq("id", currentUser.id).single();
-      const usd = Number(data?.balance || 0);
+      const zar = Number(data?.balance || 0);
       
       if (cost > 0) {
-        if (usd < cost) { alert("Insufficient funds. Please add funds first."); openDeposit(); return; }
+        if (zar < cost) { alert("Insufficient funds. Please add funds first."); openDeposit(); return; }
       }
       
       const { error: pe } = await supabaseClient.from("purchases").insert({ 
@@ -642,7 +642,7 @@
       if (pe) { alert("Purchase failed: " + pe.message); return; }
       
       if (cost > 0) {
-        const { error: be } = await supabaseClient.from("user_balances").update({ balance: usd - cost }).eq("id", currentUser.id);
+        const { error: be } = await supabaseClient.from("user_balances").update({ balance: zar - cost }).eq("id", currentUser.id);
         if (be) { alert("Balance update failed: " + be.message); return; }
         
         const creatorShare = cost * 0.5;
@@ -679,7 +679,7 @@
     async function submitDeposit(type) {
       const amount = type === "bank" ? Number(document.getElementById("bankAmount").value) : Number(document.getElementById("xrpAmount").value);
       if (!amount || amount <= 0) return alert("Enter a valid amount.");
-      const { error } = await supabaseClient.from("deposits").insert({ user_id: currentUser.id, method: type, amount, currency: "USD", status: "pending" });
+      const { error } = await supabaseClient.from("deposits").insert({ user_id: currentUser.id, method: type, amount, currency: "ZAR", status: "pending" });
       if (error) { alert("Deposit failed: " + error.message); return; }
       alert("Deposit submitted! Admin will approve shortly.");
       if (type === "bank") { document.getElementById("bankAmount").value = ""; closeBank(); }
