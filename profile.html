@@ -283,8 +283,8 @@
           <input id="album_cover" placeholder="https://example.com/cover.jpg" />
         </div>
         <div class="field field-full">
-          <label>Upload Media File (Video/Image/Audio)</label>
-          <input type="file" id="album_media_file" accept="image/*,video/*,audio/*" style="padding:6px; background:white; cursor:pointer;" />
+          <label>Upload Media Files (Videos/Images/Audio)</label>
+          <input type="file" id="album_media_file" accept="image/*,video/*,audio/*" multiple style="padding:6px; background:white; cursor:pointer;" />
         </div>
         <div class="field field-full">
           <button class="btn-save" onclick="createAlbum()" style="margin-top: 0; padding: 12px; font-size: 14px;">Create Album</button>
@@ -405,42 +405,70 @@
       const description = document.getElementById("album_description").value.trim();
       const price_usd = Number(document.getElementById("album_price").value) || 0;
       let cover_image_url = document.getElementById("album_cover").value.trim();
-      const mediaFile = document.getElementById("album_media_file").files[0];
+      const mediaFiles = document.getElementById("album_media_file").files;
 
       if (!title) { alert("Please enter an album title."); btn.textContent = "Create Album"; btn.disabled = false; return; }
 
-      let media_url = null;
-      let media_type = 'audio';
-
-      if (mediaFile) {
-        const fileExt = mediaFile.name.split('.').pop();
-        const fileName = `${sessionUser.id}-${Date.now()}.${fileExt}`;
-        const { error: uploadError } = await supabaseClient.storage.from('inkwell_media').upload(`albums/${fileName}`, mediaFile);
-        if (uploadError) { alert("Failed to upload media: " + uploadError.message); btn.textContent = "Create Album"; btn.disabled = false; return; }
-        const { data: { publicUrl } } = supabaseClient.storage.from('inkwell_media').getPublicUrl(`albums/${fileName}`);
-        media_url = publicUrl;
-        
-        if (mediaFile.type.startsWith('video/')) media_type = 'video';
-        else if (mediaFile.type.startsWith('image/')) media_type = 'image';
-        
-        if (!cover_image_url && media_type === 'image') {
-          cover_image_url = media_url;
-        }
-      }
-
-      const payload = {
+      // 1. Create the album first to get its ID
+      const albumPayload = {
         user_id: sessionUser.id,
         title,
         description,
         price_usd,
-        cover_image_url,
-        media_url,
-        media_type
+        cover_image_url
       };
 
-      const { error } = await supabaseClient.from("albums").insert(payload);
-      if (error) { alert("Failed to create album: " + error.message); btn.textContent = "Create Album"; btn.disabled = false; return; }
+      const { data: newAlbum, error: albumError } = await supabaseClient.from("albums").insert(albumPayload).select().single();
+      if (albumError) { alert("Failed to create album: " + albumError.message); btn.textContent = "Create Album"; btn.disabled = false; return; }
       
+      const albumId = newAlbum.id;
+
+      // 2. Upload media files and insert into album_media
+      if (mediaFiles && mediaFiles.length > 0) {
+        let is_free_count = 0;
+        let finalCover = cover_image_url;
+        let total_images = 0;
+        let total_videos = 0;
+
+        for (let i = 0; i < mediaFiles.length; i++) {
+          const file = mediaFiles[i];
+          const fileExt = file.name.split('.').pop();
+          const fileName = `${sessionUser.id}-${Date.now()}-${i}.${fileExt}`;
+          
+          btn.textContent = `Uploading ${i+1}/${mediaFiles.length}...`;
+          
+          const { error: uploadError } = await supabaseClient.storage.from('inkwell_media').upload(`albums/${fileName}`, file);
+          if (uploadError) { console.error("Failed to upload file", file.name, uploadError); continue; }
+          
+          const { data: { publicUrl } } = supabaseClient.storage.from('inkwell_media').getPublicUrl(`albums/${fileName}`);
+          
+          let mtype = 'audio';
+          if (file.type.startsWith('video/')) { mtype = 'video'; total_videos++; }
+          else if (file.type.startsWith('image/')) { mtype = 'image'; total_images++; }
+
+          if (!finalCover && mtype === 'image') {
+            finalCover = publicUrl;
+          }
+
+          const is_free = is_free_count < 5;
+          is_free_count++;
+
+          await supabaseClient.from("album_media").insert({
+            album_id: albumId,
+            media_url: publicUrl,
+            media_type: mtype,
+            is_free_preview: is_free
+          });
+        }
+        
+        // Update cover and counts
+        await supabaseClient.from("albums").update({ 
+          cover_image_url: finalCover,
+          total_images: total_images,
+          total_videos: total_videos
+        }).eq("id", albumId);
+      }
+
       alert("Album created successfully! ✅");
       document.getElementById("album_title").value = "";
       document.getElementById("album_description").value = "";
