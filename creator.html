@@ -344,7 +344,8 @@
 
   <div class="container">
     <div class="page-title" id="creator-name-title">Creator Profile</div>
-    <p class="page-sub" id="creator-desc">Loading creator details...</p>
+    <p class="page-sub" id="creator-desc" style="margin-bottom: 16px;">Loading creator details...</p>
+    <button class="hbtn hbtn-ghost" onclick="copyProfileLink()" style="margin-bottom: 24px; color: var(--aubergine); border: 2px solid var(--slate-light); background: transparent;">📋 Copy Profile Link</button>
 
     <!-- WALLET -->
     <div class="wallet-card">
@@ -659,6 +660,14 @@
     function closeBotDownloadModal() { document.getElementById("botDownloadModal").style.display = "none"; }
     function closeBotInfoModal() { document.getElementById("botInfoModal").style.display = "none"; }
     function openDeposit() { document.getElementById("depositModal").style.display = "flex"; }
+    function copyProfileLink() {
+      navigator.clipboard.writeText(window.location.href).then(() => {
+        alert("Profile link copied to clipboard!");
+      }).catch(err => {
+        console.error("Failed to copy link", err);
+      });
+    }
+
     function closeDeposit() { document.getElementById("depositModal").style.display = "none"; }
     function showBank() { closeDeposit(); document.getElementById("bankModal").style.display = "flex"; }
     function closeBank() { document.getElementById("bankModal").style.display = "none"; }
