@@ -357,53 +357,12 @@
       </div>
     </div>
 
-    <!-- MEMBERSHIPS -->
-    <div class="section-head">Membership Options</div>
-    <p class="section-sub">Mix and match — subscribe to any combination as long as your wallet is funded.</p>
+    <!-- ALBUMS -->
+    <div class="section-head">Latest Albums</div>
+    <p class="section-sub">Shop the latest albums uploaded by our community.</p>
 
-    <div class="product-grid">
-      <div class="product-card">
-        <div class="product-icon">📅</div>
-        <div class="product-name">Weekly Syndicate</div>
-        <p class="product-desc">Join our weekly pooled trades with regular updates and insights from the team.</p>
-        <div id="price-weekly" class="price-badge"></div>
-        <button id="btn-weekly" class="buy-btn" onclick="buyProduct('weekly')">Join Weekly</button>
-      </div>
-
-      <div class="product-card">
-        <div class="product-icon">💬</div>
-        <div class="product-name">Signals Group</div>
-        <p class="product-desc">Get real-time WhatsApp trade signals delivered straight to your phone.</p>
-        <div id="price-signals" class="price-badge"></div>
-        <button id="btn-signals" class="buy-btn" onclick="buyProduct('signals')">Join Signals</button>
-      </div>
-
-      <div class="product-card">
-        <div class="product-icon">🗓️</div>
-        <div class="product-name">Monthly Syndicate</div>
-        <p class="product-desc">Full-month pooled trading access with monthly performance reports.</p>
-        <div id="price-monthly" class="price-badge"></div>
-        <button id="btn-monthly" class="buy-btn" onclick="buyProduct('monthly')">Join Monthly</button>
-      </div>
-
-      <div class="product-card">
-        <div class="product-icon">🤖</div>
-        <div class="product-name">AutoTrader RSI Bot</div>
-        <p class="product-desc">Our proprietary MT5 RSI bot. One-time purchase, yours to keep and download.</p>
-        <div id="price-bot" class="price-badge"></div>
-        <button id="btn-bot" class="buy-btn" onclick="buyProduct('bot_rsi')">Buy Trading Bot</button>
-        <div id="bot-info-btn" style="font-size:12px;color:var(--slate);cursor:pointer;text-decoration:underline;text-align:center;">What does this bot do?</div>
-
-        <div id="bot-download-section" style="display:none;">
-          <div class="asset-list">
-            <div class="asset-item">
-              <div class="asset-name">AutoTrader RSI Engine Pro (MT5)</div>
-              <button class="asset-dl" onclick="openBotDownloadModal()">Download</button>
-            </div>
-          </div>
-        </div>
-        <div id="no-tools" style="font-size:12px;color:var(--slate);margin-top:6px;display:none;">Purchase to unlock your download.</div>
-      </div>
+    <div class="product-grid" id="albums-grid">
+      <p style="font-size: 14px; color: var(--slate);">Loading albums...</p>
     </div>
   </div>
 
@@ -462,34 +421,7 @@
     </div>
   </div>
 
-  <!-- BOT DOWNLOAD MODAL -->
-  <div class="modal-bg" id="botDownloadModal" style="display:none;">
-    <div class="modal" style="position:relative;">
-      <button class="modal-close" onclick="closeBotDownloadModal()">✕</button>
-      <h2>Download Your Bot</h2>
-      <p>You own the AutoTrader RSI Engine Pro. Download it below and install in your MT5 platform.</p>
-      <div class="asset-list">
-        <div class="asset-item">
-          <div class="asset-name">AutoTrader_RSI_Engine_Pro.ex5</div>
-          <a href="https://ndfqavpmqahdqpsqndbz.supabase.co/storage/v1/object/public/bots/autotrader_rsi_engine_pro.ex5" download>
-            <button class="asset-dl">⬇ Download</button>
-          </a>
-        </div>
-      </div>
-      <button class="modal-btn modal-btn-ghost" style="margin-top:14px;" onclick="closeBotDownloadModal()">Close</button>
-    </div>
-  </div>
-
-  <!-- BOT INFO MODAL -->
-  <div class="modal-bg" id="botInfoModal" style="display:none;">
-    <div class="modal" style="position:relative;">
-      <button class="modal-close" onclick="closeBotInfoModal()">✕</button>
-      <h2>About the RSI Bot</h2>
-      <p>The AutoTrader RSI Engine Pro is a MetaTrader 5 Expert Advisor that automatically trades based on RSI signals. It includes configurable entry/exit rules, risk management settings, and works on any MT5-supported pair.</p>
-      <p style="margin-top:10px;">This is a one-time purchase with lifetime access to the file.</p>
-      <button class="modal-btn modal-btn-dark" onclick="closeBotInfoModal()">Got it</button>
-    </div>
-  </div>
+  <!-- Bot Modals Removed -->
 
   <script src="locale.js"></script>
   <script src="geo-pricing.js"></script>
@@ -521,9 +453,7 @@
       }
       await ensureBalanceRow();
       await loadBalance();
-      await updatePrices();
-      await markSubscriptions();
-      await checkBotOwnership();
+      await loadAlbums();
     }
 
     async function ensureBalanceRow() {
@@ -538,71 +468,66 @@
       document.getElementById("balanceSub").innerText = "Balance in USD: $" + usd.toFixed(2);
     }
 
-    async function updatePrices() {
-      document.getElementById("price-weekly").innerText = "Weekly: " + await formatAmount(PRICES_USD.weekly);
-      document.getElementById("price-signals").innerText = "Signals: " + await formatAmount(PRICES_USD.signals);
-      document.getElementById("price-monthly").innerText = "Monthly: " + await formatAmount(PRICES_USD.monthly);
-      document.getElementById("price-bot").innerText = "One-time: " + await formatAmount(PRICES_USD.bot_rsi);
-    }
-
-    async function hasBotPurchase() {
-      const { data } = await supabaseClient.from("purchases").select("id").eq("user_id", currentUser.id).eq("product_key", "bot_rsi").limit(1);
-      return !!(data && data.length);
-    }
-
-    async function buyProduct(key) {
-      const cost = PRICES_USD[key];
-      if (!cost) return alert("Unknown product.");
-      if (key === "bot_rsi") {
-        const already = await hasBotPurchase();
-        if (already) { openBotDownloadModal(); return; }
+    async function loadAlbums() {
+      const { data, error } = await supabaseClient.from("albums").select("*").order("created_at", { ascending: false });
+      const grid = document.getElementById("albums-grid");
+      if (error) { grid.innerHTML = `<p style="color:var(--danger)">Failed to load albums: ${error.message}</p>`; return; }
+      if (!data || data.length === 0) { grid.innerHTML = `<p style="color:var(--slate)">No albums available on the marketplace yet.</p>`; return; }
+      
+      grid.innerHTML = "";
+      for (const album of data) {
+        const formattedPrice = await formatAmount(album.price_usd);
+        const coverImg = album.cover_image_url ? `<img src="${album.cover_image_url}" style="width:100%; height:160px; object-fit:cover; border-radius:12px; margin-bottom:12px;">` : `<div class="product-icon" style="margin-bottom:12px;">🎵</div>`;
+        const titleSafe = album.title.replace(/'/g, "\\'");
+        
+        grid.innerHTML += `
+          <div class="product-card">
+            ${coverImg}
+            <div class="product-name">${album.title}</div>
+            <p class="product-desc" style="margin-bottom: 8px;">${album.description || ''}</p>
+            <div class="price-badge" data-usd="${album.price_usd}">${formattedPrice}</div>
+            <button class="buy-btn" onclick="buyAlbum('${album.id}', '${titleSafe}', ${album.price_usd}, '${album.user_id}')">Buy Album</button>
+          </div>
+        `;
       }
+      
+      if (window.GeoPricing) {
+        await GeoPricing.updatePagePrices();
+      }
+    }
+
+    async function buyAlbum(albumId, albumTitle, cost, creatorId) {
+      if (creatorId === currentUser.id) {
+        alert("You cannot buy your own album.");
+        return;
+      }
+      
       const { data } = await supabaseClient.from("user_balances").select("balance").eq("id", currentUser.id).single();
       const usd = Number(data?.balance || 0);
       if (usd < cost) { alert("Insufficient funds. Please add funds first."); openDeposit(); return; }
-      let productName = "";
-      let isBot = false;
-      if (key === "weekly") productName = "Weekly Trade Syndicate";
-      else if (key === "signals") productName = "WhatsApp Signals Group";
-      else if (key === "monthly") productName = "Monthly Syndicate";
-      else if (key === "bot_rsi") { productName = "AutoTrader RSI Engine Pro (MT5 Bot)"; isBot = true; }
-      const { error: pe } = await supabaseClient.from("purchases").insert({ user_id: currentUser.id, purchaser_email: currentUser.email, product_key: key, product_name: productName, amount: cost });
+      
+      const { error: pe } = await supabaseClient.from("purchases").insert({ 
+        user_id: currentUser.id, 
+        purchaser_email: currentUser.email, 
+        product_key: albumId, 
+        product_name: albumTitle, 
+        amount: cost 
+      });
       if (pe) { alert("Purchase failed: " + pe.message); return; }
+      
       const { error: be } = await supabaseClient.from("user_balances").update({ balance: usd - cost }).eq("id", currentUser.id);
       if (be) { alert("Balance update failed: " + be.message); return; }
-      await loadBalance();
-      if (isBot) {
-        alert("Purchase successful ✅ Your bot is ready to download.");
-        await checkBotOwnership();
-        openBotDownloadModal();
+      
+      const { data: creatorData } = await supabaseClient.from("user_balances").select("balance").eq("id", creatorId).maybeSingle();
+      if (creatorData) {
+        await supabaseClient.from("user_balances").update({ balance: Number(creatorData.balance) + cost }).eq("id", creatorId);
       } else {
-        const { error: se } = await supabaseClient.from("subscriptions").upsert({ user_id: currentUser.id, product_key: key, product_name: productName, status: "active" }, { onConflict: "user_id,product_key" });
-        if (se) { alert("Subscription failed: " + se.message); return; }
-        alert("You're now subscribed to " + productName + " ✅");
-        await markSubscriptions();
+        await supabaseClient.from("user_balances").insert({ id: creatorId, balance: cost });
       }
+      
+      await loadBalance();
+      alert("Purchase successful! ✅ You now own " + albumTitle);
     }
-
-    async function markSubscriptions() {
-      const { data } = await supabaseClient.from("subscriptions").select("product_key,status").eq("user_id", currentUser.id);
-      const active = new Set((data || []).filter(r => r.status === "active").map(r => r.product_key));
-      ["weekly","signals","monthly"].forEach(k => {
-        if (active.has(k)) {
-          const btn = document.getElementById("btn-" + k);
-          if (btn) { btn.innerText = "✓ Active"; btn.classList.add("subscribed"); }
-        }
-      });
-    }
-
-    async function checkBotOwnership() {
-      const hasBot = await hasBotPurchase();
-      document.getElementById("bot-download-section").style.display = hasBot ? "block" : "none";
-      document.getElementById("no-tools").style.display = hasBot ? "none" : "none";
-      const btn = document.getElementById("btn-bot");
-      if (hasBot) { btn.innerText = "✓ Owned"; btn.disabled = true; btn.classList.add("subscribed"); }
-    }
-
-    function openBotDownloadModal() { document.getElementById("botDownloadModal").style.display = "flex"; }
     function closeBotDownloadModal() { document.getElementById("botDownloadModal").style.display = "none"; }
     function closeBotInfoModal() { document.getElementById("botInfoModal").style.display = "none"; }
     function openDeposit() { document.getElementById("depositModal").style.display = "flex"; }

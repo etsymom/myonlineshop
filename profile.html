@@ -250,6 +250,43 @@
       </div>
     </div>
 
+    <!-- MY ALBUMS -->
+    <div class="section-card">
+      <div class="section-title">
+        <div class="section-icon">🎵</div>
+        My Albums
+      </div>
+      <p style="font-size: 13px; color: var(--slate); margin-bottom: 16px;">Create a new album to sell on the marketplace.</p>
+      <div class="field-grid" style="margin-bottom: 24px;">
+        <div class="field field-full">
+          <label>Album Title</label>
+          <input id="album_title" placeholder="e.g., Summer Vibes 2026" />
+        </div>
+        <div class="field field-full">
+          <label>Description</label>
+          <input id="album_description" placeholder="A brief description of the album" />
+        </div>
+        <div class="field">
+          <label>Price (USD)</label>
+          <input type="number" id="album_price" placeholder="e.g., 10" min="0" step="0.01" />
+        </div>
+        <div class="field">
+          <label>Cover Image URL</label>
+          <input id="album_cover" placeholder="https://example.com/cover.jpg" />
+        </div>
+        <div class="field field-full">
+          <button class="btn-save" onclick="createAlbum()" style="margin-top: 0; padding: 12px; font-size: 14px;">Create Album</button>
+        </div>
+      </div>
+      
+      <div class="section-title" style="border: none; margin-bottom: 10px; padding-bottom: 0;">
+        Uploaded Albums
+      </div>
+      <div id="my-albums-list" style="display: flex; flex-direction: column; gap: 12px;">
+        <p style="font-size: 13px; color: var(--slate);">Loading your albums...</p>
+      </div>
+    </div>
+
     <!-- ACTIONS -->
     <button class="btn-save" onclick="saveProfile()">Save Profile</button>
     <button class="btn-logout" onclick="logout()">Log Out</button>
@@ -272,6 +309,7 @@
       const { data: { session } } = await supabaseClient.auth.getSession();
       if (!session) { window.location.href = "index.html"; return; }
       sessionUser = session.user;
+      await loadMyAlbums();
       const { data } = await supabaseClient.from("profiles").select("*").eq("id", sessionUser.id).maybeSingle();
       if (data) {
         ["first_name","last_name","dob","mobile","address","bank_name","account_name","account_number","account_type","branch_code","payout_notes"].forEach(f => {
@@ -306,6 +344,62 @@
       await supabaseClient.auth.signOut();
       window.location.href = "index.html";
     }
+
+    async function loadMyAlbums() {
+      const { data, error } = await supabaseClient.from("albums").select("*").eq("user_id", sessionUser.id).order("created_at", { ascending: false });
+      const list = document.getElementById("my-albums-list");
+      if (error) { list.innerHTML = `<p style="color:var(--danger);font-size:13px;">Error: ${error.message}</p>`; return; }
+      if (!data || data.length === 0) { list.innerHTML = `<p style="font-size:13px;color:var(--slate);">You haven't uploaded any albums yet.</p>`; return; }
+      
+      list.innerHTML = data.map(album => `
+        <div style="display: flex; align-items: center; justify-content: space-between; padding: 12px; border: 1.5px solid var(--slate-light); border-radius: 12px; background: var(--parchment);">
+          <div>
+            <div style="font-size: 14px; font-weight: 700; color: var(--aubergine);">${album.title}</div>
+            <div style="font-size: 12px; color: var(--slate);" data-usd="${album.price_usd}">$${Number(album.price_usd).toFixed(2)}</div>
+          </div>
+          <button class="btn-logout" style="width: auto; margin: 0; padding: 6px 12px; font-size: 12px; border-color: var(--danger); color: var(--danger);" onclick="deleteAlbum('${album.id}')">Delete</button>
+        </div>
+      `).join("");
+      
+      if (window.GeoPricing) {
+        await GeoPricing.updatePagePrices();
+      }
+    }
+
+    async function createAlbum() {
+      const title = document.getElementById("album_title").value.trim();
+      const description = document.getElementById("album_description").value.trim();
+      const price_usd = Number(document.getElementById("album_price").value) || 0;
+      const cover_image_url = document.getElementById("album_cover").value.trim();
+
+      if (!title) { alert("Please enter an album title."); return; }
+
+      const payload = {
+        user_id: sessionUser.id,
+        title,
+        description,
+        price_usd,
+        cover_image_url
+      };
+
+      const { error } = await supabaseClient.from("albums").insert(payload);
+      if (error) { alert("Failed to create album: " + error.message); return; }
+      
+      alert("Album created successfully! ✅");
+      document.getElementById("album_title").value = "";
+      document.getElementById("album_description").value = "";
+      document.getElementById("album_price").value = "";
+      document.getElementById("album_cover").value = "";
+      
+      loadMyAlbums();
+    }
+
+    window.deleteAlbum = async (id) => {
+      if (!confirm("Are you sure you want to delete this album?")) return;
+      const { error } = await supabaseClient.from("albums").delete().eq("id", id);
+      if (error) { alert("Delete failed: " + error.message); return; }
+      loadMyAlbums();
+    };
 
     loadProfile();
   </script>
