@@ -221,7 +221,7 @@ const GeoPricing = (() => {
     select.value = current;
 
     select.style.padding =
-      "8px 12px";
+      "10px 14px";
 
     select.style.borderRadius =
       "10px";
@@ -231,6 +231,27 @@ const GeoPricing = (() => {
 
     select.style.fontSize =
       "14px";
+      
+    select.style.position =
+      "fixed";
+      
+    select.style.bottom =
+      "74px";
+      
+    select.style.left =
+      "24px";
+      
+    select.style.zIndex =
+      "9999";
+      
+    select.style.boxShadow =
+      "0 4px 12px rgba(0,0,0,0.05)";
+      
+    select.style.background =
+      "white";
+      
+    select.style.cursor =
+      "pointer";
 
     select.onchange = () => {
       setCurrency(
