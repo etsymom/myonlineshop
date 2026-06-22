@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Dashboard | InkwellMedia</title>
+  <title>Creator Profile | InkwellMedia</title>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@400;500;700;900&display=swap" rel="stylesheet">
   <style>
     :root {
@@ -334,6 +334,7 @@
       <div class="header-sub" id="welcome-line"></div>
     </div>
     <div class="header-actions">
+      <button class="hbtn hbtn-ghost" onclick="window.location.href='members.html'">Dashboard</button>
       <button class="hbtn hbtn-ghost" onclick="goProfile()">My Profile</button>
       <button class="hbtn hbtn-admin" id="admin-btn" style="display:none;" onclick="goAdmin()">Admin</button>
       <button class="hbtn hbtn-danger" onclick="logout()">Log out</button>
@@ -341,8 +342,8 @@
   </div>
 
   <div class="container">
-    <div class="page-title">Your Dashboard</div>
-    <p class="page-sub">Manage your wallet and memberships.</p>
+    <div class="page-title" id="creator-name-title">Creator Profile</div>
+    <p class="page-sub" id="creator-desc">Loading creator details...</p>
 
     <!-- WALLET -->
     <div class="wallet-card">
@@ -358,8 +359,8 @@
     </div>
 
     <!-- ALBUMS -->
-    <div class="section-head">Latest Albums</div>
-    <p class="section-sub">Shop the latest albums uploaded by our community.</p>
+    <div class="section-head">Creator's Albums</div>
+    <p class="section-sub">Albums uploaded by this creator.</p>
 
     <div class="product-grid" id="albums-grid">
       <p style="font-size: 14px; color: var(--slate);">Loading albums...</p>
@@ -469,32 +470,38 @@
     }
 
     async function loadAlbums() {
-      const { data, error } = await supabaseClient.from("albums").select("*").order("created_at", { ascending: false });
+      const urlParams = new URLSearchParams(window.location.search);
+      const creatorId = urlParams.get('id');
       const grid = document.getElementById("albums-grid");
-      if (error) { grid.innerHTML = `<p style="color:var(--danger)">Failed to load albums: ${error.message}</p>`; return; }
-      if (!data || data.length === 0) { grid.innerHTML = `<p style="color:var(--slate)">No albums available on the marketplace yet.</p>`; return; }
-      
-      const { data: profilesData } = await supabaseClient.from("profiles").select("id, first_name, last_name");
-      const profileMap = {};
-      if (profilesData) {
-        profilesData.forEach(p => {
-          profileMap[p.id] = `${p.first_name || ''} ${p.last_name || ''}`.trim() || 'Unknown Creator';
-        });
+
+      if (!creatorId) {
+        grid.innerHTML = `<p style="color:var(--danger)">No creator specified.</p>`;
+        return;
       }
 
+      // Fetch creator profile
+      const { data: profile } = await supabaseClient.from("profiles").select("*").eq("id", creatorId).maybeSingle();
+      const creatorName = profile ? `${profile.first_name || ''} ${profile.last_name || ''}`.trim() || 'Unknown Creator' : 'Unknown Creator';
+      
+      document.getElementById("creator-name-title").innerText = creatorName;
+      document.getElementById("creator-desc").innerText = `View all albums published by ${creatorName}.`;
+      document.title = `${creatorName} | InkwellMedia`;
+
+      const { data, error } = await supabaseClient.from("albums").select("*").eq("user_id", creatorId).order("created_at", { ascending: false });
+      if (error) { grid.innerHTML = `<p style="color:var(--danger)">Failed to load albums: ${error.message}</p>`; return; }
+      if (!data || data.length === 0) { grid.innerHTML = `<p style="color:var(--slate)">This creator hasn't uploaded any albums yet.</p>`; return; }
+      
       grid.innerHTML = "";
       for (const album of data) {
         const formattedPrice = await formatAmount(album.price_usd);
         const coverImg = album.cover_image_url ? `<img src="${album.cover_image_url}" style="width:100%; height:160px; object-fit:cover; border-radius:12px; margin-bottom:12px;">` : `<div class="product-icon" style="margin-bottom:12px;">🎵</div>`;
         const titleSafe = album.title.replace(/'/g, "\\'");
-        const creatorName = profileMap[album.user_id] || 'Unknown Creator';
         
         grid.innerHTML += `
           <div class="product-card">
             ${coverImg}
             <div class="product-name">${album.title}</div>
             <p class="product-desc" style="margin-bottom: 8px;">
-              <a href="creator.html?id=${album.user_id}" style="color:var(--amber); text-decoration:none; font-weight:600; font-size:0.9em; display:inline-block; margin-bottom:8px;">by ${creatorName}</a><br>
               ${album.description || ''}
             </p>
             <div class="price-badge" data-usd="${album.price_usd}">${formattedPrice}</div>
