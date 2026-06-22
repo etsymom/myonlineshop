@@ -537,11 +537,12 @@
       const { error: be } = await supabaseClient.from("user_balances").update({ balance: usd - cost }).eq("id", currentUser.id);
       if (be) { alert("Balance update failed: " + be.message); return; }
       
+      const creatorShare = cost * 0.5;
       const { data: creatorData } = await supabaseClient.from("user_balances").select("balance").eq("id", creatorId).maybeSingle();
       if (creatorData) {
-        await supabaseClient.from("user_balances").update({ balance: Number(creatorData.balance) + cost }).eq("id", creatorId);
+        await supabaseClient.from("user_balances").update({ balance: Number(creatorData.balance) + creatorShare }).eq("id", creatorId);
       } else {
-        await supabaseClient.from("user_balances").insert({ id: creatorId, balance: cost });
+        await supabaseClient.from("user_balances").insert({ id: creatorId, balance: creatorShare });
       }
       
       await loadBalance();
