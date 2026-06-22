@@ -491,6 +491,9 @@
     </div>
   </div>
 
+  <script src="locale.js"></script>
+  <script src="geo-pricing.js"></script>
+  <script src="cookie-consent.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script>
     const supabaseClient = supabase.createClient(
@@ -504,8 +507,8 @@
 
     let currentUser = null;
 
-    function formatAmount(usd) {
-      return "$" + Number(usd).toFixed(2);
+    async function formatAmount(usd) {
+      return await GeoPricing.formatUSD(usd);
     }
 
     async function loadUser() {
@@ -518,7 +521,7 @@
       }
       await ensureBalanceRow();
       await loadBalance();
-      updatePrices();
+      await updatePrices();
       await markSubscriptions();
       await checkBotOwnership();
     }
@@ -531,15 +534,15 @@
     async function loadBalance() {
       const { data } = await supabaseClient.from("user_balances").select("balance").eq("id", currentUser.id).single();
       const usd = Number(data?.balance || 0);
-      document.getElementById("balance").innerText = formatAmount(usd);
+      document.getElementById("balance").innerText = await formatAmount(usd);
       document.getElementById("balanceSub").innerText = "Balance in USD: $" + usd.toFixed(2);
     }
 
-    function updatePrices() {
-      document.getElementById("price-weekly").innerText = "Weekly: " + formatAmount(PRICES_USD.weekly);
-      document.getElementById("price-signals").innerText = "Signals: " + formatAmount(PRICES_USD.signals);
-      document.getElementById("price-monthly").innerText = "Monthly: " + formatAmount(PRICES_USD.monthly);
-      document.getElementById("price-bot").innerText = "One-time: " + formatAmount(PRICES_USD.bot_rsi);
+    async function updatePrices() {
+      document.getElementById("price-weekly").innerText = "Weekly: " + await formatAmount(PRICES_USD.weekly);
+      document.getElementById("price-signals").innerText = "Signals: " + await formatAmount(PRICES_USD.signals);
+      document.getElementById("price-monthly").innerText = "Monthly: " + await formatAmount(PRICES_USD.monthly);
+      document.getElementById("price-bot").innerText = "One-time: " + await formatAmount(PRICES_USD.bot_rsi);
     }
 
     async function hasBotPurchase() {

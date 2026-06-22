@@ -248,6 +248,8 @@ const GeoPricing = (() => {
     await loadExchangeRates();
 
     await updatePagePrices();
+
+    await createCurrencyPicker();
   }
 
   return {
