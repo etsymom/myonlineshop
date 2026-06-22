@@ -442,8 +442,8 @@
 
     let currentUser = null;
 
-    async function formatAmount(usd) {
-      return await GeoPricing.formatUSD(usd);
+    async function formatAmount(zar) {
+      return await GeoPricing.formatZAR(zar);
     }
 
     async function loadUser() {
@@ -522,7 +522,7 @@
         if (mediaItems.length > 0) {
           const itemsHTML = mediaItems.map(m => {
             if (m.media_type === 'video') {
-              return `<video src="${m.media_url}" controls style="min-width:85%; height:160px; object-fit:cover; border-radius:8px; background:black; flex-shrink:0; scroll-snap-align:start;"></video>`;
+              return `<video src="${m.media_url}" controls preload="metadata" style="min-width:85%; height:160px; object-fit:cover; border-radius:8px; background:black; flex-shrink:0; scroll-snap-align:start;"></video>`;
             } else {
               return `<img src="${m.media_url}" style="min-width:85%; height:160px; object-fit:cover; border-radius:8px; flex-shrink:0; scroll-snap-align:start;">`;
             }
@@ -550,7 +550,7 @@
           // Fallback to legacy single media format
           mediaHTML = album.cover_image_url ? `<img src="${album.cover_image_url}" style="width:100%; height:160px; object-fit:cover; border-radius:12px; margin-bottom:12px;">` : `<div class="product-icon" style="margin-bottom:12px;">🎵</div>`;
           if (album.media_type === 'video' && album.media_url) {
-            mediaHTML = `<video src="${album.media_url}" controls style="width:100%; height:160px; object-fit:cover; border-radius:12px; margin-bottom:12px; background:black;"></video>`;
+            mediaHTML = `<video src="${album.media_url}" controls preload="metadata" style="width:100%; height:160px; object-fit:cover; border-radius:12px; margin-bottom:12px; background:black;"></video>`;
           } else if (album.media_type === 'image' && album.media_url && !album.cover_image_url) {
             mediaHTML = `<img src="${album.media_url}" style="width:100%; height:160px; object-fit:cover; border-radius:12px; margin-bottom:12px;">`;
           }

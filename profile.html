@@ -278,7 +278,7 @@
           <label>BASE PRICE (ZAR) <span style="font-size:11px; color:var(--slate); font-weight:normal;">(Auto-converts to USD/GBP/EUR)</span></label>
           <input type="number" id="album_price" placeholder="e.g., 10" min="0" step="0.01" />
         </div>
-        <div class="field">
+        <div class="field" style="display:none;">
           <label>Cover Image URL (or upload below)</label>
           <input id="album_cover" placeholder="https://example.com/cover.jpg" />
         </div>
@@ -416,10 +416,11 @@
       const { data, error } = await supabaseClient.from("albums").select("*").eq("id", id).single();
       if (error || !data) return alert("Failed to load album details.");
       
+      const coverEl = document.getElementById("album_cover");
       document.getElementById("album_title").value = data.title || "";
       document.getElementById("album_description").value = data.description || "";
       document.getElementById("album_price").value = data.price_zar || 0;
-      document.getElementById("album_cover").value = data.cover_image_url || "";
+      if (coverEl) coverEl.value = data.cover_image_url || "";
       
       window.editingAlbumId = id;
       const btn = document.getElementById("btn-create-album");
@@ -436,7 +437,8 @@
       const title = document.getElementById("album_title").value.trim();
       const description = document.getElementById("album_description").value.trim();
       const price_zar = Number(document.getElementById("album_price").value) || 0;
-      let cover_image_url = document.getElementById("album_cover").value.trim();
+      const coverEl = document.getElementById("album_cover");
+      let cover_image_url = coverEl ? coverEl.value.trim() : "";
       const mediaFiles = document.getElementById("album_media_file").files;
 
       if (!title) { alert("Please enter an album title."); btn.textContent = originalText; btn.disabled = false; return; }
@@ -512,7 +514,8 @@
       document.getElementById("album_title").value = "";
       document.getElementById("album_description").value = "";
       document.getElementById("album_price").value = "";
-      document.getElementById("album_cover").value = "";
+      const coverEl2 = document.getElementById("album_cover");
+      if (coverEl2) coverEl2.value = "";
       document.getElementById("album_media_file").value = "";
       
       window.editingAlbumId = null;
