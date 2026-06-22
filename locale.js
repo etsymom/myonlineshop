@@ -227,26 +227,6 @@ const LocaleManager = (() => {
       return;
     }
 
-    const wrapper =
-      document.createElement(
-        "div"
-      );
-
-    wrapper.id =
-      "languagePickerContainer";
-
-    wrapper.style.position =
-      "fixed";
-
-    wrapper.style.bottom =
-      "24px";
-
-    wrapper.style.left =
-      "24px";
-
-    wrapper.style.zIndex =
-      "9999";
-
     const select =
       document.createElement(
         "select"
@@ -254,6 +234,18 @@ const LocaleManager = (() => {
 
     select.id =
       "languagePicker";
+
+    select.style.position =
+      "fixed";
+
+    select.style.bottom =
+      "24px";
+
+    select.style.left =
+      "24px";
+
+    select.style.zIndex =
+      "9999";
 
     select.style.padding =
       "10px 14px";
@@ -271,10 +263,19 @@ const LocaleManager = (() => {
       "2px solid #EDE9F5";
 
     select.style.background =
-      "#FFFFFF";
+      "white";
 
     select.style.cursor =
       "pointer";
+      
+    select.style.boxShadow =
+      "0 4px 12px rgba(0,0,0,0.05)";
+      
+    select.style.outline =
+      "none";
+      
+    select.style.margin =
+      "0";
 
     Object.entries(
       SUPPORTED_LANGUAGES
@@ -312,12 +313,8 @@ const LocaleManager = (() => {
       }
     );
 
-    wrapper.appendChild(
-      select
-    );
-
     document.body.appendChild(
-      wrapper
+      select
     );
   }
 

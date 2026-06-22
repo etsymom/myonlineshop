@@ -258,6 +258,12 @@ const GeoPricing = (() => {
       
     select.style.cursor =
       "pointer";
+      
+    select.style.outline =
+      "none";
+      
+    select.style.margin =
+      "0";
 
     select.onchange = () => {
       setCurrency(
