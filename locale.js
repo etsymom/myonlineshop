@@ -238,11 +238,11 @@ const LocaleManager = (() => {
     wrapper.style.position =
       "fixed";
 
-    wrapper.style.top =
-      "15px";
+    wrapper.style.bottom =
+      "24px";
 
-    wrapper.style.right =
-      "15px";
+    wrapper.style.left =
+      "24px";
 
     wrapper.style.zIndex =
       "9999";
