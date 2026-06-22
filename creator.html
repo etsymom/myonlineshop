@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <link rel="icon" type="image/png" href="favicon.png">
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Creator Profile | InkwellMedia</title>
@@ -482,8 +483,14 @@
       // Fetch creator profile
       const { data: profile } = await supabaseClient.from("profiles").select("*").eq("id", creatorId).maybeSingle();
       const creatorName = profile ? `${profile.first_name || ''} ${profile.last_name || ''}`.trim() || 'Unknown Creator' : 'Unknown Creator';
+      const creatorAvatar = profile?.avatar_url || 'https://ui-avatars.com/api/?name=U&background=F3F0FA&color=6B46C1';
       
-      document.getElementById("creator-name-title").innerText = creatorName;
+      document.getElementById("creator-name-title").innerHTML = `
+        <div style="display:flex; align-items:center; gap:12px; justify-content:center;">
+          <img src="${creatorAvatar}" style="width:40px; height:40px; border-radius:50%; object-fit:cover; border:2px solid var(--slate-light);">
+          <span>${creatorName}</span>
+        </div>
+      `;
       document.getElementById("creator-desc").innerText = `View all albums published by ${creatorName}.`;
       document.title = `${creatorName} | InkwellMedia`;
 
@@ -494,18 +501,27 @@
       grid.innerHTML = "";
       for (const album of data) {
         const formattedPrice = await formatAmount(album.price_usd);
-        const coverImg = album.cover_image_url ? `<img src="${album.cover_image_url}" style="width:100%; height:160px; object-fit:cover; border-radius:12px; margin-bottom:12px;">` : `<div class="product-icon" style="margin-bottom:12px;">🎵</div>`;
+        
+        let mediaHTML = album.cover_image_url ? `<img src="${album.cover_image_url}" style="width:100%; height:160px; object-fit:cover; border-radius:12px; margin-bottom:12px;">` : `<div class="product-icon" style="margin-bottom:12px;">🎵</div>`;
+        if (album.media_type === 'video' && album.media_url) {
+          mediaHTML = `<video src="${album.media_url}" controls style="width:100%; height:160px; object-fit:cover; border-radius:12px; margin-bottom:12px; background:black;"></video>`;
+        } else if (album.media_type === 'image' && album.media_url && !album.cover_image_url) {
+          mediaHTML = `<img src="${album.media_url}" style="width:100%; height:160px; object-fit:cover; border-radius:12px; margin-bottom:12px;">`;
+        }
+        
         const titleSafe = album.title.replace(/'/g, "\\'");
+        const isFree = Number(album.price_usd) === 0;
+        const buyButtonLabel = isFree ? "Get for Free" : "Buy Album";
         
         grid.innerHTML += `
           <div class="product-card">
-            ${coverImg}
+            ${mediaHTML}
             <div class="product-name">${album.title}</div>
             <p class="product-desc" style="margin-bottom: 8px;">
               ${album.description || ''}
             </p>
-            <div class="price-badge" data-usd="${album.price_usd}">${formattedPrice}</div>
-            <button class="buy-btn" onclick="buyAlbum('${album.id}', '${titleSafe}', ${album.price_usd}, '${album.user_id}')">Buy Album</button>
+            <div class="price-badge" data-usd="${album.price_usd}">${isFree ? "Free" : formattedPrice}</div>
+            <button class="buy-btn" onclick="buyAlbum('${album.id}', '${titleSafe}', ${album.price_usd}, '${album.user_id}')">${buyButtonLabel}</button>
           </div>
         `;
       }
@@ -523,7 +539,10 @@
       
       const { data } = await supabaseClient.from("user_balances").select("balance").eq("id", currentUser.id).single();
       const usd = Number(data?.balance || 0);
-      if (usd < cost) { alert("Insufficient funds. Please add funds first."); openDeposit(); return; }
+      
+      if (cost > 0) {
+        if (usd < cost) { alert("Insufficient funds. Please add funds first."); openDeposit(); return; }
+      }
       
       const { error: pe } = await supabaseClient.from("purchases").insert({ 
         user_id: currentUser.id, 
@@ -534,15 +553,17 @@
       });
       if (pe) { alert("Purchase failed: " + pe.message); return; }
       
-      const { error: be } = await supabaseClient.from("user_balances").update({ balance: usd - cost }).eq("id", currentUser.id);
-      if (be) { alert("Balance update failed: " + be.message); return; }
-      
-      const creatorShare = cost * 0.5;
-      const { data: creatorData } = await supabaseClient.from("user_balances").select("balance").eq("id", creatorId).maybeSingle();
-      if (creatorData) {
-        await supabaseClient.from("user_balances").update({ balance: Number(creatorData.balance) + creatorShare }).eq("id", creatorId);
-      } else {
-        await supabaseClient.from("user_balances").insert({ id: creatorId, balance: creatorShare });
+      if (cost > 0) {
+        const { error: be } = await supabaseClient.from("user_balances").update({ balance: usd - cost }).eq("id", currentUser.id);
+        if (be) { alert("Balance update failed: " + be.message); return; }
+        
+        const creatorShare = cost * 0.5;
+        const { data: creatorData } = await supabaseClient.from("user_balances").select("balance").eq("id", creatorId).maybeSingle();
+        if (creatorData) {
+          await supabaseClient.from("user_balances").update({ balance: Number(creatorData.balance) + creatorShare }).eq("id", creatorId);
+        } else {
+          await supabaseClient.from("user_balances").insert({ id: creatorId, balance: creatorShare });
+        }
       }
       
       await loadBalance();

@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <link rel="icon" type="image/png" href="favicon.png">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Your Profile | InkwellMedia</title>
@@ -189,6 +190,13 @@
         Personal Information
       </div>
       <div class="field-grid">
+        <div class="field field-full" style="display:flex;align-items:center;gap:16px;">
+          <img id="avatar_preview" src="https://ui-avatars.com/api/?name=U&background=F3F0FA&color=6B46C1" style="width:60px;height:60px;border-radius:50%;object-fit:cover;border:2px solid var(--slate-light);">
+          <div style="flex:1;">
+            <label>Profile Picture</label>
+            <input type="file" id="avatar_file" accept="image/*" style="padding:6px; background:white; cursor:pointer;" onchange="document.getElementById('avatar_preview').src = window.URL.createObjectURL(this.files[0])" />
+          </div>
+        </div>
         <div class="field">
           <label>First Name</label>
           <input id="first_name" placeholder="Jane" />
@@ -271,8 +279,12 @@
           <input type="number" id="album_price" placeholder="e.g., 10" min="0" step="0.01" />
         </div>
         <div class="field">
-          <label>Cover Image URL</label>
+          <label>Cover Image URL (or upload below)</label>
           <input id="album_cover" placeholder="https://example.com/cover.jpg" />
+        </div>
+        <div class="field field-full">
+          <label>Upload Media File (Video/Image/Audio)</label>
+          <input type="file" id="album_media_file" accept="image/*,video/*,audio/*" style="padding:6px; background:white; cursor:pointer;" />
         </div>
         <div class="field field-full">
           <button class="btn-save" onclick="createAlbum()" style="margin-top: 0; padding: 12px; font-size: 14px;">Create Album</button>
@@ -312,6 +324,7 @@
       await loadMyAlbums();
       const { data } = await supabaseClient.from("profiles").select("*").eq("id", sessionUser.id).maybeSingle();
       if (data) {
+        if (data.avatar_url) document.getElementById("avatar_preview").src = data.avatar_url;
         ["first_name","last_name","dob","mobile","address","bank_name","account_name","account_number","account_type","branch_code","payout_notes"].forEach(f => {
           const el = document.getElementById(f);
           if (el) el.value = data[f] || "";
@@ -320,8 +333,25 @@
     }
 
     async function saveProfile() {
+      const btn = document.querySelector('button[onclick="saveProfile()"]');
+      btn.textContent = "Saving...";
+      btn.disabled = true;
+
+      let avatar_url = document.getElementById("avatar_preview").src;
+      const avatarFile = document.getElementById("avatar_file").files[0];
+      
+      if (avatarFile) {
+        const fileExt = avatarFile.name.split('.').pop();
+        const fileName = `${sessionUser.id}-${Date.now()}.${fileExt}`;
+        const { error: uploadError } = await supabaseClient.storage.from('inkwell_media').upload(`avatars/${fileName}`, avatarFile);
+        if (uploadError) { alert("Failed to upload avatar: " + uploadError.message); btn.textContent = "Save Profile"; btn.disabled = false; return; }
+        const { data: { publicUrl } } = supabaseClient.storage.from('inkwell_media').getPublicUrl(`avatars/${fileName}`);
+        avatar_url = publicUrl;
+      }
+
       const payload = {
         id: sessionUser.id,
+        avatar_url: avatar_url.includes('ui-avatars.com') ? null : avatar_url,
         first_name: document.getElementById("first_name").value,
         last_name: document.getElementById("last_name").value,
         dob: document.getElementById("dob").value,
@@ -335,7 +365,7 @@
         payout_notes: document.getElementById("payout_notes").value
       };
       const { error } = await supabaseClient.from("profiles").upsert(payload);
-      if (error) { alert("Save failed: " + error.message); return; }
+      if (error) { alert("Save failed: " + error.message); btn.textContent = "Save Profile"; btn.disabled = false; return; }
       alert("Profile saved! ✅");
       window.location.href = "members.html";
     }
@@ -367,30 +397,59 @@
     }
 
     async function createAlbum() {
+      const btn = document.querySelector('button[onclick="createAlbum()"]');
+      btn.textContent = "Uploading...";
+      btn.disabled = true;
+
       const title = document.getElementById("album_title").value.trim();
       const description = document.getElementById("album_description").value.trim();
       const price_usd = Number(document.getElementById("album_price").value) || 0;
-      const cover_image_url = document.getElementById("album_cover").value.trim();
+      let cover_image_url = document.getElementById("album_cover").value.trim();
+      const mediaFile = document.getElementById("album_media_file").files[0];
 
-      if (!title) { alert("Please enter an album title."); return; }
+      if (!title) { alert("Please enter an album title."); btn.textContent = "Create Album"; btn.disabled = false; return; }
+
+      let media_url = null;
+      let media_type = 'audio';
+
+      if (mediaFile) {
+        const fileExt = mediaFile.name.split('.').pop();
+        const fileName = `${sessionUser.id}-${Date.now()}.${fileExt}`;
+        const { error: uploadError } = await supabaseClient.storage.from('inkwell_media').upload(`albums/${fileName}`, mediaFile);
+        if (uploadError) { alert("Failed to upload media: " + uploadError.message); btn.textContent = "Create Album"; btn.disabled = false; return; }
+        const { data: { publicUrl } } = supabaseClient.storage.from('inkwell_media').getPublicUrl(`albums/${fileName}`);
+        media_url = publicUrl;
+        
+        if (mediaFile.type.startsWith('video/')) media_type = 'video';
+        else if (mediaFile.type.startsWith('image/')) media_type = 'image';
+        
+        if (!cover_image_url && media_type === 'image') {
+          cover_image_url = media_url;
+        }
+      }
 
       const payload = {
         user_id: sessionUser.id,
         title,
         description,
         price_usd,
-        cover_image_url
+        cover_image_url,
+        media_url,
+        media_type
       };
 
       const { error } = await supabaseClient.from("albums").insert(payload);
-      if (error) { alert("Failed to create album: " + error.message); return; }
+      if (error) { alert("Failed to create album: " + error.message); btn.textContent = "Create Album"; btn.disabled = false; return; }
       
       alert("Album created successfully! ✅");
       document.getElementById("album_title").value = "";
       document.getElementById("album_description").value = "";
       document.getElementById("album_price").value = "";
       document.getElementById("album_cover").value = "";
+      document.getElementById("album_media_file").value = "";
       
+      btn.textContent = "Create Album";
+      btn.disabled = false;
       loadMyAlbums();
     }
 
