@@ -194,11 +194,8 @@ const GeoPricing = (() => {
 
   async function createCurrencyPicker() {
 
-    if (
-      document.getElementById(
-        "currencyPicker"
-      )
-    ) return;
+    const existing = document.getElementById("currencyPicker");
+    if (existing) existing.remove();
 
     const current =
       await detectCurrency();

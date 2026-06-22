@@ -219,12 +219,13 @@ const LocaleManager = (() => {
 
   function createLanguagePicker() {
 
-    if (
-      document.getElementById(
-        "languagePicker"
-      )
-    ) {
-      return;
+    const existing = document.getElementById("languagePicker");
+    if (existing) {
+      existing.remove();
+    }
+    const existingContainer = document.getElementById("languagePickerContainer");
+    if (existingContainer) {
+      existingContainer.remove();
     }
 
     const select =
