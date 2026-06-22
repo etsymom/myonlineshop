@@ -498,6 +498,9 @@
       if (error) { grid.innerHTML = `<p style="color:var(--danger)">Failed to load albums: ${error.message}</p>`; return; }
       if (!data || data.length === 0) { grid.innerHTML = `<p style="color:var(--slate)">This creator hasn't uploaded any albums yet.</p>`; return; }
       
+      const { data: myPurchases } = await supabaseClient.from("purchases").select("product_key").eq("user_id", currentUser.id);
+      const purchasedSet = new Set((myPurchases || []).map(p => p.product_key));
+
       grid.innerHTML = "";
       for (const album of data) {
         const formattedPrice = await formatAmount(album.price_usd);
@@ -554,7 +557,15 @@
         
         const titleSafe = album.title.replace(/'/g, "\\'");
         const isFree = Number(album.price_usd) === 0;
-        const buyButtonLabel = isFree ? "Get for Free" : "Buy Album";
+        const isOwner = album.user_id === currentUser.id;
+        const hasPurchased = purchasedSet.has(album.id);
+        
+        let actionButtonHTML = '';
+        if (isOwner || hasPurchased || isFree) {
+          actionButtonHTML = `<button class="wallet-btn-amber" style="width:100%; border-radius:12px;" onclick="downloadAlbum('${album.id}', '${titleSafe}')">Download Full Album</button>`;
+        } else {
+          actionButtonHTML = `<button class="wallet-btn" style="width:100%; border-radius:12px;" onclick="buyAlbum('${album.id}', ${album.price_usd}, '${titleSafe}', '${album.user_id}')">Buy Album</button>`;
+        }
         
         grid.innerHTML += `
           <div class="product-card">
@@ -564,8 +575,8 @@
             <p class="product-desc" style="margin-bottom: 8px;">
               ${album.description || ''}
             </p>
-            <div class="price-badge" data-usd="${album.price_usd}">${isFree ? "Free" : formattedPrice}</div>
-            <button class="buy-btn" onclick="buyAlbum('${album.id}', '${titleSafe}', ${album.price_usd}, '${album.user_id}')">${buyButtonLabel}</button>
+            <div class="product-price" data-usd="${album.price_usd}">${formattedPrice}</div>
+            ${actionButtonHTML}
           </div>
         `;
       }
@@ -575,7 +586,39 @@
       }
     }
 
-    async function buyAlbum(albumId, albumTitle, cost, creatorId) {
+    window.downloadAlbum = async function(albumId, title) {
+      const { data: media } = await supabaseClient.from("album_media").select("media_url").eq("album_id", albumId);
+      if (!media || media.length === 0) return alert("No media found to download.");
+      
+      alert(`Starting download of ${media.length} files. Please do not close the page...`);
+      for (let i = 0; i < media.length; i++) {
+        try {
+          const url = media[i].media_url;
+          const ext = url.split('.').pop() || 'file';
+          const filename = `${title.replace(/[^a-z0-9]/gi, '_').toLowerCase()}_${i+1}.${ext}`;
+          
+          const response = await fetch(url);
+          const blob = await response.blob();
+          const blobUrl = window.URL.createObjectURL(blob);
+          
+          const a = document.createElement('a');
+          a.style.display = 'none';
+          a.href = blobUrl;
+          a.download = filename;
+          document.body.appendChild(a);
+          a.click();
+          window.URL.revokeObjectURL(blobUrl);
+          document.body.removeChild(a);
+          
+          await new Promise(r => setTimeout(r, 600));
+        } catch (e) {
+          console.error("Failed to download", e);
+        }
+      }
+      alert("Download complete!");
+    };
+
+    async function buyAlbum(albumId, cost, albumTitle, creatorId) {
       if (creatorId === currentUser.id) {
         alert("You cannot buy your own album.");
         return;

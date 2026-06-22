@@ -450,7 +450,7 @@
             finalCover = publicUrl;
           }
 
-          const is_free = is_free_count < 5;
+          const is_free = is_free_count < 3;
           is_free_count++;
 
           await supabaseClient.from("album_media").insert({
