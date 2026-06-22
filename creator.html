@@ -504,7 +504,7 @@
 
       grid.innerHTML = "";
       for (const album of data) {
-        const formattedPrice = await formatAmount(album.price_usd);
+        const formattedPrice = await formatAmount(album.price_zar);
         
         const mediaItems = album.album_media || [];
         const totalImages = album.total_images || mediaItems.filter(i => i.media_type === 'image').length;
@@ -557,7 +557,7 @@
         }
         
         const titleSafe = album.title.replace(/'/g, "\\'");
-        const isFree = Number(album.price_usd) === 0;
+        const isFree = Number(album.price_zar) === 0;
         const isOwner = album.user_id === currentUser.id;
         const hasPurchased = purchasedSet.has(album.id);
         
@@ -565,7 +565,7 @@
         if (isOwner || hasPurchased || isFree) {
           actionButtonHTML = `<button class="wallet-btn-amber" style="width:100%; border-radius:12px;" onclick="downloadAlbum('${album.id}', '${titleSafe}')">Download Full Album</button>`;
         } else {
-          actionButtonHTML = `<button class="wallet-btn" style="width:100%; border-radius:12px;" onclick="buyAlbum('${album.id}', ${album.price_usd}, '${titleSafe}', '${album.user_id}')">Buy Album</button>`;
+          actionButtonHTML = `<button class="wallet-btn" style="width:100%; border-radius:12px;" onclick="buyAlbum('${album.id}', ${album.price_zar}, '${titleSafe}', '${album.user_id}')">Buy Album</button>`;
         }
         
         grid.innerHTML += `
@@ -576,7 +576,7 @@
             <p class="product-desc" style="margin-bottom: 8px;">
               ${album.description || ''}
             </p>
-            <div class="product-price" data-usd="${album.price_usd}">${formattedPrice}</div>
+            <div class="product-price" data-zar="${album.price_zar}">${formattedPrice}</div>
             ${actionButtonHTML}
           </div>
         `;

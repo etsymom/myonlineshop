@@ -10,10 +10,10 @@ const GeoPricing = (() => {
   const STORAGE_KEY = "user_currency";
 
   const FALLBACK_RATES = {
-    USD: 1,
-    ZAR: 18.50,
-    GBP: 0.79,
-    EUR: 0.92
+    ZAR: 1,
+    USD: 0.054,
+    GBP: 0.043,
+    EUR: 0.050
   };
 
   const COUNTRY_MAP = {
@@ -41,7 +41,7 @@ const GeoPricing = (() => {
     try {
 
       const response = await fetch(
-        "https://open.er-api.com/v6/latest/USD"
+        "https://open.er-api.com/v6/latest/ZAR"
       );
 
       const data = await response.json();
@@ -49,14 +49,14 @@ const GeoPricing = (() => {
       if (
         data &&
         data.rates &&
-        data.rates.ZAR &&
+        data.rates.USD &&
         data.rates.GBP &&
         data.rates.EUR
       ) {
 
         exchangeRates = {
-          USD: 1,
-          ZAR: data.rates.ZAR,
+          ZAR: 1,
+          USD: data.rates.USD,
           GBP: data.rates.GBP,
           EUR: data.rates.EUR
         };
@@ -136,7 +136,7 @@ const GeoPricing = (() => {
     return await detectCurrency();
   }
 
-  async function convert(amountUSD) {
+  async function convert(amountZAR) {
 
     const currency =
       await detectCurrency();
@@ -144,16 +144,16 @@ const GeoPricing = (() => {
     const rate =
       exchangeRates[currency] || 1;
 
-    return amountUSD * rate;
+    return amountZAR * rate;
   }
 
-  async function formatUSD(amountUSD) {
+  async function formatZAR(amountZAR) {
 
     const currency =
       await detectCurrency();
 
     const converted =
-      await convert(amountUSD);
+      await convert(amountZAR);
 
     return new Intl.NumberFormat(
       navigator.language,
@@ -166,22 +166,22 @@ const GeoPricing = (() => {
 
   async function formatElement(element) {
 
-    const usd =
+    const zar =
       parseFloat(
-        element.dataset.usd
+        element.dataset.zar
       );
 
-    if (isNaN(usd)) return;
+    if (isNaN(zar)) return;
 
     element.textContent =
-      await formatUSD(usd);
+      await formatZAR(zar);
   }
 
   async function updatePagePrices() {
 
     const elements =
       document.querySelectorAll(
-        "[data-usd]"
+        "[data-zar]"
       );
 
     for (const element of elements) {
@@ -285,7 +285,7 @@ const GeoPricing = (() => {
   return {
     init,
     convert,
-    formatUSD,
+    formatZAR,
     getCurrency,
     setCurrency,
     updatePagePrices,
