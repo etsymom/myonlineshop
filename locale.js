@@ -257,6 +257,12 @@ const LocaleManager = (() => {
 
     select.style.padding =
       "10px 14px";
+      
+    select.style.width =
+      "auto";
+      
+    select.style.minWidth =
+      "120px";
 
     select.style.borderRadius =
       "10px";

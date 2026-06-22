@@ -235,6 +235,12 @@ const GeoPricing = (() => {
     select.style.position =
       "fixed";
       
+    select.style.width =
+      "auto";
+      
+    select.style.minWidth =
+      "120px";
+      
     select.style.bottom =
       "74px";
       
