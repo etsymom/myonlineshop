@@ -322,6 +322,41 @@
       font-size: 13px;
       cursor: pointer;
     }
+
+    /* ---- NEW PROFILE UI ---- */
+    .profile-hero {
+      position: relative;
+      height: 160px;
+      margin-bottom: 50px;
+      overflow: hidden;
+    }
+    .profile-cover {
+      width: 100%;
+      height: 100%;
+      background: var(--aubergine);
+      background-size: cover;
+      background-position: center;
+      filter: blur(15px);
+      transform: scale(1.2); /* Hide blurry edges */
+    }
+    .profile-avatar-container {
+      position: absolute;
+      bottom: -40px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 90px;
+      height: 90px;
+      border-radius: 50%;
+      padding: 3px;
+      background: var(--parchment);
+      z-index: 2;
+    }
+    .profile-avatar {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      object-fit: cover;
+    }
   </style>
 </head>
 <body>
@@ -342,13 +377,41 @@
     </div>
   </div>
 
-  <div class="container">
-    <div class="page-title" id="creator-name-title">Creator Profile</div>
-    <p class="page-sub" id="creator-desc" style="margin-bottom: 16px;">Loading creator details...</p>
-    <button class="hbtn hbtn-ghost" onclick="copyProfileLink()" style="margin-bottom: 24px; color: var(--aubergine); border: 2px solid var(--slate-light); background: transparent;">📋 Copy Profile Link</button>
+  <!-- Hero Profile Section -->
+  <div class="profile-hero">
+    <div class="profile-cover" id="profile-cover"></div>
+    <div class="profile-avatar-container">
+      <img src="" id="profile-avatar" class="profile-avatar">
+    </div>
+  </div>
+
+  <div class="container" style="margin-top: 10px; max-width: 600px;">
+    <div style="text-align: center;">
+      <h1 class="page-title" id="creator-name-title" style="font-size: 24px; margin-bottom: 2px;">Creator Profile</h1>
+      <p style="color: var(--slate); font-size: 14px; margin-bottom: 8px;" id="creator-username">@creator</p>
+      <p class="page-sub" id="creator-desc" style="margin-bottom: 16px;">Loading creator details...</p>
+      
+      <div style="display: flex; justify-content: center; gap: 24px; margin-bottom: 20px;">
+        <div style="text-align: center;"><div style="font-weight: 900; font-size: 18px; color: var(--aubergine);" id="stat-posts">0</div><div style="font-size: 11px; color: var(--slate); font-weight: 700;">POSTS</div></div>
+        <div style="text-align: center;"><div style="font-weight: 900; font-size: 18px; color: var(--aubergine);" id="stat-media">0</div><div style="font-size: 11px; color: var(--slate); font-weight: 700;">MEDIA</div></div>
+      </div>
+
+      <button class="hbtn hbtn-ghost" onclick="copyProfileLink()" style="margin-bottom: 24px; color: var(--aubergine); border: 2px solid var(--slate-light); background: transparent; width: 100%; max-width: 300px;">📋 Copy Profile Link</button>
+    </div>
+
+    <!-- SUBSCRIPTION BANNER -->
+    <div id="subscription-banner" style="background: var(--white); border-radius: 16px; padding: 20px; text-align: center; margin-bottom: 32px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); display: none; border: 2px solid var(--amber);">
+      <div style="font-size: 12px; font-weight: 900; color: var(--amber); letter-spacing: 1px; margin-bottom: 4px;">SUBSCRIPTION</div>
+      <div style="font-family: 'Playfair Display', serif; font-size: 20px; font-weight: 900; margin-bottom: 12px;">Limited offer - Unlock All Premium Content!</div>
+      <div style="display: flex; align-items: center; justify-content: center; gap: 8px; margin-bottom: 16px;">
+        <img src="" id="sub-avatar" style="width: 24px; height: 24px; border-radius: 50%;">
+        <span style="font-size: 14px; color: var(--slate);">Get instant access to my private feed 💜✨</span>
+      </div>
+      <button class="buy-btn" style="background: #00ADEF; color: var(--white); padding: 14px; border-radius: 12px; font-size: 16px;" onclick="subscribeToCreator()">SUBSCRIBE FOR ZAR 150</button>
+    </div>
 
     <!-- WALLET -->
-    <div class="wallet-card">
+    <div class="wallet-card" style="margin-bottom: 32px; display: none;" id="wallet-ui">
       <div>
         <div class="wallet-label">Your Balance</div>
         <div class="wallet-amount" id="balance">–</div>
@@ -356,16 +419,17 @@
       </div>
       <div class="wallet-actions">
         <button class="wallet-btn wallet-btn-amber" onclick="openDeposit()">+ Add Funds</button>
-        <button class="wallet-btn wallet-btn-ghost" onclick="openPayout()">Request Payout</button>
       </div>
     </div>
 
-    <!-- ALBUMS -->
-    <div class="section-head">Creator's Albums</div>
-    <p class="section-sub">Albums uploaded by this creator.</p>
+    <!-- MEDIA GRID (TikTok style) -->
+    <div style="display: flex; justify-content: center; gap: 40px; border-bottom: 1px solid var(--slate-light); margin-bottom: 20px; padding-bottom: 12px;">
+      <div style="font-weight: 900; color: var(--aubergine); border-bottom: 2px solid var(--aubergine); padding-bottom: 10px; margin-bottom: -13px;">𐄹 POSTS</div>
+      <div style="font-weight: 700; color: var(--slate);">🔒 EXCLUSIVE</div>
+    </div>
 
-    <div class="product-grid" id="albums-grid">
-      <p style="font-size: 14px; color: var(--slate);">Loading albums...</p>
+    <div class="product-grid" id="albums-grid" style="grid-template-columns: repeat(3, 1fr); gap: 4px; margin-bottom: 0;">
+      <p style="font-size: 14px; color: var(--slate); grid-column: span 3; text-align: center;">Loading media...</p>
     </div>
   </div>
 
@@ -477,114 +541,148 @@
       const grid = document.getElementById("albums-grid");
 
       if (!creatorId) {
-        grid.innerHTML = `<p style="color:var(--danger)">No creator specified.</p>`;
+        grid.innerHTML = `<p style="color:var(--danger); grid-column:span 3;">No creator specified.</p>`;
         return;
       }
 
       // Fetch creator profile
       const { data: profile } = await supabaseClient.from("profiles").select("*").eq("id", creatorId).maybeSingle();
-      const creatorName = profile ? `${profile.first_name || ''} ${profile.last_name || ''}`.trim() || 'Unknown Creator' : 'Unknown Creator';
-      const creatorAvatar = profile?.avatar_url || 'https://ui-avatars.com/api/?name=U&background=F3F0FA&color=6B46C1';
+      const creatorName = profile ? `${profile.first_name || ''} ${profile.last_name || ''}`.trim() || 'Creator' : 'Creator';
+      const creatorAvatar = profile?.avatar_url || 'https://ui-avatars.com/api/?name=C&background=F3F0FA&color=6B46C1';
       
-      document.getElementById("creator-name-title").innerHTML = `
-        <div style="display:flex; align-items:center; gap:12px; justify-content:center;">
-          <img src="${creatorAvatar}" style="width:40px; height:40px; border-radius:50%; object-fit:cover; border:2px solid var(--slate-light);">
-          <span>${creatorName}</span>
-        </div>
-      `;
-      document.getElementById("creator-desc").innerText = `View all albums published by ${creatorName}.`;
+      document.getElementById("creator-name-title").innerText = creatorName;
+      document.getElementById("creator-username").innerText = `@${creatorName.replace(/\\s+/g, '').toLowerCase()}`;
+      document.getElementById("profile-avatar").src = creatorAvatar;
+      document.getElementById("sub-avatar").src = creatorAvatar;
+      
+      // Cover banner blur
+      document.getElementById("profile-cover").style.backgroundImage = `url('${creatorAvatar}')`;
+      
+      document.getElementById("creator-desc").innerText = profile?.bio || `Welcome to ${creatorName}'s official profile.`;
       document.title = `${creatorName} | InkwellMedia`;
 
       const { data, error } = await supabaseClient.from("albums").select("*, album_media(*)").eq("user_id", creatorId).order("created_at", { ascending: false });
-      if (error) { grid.innerHTML = `<p style="color:var(--danger)">Failed to load albums: ${error.message}</p>`; return; }
-      if (!data || data.length === 0) { grid.innerHTML = `<p style="color:var(--slate)">This creator hasn't uploaded any albums yet.</p>`; return; }
+      if (error) { grid.innerHTML = `<p style="color:var(--danger); grid-column:span 3;">Failed to load media: ${error.message}</p>`; return; }
+      if (!data || data.length === 0) { grid.innerHTML = `<p style="color:var(--slate); grid-column:span 3;">This creator hasn't uploaded any media yet.</p>`; return; }
       
       const { data: myPurchases } = await supabaseClient.from("purchases").select("product_key").eq("user_id", currentUser.id);
       const purchasedSet = new Set((myPurchases || []).map(p => p.product_key));
 
-      grid.innerHTML = "";
-      for (const album of data) {
-        const formattedPrice = await formatAmount(album.price_zar);
-        
-        const mediaItems = album.album_media || [];
-        const totalImages = album.total_images || mediaItems.filter(i => i.media_type === 'image').length;
-        const totalVideos = album.total_videos || mediaItems.filter(i => i.media_type === 'video').length;
-        
-        let labelHTML = '';
-        if (totalImages > 0 || totalVideos > 0) {
-          labelHTML = `<div style="font-size:11px; color:var(--slate); margin-bottom:8px; font-weight:600; display:flex; gap:8px;">
-            ${totalImages > 0 ? `<span>🖼️ ${totalImages} Images</span>` : ''}
-            ${totalVideos > 0 ? `<span>🎞️ ${totalVideos} Videos</span>` : ''}
-          </div>`;
-        }
+      let totalMedia = 0;
+      let isSubscribed = false;
 
-        let mediaHTML = '';
-        if (mediaItems.length > 0) {
-          const itemsHTML = mediaItems.map(m => {
-            if (m.media_type === 'video') {
-              return `<video src="${m.media_url}" controls preload="metadata" style="min-width:85%; height:160px; object-fit:cover; border-radius:8px; background:black; flex-shrink:0; scroll-snap-align:start;"></video>`;
-            } else {
-              return `<img src="${m.media_url}" style="min-width:85%; height:160px; object-fit:cover; border-radius:8px; flex-shrink:0; scroll-snap-align:start;">`;
-            }
-          }).join("");
+      // Check subscription
+      if (purchasedSet.has(`sub_${creatorId}`) || currentUser.id === creatorId) {
+        isSubscribed = true;
+      }
+
+      let allMediaNodes = [];
+
+      for (const album of data) {
+        const mediaItems = album.album_media || [];
+        totalMedia += mediaItems.length;
+        
+        const isFreeAlbum = Number(album.price_zar) === 0;
+        const ownsAlbum = isSubscribed || purchasedSet.has(album.id) || isFreeAlbum;
+        
+        mediaItems.forEach((m, index) => {
+          const isFreePreview = index < 3; // First 3 are free per album
+          const canView = ownsAlbum || isFreePreview;
           
-          const lockedCount = (totalImages + totalVideos) - mediaItems.length;
-          let lockedHTML = '';
-          if (lockedCount > 0) {
-            lockedHTML = `
-              <div style="min-width:85%; height:160px; border-radius:8px; background:var(--parchment); flex-shrink:0; scroll-snap-align:start; display:flex; flex-direction:column; align-items:center; justify-content:center; color:var(--slate); text-align:center; padding:12px; border:1px solid var(--slate-light);">
-                <div style="font-size:24px; margin-bottom:8px;">🔒</div>
-                <div style="font-size:13px; font-weight:600;">${lockedCount} More Items</div>
-                <div style="font-size:11px;">Unlock to view</div>
+          let mediaHTML = '';
+          if (m.media_type === 'video') {
+            mediaHTML = `<video src="${m.media_url}" style="width:100%; height:100%; object-fit:cover;" ${canView ? 'controls preload="metadata"' : 'preload="metadata"' }></video>`;
+          } else {
+            mediaHTML = `<img src="${m.media_url}" style="width:100%; height:100%; object-fit:cover;">`;
+          }
+
+          let overlay = '';
+          if (!canView) {
+            overlay = `
+              <div style="position:absolute; inset:0; background:rgba(0,0,0,0.6); backdrop-filter:blur(4px); display:flex; flex-direction:column; justify-content:center; align-items:center; color:white;">
+                <div style="font-size:24px; margin-bottom:4px;">🔒</div>
+                <div style="font-size:11px; font-weight:700;">SUBSCRIBE TO UNLOCK</div>
               </div>
             `;
+          } else if (m.media_type === 'video') {
+             overlay = `
+              <div style="position:absolute; bottom:8px; left:8px; display:flex; align-items:center; gap:4px; color:white; font-size:12px; text-shadow:0 1px 2px rgba(0,0,0,0.8);">
+                <svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                ${Math.floor(Math.random() * 100) + 10}K
+              </div>
+             `;
           }
 
-          mediaHTML = `
-            <div style="display:flex; overflow-x:auto; gap:8px; margin-bottom:12px; scroll-snap-type:x mandatory; padding-bottom:8px;">
-              ${itemsHTML}
-              ${lockedHTML}
+          allMediaNodes.push(`
+            <div style="position:relative; aspect-ratio:3/4; background:black; overflow:hidden; border-radius:4px; cursor:pointer;" onclick="${canView && m.media_type==='video' ? `const v=this.querySelector('video'); v.paused ? v.play() : v.pause();` : ''}">
+              ${mediaHTML}
+              ${overlay}
             </div>
-          `;
-        } else {
-          // Fallback to legacy single media format
-          mediaHTML = album.cover_image_url ? `<img src="${album.cover_image_url}" style="width:100%; height:160px; object-fit:cover; border-radius:12px; margin-bottom:12px;">` : `<div class="product-icon" style="margin-bottom:12px;">🎵</div>`;
-          if (album.media_type === 'video' && album.media_url) {
-            mediaHTML = `<video src="${album.media_url}" controls preload="metadata" style="width:100%; height:160px; object-fit:cover; border-radius:12px; margin-bottom:12px; background:black;"></video>`;
-          } else if (album.media_type === 'image' && album.media_url && !album.cover_image_url) {
-            mediaHTML = `<img src="${album.media_url}" style="width:100%; height:160px; object-fit:cover; border-radius:12px; margin-bottom:12px;">`;
-          }
-        }
-        
-        const titleSafe = album.title.replace(/'/g, "\\'");
-        const isFree = Number(album.price_zar) === 0;
-        const isOwner = album.user_id === currentUser.id;
-        const hasPurchased = purchasedSet.has(album.id);
-        
-        let actionButtonHTML = '';
-        if (isOwner || hasPurchased || isFree) {
-          actionButtonHTML = `<button class="wallet-btn-amber" style="width:100%; border-radius:12px;" onclick="downloadAlbum('${album.id}', '${titleSafe}')">Download Full Album</button>`;
-        } else {
-          actionButtonHTML = `<button class="wallet-btn" style="width:100%; border-radius:12px;" onclick="buyAlbum('${album.id}', ${album.price_zar}, '${titleSafe}', '${album.user_id}')">Buy Album</button>`;
-        }
-        
-        grid.innerHTML += `
-          <div class="product-card">
-            ${mediaHTML}
-            ${labelHTML}
-            <div class="product-name">${album.title}</div>
-            <p class="product-desc" style="margin-bottom: 8px;">
-              ${album.description || ''}
-            </p>
-            <div class="product-price" data-zar="${album.price_zar}">${formattedPrice}</div>
-            ${actionButtonHTML}
-          </div>
-        `;
+          `);
+        });
       }
+
+      document.getElementById("stat-posts").innerText = data.length; // Albums/Posts count
+      document.getElementById("stat-media").innerText = totalMedia; // Total items
+      
+      if (!isSubscribed) {
+        document.getElementById("subscription-banner").style.display = "block";
+        document.getElementById("wallet-ui").style.display = "flex"; // Show wallet so they can deposit to subscribe
+      } else {
+        document.getElementById("wallet-ui").style.display = "none";
+      }
+
+      grid.innerHTML = allMediaNodes.join("");
       
       if (window.GeoPricing) {
         await GeoPricing.updatePagePrices();
       }
+    }
+
+    async function subscribeToCreator() {
+      const urlParams = new URLSearchParams(window.location.search);
+      const creatorId = urlParams.get('id');
+      if (!creatorId) return;
+      if (creatorId === currentUser.id) return alert("You cannot subscribe to yourself.");
+
+      const subCost = 150; // Flat ZAR 150
+
+      const { data: balData } = await supabaseClient.from("user_balances").select("balance").eq("id", currentUser.id).single();
+      if (!balData || Number(balData.balance) < subCost) {
+        alert("Insufficient funds! Please add at least R" + subCost + " ZAR to subscribe.");
+        openDeposit();
+        return;
+      }
+
+      if (!confirm("Confirm subscription to this creator for R150 ZAR to unlock all their premium content?")) return;
+
+      const newBal = Number(balData.balance) - subCost;
+      const { error: balErr } = await supabaseClient.from("user_balances").update({ balance: newBal }).eq("id", currentUser.id);
+      if (balErr) { alert("Error deducting funds."); return; }
+
+      const purchasesToInsert = [
+        { user_id: currentUser.id, purchaser_email: currentUser.email, product_key: `sub_${creatorId}`, product_name: "Creator Pass", amount: subCost }
+      ];
+
+      // Auto-unlock all existing albums to bypass legacy DB RLS rules seamlessly
+      const { data: albums } = await supabaseClient.from("albums").select("id, title").eq("user_id", creatorId);
+      if (albums) {
+        for(const a of albums) {
+          purchasesToInsert.push({
+            user_id: currentUser.id, 
+            purchaser_email: currentUser.email, 
+            product_key: a.id, 
+            product_name: a.title + " (Sub Unlock)", 
+            amount: 0 
+          });
+        }
+      }
+
+      const { error: buyErr } = await supabaseClient.from("purchases").insert(purchasesToInsert);
+      if (buyErr) { alert("Error granting access: " + buyErr.message); return; }
+
+      alert("Subscription successful! ✅ You now have access to all premium content.");
+      window.location.reload();
     }
 
     window.downloadAlbum = async function(albumId, title) {
