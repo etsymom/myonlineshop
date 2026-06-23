@@ -422,14 +422,27 @@
       </div>
     </div>
 
-    <!-- MEDIA GRID (TikTok style) -->
+    <!-- TAB SWITCHER -->
     <div style="display: flex; justify-content: center; gap: 40px; border-bottom: 1px solid var(--slate-light); margin-bottom: 20px; padding-bottom: 12px;">
-      <div style="font-weight: 900; color: var(--aubergine); border-bottom: 2px solid var(--aubergine); padding-bottom: 10px; margin-bottom: -13px;">𐄹 POSTS</div>
-      <div style="font-weight: 700; color: var(--slate);">🔒 EXCLUSIVE</div>
+      <div id="tab-media" onclick="switchTab('media')" style="font-weight: 900; color: var(--aubergine); border-bottom: 2px solid var(--aubergine); padding-bottom: 10px; margin-bottom: -13px; cursor: pointer;">𐄹 ALL MEDIA</div>
+      <div id="tab-albums" onclick="switchTab('albums')" style="font-weight: 700; color: var(--slate); padding-bottom: 10px; cursor: pointer;">💿 ALBUMS</div>
     </div>
 
-    <div class="product-grid" id="albums-grid" style="grid-template-columns: repeat(3, 1fr); gap: 4px; margin-bottom: 0;">
-      <p style="font-size: 14px; color: var(--slate); grid-column: span 3; text-align: center;">Loading media...</p>
+    <!-- TAB 1: ALL MEDIA (Infinite Grid) -->
+    <div id="media-tab-content">
+      <div class="product-grid" id="albums-grid" style="grid-template-columns: repeat(3, 1fr); gap: 4px; margin-bottom: 0;">
+        <p style="font-size: 14px; color: var(--slate); grid-column: span 3; text-align: center;">Loading media...</p>
+      </div>
+      <div id="scroll-sentinel" style="height: 40px; width: 100%; display: flex; justify-content: center; align-items: center; margin-top: 20px;">
+        <p id="loading-text" style="font-size: 14px; color: var(--slate); display: none;">Loading more...</p>
+      </div>
+    </div>
+
+    <!-- TAB 2: INDIVIDUAL ALBUMS -->
+    <div id="albums-tab-content" style="display: none;">
+      <div class="product-grid" id="legacy-albums-grid">
+        <!-- Populated via JS -->
+      </div>
     </div>
   </div>
 
@@ -577,65 +590,175 @@
       }
 
       let allMediaNodes = [];
+      let albumCardsHTML = [];
 
       for (const album of data) {
+        // --- 1. Generate Individual Album Cards for Tab 2 ---
+        const formattedPrice = await formatAmount(album.price_zar);
         const mediaItems = album.album_media || [];
         totalMedia += mediaItems.length;
         
+        const totalImages = album.total_images || mediaItems.filter(i => i.media_type === 'image').length;
+        const totalVideos = album.total_videos || mediaItems.filter(i => i.media_type === 'video').length;
+        
+        let labelHTML = '';
+        if (totalImages > 0 || totalVideos > 0) {
+          labelHTML = `<div style="font-size:11px; color:var(--slate); margin-bottom:8px; font-weight:600; display:flex; gap:8px;">
+            ${totalImages > 0 ? `<span>🖼️ ${totalImages} Images</span>` : ''}
+            ${totalVideos > 0 ? `<span>🎞️ ${totalVideos} Videos</span>` : ''}
+          </div>`;
+        }
+
+        let mediaHTML = '';
+        if (mediaItems.length > 0) {
+          const itemsHTML = mediaItems.map(m => {
+            if (m.media_type === 'video') {
+              return `<video src="${m.media_url}" preload="none" style="min-width:85%; height:160px; object-fit:cover; border-radius:8px; background:black; flex-shrink:0; scroll-snap-align:start;"></video>`;
+            } else {
+              return `<img src="${m.media_url}" style="min-width:85%; height:160px; object-fit:cover; border-radius:8px; flex-shrink:0; scroll-snap-align:start;">`;
+            }
+          }).join("");
+          const lockedCount = (totalImages + totalVideos) - mediaItems.length;
+          let lockedHTML = lockedCount > 0 ? `<div style="min-width:85%; height:160px; border-radius:8px; background:var(--parchment); flex-shrink:0; scroll-snap-align:start; display:flex; flex-direction:column; align-items:center; justify-content:center; color:var(--slate); text-align:center; padding:12px; border:1px solid var(--slate-light);"><div style="font-size:24px; margin-bottom:8px;">🔒</div><div style="font-size:13px; font-weight:600;">${lockedCount} More Items</div></div>` : '';
+          mediaHTML = `<div style="display:flex; overflow-x:auto; gap:8px; margin-bottom:12px; scroll-snap-type:x mandatory; padding-bottom:8px;">${itemsHTML}${lockedHTML}</div>`;
+        } else {
+          mediaHTML = album.cover_image_url ? `<img src="${album.cover_image_url}" style="width:100%; height:160px; object-fit:cover; border-radius:12px; margin-bottom:12px;">` : `<div class="product-icon" style="margin-bottom:12px;">🎵</div>`;
+        }
+        
+        const titleSafe = album.title.replace(/'/g, "\\'");
         const isFreeAlbum = Number(album.price_zar) === 0;
         const ownsAlbum = isSubscribed || purchasedSet.has(album.id) || isFreeAlbum;
         
+        let actionButtonHTML = ownsAlbum ? 
+          `<button class="wallet-btn-amber" style="width:100%; border-radius:12px;" onclick="downloadAlbum('${album.id}', '${titleSafe}')">Download Full Album</button>` : 
+          `<button class="wallet-btn" style="width:100%; border-radius:12px;" onclick="buyAlbum('${album.id}', ${album.price_zar}, '${titleSafe}', '${album.user_id}')">Buy Album</button>`;
+        
+        albumCardsHTML.push(`
+          <div class="product-card">
+            ${mediaHTML}
+            ${labelHTML}
+            <div class="product-name">${album.title}</div>
+            <p class="product-desc" style="margin-bottom: 8px;">${album.description || ''}</p>
+            <div class="product-price" data-zar="${album.price_zar}">${formattedPrice}</div>
+            ${actionButtonHTML}
+          </div>
+        `);
+
+        // --- 2. Generate Infinite Grid Items for Tab 1 ---
         mediaItems.forEach((m, index) => {
-          const isFreePreview = index < 3; // First 3 are free per album
+          const isFreePreview = index < 3;
           const canView = ownsAlbum || isFreePreview;
           
-          let mediaHTML = '';
+          let gridMedia = '';
           if (m.media_type === 'video') {
-            mediaHTML = `<video src="${m.media_url}" style="width:100%; height:100%; object-fit:cover;" ${canView ? 'controls preload="metadata"' : 'preload="metadata"' }></video>`;
+            const pre = canView ? 'metadata' : 'none';
+            gridMedia = `<video src="${m.media_url}" preload="${pre}" style="width:100%; height:100%; object-fit:cover;" ${canView ? 'controls' : ''}></video>`;
           } else {
-            mediaHTML = `<img src="${m.media_url}" style="width:100%; height:100%; object-fit:cover;">`;
+            gridMedia = `<img src="${m.media_url}" style="width:100%; height:100%; object-fit:cover;">`;
           }
 
           let overlay = '';
           if (!canView) {
-            overlay = `
-              <div style="position:absolute; inset:0; background:rgba(0,0,0,0.6); backdrop-filter:blur(4px); display:flex; flex-direction:column; justify-content:center; align-items:center; color:white;">
-                <div style="font-size:24px; margin-bottom:4px;">🔒</div>
-                <div style="font-size:11px; font-weight:700;">SUBSCRIBE TO UNLOCK</div>
-              </div>
-            `;
+            overlay = `<div style="position:absolute; inset:0; background:rgba(0,0,0,0.6); backdrop-filter:blur(4px); display:flex; flex-direction:column; justify-content:center; align-items:center; color:white;"><div style="font-size:24px; margin-bottom:4px;">🔒</div><div style="font-size:11px; font-weight:700;">SUBSCRIBE</div></div>`;
           } else if (m.media_type === 'video') {
-             overlay = `
-              <div style="position:absolute; bottom:8px; left:8px; display:flex; align-items:center; gap:4px; color:white; font-size:12px; text-shadow:0 1px 2px rgba(0,0,0,0.8);">
-                <svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-                ${Math.floor(Math.random() * 100) + 10}K
-              </div>
-             `;
+            overlay = `<div style="position:absolute; bottom:8px; left:8px; display:flex; align-items:center; gap:4px; color:white; font-size:12px; text-shadow:0 1px 2px rgba(0,0,0,0.8);"><svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>${Math.floor(Math.random() * 100) + 10}K</div>`;
           }
 
           allMediaNodes.push(`
             <div style="position:relative; aspect-ratio:3/4; background:black; overflow:hidden; border-radius:4px; cursor:pointer;" onclick="${canView && m.media_type==='video' ? `const v=this.querySelector('video'); v.paused ? v.play() : v.pause();` : ''}">
-              ${mediaHTML}
+              ${gridMedia}
               ${overlay}
             </div>
           `);
         });
       }
 
-      document.getElementById("stat-posts").innerText = data.length; // Albums/Posts count
-      document.getElementById("stat-media").innerText = totalMedia; // Total items
+      document.getElementById("stat-posts").innerText = data.length;
+      document.getElementById("stat-media").innerText = totalMedia;
       
       if (!isSubscribed) {
         document.getElementById("subscription-banner").style.display = "block";
-        document.getElementById("wallet-ui").style.display = "flex"; // Show wallet so they can deposit to subscribe
+        document.getElementById("wallet-ui").style.display = "flex";
       } else {
         document.getElementById("wallet-ui").style.display = "none";
       }
 
-      grid.innerHTML = allMediaNodes.join("");
+      // Populate Albums Tab
+      document.getElementById("legacy-albums-grid").innerHTML = albumCardsHTML.join("");
       
-      if (window.GeoPricing) {
-        await GeoPricing.updatePagePrices();
+      // Initialize Infinite Scroll for Media Tab
+      window.globalMediaNodes = allMediaNodes;
+      window.currentRenderIndex = 0;
+      grid.innerHTML = ""; // Clear loader
+      renderNextBatch();
+      setupIntersectionObserver();
+      
+      if (window.GeoPricing) await GeoPricing.updatePagePrices();
+    }
+
+    function renderNextBatch() {
+      const grid = document.getElementById("albums-grid");
+      const BATCH_SIZE = 15;
+      const nodes = window.globalMediaNodes || [];
+      const endIndex = Math.min(window.currentRenderIndex + BATCH_SIZE, nodes.length);
+      
+      let html = '';
+      for (let i = window.currentRenderIndex; i < endIndex; i++) {
+        html += nodes[i];
+      }
+      grid.insertAdjacentHTML('beforeend', html);
+      window.currentRenderIndex = endIndex;
+
+      if (window.currentRenderIndex >= nodes.length) {
+        document.getElementById("loading-text").style.display = "none";
+      } else {
+        document.getElementById("loading-text").style.display = "block";
+      }
+    }
+
+    function setupIntersectionObserver() {
+      const sentinel = document.getElementById("scroll-sentinel");
+      if (!sentinel) return;
+      const observer = new IntersectionObserver((entries) => {
+        if (entries[0].isIntersecting) {
+          if (window.globalMediaNodes && window.currentRenderIndex < window.globalMediaNodes.length) {
+            renderNextBatch();
+          }
+        }
+      }, { rootMargin: '200px' });
+      observer.observe(sentinel);
+    }
+
+    window.switchTab = function(tab) {
+      const mediaTab = document.getElementById("tab-media");
+      const albumsTab = document.getElementById("tab-albums");
+      const mediaContent = document.getElementById("media-tab-content");
+      const albumsContent = document.getElementById("albums-tab-content");
+
+      if (tab === 'media') {
+        mediaContent.style.display = 'block';
+        albumsContent.style.display = 'none';
+        mediaTab.style.fontWeight = '900';
+        mediaTab.style.color = 'var(--aubergine)';
+        mediaTab.style.borderBottom = '2px solid var(--aubergine)';
+        mediaTab.style.marginBottom = '-13px';
+        
+        albumsTab.style.fontWeight = '700';
+        albumsTab.style.color = 'var(--slate)';
+        albumsTab.style.borderBottom = 'none';
+        albumsTab.style.marginBottom = '0';
+      } else {
+        mediaContent.style.display = 'none';
+        albumsContent.style.display = 'block';
+        albumsTab.style.fontWeight = '900';
+        albumsTab.style.color = 'var(--aubergine)';
+        albumsTab.style.borderBottom = '2px solid var(--aubergine)';
+        albumsTab.style.marginBottom = '-13px';
+        
+        mediaTab.style.fontWeight = '700';
+        mediaTab.style.color = 'var(--slate)';
+        mediaTab.style.borderBottom = 'none';
+        mediaTab.style.marginBottom = '0';
       }
     }
 
