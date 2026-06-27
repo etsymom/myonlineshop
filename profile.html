@@ -168,16 +168,7 @@
 </head>
 <body>
 
-  <div class="header">
-    <div class="brand">
-      <div class="brand-icon">🖋️</div>
-      <div class="brand-name">Inkwell<span>Media</span></div>
-    </div>
-    <div style="display:flex;gap:8px;">
-      <button class="hbtn hbtn-ghost" onclick="window.location.href='members.html'">← Dashboard</button>
-      <button class="hbtn hbtn-danger" onclick="logout()">Log out</button>
-    </div>
-  </div>
+  <div id="inkwell-header-mount"></div>
 
   <div class="container">
     <div class="page-title">Your Profile</div>
@@ -302,12 +293,13 @@
     <!-- ACTIONS -->
     <button class="btn-save" style="background:var(--slate-light); color:var(--aubergine); margin-bottom: 8px;" onclick="copyMyStorefrontLink()">📋 Copy My Storefront Link</button>
     <button class="btn-save" onclick="saveProfile()">Save Profile</button>
-    <button class="btn-logout" onclick="logout()">Log Out</button>
+    <button class="btn-logout" onclick="window.inkwellLogout()">Log Out</button>
   </div>
 
+  <div id="inkwell-footer-mount"></div>
+  <script src="inkwell-layout.js"></script>
   <script src="locale.js?v=3"></script>
   <script src="geo-pricing.js?v=3"></script>
-  <script src="cookie-consent.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script>
     const supabaseClient = supabase.createClient(
@@ -381,10 +373,7 @@
       window.location.href = "members.html";
     }
 
-    async function logout() {
-      await supabaseClient.auth.signOut();
-      window.location.href = "index.html";
-    }
+
 
     async function loadMyAlbums() {
       const { data, error } = await supabaseClient.from("albums").select("*").eq("user_id", sessionUser.id).order("created_at", { ascending: false });

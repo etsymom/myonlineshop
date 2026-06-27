@@ -141,6 +141,10 @@
         background: var(--ink-amber);
         color: var(--ink-aubergine);
       }
+      .ink-btn-danger {
+        background: var(--ink-danger);
+        color: var(--ink-white);
+      }
       .ink-btn-aubergine {
         background: var(--ink-aubergine);
         color: var(--ink-white);
@@ -372,12 +376,18 @@
     }).join('');
 
     const actions = isLoggedIn
-      ? `<a href="members.html" class="ink-btn ink-btn-amber">Dashboard</a>`
+      ? `<a href="members.html" class="ink-btn ink-btn-ghost">Dashboard</a>
+         <a href="explore.html" class="ink-btn ink-btn-amber">Explore</a>
+         <a href="profile.html" class="ink-btn ink-btn-ghost">Profile</a>
+         <button class="ink-btn ink-btn-danger" onclick="window.inkwellLogout()">Log out</button>`
       : `<a href="index.html" class="ink-btn ink-btn-ghost">Sign In</a>
          <a href="creator-apply.html" class="ink-btn ink-btn-amber">Apply as Creator</a>`;
 
     const mobileActions = isLoggedIn
-      ? `<a href="members.html" class="ink-btn ink-btn-amber">Dashboard</a>`
+      ? `<a href="members.html" class="ink-btn ink-btn-ghost">Dashboard</a>
+         <a href="explore.html" class="ink-btn ink-btn-amber">Explore</a>
+         <a href="profile.html" class="ink-btn ink-btn-ghost">Profile</a>
+         <button class="ink-btn ink-btn-danger" onclick="window.inkwellLogout()">Log out</button>`
       : `<a href="index.html" class="ink-btn ink-btn-ghost">Sign In</a>
          <a href="creator-apply.html" class="ink-btn ink-btn-amber">Apply</a>`;
 
@@ -527,6 +537,14 @@
       });
     }
   }
+
+  window.inkwellLogout = async function() {
+    if (window.supabase) {
+      const client = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON);
+      await client.auth.signOut();
+    }
+    window.location.href = "index.html";
+  };
 
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', init);

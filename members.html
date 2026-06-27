@@ -326,20 +326,10 @@
 </head>
 <body>
 
-  <div class="header">
-    <div>
-      <div class="brand">
-        <div class="brand-icon">🖋️</div>
-        <div class="brand-name">Inkwell<span>Media</span></div>
-      </div>
-      <div class="header-sub" id="welcome-line"></div>
-    </div>
-    <div class="header-actions">
-      <button class="hbtn hbtn-amber" onclick="window.location.href='explore.html'">Explore</button>
-      <button class="hbtn hbtn-ghost" onclick="goProfile()">My Profile</button>
-      <button class="hbtn hbtn-admin" id="admin-btn" style="display:none;" onclick="goAdmin()">Admin</button>
-      <button class="hbtn hbtn-danger" onclick="logout()">Log out</button>
-    </div>
+  <div id="inkwell-header-mount"></div>
+  <div style="text-align: center; padding: 12px; background: var(--aubergine); color: var(--white); font-size: 13px;">
+    <span id="welcome-line"></span>
+    <a href="admin.html" id="admin-btn" style="display:none; color: var(--amber); margin-left: 12px; font-weight: bold; text-decoration: none;">Go to Admin Panel &rarr;</a>
   </div>
 
   <div class="container">
@@ -425,9 +415,10 @@
 
   <!-- Bot Modals Removed -->
 
+  <div id="inkwell-footer-mount"></div>
+  <script src="inkwell-layout.js"></script>
   <script src="locale.js?v=3"></script>
   <script src="geo-pricing.js?v=3"></script>
-  <script src="cookie-consent.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script>
     const supabaseClient = supabase.createClient(
@@ -684,7 +675,6 @@
 
     function goProfile() { window.location.href = "profile.html"; }
     function goAdmin() { window.location.href = "admin.html"; }
-    async function logout() { await supabaseClient.auth.signOut(); window.location.href = "index.html"; }
 
     document.addEventListener("DOMContentLoaded", () => {
       const infoBtn = document.getElementById("bot-info-btn");
