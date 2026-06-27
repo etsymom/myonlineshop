@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Authenticating... | InkwellMedia</title>
+  <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --ink-aubergine: #2D1B4E;
+      --ink-amber: #F5A623;
+      --ink-white: #FFFFFF;
+    }
+    body {
+      background: var(--ink-aubergine);
+      color: var(--ink-white);
+      font-family: 'DM Sans', sans-serif;
+      height: 100vh;
+      margin: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+    }
+    .spinner {
+      width: 48px;
+      height: 48px;
+      border: 4px solid rgba(255, 255, 255, 0.1);
+      border-left-color: var(--ink-amber);
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+      margin-bottom: 24px;
+    }
+    @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+    h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 24px;
+      margin: 0;
+    }
+    p {
+      color: rgba(255, 255, 255, 0.6);
+      margin-top: 8px;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+  <div class="spinner"></div>
+  <h1 id="statusText">Authenticating...</h1>
+  <p>Please wait while we log you in.</p>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="inkwell-config.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", async () => {
+      const sb = supabase.createClient(window.INK_CONFIG.SUPABASE_URL, window.INK_CONFIG.SUPABASE_ANON);
+      
+      // Supabase handles the hash automatically and fires auth state changes
+      sb.auth.onAuthStateChange((event, session) => {
+        if (event === 'SIGNED_IN' && session) {
+          document.getElementById('statusText').textContent = 'Success!';
+          setTimeout(() => {
+            window.location.href = 'members.html';
+          }, 1000);
+        } else if (event === 'PASSWORD_RECOVERY') {
+          window.location.href = 'reset-password.html';
+        }
+      });
+
+      // Fallback check if already logged in
+      const { data: { session } } = await sb.auth.getSession();
+      if (session) {
+        window.location.href = 'members.html';
+      } else {
+        // Wait a brief moment to see if the hash is processed by the listener
+        setTimeout(() => {
+          if (!window.location.hash.includes('access_token')) {
+            window.location.href = 'index.html';
+          }
+        }, 3000);
+      }
+    });
+  </script>
+</body>
+</html>

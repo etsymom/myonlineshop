@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>InkwellMedia — Where Creators Thrive</title>
+  <meta name="description" content="InkwellMedia is the creator platform that puts you first. Keep 85% of every rand you earn. Build your community. Own your audience.">
+  <meta property="og:title" content="InkwellMedia — Where Creators Thrive">
+  <meta property="og:description" content="The platform where independent creators earn more, grow faster, and own their audience.">
+  <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://ndfqavpmqahdqpsqndbz.supabase.co" crossorigin>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body { background: var(--ink-aubergine); color: var(--ink-white); overflow-x: hidden; }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      position: relative;
+      padding: 120px 20px 80px;
+      overflow: hidden;
+    }
+    .hero-blob-1 {
+      position: absolute; top: -120px; right: -80px;
+      width: 600px; height: 600px;
+      background: var(--ink-amber);
+      border-radius: 50%; filter: blur(100px); opacity: 0.14;
+      animation: ink-drift 10s ease-in-out infinite alternate;
+    }
+    .hero-blob-2 {
+      position: absolute; bottom: -100px; left: -80px;
+      width: 500px; height: 500px;
+      background: #7B4FBF;
+      border-radius: 50%; filter: blur(90px); opacity: 0.18;
+      animation: ink-drift 12s ease-in-out infinite alternate-reverse;
+    }
+    .hero-content { position: relative; z-index: 2; max-width: 860px; }
+    .hero-eyebrow {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(245,166,35,0.12);
+      border: 1px solid rgba(245,166,35,0.3);
+      border-radius: 999px;
+      padding: 6px 16px;
+      font-size: 12px; font-weight: 800;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--ink-amber);
+      margin-bottom: 28px;
+    }
+    .hero-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(42px, 7vw, 88px);
+      font-weight: 900; line-height: 1.04;
+      margin-bottom: 24px;
+    }
+    .hero-title em { font-style: italic; color: var(--ink-amber); }
+    .hero-sub {
+      font-size: clamp(17px, 2vw, 22px);
+      color: rgba(255,255,255,0.72);
+      line-height: 1.6; max-width: 580px;
+      margin: 0 auto 40px;
+    }
+    .hero-actions { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+    .hero-scroll {
+      position: absolute; bottom: 36px; left: 50%;
+      transform: translateX(-50%);
+      display: flex; flex-direction: column;
+      align-items: center; gap: 8px;
+      font-size: 11px; color: rgba(255,255,255,0.4);
+      letter-spacing: 0.1em; text-transform: uppercase;
+      z-index: 2;
+    }
+    .hero-scroll-line {
+      width: 1px; height: 40px;
+      background: linear-gradient(to bottom, rgba(255,255,255,0.4), transparent);
+      animation: scrollPulse 2s ease-in-out infinite;
+    }
+    @keyframes scrollPulse { 0%,100%{opacity:0.4; transform:scaleY(1)} 50%{opacity:1; transform:scaleY(1.15)} }
+
+    /* ── STATS STRIP ── */
+    .stats-strip {
+      background: var(--ink-amber);
+      padding: 28px 20px;
+    }
+    .stats-inner {
+      display: flex; justify-content: center;
+      gap: clamp(32px, 6vw, 80px);
+      flex-wrap: wrap;
+      max-width: 900px; margin: 0 auto;
+    }
+    .stat-item { text-align: center; }
+    .stat-num {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(28px, 4vw, 44px);
+      font-weight: 900; color: var(--ink-aubergine);
+      line-height: 1;
+    }
+    .stat-lbl {
+      font-size: 12px; font-weight: 700;
+      color: rgba(45,27,78,0.65);
+      text-transform: uppercase; letter-spacing: 0.08em;
+      margin-top: 4px;
+    }
+
+    /* ── HOW IT WORKS ── */
+    .how-section { background: var(--ink-parchment); color: var(--ink-aubergine); }
+    .steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+    .step-card {
+      background: var(--ink-white);
+      border-radius: 20px; padding: 28px 22px;
+      border: 1.5px solid transparent;
+      transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
+      position: relative;
+    }
+    .step-card:hover { border-color: var(--ink-amber); transform: translateY(-4px); box-shadow: 0 16px 40px rgba(45,27,78,0.12); }
+    .step-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 48px; font-weight: 900;
+      color: var(--ink-amber); opacity: 0.25;
+      line-height: 1; margin-bottom: 12px;
+    }
+    .step-icon {
+      width: 52px; height: 52px; border-radius: 14px;
+      background: var(--ink-slate-light);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 24px; margin-bottom: 16px;
+    }
+    .step-title { font-family: 'Playfair Display', serif; font-size: 19px; font-weight: 700; margin-bottom: 8px; }
+    .step-desc { font-size: 14px; color: var(--ink-slate); line-height: 1.6; }
+
+    /* ── FEATURES ── */
+    .features-section { background: var(--ink-aubergine); }
+    .feature-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; background: rgba(255,255,255,0.06); border-radius: 24px; overflow: hidden; }
+    .feature-cell {
+      background: var(--ink-aubergine);
+      padding: 36px 32px;
+      transition: background 0.2s;
+    }
+    .feature-cell:hover { background: rgba(255,255,255,0.04); }
+    .feature-icon { font-size: 32px; margin-bottom: 16px; }
+    .feature-title { font-family: 'Playfair Display', serif; font-size: 21px; font-weight: 700; margin-bottom: 10px; }
+    .feature-desc { font-size: 14px; color: rgba(255,255,255,0.65); line-height: 1.65; }
+
+    /* ── CREATOR SPOTLIGHT ── */
+    .spotlight-section { background: var(--ink-parchment); color: var(--ink-aubergine); }
+    .creator-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+    .creator-card {
+      background: var(--ink-white); border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 4px 16px rgba(45,27,78,0.08);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .creator-card:hover { transform: translateY(-4px); box-shadow: 0 16px 40px rgba(45,27,78,0.14); }
+    .creator-cover {
+      height: 120px;
+      background-size: cover; background-position: center;
+    }
+    .creator-body { padding: 20px; }
+    .creator-avatar-wrap {
+      width: 56px; height: 56px;
+      border-radius: 50%; border: 3px solid var(--ink-white);
+      overflow: hidden; margin-top: -36px; margin-bottom: 12px;
+      background: var(--ink-slate-light);
+      font-size: 24px;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .creator-name { font-family: 'Playfair Display', serif; font-size: 17px; font-weight: 700; margin-bottom: 4px; }
+    .creator-niche { font-size: 12px; color: var(--ink-slate); margin-bottom: 12px; }
+    .creator-stat { font-size: 13px; font-weight: 700; color: var(--ink-amber-dark); }
+
+    /* ── COMPARISON ── */
+    .compare-section { background: var(--ink-aubergine-deep); }
+    .compare-table { width: 100%; border-collapse: collapse; }
+    .compare-table th, .compare-table td {
+      padding: 16px 20px; text-align: center;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      font-size: 14px;
+    }
+    .compare-table th { font-size: 13px; font-weight: 800; color: var(--ink-amber); text-transform: uppercase; letter-spacing: 0.08em; }
+    .compare-table td:first-child { text-align: left; color: rgba(255,255,255,0.7); }
+    .compare-table .col-ink { color: var(--ink-amber); font-weight: 700; }
+    .compare-table .col-other { color: rgba(255,255,255,0.4); }
+    .check { color: var(--ink-amber); font-size: 18px; }
+    .cross { color: rgba(255,255,255,0.25); font-size: 18px; }
+
+    /* ── CTA ── */
+    .cta-section {
+      background: var(--ink-amber);
+      padding: clamp(64px, 8vw, 120px) 20px;
+      text-align: center;
+      position: relative; overflow: hidden;
+    }
+    .cta-section h2 { font-family: 'Playfair Display', serif; font-size: clamp(32px, 5vw, 60px); font-weight: 900; color: var(--ink-aubergine); margin-bottom: 16px; }
+    .cta-section p { font-size: 18px; color: rgba(45,27,78,0.72); margin-bottom: 36px; }
+    .cta-actions { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+    .cta-btn-dark { background: var(--ink-aubergine); color: var(--ink-white); padding: 15px 32px; border-radius: 12px; font-weight: 800; font-size: 16px; text-decoration: none; transition: opacity 0.15s, transform 0.1s; display: inline-block; }
+    .cta-btn-dark:hover { opacity: 0.88; transform: translateY(-1px); }
+    .cta-btn-ghost { background: transparent; color: var(--ink-aubergine); border: 2px solid rgba(45,27,78,0.3); padding: 15px 32px; border-radius: 12px; font-weight: 800; font-size: 16px; text-decoration: none; transition: all 0.15s; display: inline-block; }
+    .cta-btn-ghost:hover { background: rgba(45,27,78,0.08); }
+
+    @media (max-width: 900px) {
+      .steps { grid-template-columns: repeat(2,1fr); }
+      .feature-grid { grid-template-columns: 1fr; }
+      .creator-cards { grid-template-columns: repeat(2,1fr); }
+    }
+    @media (max-width: 580px) {
+      .steps { grid-template-columns: 1fr; }
+      .creator-cards { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <div id="inkwell-header-mount"></div>
+
+  <!-- HERO -->
+  <section class="hero" aria-label="Hero">
+    <div class="hero-blob-1" aria-hidden="true"></div>
+    <div class="hero-blob-2" aria-hidden="true"></div>
+    <div class="hero-content ink-animate-up">
+      <div class="hero-eyebrow">&#x1F58B;&#xFE0F; The Creator-First Platform</div>
+      <h1 class="hero-title">Your creativity.<br><em>Your terms.</em><br>Your revenue.</h1>
+      <p class="hero-sub">InkwellMedia gives independent creators the tools to build a paid community, publish premium content, and keep 85% of every rand they earn — no middlemen, no compromise.</p>
+      <div class="hero-actions">
+        <a href="creator-apply.html" class="ink-btn ink-btn-amber ink-btn-lg">Start Creating Free</a>
+        <a href="explore.html" class="ink-btn ink-btn-ghost-light ink-btn-lg">Explore Creators</a>
+      </div>
+    </div>
+    <div class="hero-scroll" aria-hidden="true">
+      <div class="hero-scroll-line"></div>
+      <span>Scroll</span>
+    </div>
+  </section>
+
+  <!-- STATS STRIP -->
+  <div class="stats-strip" aria-label="Platform statistics">
+    <div class="stats-inner">
+      <div class="stat-item"><div class="stat-num">2,400+</div><div class="stat-lbl">Active Creators</div></div>
+      <div class="stat-item"><div class="stat-num">18K+</div><div class="stat-lbl">Subscribers</div></div>
+      <div class="stat-item"><div class="stat-num">R4.2M</div><div class="stat-lbl">Paid to Creators</div></div>
+      <div class="stat-item"><div class="stat-num">85%</div><div class="stat-lbl">Creator Revenue Share</div></div>
+    </div>
+  </div>
+
+  <!-- HOW IT WORKS -->
+  <section class="how-section ink-section" aria-labelledby="how-heading">
+    <div class="ink-container">
+      <div class="ink-section-header">
+        <div class="ink-overline">Simple by Design</div>
+        <h2 id="how-heading" class="ink-h2">From upload to income<br>in four steps</h2>
+      </div>
+      <div class="steps">
+        <div class="step-card">
+          <div class="step-num">01</div>
+          <div class="step-icon">&#x1F4F7;</div>
+          <div class="step-title">Create your profile</div>
+          <p class="step-desc">Apply in minutes. Set your niche, write your bio, upload a profile photo. Your creator page is live immediately.</p>
+        </div>
+        <div class="step-card">
+          <div class="step-num">02</div>
+          <div class="step-icon">&#x1F4E4;</div>
+          <div class="step-title">Upload your content</div>
+          <p class="step-desc">Images, videos, albums — upload in bulk. Choose what's free preview and what's premium-only.</p>
+        </div>
+        <div class="step-card">
+          <div class="step-num">03</div>
+          <div class="step-icon">&#x1F4B8;</div>
+          <div class="step-title">Set your price</div>
+          <p class="step-desc">Your Creator Pass can be anything from R50 to R500 per month. You decide what your community is worth.</p>
+        </div>
+        <div class="step-card">
+          <div class="step-num">04</div>
+          <div class="step-icon">&#x1F4B0;</div>
+          <div class="step-title">Get paid fast</div>
+          <p class="step-desc">Funds land in your wallet within 48 hours. Withdraw via EFT or crypto whenever you like — no minimums.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURES -->
+  <section class="features-section ink-section" aria-labelledby="features-heading">
+    <div class="ink-container">
+      <div class="ink-section-header">
+        <div class="ink-overline" style="color:var(--ink-amber)">Built for the Real Creator</div>
+        <h2 id="features-heading" class="ink-h2" style="color:var(--ink-white)">Everything you need.<br>Nothing you don't.</h2>
+      </div>
+      <div class="feature-grid">
+        <div class="feature-cell">
+          <div class="feature-icon">&#x1F4F9;</div>
+          <div class="feature-title">TikTok-Style Explore Feed</div>
+          <p class="feature-desc">Your free preview content surfaces in our vertical video Explore feed — organic discovery for every creator, no ad spend required.</p>
+        </div>
+        <div class="feature-cell">
+          <div class="feature-icon">&#x1F512;</div>
+          <div class="feature-title">Gated Premium Content</div>
+          <p class="feature-desc">Lock albums and collections behind your Creator Pass. Subscribers get instant access — non-subscribers see a beautiful locked preview.</p>
+        </div>
+        <div class="feature-cell">
+          <div class="feature-icon">&#x1F4CA;</div>
+          <div class="feature-title">Creator Analytics</div>
+          <p class="feature-desc">See your subscriber growth, top-performing albums, wallet balance, and payout history in one clean dashboard.</p>
+        </div>
+        <div class="feature-cell">
+          <div class="feature-icon">&#x1F310;</div>
+          <div class="feature-title">Multi-Currency Support</div>
+          <p class="feature-desc">ZAR, USD, EUR — we detect your subscriber's location and display prices in their local currency automatically.</p>
+        </div>
+        <div class="feature-cell">
+          <div class="feature-icon">&#x1FA99;</div>
+          <div class="feature-title">Crypto-Ready Wallet</div>
+          <p class="feature-desc">Accept deposits via EFT or XRP. Withdraw to your bank or crypto wallet with no minimum threshold.</p>
+        </div>
+        <div class="feature-cell">
+          <div class="feature-icon">&#x1F465;</div>
+          <div class="feature-title">Referral Program</div>
+          <p class="feature-desc">Earn a commission for every creator or subscriber you bring to the platform. Your network becomes your passive income.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CREATOR SPOTLIGHT -->
+  <section class="spotlight-section ink-section" aria-labelledby="spotlight-heading">
+    <div class="ink-container">
+      <div class="ink-section-header">
+        <div class="ink-overline">Creator Spotlight</div>
+        <h2 id="spotlight-heading" class="ink-h2">Real creators.<br>Real earnings.</h2>
+      </div>
+      <div class="creator-cards">
+        <div class="creator-card">
+          <div class="creator-cover" style="background: linear-gradient(135deg, #2D1B4E 0%, #7B4FBF 100%);"></div>
+          <div class="creator-body">
+            <div class="creator-avatar-wrap">&#x1F4F8;</div>
+            <div class="creator-name">Leila Osman</div>
+            <div class="creator-niche">Fashion Photography · Cape Town</div>
+            <div class="creator-stat">R12,400 earned last month &nbsp;&#x2022;&nbsp; 83 subscribers</div>
+          </div>
+        </div>
+        <div class="creator-card">
+          <div class="creator-cover" style="background: linear-gradient(135deg, #1A4A3A 0%, #059669 100%);"></div>
+          <div class="creator-body">
+            <div class="creator-avatar-wrap">&#x1F3A5;</div>
+            <div class="creator-name">Sipho Dlamini</div>
+            <div class="creator-niche">Videography &amp; Filmmaking · Johannesburg</div>
+            <div class="creator-stat">R8,700 earned last month &nbsp;&#x2022;&nbsp; 58 subscribers</div>
+          </div>
+        </div>
+        <div class="creator-card">
+          <div class="creator-cover" style="background: linear-gradient(135deg, #4A1A1A 0%, #D4891A 100%);"></div>
+          <div class="creator-body">
+            <div class="creator-avatar-wrap">&#x1F58C;&#xFE0F;</div>
+            <div class="creator-name">Naledi Khumalo</div>
+            <div class="creator-niche">Digital Art &amp; Illustration · Durban</div>
+            <div class="creator-stat">R6,150 earned last month &nbsp;&#x2022;&nbsp; 41 subscribers</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- COMPARISON -->
+  <section class="compare-section ink-section" aria-labelledby="compare-heading">
+    <div class="ink-container">
+      <div class="ink-section-header">
+        <div class="ink-overline" style="color:var(--ink-amber)">Why InkwellMedia</div>
+        <h2 id="compare-heading" class="ink-h2" style="color:var(--ink-white)">We built this because<br>creators deserved better.</h2>
+      </div>
+      <div style="overflow-x:auto;">
+        <table class="compare-table" aria-label="Platform comparison">
+          <thead>
+            <tr>
+              <th style="text-align:left;">Feature</th>
+              <th style="color:var(--ink-amber)">InkwellMedia</th>
+              <th>Patreon</th>
+              <th>OnlyFans</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Creator revenue share</td><td class="col-ink">85%</td><td class="col-other">88–95%*</td><td class="col-other">80%</td></tr>
+            <tr><td>Instant wallet withdrawals</td><td class="check">&#x2714;</td><td class="cross">&#x2718;</td><td class="cross">&#x2718;</td></tr>
+            <tr><td>Crypto payments (XRP)</td><td class="check">&#x2714;</td><td class="cross">&#x2718;</td><td class="cross">&#x2718;</td></tr>
+            <tr><td>TikTok-style explore feed</td><td class="check">&#x2714;</td><td class="cross">&#x2718;</td><td class="cross">&#x2718;</td></tr>
+            <tr><td>ZAR local pricing</td><td class="check">&#x2714;</td><td class="cross">&#x2718;</td><td class="cross">&#x2718;</td></tr>
+            <tr><td>Free creator application</td><td class="check">&#x2714;</td><td class="check">&#x2714;</td><td class="check">&#x2714;</td></tr>
+            <tr><td>Referral commission program</td><td class="check">&#x2714;</td><td class="cross">&#x2718;</td><td class="cross">&#x2718;</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p style="font-size:11px;color:rgba(255,255,255,0.3);margin-top:12px;text-align:center;">* After platform fees and payment processing. Figures approximate.</p>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-section" aria-labelledby="cta-heading">
+    <div class="ink-container" style="position:relative;z-index:2;">
+      <h2 id="cta-heading">Ready to earn from your craft?</h2>
+      <p>Join 2,400+ creators already building their income on InkwellMedia.</p>
+      <div class="cta-actions">
+        <a href="creator-apply.html" class="cta-btn-dark">Apply as a Creator</a>
+        <a href="how-it-works.html" class="cta-btn-ghost">How it works</a>
+      </div>
+    </div>
+  </section>
+
+  <div id="inkwell-footer-mount"></div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="inkwell-config.js"></script>
+  <script src="inkwell-layout.js"></script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "InkwellMedia",
+    "url": "https://etsymom.github.io/myonlineshop/landing.html",
+    "description": "Creator content subscription platform — build your audience, publish premium content, earn 85% of every subscription.",
+    "potentialAction": { "@type": "SearchAction", "target": "https://etsymom.github.io/myonlineshop/explore.html" }
+  }
+  </script>
+</body>
+</html>

@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FAQ | InkwellMedia</title>
+  <meta name="description" content="Frequently asked questions about InkwellMedia — for creators and fans. Payouts, subscriptions, content policy, and more.">
+  <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://ndfqavpmqahdqpsqndbz.supabase.co" crossorigin>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body { background:var(--ink-parchment); color:var(--ink-aubergine); }
+    .page-hero { background:var(--ink-aubergine);color:var(--ink-white);padding:clamp(100px,12vw,160px) 20px clamp(60px,8vw,100px);text-align:center;position:relative;overflow:hidden; }
+    .blob { position:absolute;border-radius:50%;filter:blur(80px);pointer-events:none; }
+    .b1 { width:500px;height:500px;background:var(--ink-amber);opacity:.1;top:-100px;right:-80px;animation:ink-drift 10s ease-in-out infinite alternate; }
+    .b2 { width:400px;height:400px;background:#7B4FBF;opacity:.15;bottom:-80px;left:-60px;animation:ink-drift 12s ease-in-out infinite alternate-reverse; }
+    .hero-inner { position:relative;z-index:2;max-width:640px;margin:0 auto; }
+
+    .faq-main { padding:clamp(60px,8vw,100px) 20px; }
+    .faq-layout { display:grid;grid-template-columns:220px 1fr;gap:clamp(32px,5vw,64px);max-width:1000px;margin:0 auto;align-items:start; }
+    .faq-nav { position:sticky;top:88px; }
+    .faq-nav-title { font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.1em;color:var(--ink-amber);margin-bottom:14px; }
+    .faq-nav-links { display:flex;flex-direction:column;gap:4px; }
+    .faq-nav-links a { display:block;padding:8px 12px;border-radius:8px;font-size:14px;font-weight:600;color:var(--ink-slate);text-decoration:none;transition:background .15s,color .15s; }
+    .faq-nav-links a:hover,.faq-nav-links a.active { background:var(--ink-slate-light);color:var(--ink-aubergine); }
+
+    .faq-categories { display:flex;flex-direction:column;gap:48px; }
+    .faq-category-title { font-family:'Playfair Display',serif;font-size:22px;font-weight:700;margin-bottom:20px;padding-bottom:12px;border-bottom:2px solid var(--ink-amber); }
+    .faq-list { display:flex;flex-direction:column;gap:4px; }
+    .faq-item { border-radius:12px;overflow:hidden;border:1.5px solid var(--ink-slate-light);background:var(--ink-white); }
+    .faq-q { width:100%;background:none;border:none;text-align:left;padding:16px 20px;font-family:'DM Sans',sans-serif;font-size:15px;font-weight:700;color:var(--ink-aubergine);cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:12px; }
+    .faq-q::after { content:'＋';font-size:18px;color:var(--ink-amber);flex-shrink:0;transition:transform .25s; }
+    .faq-item.open .faq-q::after { transform:rotate(45deg); }
+    .faq-a { display:none;padding:0 20px 16px;font-size:14px;color:var(--ink-slate);line-height:1.75; }
+    .faq-item.open .faq-a { display:block; }
+
+    .faq-still { background:var(--ink-aubergine);border-radius:20px;padding:32px;text-align:center;margin-top:48px;color:var(--ink-white); }
+    .faq-still h3 { font-family:'Playfair Display',serif;font-size:22px;font-weight:700;margin-bottom:8px; }
+    .faq-still p { font-size:14px;color:rgba(255,255,255,.65);margin-bottom:20px; }
+
+    @media(max-width:720px) { .faq-layout { grid-template-columns:1fr; } .faq-nav { display:none; } }
+  </style>
+</head>
+<body>
+  <div id="inkwell-header-mount"></div>
+
+  <section class="page-hero" aria-label="FAQ hero">
+    <div class="blob b1" aria-hidden="true"></div>
+    <div class="blob b2" aria-hidden="true"></div>
+    <div class="hero-inner ink-animate-up">
+      <div class="ink-badge ink-badge-white" style="margin-bottom:20px;display:inline-flex;">Support Centre</div>
+      <h1 class="ink-h1">Frequently asked<br>questions.</h1>
+      <p class="ink-lead" style="color:rgba(255,255,255,.7);max-width:480px;margin:18px auto 0;">Everything you need to know about InkwellMedia — for creators and fans.</p>
+    </div>
+  </section>
+
+  <section class="faq-main">
+    <div class="faq-layout">
+      <nav class="faq-nav" aria-label="FAQ categories">
+        <div class="faq-nav-title">Categories</div>
+        <div class="faq-nav-links">
+          <a href="#getting-started" class="active">Getting Started</a>
+          <a href="#creators">For Creators</a>
+          <a href="#fans">For Fans</a>
+          <a href="#payments">Payments & Payouts</a>
+          <a href="#content">Content Policy</a>
+          <a href="#technical">Technical</a>
+        </div>
+      </nav>
+
+      <div class="faq-categories">
+        <!-- GETTING STARTED -->
+        <div id="getting-started">
+          <div class="faq-category-title">Getting Started</div>
+          <div class="faq-list">
+            <div class="faq-item"><button class="faq-q">What is InkwellMedia?</button><div class="faq-a">InkwellMedia is a creator content subscription platform. Creators publish photos, videos, and other content behind a monthly Creator Pass. Fans subscribe to unlock premium content. Creators keep 85% of every subscription.</div></div>
+            <div class="faq-item"><button class="faq-q">Is InkwellMedia free to use?</button><div class="faq-a">Browsing the Explore feed is completely free. Creating an account is free. Applying as a creator is free. Fans pay for individual Creator Pass subscriptions to unlock premium content.</div></div>
+            <div class="faq-item"><button class="faq-q">Where is InkwellMedia based?</button><div class="faq-a">InkwellMedia was founded in Cape Town, South Africa in 2023. Our primary currency is ZAR but we support multi-currency display for international users.</div></div>
+            <div class="faq-item"><button class="faq-q">How do I create an account?</button><div class="faq-a">Click "Sign In" in the navigation. Enter your email and a password — a verification email will be sent. Once verified, you can access your dashboard, browse creators, and subscribe.</div></div>
+          </div>
+        </div>
+
+        <!-- CREATORS -->
+        <div id="creators">
+          <div class="faq-category-title">For Creators</div>
+          <div class="faq-list">
+            <div class="faq-item"><button class="faq-q">How do I become a creator on InkwellMedia?</button><div class="faq-a">Submit a creator application via the Apply page. We review applications within 24 hours on weekdays. You'll need a creative niche, a brief bio, and a portfolio link. No follower count minimum required.</div></div>
+            <div class="faq-item"><button class="faq-q">How much do creators earn?</button><div class="faq-a">Creators keep 85% of all subscription revenue. Our 15% platform fee covers payment processing — there are no additional charges on top. A creator with 100 subscribers at R150/month earns R12,750/month.</div></div>
+            <div class="faq-item"><button class="faq-q">Can I set my own Creator Pass price?</button><div class="faq-a">Yes. You set your Creator Pass price anywhere from R50 to R500 per month. You can change it at any time. Existing subscribers keep their current rate; new subscribers see the updated price.</div></div>
+            <div class="faq-item"><button class="faq-q">What content types can I upload?</button><div class="faq-a">Images, videos, and mixed albums. Bulk upload is supported. You control which items are free previews (visible in the Explore feed) and which are premium (subscribers only).</div></div>
+            <div class="faq-item"><button class="faq-q">How does the Explore feed work for creators?</button><div class="faq-a">The first 3 media items in every album you upload automatically appear in the platform-wide Explore feed. This gives every creator organic discovery from day one — no paid promotion needed.</div></div>
+            <div class="faq-item"><button class="faq-q">Can I have multiple Creator Pass tiers?</button><div class="faq-a">Currently, each creator has one Creator Pass price. Multi-tier pricing is on our product roadmap and expected in a future update.</div></div>
+          </div>
+        </div>
+
+        <!-- FANS -->
+        <div id="fans">
+          <div class="faq-category-title">For Fans</div>
+          <div class="faq-list">
+            <div class="faq-item"><button class="faq-q">How do I subscribe to a creator?</button><div class="faq-a">Visit a creator's profile page and click "Subscribe." Funds will be deducted from your InkwellMedia wallet. You'll get instant access to all their premium content.</div></div>
+            <div class="faq-item"><button class="faq-q">Can I cancel my subscription?</button><div class="faq-a">Yes, anytime. You retain access until the end of your current billing period. Cancellations are managed from your profile dashboard.</div></div>
+            <div class="faq-item"><button class="faq-q">Can I download content I've subscribed to?</button><div class="faq-a">Yes. Subscribers can download full albums to their device. Downloads are accessible even if your subscription lapses for previously purchased or subscribed content.</div></div>
+            <div class="faq-item"><button class="faq-q">Do I get a refund if I cancel early?</button><div class="faq-a">Subscriptions are non-refundable once content access has been granted, as content is delivered instantly upon subscription. For genuine technical access issues, contact support within 48 hours.</div></div>
+          </div>
+        </div>
+
+        <!-- PAYMENTS -->
+        <div id="payments">
+          <div class="faq-category-title">Payments &amp; Payouts</div>
+          <div class="faq-list">
+            <div class="faq-item"><button class="faq-q">How do I add funds to my wallet?</button><div class="faq-a">From your dashboard, click "Add Funds." Choose EFT (South African bank transfer) or Crypto (XRP). Enter the amount, submit the request, and admin will confirm your deposit within 24 hours (EFT) or 1–4 hours (XRP).</div></div>
+            <div class="faq-item"><button class="faq-q">How do creator payouts work?</button><div class="faq-a">When a subscriber pays, funds appear in your InkwellMedia wallet in real-time. Request a payout from your dashboard. Payouts are processed within 48 hours to your South African bank or XRP wallet address.</div></div>
+            <div class="faq-item"><button class="faq-q">Is there a minimum withdrawal amount?</button><div class="faq-a">No. There is no minimum withdrawal threshold. You can withdraw any amount in your wallet at any time.</div></div>
+            <div class="faq-item"><button class="faq-q">What currencies are supported?</button><div class="faq-a">The platform operates in ZAR. For international users, prices are displayed in your local currency equivalent. Payments are processed in ZAR and XRP.</div></div>
+            <div class="faq-item"><button class="faq-q">How do I save my banking details for payouts?</button><div class="faq-a">Go to your Profile page and fill in your banking details in the payout section. These details are stored securely and used when you request a withdrawal.</div></div>
+          </div>
+        </div>
+
+        <!-- CONTENT POLICY -->
+        <div id="content">
+          <div class="faq-category-title">Content Policy</div>
+          <div class="faq-list">
+            <div class="faq-item"><button class="faq-q">What content is allowed on InkwellMedia?</button><div class="faq-a">Photography, videography, digital art, illustration, music, educational content, fitness, lifestyle, travel, and creative writing. Content must be original and comply with our Terms of Service.</div></div>
+            <div class="faq-item"><button class="faq-q">Is adult content permitted?</button><div class="faq-a">No. Adult or explicit content is strictly prohibited on InkwellMedia. Applications or accounts found violating this policy will be permanently removed without refund.</div></div>
+            <div class="faq-item"><button class="faq-q">Can I upload content I don't own?</button><div class="faq-a">No. All content must be original work that you own or have explicit rights to distribute. Uploading copyrighted material without permission is grounds for immediate account termination.</div></div>
+            <div class="faq-item"><button class="faq-q">How do I report content that violates the policy?</button><div class="faq-a">Use the Contact page or email us at safety@inkwellmedia.co.za with a description and link to the content in question. We review all reports within 24 hours.</div></div>
+          </div>
+        </div>
+
+        <!-- TECHNICAL -->
+        <div id="technical">
+          <div class="faq-category-title">Technical</div>
+          <div class="faq-list">
+            <div class="faq-item"><button class="faq-q">What file formats can I upload?</button><div class="faq-a">Images: JPG, PNG, WebP, GIF. Videos: MP4, MOV, WebM. Maximum individual file size is 500MB for videos and 20MB for images.</div></div>
+            <div class="faq-item"><button class="faq-q">Why won't my video play in the Explore feed?</button><div class="faq-a">Ensure your video is in MP4 format with H.264 encoding. Most smartphones record in a compatible format by default. If issues persist, try re-encoding your video at 720p or 1080p.</div></div>
+            <div class="faq-item"><button class="faq-q">I forgot my password. How do I reset it?</button><div class="faq-a">Visit the <a href="forgot-password.html" style="color:var(--ink-amber);">Forgot Password</a> page, enter your email, and follow the reset link sent to your inbox. Reset links expire after 24 hours.</div></div>
+            <div class="faq-item"><button class="faq-q">The site isn't loading correctly — what should I do?</button><div class="faq-a">Try a hard refresh (Ctrl+Shift+R on Windows, Cmd+Shift+R on Mac). If that doesn't help, clear your browser cache or try a different browser. Contact us if issues persist.</div></div>
+          </div>
+        </div>
+
+        <div class="faq-still">
+          <h3>Still have a question?</h3>
+          <p>Our team typically responds within 4 hours during business hours (SAST).</p>
+          <a href="contact.html" class="ink-btn ink-btn-amber">Contact Support</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div id="inkwell-footer-mount"></div>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="inkwell-config.js"></script>
+  <script src="inkwell-layout.js"></script>
+  <script>
+    document.querySelectorAll('.faq-q').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const item = btn.closest('.faq-item');
+        const isOpen = item.classList.contains('open');
+        document.querySelectorAll('.faq-item.open').forEach(i => i.classList.remove('open'));
+        if (!isOpen) item.classList.add('open');
+      });
+    });
+    // Highlight active nav on scroll
+    const cats = document.querySelectorAll('.faq-categories > div[id]');
+    const navLinks = document.querySelectorAll('.faq-nav-links a');
+    window.addEventListener('scroll', () => {
+      let current = '';
+      cats.forEach(cat => { if (window.scrollY >= cat.offsetTop - 120) current = cat.id; });
+      navLinks.forEach(a => { a.classList.toggle('active', a.getAttribute('href') === '#' + current); });
+    });
+  </script>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+    {"@type":"Question","name":"What is InkwellMedia?","acceptedAnswer":{"@type":"Answer","text":"InkwellMedia is a creator content subscription platform where creators publish premium content and keep 85% of every subscription."}},
+    {"@type":"Question","name":"How much do creators earn?","acceptedAnswer":{"@type":"Answer","text":"Creators keep 85% of all subscription revenue. A creator with 100 subscribers at R150/month earns R12,750/month."}},
+    {"@type":"Question","name":"Is there a minimum withdrawal amount?","acceptedAnswer":{"@type":"Answer","text":"No. There is no minimum withdrawal threshold. Creators can withdraw any amount at any time."}}
+  ]}
+  </script>
+</body>
+</html>

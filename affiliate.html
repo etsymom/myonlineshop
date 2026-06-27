@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Affiliate Program | InkwellMedia</title>
+  <meta name="description" content="Earn commission by referring creators and fans to InkwellMedia. Get your unique link and start earning today.">
+  <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://ndfqavpmqahdqpsqndbz.supabase.co" crossorigin>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body { background:var(--ink-parchment); color:var(--ink-aubergine); }
+    .page-hero { background:var(--ink-aubergine);color:var(--ink-white);padding:clamp(100px,12vw,160px) 20px clamp(60px,8vw,100px);text-align:center;position:relative;overflow:hidden; }
+    .blob { position:absolute;border-radius:50%;filter:blur(90px);pointer-events:none; }
+    .b1 { width:500px;height:500px;background:var(--ink-amber);opacity:.1;top:-100px;right:-80px;animation:ink-drift 10s ease-in-out infinite alternate; }
+    .b2 { width:400px;height:400px;background:#7B4FBF;opacity:.15;bottom:-80px;left:-60px;animation:ink-drift 12s ease-in-out infinite alternate-reverse; }
+    .hero-inner { position:relative;z-index:2;max-width:680px;margin:0 auto; }
+
+    /* HOW IT PAYS */
+    .pays-section { padding:clamp(60px,8vw,110px) 20px; }
+    .pays-grid { display:grid;grid-template-columns:repeat(3,1fr);gap:24px;max-width:1000px;margin:0 auto; }
+    .pays-card { background:var(--ink-white);border-radius:20px;padding:28px;border:1.5px solid var(--ink-slate-light);transition:border-color .2s,transform .2s,box-shadow .2s;text-align:center; }
+    .pays-card:hover { border-color:var(--ink-amber);transform:translateY(-4px);box-shadow:0 14px 36px rgba(45,27,78,.1); }
+    .pays-icon { font-size:40px;margin-bottom:16px; }
+    .pays-pct { font-family:'Playfair Display',serif;font-size:48px;font-weight:900;color:var(--ink-amber);line-height:1;margin-bottom:6px; }
+    .pays-title { font-family:'Playfair Display',serif;font-size:18px;font-weight:700;margin-bottom:8px; }
+    .pays-desc { font-size:14px;color:var(--ink-slate);line-height:1.65; }
+
+    /* STEPS */
+    .steps-section { background:var(--ink-aubergine);color:var(--ink-white);padding:clamp(60px,8vw,110px) 20px; }
+    .steps-row { display:flex;max-width:900px;margin:0 auto;position:relative; }
+    .steps-row::before { content:'';position:absolute;top:32px;left:40px;right:40px;height:2px;background:rgba(255,255,255,.1);z-index:0; }
+    .aff-step { flex:1;text-align:center;position:relative;z-index:1; }
+    .aff-step-num { width:64px;height:64px;border-radius:50%;background:var(--ink-amber);color:var(--ink-aubergine);font-family:'Playfair Display',serif;font-size:22px;font-weight:900;display:flex;align-items:center;justify-content:center;margin:0 auto 18px; }
+    .aff-step-title { font-family:'Playfair Display',serif;font-size:16px;font-weight:700;margin-bottom:8px; }
+    .aff-step-desc { font-size:13px;color:rgba(255,255,255,.6);line-height:1.6;max-width:180px;margin:0 auto; }
+
+    /* DASHBOARD PREVIEW */
+    .dashboard-section { padding:clamp(60px,8vw,100px) 20px; }
+    .dashboard-card { max-width:720px;margin:0 auto;background:var(--ink-white);border-radius:24px;padding:clamp(28px,4vw,48px);box-shadow:0 8px 32px rgba(45,27,78,.1); }
+    .dash-header { display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;margin-bottom:28px; }
+    .dash-title { font-family:'Playfair Display',serif;font-size:22px;font-weight:700; }
+    .dash-stats { display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:28px; }
+    .dash-stat { background:var(--ink-parchment);border-radius:14px;padding:18px;text-align:center; }
+    .dash-stat-num { font-family:'Playfair Display',serif;font-size:28px;font-weight:900;color:var(--ink-aubergine);line-height:1; }
+    .dash-stat-lbl { font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--ink-slate);margin-top:4px; }
+    .link-box { background:var(--ink-parchment);border:2px solid var(--ink-slate-light);border-radius:12px;padding:14px 18px;display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:16px;flex-wrap:wrap; }
+    .link-url { font-size:14px;font-weight:600;color:var(--ink-aubergine);word-break:break-all;flex:1; }
+    .copy-btn { padding:9px 18px;border-radius:10px;border:none;background:var(--ink-amber);color:var(--ink-aubergine);font-family:'DM Sans',sans-serif;font-weight:700;font-size:13px;cursor:pointer;white-space:nowrap;transition:opacity .15s; }
+    .copy-btn:hover { opacity:.85; }
+    .login-prompt { background:var(--ink-slate-light);border-radius:14px;padding:24px;text-align:center; }
+    .login-prompt p { font-size:14px;color:var(--ink-slate);margin-bottom:14px; }
+
+    /* TIERS */
+    .tiers-section { background:var(--ink-parchment-dark);padding:clamp(60px,8vw,100px) 20px; }
+    .tiers-table { max-width:700px;margin:0 auto;border-radius:16px;overflow:hidden;border:1.5px solid var(--ink-slate-light);background:var(--ink-white); }
+    .tiers-table table { width:100%;border-collapse:collapse; }
+    .tiers-table th { background:var(--ink-aubergine);color:var(--ink-white);padding:14px 20px;text-align:left;font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.08em; }
+    .tiers-table td { padding:14px 20px;border-bottom:1px solid var(--ink-slate-light);font-size:14px; }
+    .tiers-table tr:last-child td { border-bottom:none; }
+    .tiers-table tr:hover td { background:var(--ink-parchment); }
+    .tier-highlight { color:var(--ink-amber);font-weight:700; }
+
+    /* CTA */
+    .aff-cta { background:var(--ink-amber);padding:clamp(60px,8vw,100px) 20px;text-align:center; }
+    .aff-cta h2 { font-family:'Playfair Display',serif;font-size:clamp(28px,4vw,52px);font-weight:900;color:var(--ink-aubergine);margin-bottom:14px; }
+    .aff-cta p { font-size:17px;color:rgba(45,27,78,.7);margin-bottom:32px; }
+
+    @media(max-width:720px) { .pays-grid { grid-template-columns:1fr; } .steps-row { flex-direction:column;gap:32px; } .steps-row::before { display:none; } .dash-stats { grid-template-columns:1fr 1fr; } }
+  </style>
+</head>
+<body>
+  <div id="inkwell-header-mount"></div>
+
+  <section class="page-hero" aria-label="Affiliate program hero">
+    <div class="blob b1" aria-hidden="true"></div>
+    <div class="blob b2" aria-hidden="true"></div>
+    <div class="hero-inner ink-animate-up">
+      <div class="ink-badge ink-badge-white" style="margin-bottom:20px;display:inline-flex;">Referral &amp; Affiliate Program</div>
+      <h1 class="ink-h1">Your network is<br>your income.</h1>
+      <p class="ink-lead" style="color:rgba(255,255,255,.7);max-width:520px;margin:18px auto 0;">Earn commission every time someone you refer joins InkwellMedia as a creator or subscribes to a Creator Pass — passively, indefinitely.</p>
+    </div>
+  </section>
+
+  <!-- HOW IT PAYS -->
+  <section class="pays-section" aria-labelledby="pays-heading">
+    <div class="ink-section-header">
+      <div class="ink-overline">Commission Structure</div>
+      <h2 id="pays-heading" class="ink-h2">Earn on every referral.<br>Forever.</h2>
+    </div>
+    <div class="pays-grid">
+      <div class="pays-card">
+        <div class="pays-icon">&#x1F3A8;</div>
+        <div class="pays-pct">10%</div>
+        <div class="pays-title">Creator Referrals</div>
+        <p class="pays-desc">Earn 10% of platform fees generated by every creator you refer — for as long as they remain active. Refer one creator with 100 subscribers at R150/month and earn R225/month passively.</p>
+      </div>
+      <div class="pays-card">
+        <div class="pays-icon">&#x1F464;</div>
+        <div class="pays-pct">5%</div>
+        <div class="pays-title">Fan Referrals</div>
+        <p class="pays-desc">Earn 5% of all subscription fees paid by fans you refer to the platform. If your referred fan subscribes to 3 creators at R150 each, you earn R22.50 per month from that fan alone.</p>
+      </div>
+      <div class="pays-card">
+        <div class="pays-icon">&#x1F4B0;</div>
+        <div class="pays-pct">R0</div>
+        <div class="pays-title">Zero Minimum Payout</div>
+        <p class="pays-desc">Affiliate earnings land in your InkwellMedia wallet just like subscription income. Withdraw anytime via EFT or XRP — no minimum balance required, no waiting period.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- STEPS -->
+  <section class="steps-section" aria-labelledby="aff-steps-heading">
+    <div class="ink-container">
+      <div class="ink-section-header">
+        <div class="ink-overline" style="color:var(--ink-amber)">How to Get Started</div>
+        <h2 id="aff-steps-heading" class="ink-h2" style="color:var(--ink-white)">Four steps to passive income.</h2>
+      </div>
+      <div class="steps-row">
+        <div class="aff-step">
+          <div class="aff-step-num">1</div>
+          <div class="aff-step-title">Create an account</div>
+          <p class="aff-step-desc">Sign up for a free InkwellMedia account if you don't have one already.</p>
+        </div>
+        <div class="aff-step">
+          <div class="aff-step-num">2</div>
+          <div class="aff-step-title">Get your link</div>
+          <p class="aff-step-desc">Your unique referral link is generated automatically in your profile dashboard.</p>
+        </div>
+        <div class="aff-step">
+          <div class="aff-step-num">3</div>
+          <div class="aff-step-title">Share it anywhere</div>
+          <p class="aff-step-desc">Instagram, WhatsApp, YouTube, email — anywhere your audience listens to you.</p>
+        </div>
+        <div class="aff-step">
+          <div class="aff-step-num">4</div>
+          <div class="aff-step-title">Earn every month</div>
+          <p class="aff-step-desc">Commission is calculated and credited to your wallet monthly, automatically.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DASHBOARD PREVIEW -->
+  <section class="dashboard-section" aria-labelledby="aff-dash-heading">
+    <div class="ink-section-header">
+      <div class="ink-overline">Your Affiliate Dashboard</div>
+      <h2 id="aff-dash-heading" class="ink-h2">Track every referral.<br>In real time.</h2>
+    </div>
+    <div class="dashboard-card">
+      <div class="dash-header">
+        <div class="dash-title">Affiliate Overview</div>
+        <span class="ink-badge ink-badge-amber">Live Preview</span>
+      </div>
+      <div class="dash-stats">
+        <div class="dash-stat"><div class="dash-stat-num" id="aff-clicks">—</div><div class="dash-stat-lbl">Link Clicks</div></div>
+        <div class="dash-stat"><div class="dash-stat-num" id="aff-refs">—</div><div class="dash-stat-lbl">Referrals</div></div>
+        <div class="dash-stat"><div class="dash-stat-num" id="aff-earn">—</div><div class="dash-stat-lbl">Earned (ZAR)</div></div>
+      </div>
+      <div id="aff-link-section" style="display:none;">
+        <p style="font-size:13px;font-weight:700;color:var(--ink-slate);margin-bottom:8px;">Your Referral Link</p>
+        <div class="link-box">
+          <div class="link-url" id="aff-link-url">https://etsymom.github.io/myonlineshop/landing.html?ref=loading...</div>
+          <button class="copy-btn" onclick="copyLink()">Copy Link</button>
+        </div>
+        <p style="font-size:12px;color:var(--ink-slate);">Share this link to earn commission on every creator and fan that signs up through it.</p>
+      </div>
+      <div id="aff-login-prompt" class="login-prompt">
+        <p>Sign in to view your affiliate dashboard and get your unique referral link.</p>
+        <a href="index.html" class="ink-btn ink-btn-amber ink-btn-sm">Sign In</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- COMMISSION TIERS -->
+  <section class="tiers-section" aria-labelledby="tiers-heading">
+    <div class="ink-section-header">
+      <div class="ink-overline">Tier Breakdown</div>
+      <h2 id="tiers-heading" class="ink-h2">The more you refer,<br>the more you earn.</h2>
+    </div>
+    <div class="tiers-table">
+      <table aria-label="Affiliate commission tiers">
+        <thead>
+          <tr><th>Monthly Referral Volume</th><th>Creator Referral Rate</th><th>Fan Referral Rate</th><th>Bonus</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>1–5 active referrals</td><td class="tier-highlight">10%</td><td class="tier-highlight">5%</td><td>—</td></tr>
+          <tr><td>6–20 active referrals</td><td class="tier-highlight">12%</td><td class="tier-highlight">6%</td><td>Monthly leaderboard recognition</td></tr>
+          <tr><td>21–50 active referrals</td><td class="tier-highlight">14%</td><td class="tier-highlight">7%</td><td>Creator Pro upgrade (free)</td></tr>
+          <tr><td>51+ active referrals</td><td class="tier-highlight">17%</td><td class="tier-highlight">9%</td><td>Dedicated affiliate manager</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p style="text-align:center;font-size:12px;color:var(--ink-slate);margin-top:16px;">Commission tiers are calculated based on your total active referrals at the end of each month.</p>
+  </section>
+
+  <!-- CTA -->
+  <section class="aff-cta" aria-label="Start earning">
+    <div class="ink-container">
+      <h2>Your referral link is<br>one sign-up away.</h2>
+      <p>Create a free account and start sharing your link today.</p>
+      <div style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap;">
+        <a href="index.html" style="background:var(--ink-aubergine);color:var(--ink-white);padding:15px 34px;border-radius:12px;font-weight:800;font-size:16px;text-decoration:none;display:inline-block;">Get My Referral Link</a>
+        <a href="faq.html" style="background:transparent;color:var(--ink-aubergine);border:2px solid rgba(45,27,78,.3);padding:15px 34px;border-radius:12px;font-weight:800;font-size:16px;text-decoration:none;display:inline-block;">Read the FAQ</a>
+      </div>
+    </div>
+  </section>
+
+  <div id="inkwell-footer-mount"></div>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="inkwell-config.js"></script>
+  <script src="inkwell-layout.js"></script>
+  <script>
+    async function loadAffiliateData() {
+      const sb = supabase.createClient(window.INK_CONFIG.SUPABASE_URL, window.INK_CONFIG.SUPABASE_ANON, { auth: { persistSession: true } });
+      const { data: { session } } = await sb.auth.getSession();
+      if (!session) return;
+      const user = session.user;
+      const refLink = `https://etsymom.github.io/myonlineshop/landing.html?ref=${user.id.slice(0, 8)}`;
+      document.getElementById('aff-link-url').textContent = refLink;
+      document.getElementById('aff-link-section').style.display = 'block';
+      document.getElementById('aff-login-prompt').style.display = 'none';
+      document.getElementById('aff-clicks').textContent = '—';
+      document.getElementById('aff-refs').textContent = '—';
+      document.getElementById('aff-earn').textContent = 'R0.00';
+    }
+    function copyLink() {
+      const url = document.getElementById('aff-link-url').textContent;
+      navigator.clipboard.writeText(url).then(() => {
+        const btn = document.querySelector('.copy-btn');
+        btn.textContent = 'Copied!';
+        setTimeout(() => btn.textContent = 'Copy Link', 2000);
+      });
+    }
+    loadAffiliateData();
+  </script>
+</body>
+</html>

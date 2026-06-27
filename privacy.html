@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Privacy Policy | InkwellMedia</title>
+  <meta name="description" content="InkwellMedia Privacy Policy — how we collect, use, and protect your data.">
+  <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body { background:var(--ink-parchment); color:var(--ink-aubergine); }
+    .legal-hero { background:var(--ink-aubergine);color:var(--ink-white);padding:clamp(80px,10vw,140px) 20px clamp(40px,5vw,70px);text-align:center;position:relative;overflow:hidden; }
+    .lh-blob { position:absolute;border-radius:50%;filter:blur(80px);pointer-events:none; }
+    .lhb1 { width:400px;height:400px;background:var(--ink-amber);opacity:.1;top:-80px;right:-60px; }
+    .lhb2 { width:350px;height:350px;background:#7B4FBF;opacity:.15;bottom:-60px;left:-40px; }
+    .legal-inner-hero { position:relative;z-index:2;max-width:600px;margin:0 auto; }
+    .legal-layout { display:grid;grid-template-columns:220px 1fr;gap:48px;max-width:1000px;margin:0 auto;padding:clamp(48px,6vw,80px) 20px; }
+    .legal-nav { position:sticky;top:88px; }
+    .legal-nav-title { font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.1em;color:var(--ink-amber);margin-bottom:12px; }
+    .legal-nav-links { display:flex;flex-direction:column;gap:4px; }
+    .legal-nav-links a { display:block;padding:7px 12px;border-radius:8px;font-size:13px;font-weight:600;color:var(--ink-slate);text-decoration:none;transition:background .15s,color .15s; }
+    .legal-nav-links a:hover { background:var(--ink-slate-light);color:var(--ink-aubergine); }
+    .legal-content { min-width:0; }
+    .legal-content h2 { font-family:'Playfair Display',serif;font-size:22px;font-weight:700;margin:40px 0 12px;padding-top:8px;border-top:2px solid var(--ink-slate-light); }
+    .legal-content h2:first-child { margin-top:0;border-top:none; }
+    .legal-content p { font-size:15px;line-height:1.8;color:rgba(45,27,78,.82);margin-bottom:14px; }
+    .legal-content ul { padding-left:20px;margin-bottom:14px; }
+    .legal-content ul li { font-size:15px;line-height:1.7;color:rgba(45,27,78,.82);margin-bottom:6px; }
+    .legal-date { font-size:12px;color:var(--ink-slate);margin-bottom:32px; }
+    @media(max-width:720px) { .legal-layout { grid-template-columns:1fr; } .legal-nav { display:none; } }
+  </style>
+</head>
+<body>
+  <div id="inkwell-header-mount"></div>
+  <section class="legal-hero">
+    <div class="lh-blob lhb1" aria-hidden="true"></div>
+    <div class="lh-blob lhb2" aria-hidden="true"></div>
+    <div class="legal-inner-hero">
+      <div class="ink-badge ink-badge-white" style="margin-bottom:16px;display:inline-flex;">Legal</div>
+      <h1 class="ink-h1">Privacy Policy</h1>
+    </div>
+  </section>
+  <div class="legal-layout">
+    <nav class="legal-nav" aria-label="Privacy policy sections">
+      <div class="legal-nav-title">Sections</div>
+      <div class="legal-nav-links">
+        <a href="#collection">Data Collection</a>
+        <a href="#use">How We Use Data</a>
+        <a href="#sharing">Data Sharing</a>
+        <a href="#storage">Storage & Security</a>
+        <a href="#rights">Your Rights</a>
+        <a href="#cookies">Cookies</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </nav>
+    <div class="legal-content">
+      <p class="legal-date">Last updated: June 2026 &nbsp;·&nbsp; Effective immediately</p>
+      <h2 id="collection">1. Data We Collect</h2>
+      <p>InkwellMedia collects information you provide directly to us and data generated through your use of the platform.</p>
+      <ul>
+        <li><strong>Account data:</strong> Email address, password (hashed), first and last name, profile photo, bio.</li>
+        <li><strong>Financial data:</strong> Wallet balance, deposit and payout history, banking details (for payouts).</li>
+        <li><strong>Content data:</strong> Albums, images, videos, and descriptions you upload.</li>
+        <li><strong>Usage data:</strong> Pages visited, features used, device type, browser type, IP address.</li>
+        <li><strong>Transaction data:</strong> Subscription purchases, deposit records, payout requests.</li>
+      </ul>
+      <h2 id="use">2. How We Use Your Data</h2>
+      <p>We use collected data exclusively to operate and improve the InkwellMedia platform.</p>
+      <ul>
+        <li>To authenticate your account and maintain your session securely.</li>
+        <li>To process subscription payments, deposits, and payout requests.</li>
+        <li>To display your content to subscribers and in the Explore feed.</li>
+        <li>To calculate and credit affiliate commissions.</li>
+        <li>To send platform notifications (new subscriber, payout confirmed, etc.).</li>
+        <li>To improve platform features based on aggregate, anonymised usage data.</li>
+      </ul>
+      <p><strong>We do not sell your data to advertisers. We do not use your data for targeted advertising.</strong></p>
+      <h2 id="sharing">3. Data Sharing</h2>
+      <p>We share data only where necessary to operate the platform:</p>
+      <ul>
+        <li><strong>Supabase:</strong> Our database and authentication provider. Data is stored in encrypted Supabase infrastructure.</li>
+        <li><strong>Payment processors:</strong> Financial transaction data is shared with bank or crypto processing partners solely to execute payments.</li>
+        <li><strong>Legal requirements:</strong> We may disclose data if required by South African law or valid legal process.</li>
+      </ul>
+      <p>We do not share your personal data with any third party for marketing or commercial purposes.</p>
+      <h2 id="storage">4. Data Storage & Security</h2>
+      <p>Your data is stored in Supabase infrastructure with industry-standard encryption at rest and in transit (TLS 1.2+). Passwords are hashed using bcrypt and never stored in plain text. Financial transaction data is logged and retained for 7 years as required by South African financial regulations.</p>
+      <p>While we implement strong security practices, no online system is completely immune to security risks. We encourage you to use a strong, unique password and to log out of shared devices.</p>
+      <h2 id="rights">5. Your Rights</h2>
+      <p>Under applicable law, you have the right to:</p>
+      <ul>
+        <li><strong>Access:</strong> Request a copy of the personal data we hold about you.</li>
+        <li><strong>Correction:</strong> Request correction of inaccurate personal data.</li>
+        <li><strong>Deletion:</strong> Request deletion of your account and associated personal data, subject to retention requirements.</li>
+        <li><strong>Portability:</strong> Request your data in a machine-readable format.</li>
+        <li><strong>Objection:</strong> Object to certain types of data processing.</li>
+      </ul>
+      <p>To exercise any of these rights, contact us at <strong>privacy@inkwellmedia.co.za</strong>. We respond to all requests within 30 days.</p>
+      <h2 id="cookies">6. Cookies</h2>
+      <p>InkwellMedia uses a minimal set of cookies necessary to operate the platform. We use session cookies (for authentication) and preference cookies (for language/currency settings). We do not use third-party advertising cookies.</p>
+      <p>You may decline non-essential cookies via the cookie consent banner displayed on your first visit. Declining cookies will not affect core platform functionality.</p>
+      <h2 id="contact">7. Contact & Complaints</h2>
+      <p>For privacy-related questions or complaints, contact our privacy team at <strong>privacy@inkwellmedia.co.za</strong>. If you believe we have not adequately addressed your concern, you may lodge a complaint with the Information Regulator of South Africa.</p>
+    </div>
+  </div>
+  <div id="inkwell-footer-mount"></div>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="inkwell-config.js"></script>
+  <script src="inkwell-layout.js"></script>
+</body>
+</html>

@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>For Creators | InkwellMedia</title>
+  <meta name="description" content="InkwellMedia gives creators the tools to build a paid community, publish premium content, and keep 85% of every subscription. Apply free today.">
+  <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://ndfqavpmqahdqpsqndbz.supabase.co" crossorigin>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body { background: var(--ink-parchment); color: var(--ink-aubergine); }
+
+    /* HERO — full-width dark */
+    .fc-hero {
+      background: var(--ink-aubergine-deep);
+      color: var(--ink-white);
+      min-height: 92vh;
+      display: flex; align-items: center;
+      padding: clamp(80px,10vw,140px) clamp(20px,5vw,80px);
+      position: relative; overflow: hidden;
+    }
+    .fc-hero-blob { position:absolute;border-radius:50%;filter:blur(100px);pointer-events:none; }
+    .fc-hero-blob-1 { width:600px;height:600px;background:var(--ink-amber);opacity:.1;top:-120px;right:-80px;animation:ink-drift 10s ease-in-out infinite alternate; }
+    .fc-hero-blob-2 { width:500px;height:500px;background:#5B2E8F;opacity:.18;bottom:-80px;left:0;animation:ink-drift 14s ease-in-out infinite alternate-reverse; }
+    .fc-hero-inner { position:relative;z-index:2;max-width:640px; }
+    .fc-hero-eyebrow { display:inline-block;background:rgba(245,166,35,0.12);border:1px solid rgba(245,166,35,0.3);border-radius:999px;padding:6px 16px;font-size:12px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-amber);margin-bottom:28px; }
+    .fc-hero h1 { font-family:'Playfair Display',serif;font-size:clamp(40px,6.5vw,80px);font-weight:900;line-height:1.04;margin-bottom:24px; }
+    .fc-hero h1 em { font-style:italic;color:var(--ink-amber); }
+    .fc-hero p { font-size:clamp(16px,1.5vw,19px);color:rgba(255,255,255,0.7);line-height:1.7;margin-bottom:36px;max-width:520px; }
+    .fc-hero-actions { display:flex;gap:14px;flex-wrap:wrap; }
+
+    /* SOCIAL PROOF STRIP */
+    .fc-proof { background:var(--ink-amber);padding:20px; }
+    .fc-proof-inner { display:flex;justify-content:center;gap:clamp(24px,5vw,64px);flex-wrap:wrap;max-width:860px;margin:0 auto;align-items:center; }
+    .fc-proof-item { text-align:center; }
+    .fc-proof-num { font-family:'Playfair Display',serif;font-size:clamp(22px,3vw,36px);font-weight:900;color:var(--ink-aubergine);line-height:1; }
+    .fc-proof-lbl { font-size:11px;font-weight:700;color:rgba(45,27,78,.6);text-transform:uppercase;letter-spacing:.08em;margin-top:3px; }
+
+    /* NICHES */
+    .niches-section { padding:clamp(60px,8vw,110px) 20px;background:var(--ink-parchment); }
+    .niche-grid { display:grid;grid-template-columns:repeat(4,1fr);gap:16px;max-width:1100px;margin:0 auto; }
+    .niche-card {
+      background:var(--ink-white);border-radius:18px;padding:24px 18px;text-align:center;
+      border:1.5px solid transparent;
+      transition:border-color .2s,transform .2s,box-shadow .2s;
+    }
+    .niche-card:hover { border-color:var(--ink-amber);transform:translateY(-3px);box-shadow:0 10px 28px rgba(45,27,78,0.1); }
+    .niche-icon { font-size:36px;margin-bottom:12px; }
+    .niche-name { font-family:'Playfair Display',serif;font-size:17px;font-weight:700;margin-bottom:6px; }
+    .niche-desc { font-size:13px;color:var(--ink-slate);line-height:1.5; }
+
+    /* TOOLS */
+    .tools-section { background:var(--ink-aubergine);color:var(--ink-white);padding:clamp(60px,8vw,120px) 20px; }
+    .tools-grid { display:grid;grid-template-columns:1fr 1fr;gap:24px;max-width:1000px;margin:0 auto; }
+    .tool-card {
+      background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.07);
+      border-radius:18px;padding:28px;
+      transition:background .2s,border-color .2s;
+    }
+    .tool-card:hover { background:rgba(255,255,255,0.08);border-color:rgba(245,166,35,.25); }
+    .tool-icon { font-size:28px;margin-bottom:14px; }
+    .tool-title { font-family:'Playfair Display',serif;font-size:19px;font-weight:700;margin-bottom:8px; }
+    .tool-desc { font-size:14px;color:rgba(255,255,255,.62);line-height:1.65; }
+
+    /* EARNINGS CALC */
+    .calc-section { padding:clamp(60px,8vw,110px) 20px; }
+    .calc-card {
+      max-width:680px;margin:0 auto;
+      background:var(--ink-white);border-radius:24px;
+      padding:clamp(28px,4vw,48px);
+      box-shadow:0 8px 32px rgba(45,27,78,0.1);
+    }
+    .calc-label { font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--ink-slate);margin-bottom:6px;margin-top:20px; }
+    .calc-label:first-child { margin-top:0; }
+    input[type=range] { width:100%;accent-color:var(--ink-amber);height:6px; }
+    .calc-val { font-family:'Playfair Display',serif;font-size:18px;font-weight:700;color:var(--ink-aubergine); }
+    .calc-result {
+      margin-top:28px;background:var(--ink-aubergine);border-radius:16px;padding:24px;
+      display:grid;grid-template-columns:1fr 1fr;gap:16px;text-align:center;
+    }
+    .calc-result-num { font-family:'Playfair Display',serif;font-size:clamp(24px,3vw,36px);font-weight:900;color:var(--ink-amber);line-height:1; }
+    .calc-result-lbl { font-size:12px;font-weight:700;color:rgba(255,255,255,.55);text-transform:uppercase;letter-spacing:.08em;margin-top:4px; }
+
+    /* TESTIMONIALS */
+    .testimonials-section { background:var(--ink-parchment-dark);padding:clamp(60px,8vw,110px) 20px; }
+    .t-grid { display:grid;grid-template-columns:repeat(3,1fr);gap:24px;max-width:1000px;margin:0 auto; }
+    .t-card { background:var(--ink-white);border-radius:18px;padding:26px;box-shadow:0 2px 12px rgba(45,27,78,0.07); }
+    .t-quote { font-size:15px;font-style:italic;color:var(--ink-aubergine);line-height:1.7;margin-bottom:18px; }
+    .t-author { display:flex;align-items:center;gap:12px; }
+    .t-avatar { width:40px;height:40px;border-radius:50%;background:var(--ink-slate-light);display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0; }
+    .t-name { font-weight:700;font-size:14px; }
+    .t-role { font-size:12px;color:var(--ink-slate); }
+
+    /* APPLY CTA */
+    .fc-cta { background:var(--ink-amber);padding:clamp(60px,8vw,110px) 20px;text-align:center; }
+    .fc-cta h2 { font-family:'Playfair Display',serif;font-size:clamp(28px,4.5vw,56px);font-weight:900;color:var(--ink-aubergine);margin-bottom:14px; }
+    .fc-cta p { font-size:17px;color:rgba(45,27,78,.7);margin-bottom:32px; }
+
+    @media(max-width:900px) {
+      .niche-grid { grid-template-columns:repeat(2,1fr); }
+      .tools-grid { grid-template-columns:1fr; }
+      .t-grid { grid-template-columns:1fr; }
+    }
+    @media(max-width:540px) {
+      .niche-grid { grid-template-columns:1fr 1fr; }
+      .calc-result { grid-template-columns:1fr; }
+    }
+  </style>
+</head>
+<body>
+  <div id="inkwell-header-mount"></div>
+
+  <!-- HERO -->
+  <section class="fc-hero" aria-label="For Creators hero">
+    <div class="fc-hero-blob fc-hero-blob-1" aria-hidden="true"></div>
+    <div class="fc-hero-blob fc-hero-blob-2" aria-hidden="true"></div>
+    <div class="fc-hero-inner ink-animate-up">
+      <div class="fc-hero-eyebrow">Built for Creators</div>
+      <h1>Your audience.<br>Your rules.<br><em>Your income.</em></h1>
+      <p>InkwellMedia is a platform where you keep 85% of everything you earn, withdraw anytime, and own your subscriber relationship — no algorithms deciding your fate.</p>
+      <div class="fc-hero-actions">
+        <a href="creator-apply.html" class="ink-btn ink-btn-amber ink-btn-lg">Apply as a Creator — Free</a>
+        <a href="how-it-works.html" class="ink-btn ink-btn-ghost-light">How it works</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROOF STRIP -->
+  <div class="fc-proof" aria-label="Creator statistics">
+    <div class="fc-proof-inner">
+      <div class="fc-proof-item"><div class="fc-proof-num">85%</div><div class="fc-proof-lbl">Revenue to Creator</div></div>
+      <div class="fc-proof-item"><div class="fc-proof-num">48hr</div><div class="fc-proof-lbl">Payout Turnaround</div></div>
+      <div class="fc-proof-item"><div class="fc-proof-num">R0</div><div class="fc-proof-lbl">Withdrawal Minimum</div></div>
+      <div class="fc-proof-item"><div class="fc-proof-num">24hr</div><div class="fc-proof-lbl">Application Review</div></div>
+    </div>
+  </div>
+
+  <!-- NICHES -->
+  <section class="niches-section" aria-labelledby="niches-heading">
+    <div class="ink-section-header">
+      <div class="ink-overline">Your Craft Belongs Here</div>
+      <h2 id="niches-heading" class="ink-h2">Every creative niche<br>has a home on InkwellMedia.</h2>
+    </div>
+    <div class="niche-grid">
+      <div class="niche-card"><div class="niche-icon">&#x1F4F7;</div><div class="niche-name">Photography</div><p class="niche-desc">Portrait, fashion, wildlife, fine art. Sell album access and exclusive shoots.</p></div>
+      <div class="niche-card"><div class="niche-icon">&#x1F3A5;</div><div class="niche-name">Videography</div><p class="niche-desc">Short films, behind-the-scenes, branded content. Monetise your reel.</p></div>
+      <div class="niche-card"><div class="niche-icon">&#x1F58C;&#xFE0F;</div><div class="niche-name">Digital Art</div><p class="niche-desc">Illustration, concept art, motion design. Sell process videos and final files.</p></div>
+      <div class="niche-card"><div class="niche-icon">&#x1F3B5;</div><div class="niche-name">Music</div><p class="niche-desc">Original tracks, sessions, stems. Let your listeners support you directly.</p></div>
+      <div class="niche-card"><div class="niche-icon">&#x1F4D6;</div><div class="niche-name">Education</div><p class="niche-desc">Tutorials, masterclasses, guides. Teach what you know, earn every month.</p></div>
+      <div class="niche-card"><div class="niche-icon">&#x270D;&#xFE0F;</div><div class="niche-name">Writing</div><p class="niche-desc">Fiction, essays, newsletters. Exclusive chapters for your paying readers.</p></div>
+      <div class="niche-card"><div class="niche-icon">&#x1F3CB;&#xFE0F;</div><div class="niche-name">Fitness</div><p class="niche-desc">Training plans, form videos, nutrition guides. Build a subscriber community.</p></div>
+      <div class="niche-card"><div class="niche-icon">&#x2728;</div><div class="niche-name">Lifestyle</div><p class="niche-desc">Travel, food, home — if you have an audience, InkwellMedia helps you monetise it.</p></div>
+    </div>
+  </section>
+
+  <!-- TOOLS -->
+  <section class="tools-section" aria-labelledby="tools-heading">
+    <div class="ink-container">
+      <div class="ink-section-header">
+        <div class="ink-overline" style="color:var(--ink-amber)">Creator Toolkit</div>
+        <h2 id="tools-heading" class="ink-h2" style="color:var(--ink-white)">Everything you need<br>to build and earn.</h2>
+      </div>
+      <div class="tools-grid">
+        <div class="tool-card"><div class="tool-icon">&#x1F4C1;</div><div class="tool-title">Album Studio</div><p class="tool-desc">Upload images and videos in bulk. Organise into albums. Set free previews vs. premium items. Drag-and-drop simplicity with no file size anxiety.</p></div>
+        <div class="tool-card"><div class="tool-icon">&#x1F4CA;</div><div class="tool-title">Creator Analytics</div><p class="tool-desc">See subscriber growth, top-performing albums, wallet balance, and monthly earnings trends in one clean dashboard. No spreadsheets needed.</p></div>
+        <div class="tool-card"><div class="tool-icon">&#x1F4F1;</div><div class="tool-title">Explore Feed Visibility</div><p class="tool-desc">Your first 3 album items appear automatically in the platform-wide Explore feed — a TikTok-style discovery engine that gives every creator organic reach from day one.</p></div>
+        <div class="tool-card"><div class="tool-icon">&#x1F4B0;</div><div class="tool-title">Instant Wallet &amp; Payouts</div><p class="tool-desc">Subscription payments clear to your wallet in real-time. Request a payout anytime via EFT or XRP. No minimums. No 30-day holds. Your money moves when you say so.</p></div>
+        <div class="tool-card"><div class="tool-icon">&#x1F517;</div><div class="tool-title">Shareable Profile Link</div><p class="tool-desc">Every creator gets a clean, shareable URL. Add it to your Instagram bio, TikTok, WhatsApp — anywhere your audience lives. One link to your entire world.</p></div>
+        <div class="tool-card"><div class="tool-icon">&#x1F91D;</div><div class="tool-title">Referral Commission</div><p class="tool-desc">Earn a percentage on every creator or subscriber you refer to InkwellMedia. Your network works for you even when you're not creating. Tracked transparently in your dashboard.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EARNINGS CALCULATOR -->
+  <section class="calc-section" aria-labelledby="calc-heading">
+    <div class="ink-section-header">
+      <div class="ink-overline">Earnings Calculator</div>
+      <h2 id="calc-heading" class="ink-h2">See what you could earn<br>on InkwellMedia.</h2>
+    </div>
+    <div class="calc-card">
+      <div class="calc-label">Monthly subscribers: <span class="calc-val" id="sub-display">50</span></div>
+      <input type="range" id="sub-slider" min="1" max="500" value="50" aria-label="Number of subscribers">
+      <div class="calc-label" style="margin-top:20px;">Creator Pass price: <span class="calc-val" id="price-display">R150</span></div>
+      <input type="range" id="price-slider" min="50" max="500" step="25" value="150" aria-label="Creator Pass price in ZAR">
+      <div class="calc-result" aria-live="polite">
+        <div><div class="calc-result-num" id="gross-earn">R7,500</div><div class="calc-result-lbl">Gross Monthly</div></div>
+        <div><div class="calc-result-num" id="net-earn">R6,375</div><div class="calc-result-lbl">You Keep (85%)</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="testimonials-section" aria-labelledby="testimonials-heading">
+    <div class="ink-section-header">
+      <div class="ink-overline">Creator Voices</div>
+      <h2 id="testimonials-heading" class="ink-h2">What creators say<br>about InkwellMedia.</h2>
+    </div>
+    <div class="t-grid">
+      <div class="t-card">
+        <p class="t-quote">"I made more in my first month on InkwellMedia than I did in six months on other platforms. The 85% cut actually changes what's possible."</p>
+        <div class="t-author"><div class="t-avatar">&#x1F4F8;</div><div><div class="t-name">Leila Osman</div><div class="t-role">Fashion Photographer, Cape Town</div></div></div>
+      </div>
+      <div class="t-card">
+        <p class="t-quote">"The payout system alone was worth switching. I click withdraw on Monday, the money's in my account Wednesday. That's how it should work."</p>
+        <div class="t-author"><div class="t-avatar">&#x1F3A5;</div><div><div class="t-name">Sipho Dlamini</div><div class="t-role">Filmmaker, Johannesburg</div></div></div>
+      </div>
+      <div class="t-card">
+        <p class="t-quote">"The Explore feed is real discovery. I didn't have to pay for ads or beg for shares. Subscribers found me through the platform itself."</p>
+        <div class="t-author"><div class="t-avatar">&#x1F58C;&#xFE0F;</div><div><div class="t-name">Naledi Khumalo</div><div class="t-role">Digital Artist, Durban</div></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="fc-cta" aria-label="Apply as creator">
+    <div class="ink-container">
+      <h2>Your first subscriber<br>is closer than you think.</h2>
+      <p>Apply free. Get approved in 24 hours. Start earning on your terms.</p>
+      <div style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap;">
+        <a href="creator-apply.html" style="background:var(--ink-aubergine);color:var(--ink-white);padding:16px 36px;border-radius:12px;font-weight:800;font-size:17px;text-decoration:none;display:inline-block;">Apply as a Creator</a>
+        <a href="pricing.html" style="background:transparent;color:var(--ink-aubergine);border:2px solid rgba(45,27,78,.3);padding:16px 36px;border-radius:12px;font-weight:800;font-size:17px;text-decoration:none;display:inline-block;">View Pricing</a>
+      </div>
+    </div>
+  </section>
+
+  <div id="inkwell-footer-mount"></div>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="inkwell-config.js"></script>
+  <script src="inkwell-layout.js"></script>
+  <script>
+    const subSlider = document.getElementById('sub-slider');
+    const priceSlider = document.getElementById('price-slider');
+    function updateCalc() {
+      const subs = parseInt(subSlider.value);
+      const price = parseInt(priceSlider.value);
+      const gross = subs * price;
+      const net = gross * 0.85;
+      document.getElementById('sub-display').textContent = subs;
+      document.getElementById('price-display').textContent = 'R' + price;
+      document.getElementById('gross-earn').textContent = 'R' + gross.toLocaleString('en-ZA');
+      document.getElementById('net-earn').textContent = 'R' + net.toLocaleString('en-ZA');
+    }
+    subSlider.addEventListener('input', updateCalc);
+    priceSlider.addEventListener('input', updateCalc);
+  </script>
+</body>
+</html>

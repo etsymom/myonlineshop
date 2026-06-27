@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>How It Works | InkwellMedia</title>
+  <meta name="description" content="Learn how InkwellMedia works for creators and fans. Publish content, set your price, build your community, and get paid in 48 hours.">
+  <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://ndfqavpmqahdqpsqndbz.supabase.co" crossorigin>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body { background: var(--ink-parchment); color: var(--ink-aubergine); }
+
+    .page-hero { background:var(--ink-aubergine);color:var(--ink-white);padding:clamp(100px,12vw,160px) 20px clamp(60px,8vw,100px);text-align:center;position:relative;overflow:hidden; }
+    .page-hero-blob { position:absolute;border-radius:50%;filter:blur(80px);pointer-events:none; }
+    .blob-a { width:500px;height:500px;background:var(--ink-amber);opacity:.1;top:-100px;right:-80px;animation:ink-drift 9s ease-in-out infinite alternate; }
+    .blob-b { width:400px;height:400px;background:#7B4FBF;opacity:.16;bottom:-80px;left:-60px;animation:ink-drift 11s ease-in-out infinite alternate-reverse; }
+    .page-hero-inner { position:relative;z-index:2;max-width:700px;margin:0 auto; }
+
+    /* CREATOR JOURNEY */
+    .journey-section { padding:clamp(60px,8vw,120px) 20px; }
+    .journey-steps { max-width:800px;margin:0 auto;display:flex;flex-direction:column;gap:0; }
+    .journey-step {
+      display:grid;grid-template-columns:80px 1fr;gap:24px;
+      padding:40px 0;border-bottom:1px solid var(--ink-slate-light);
+      align-items:flex-start;
+    }
+    .journey-step:last-child { border-bottom:none; }
+    .journey-step-num {
+      width:64px;height:64px;border-radius:50%;
+      background:var(--ink-amber);color:var(--ink-aubergine);
+      display:flex;align-items:center;justify-content:center;
+      font-family:'Playfair Display',serif;font-size:24px;font-weight:900;
+      flex-shrink:0;
+    }
+    .journey-step-title { font-family:'Playfair Display',serif;font-size:22px;font-weight:700;margin-bottom:10px; }
+    .journey-step-desc { font-size:15px;color:var(--ink-slate);line-height:1.7;margin-bottom:16px; }
+    .journey-step-detail {
+      background:var(--ink-white);border-radius:12px;padding:16px 18px;
+      border-left:3px solid var(--ink-amber);
+      font-size:14px;color:var(--ink-aubergine);line-height:1.6;
+    }
+
+    /* FAN JOURNEY */
+    .fan-section { background:var(--ink-aubergine);color:var(--ink-white);padding:clamp(60px,8vw,120px) 20px; }
+    .fan-cards { display:grid;grid-template-columns:repeat(3,1fr);gap:20px;max-width:1000px;margin:0 auto; }
+    .fan-card {
+      background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.08);
+      border-radius:18px;padding:24px;
+      transition:background .2s,border-color .2s;
+    }
+    .fan-card:hover { background:rgba(255,255,255,0.08);border-color:rgba(245,166,35,0.3); }
+    .fan-icon { font-size:36px;margin-bottom:14px; }
+    .fan-title { font-family:'Playfair Display',serif;font-size:18px;font-weight:700;margin-bottom:8px; }
+    .fan-desc { font-size:14px;color:rgba(255,255,255,0.62);line-height:1.65; }
+
+    /* PAYMENTS */
+    .payments-section { padding:clamp(60px,8vw,120px) 20px;background:var(--ink-parchment-dark); }
+    .payments-grid { display:grid;grid-template-columns:1fr 1fr;gap:clamp(32px,5vw,60px);align-items:center;max-width:1000px;margin:0 auto; }
+    .payment-methods { display:flex;flex-direction:column;gap:14px; }
+    .payment-method {
+      background:var(--ink-white);border-radius:14px;padding:18px 20px;
+      display:flex;align-items:center;gap:14px;
+      border:1.5px solid var(--ink-slate-light);
+      transition:border-color .2s,box-shadow .2s;
+    }
+    .payment-method:hover { border-color:var(--ink-amber);box-shadow:0 4px 16px rgba(245,166,35,0.12); }
+    .payment-icon { font-size:28px;width:48px;text-align:center;flex-shrink:0; }
+    .payment-name { font-weight:700;font-size:15px;margin-bottom:2px; }
+    .payment-detail { font-size:13px;color:var(--ink-slate); }
+
+    /* FAQ ROW */
+    .faq-section { padding:clamp(60px,8vw,100px) 20px; }
+    .faq-list { max-width:720px;margin:0 auto;display:flex;flex-direction:column;gap:4px; }
+    .faq-item { border-radius:12px;overflow:hidden;border:1.5px solid var(--ink-slate-light);background:var(--ink-white); }
+    .faq-q {
+      width:100%;background:none;border:none;text-align:left;
+      padding:18px 20px;font-family:'DM Sans',sans-serif;font-size:15px;font-weight:700;
+      color:var(--ink-aubergine);cursor:pointer;display:flex;justify-content:space-between;align-items:center;
+      gap:12px;
+    }
+    .faq-q::after { content:'＋';font-size:18px;color:var(--ink-amber);flex-shrink:0;transition:transform .25s; }
+    .faq-item.open .faq-q::after { transform:rotate(45deg); }
+    .faq-a { display:none;padding:0 20px 18px;font-size:14px;color:var(--ink-slate);line-height:1.7; }
+    .faq-item.open .faq-a { display:block; }
+
+    /* CTA */
+    .hiw-cta { background:var(--ink-amber);padding:clamp(60px,8vw,100px) 20px;text-align:center; }
+    .hiw-cta h2 { font-family:'Playfair Display',serif;font-size:clamp(28px,4vw,48px);font-weight:900;color:var(--ink-aubergine);margin-bottom:14px; }
+    .hiw-cta p { font-size:17px;color:rgba(45,27,78,0.7);margin-bottom:32px; }
+
+    @media(max-width:780px) {
+      .fan-cards { grid-template-columns:1fr; }
+      .payments-grid { grid-template-columns:1fr; }
+      .journey-step { grid-template-columns:1fr;gap:12px; }
+      .journey-step-num { width:48px;height:48px;font-size:18px; }
+    }
+  </style>
+</head>
+<body>
+  <div id="inkwell-header-mount"></div>
+
+  <section class="page-hero" aria-label="How InkwellMedia works">
+    <div class="page-hero-blob blob-a" aria-hidden="true"></div>
+    <div class="page-hero-blob blob-b" aria-hidden="true"></div>
+    <div class="page-hero-inner ink-animate-up">
+      <div class="ink-badge ink-badge-white" style="margin-bottom:24px;display:inline-flex;">Simple by Design</div>
+      <h1 class="ink-h1">How InkwellMedia<br>works</h1>
+      <p class="ink-lead" style="color:rgba(255,255,255,0.7);max-width:520px;margin:20px auto 0;">For creators and fans, InkwellMedia is the most straightforward creator economy platform you'll ever use.</p>
+    </div>
+  </section>
+
+  <!-- CREATOR JOURNEY -->
+  <section class="journey-section" aria-labelledby="creator-journey">
+    <div style="max-width:800px;margin:0 auto;">
+      <div class="ink-section-header" style="text-align:left;max-width:100%;margin-bottom:48px;">
+        <div class="ink-overline">For Creators</div>
+        <h2 id="creator-journey" class="ink-h2">From zero to earning<br>in under an hour.</h2>
+      </div>
+      <div class="journey-steps">
+        <div class="journey-step">
+          <div class="journey-step-num">1</div>
+          <div>
+            <div class="journey-step-title">Apply and get approved</div>
+            <p class="journey-step-desc">Fill out a short application — your niche, a brief bio, and what type of content you create. We review every application within 24 hours. Once approved, your creator profile is live immediately.</p>
+            <div class="journey-step-detail">No follower count minimum. No existing platform required. We accept photographers, filmmakers, artists, educators, musicians, and more.</div>
+          </div>
+        </div>
+        <div class="journey-step">
+          <div class="journey-step-num">2</div>
+          <div>
+            <div class="journey-step-title">Build your profile and upload content</div>
+            <p class="journey-step-desc">Set your cover banner, avatar, and bio. Then upload your first album — images, videos, or a mix. Choose which items are free previews and which are locked behind your Creator Pass.</p>
+            <div class="journey-step-detail">First 3 items in every album appear as free previews in the Explore feed automatically — giving your content organic reach from day one.</div>
+          </div>
+        </div>
+        <div class="journey-step">
+          <div class="journey-step-num">3</div>
+          <div>
+            <div class="journey-step-title">Set your Creator Pass price</div>
+            <p class="journey-step-desc">Your Creator Pass is the monthly subscription fans pay to unlock all your premium content. You set the price — anything from R50 to R500 per month. You can change it at any time.</p>
+            <div class="journey-step-detail">Subscribers who joined at an old price keep their rate. New subscribers see your current price. No complicated tiers unless you want them.</div>
+          </div>
+        </div>
+        <div class="journey-step">
+          <div class="journey-step-num">4</div>
+          <div>
+            <div class="journey-step-title">Share your profile link and grow</div>
+            <p class="journey-step-desc">Every creator gets a unique profile URL. Share it on Instagram, TikTok, WhatsApp — wherever your audience lives. Your Explore feed presence brings in organic discovery on top.</p>
+            <div class="journey-step-detail">Use your referral link to earn commission on every new creator or subscriber you bring to InkwellMedia. Your network becomes a second income stream.</div>
+          </div>
+        </div>
+        <div class="journey-step">
+          <div class="journey-step-num">5</div>
+          <div>
+            <div class="journey-step-title">Get paid — 85% is yours</div>
+            <p class="journey-step-desc">When a fan subscribes, payment goes directly into your InkwellMedia wallet. You keep 85%. Withdraw to your bank via EFT or to a crypto wallet via XRP — within 48 hours, no minimums.</p>
+            <div class="journey-step-detail">No 30-day payment holds. No minimum withdrawal threshold. Your money is yours the moment it's confirmed.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAN JOURNEY -->
+  <section class="fan-section" aria-labelledby="fan-journey">
+    <div class="ink-container">
+      <div class="ink-section-header">
+        <div class="ink-overline" style="color:var(--ink-amber)">For Fans &amp; Subscribers</div>
+        <h2 id="fan-journey" class="ink-h2" style="color:var(--ink-white)">Supporting creators<br>has never been this easy.</h2>
+      </div>
+      <div class="fan-cards">
+        <div class="fan-card">
+          <div class="fan-icon">&#x1F50D;</div>
+          <div class="fan-title">Discover for free</div>
+          <p class="fan-desc">Browse the Explore feed — a TikTok-style vertical video feed of free preview content from creators across the platform. No account required to watch free previews.</p>
+        </div>
+        <div class="fan-card">
+          <div class="fan-icon">&#x1F511;</div>
+          <div class="fan-title">Subscribe to unlock</div>
+          <p class="fan-desc">Found a creator you love? Subscribe with your Creator Pass for one flat monthly fee. Instant access to every piece of premium content they've ever posted.</p>
+        </div>
+        <div class="fan-card">
+          <div class="fan-icon">&#x1F4E5;</div>
+          <div class="fan-title">Download what you love</div>
+          <p class="fan-desc">Subscribers can download full albums directly to their device. Your downloads are yours even if your subscription lapses — no file hostage policies.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PAYMENT METHODS -->
+  <section class="payments-section" aria-labelledby="payments-heading">
+    <div class="payments-grid">
+      <div>
+        <div class="ink-overline">Payments &amp; Payouts</div>
+        <h2 id="payments-heading" class="ink-h2" style="margin-bottom:16px;">Multiple ways to<br>fund and withdraw.</h2>
+        <p style="font-size:15px;color:var(--ink-slate);line-height:1.7;">We built InkwellMedia with local financial infrastructure in mind. Whether you're a creator in Johannesburg or a subscriber in Lagos, we have a payment method that works for you.</p>
+      </div>
+      <div class="payment-methods">
+        <div class="payment-method">
+          <div class="payment-icon">&#x1F3E6;</div>
+          <div>
+            <div class="payment-name">EFT Bank Transfer (ZAR)</div>
+            <div class="payment-detail">South African bank accounts. Manual confirmation within 24 hrs.</div>
+          </div>
+        </div>
+        <div class="payment-method">
+          <div class="payment-icon">&#x1FA99;</div>
+          <div>
+            <div class="payment-name">Crypto — XRP</div>
+            <div class="payment-detail">Send XRP equivalent to your ZAR amount. Confirmed within 1–4 hrs.</div>
+          </div>
+        </div>
+        <div class="payment-method">
+          <div class="payment-icon">&#x1F4B3;</div>
+          <div>
+            <div class="payment-name">Card Payments (Coming Soon)</div>
+            <div class="payment-detail">Visa &amp; Mastercard direct checkout — in active development.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- QUICK FAQ -->
+  <section class="faq-section" aria-labelledby="faq-heading">
+    <div style="max-width:720px;margin:0 auto;">
+      <div class="ink-section-header" style="text-align:left;max-width:100%;margin-bottom:36px;">
+        <div class="ink-overline">Quick Answers</div>
+        <h2 id="faq-heading" class="ink-h2">Common questions</h2>
+      </div>
+      <div class="faq-list">
+        <div class="faq-item">
+          <button class="faq-q" id="fq1">How long does approval take?</button>
+          <div class="faq-a">Applications are reviewed within 24 hours on weekdays. You'll receive an email confirmation once your profile is live.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" id="fq2">Can I change my Creator Pass price?</button>
+          <div class="faq-a">Yes, at any time. Existing subscribers keep their current rate. New subscribers see your new price immediately.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" id="fq3">What's the minimum withdrawal amount?</button>
+          <div class="faq-a">There is no minimum. If you have R1 in your wallet, you can withdraw R1. We believe your money should be accessible immediately.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" id="fq4">What content is allowed on InkwellMedia?</button>
+          <div class="faq-a">Photography, videography, digital art, music, educational content, illustration, and creative writing. Adult content is not permitted. See our full content policy in our Terms of Service.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" id="fq5">Do subscribers get refunds?</button>
+          <div class="faq-a">Subscriptions are non-refundable once access has been granted, as content is delivered instantly. If there is a technical error preventing access, contact our support team within 48 hours.</div>
+        </div>
+      </div>
+      <div style="text-align:center;margin-top:28px;">
+        <a href="faq.html" class="ink-btn ink-btn-ghost-dark">View full FAQ</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="hiw-cta" aria-label="Get started">
+    <div class="ink-container">
+      <h2>Ready to get started?</h2>
+      <p>Apply as a creator today. Free to join, no commitment required.</p>
+      <div style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap;">
+        <a href="creator-apply.html" style="background:var(--ink-aubergine);color:var(--ink-white);padding:15px 32px;border-radius:12px;font-weight:800;font-size:16px;text-decoration:none;transition:opacity .15s;" onmouseover="this.style.opacity='.85'" onmouseout="this.style.opacity='1'">Apply as a Creator</a>
+        <a href="pricing.html" style="background:transparent;color:var(--ink-aubergine);border:2px solid rgba(45,27,78,.3);padding:15px 32px;border-radius:12px;font-weight:800;font-size:16px;text-decoration:none;">See Pricing</a>
+      </div>
+    </div>
+  </section>
+
+  <div id="inkwell-footer-mount"></div>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="inkwell-config.js"></script>
+  <script src="inkwell-layout.js"></script>
+  <script>
+    document.querySelectorAll('.faq-q').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const item = btn.closest('.faq-item');
+        const isOpen = item.classList.contains('open');
+        document.querySelectorAll('.faq-item.open').forEach(i => i.classList.remove('open'));
+        if (!isOpen) item.classList.add('open');
+      });
+    });
+  </script>
+</body>
+</html>

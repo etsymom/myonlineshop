@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Payment Failed | InkwellMedia</title>
+  <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body { background: var(--ink-parchment); color: var(--ink-aubergine); display: flex; flex-direction: column; min-height: 100vh; }
+    .status-container { flex: 1; display: flex; align-items: center; justify-content: center; padding: 40px 20px; }
+    .status-card { background: var(--ink-white); border-radius: 24px; padding: 48px; width: 100%; max-width: 480px; box-shadow: 0 8px 32px rgba(45,27,78,0.08); text-align: center; border-top: 6px solid var(--ink-danger); }
+    .status-icon { width: 80px; height: 80px; border-radius: 50%; background: #FEF0F2; color: #9B1825; display: flex; align-items: center; justify-content: center; font-size: 40px; margin: 0 auto 24px; }
+    .status-card h1 { font-family: 'Playfair Display', serif; font-size: 32px; font-weight: 900; margin-bottom: 12px; }
+    .status-card p { font-size: 15px; color: var(--ink-slate); margin-bottom: 32px; line-height: 1.6; }
+    .actions { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+    .status-btn { display: inline-block; padding: 14px 32px; background: var(--ink-aubergine); color: var(--ink-white); border-radius: 12px; font-weight: 800; font-size: 16px; text-decoration: none; transition: opacity 0.15s; }
+    .status-btn:hover { opacity: 0.88; }
+    .ghost-btn { display: inline-block; padding: 14px 32px; background: transparent; color: var(--ink-aubergine); border: 2px solid var(--ink-slate-light); border-radius: 12px; font-weight: 800; font-size: 16px; text-decoration: none; transition: background 0.15s; }
+    .ghost-btn:hover { background: var(--ink-slate-light); }
+  </style>
+</head>
+<body>
+  <div id="inkwell-header-mount"></div>
+
+  <div class="status-container">
+    <div class="status-card ink-animate-up">
+      <div class="status-icon">&#x2718;</div>
+      <h1>Payment Failed</h1>
+      <p>We couldn't process your payment. Please check your payment details or try a different payment method.</p>
+      <div class="actions">
+        <button onclick="window.history.back()" class="status-btn">Try Again</button>
+        <a href="contact.html" class="ghost-btn">Contact Support</a>
+      </div>
+    </div>
+  </div>
+
+  <div id="inkwell-footer-mount"></div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="inkwell-config.js"></script>
+  <script src="inkwell-layout.js"></script>
+</body>
+</html>

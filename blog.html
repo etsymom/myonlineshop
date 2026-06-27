@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blog | InkwellMedia</title>
+  <meta name="description" content="Creator tips, platform news, and insights from the InkwellMedia team and community.">
+  <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body { background:var(--ink-parchment); color:var(--ink-aubergine); }
+    .page-hero { background:var(--ink-aubergine);color:var(--ink-white);padding:clamp(100px,12vw,160px) 20px clamp(60px,8vw,80px);text-align:center;position:relative;overflow:hidden; }
+    .blob { position:absolute;border-radius:50%;filter:blur(90px);pointer-events:none; }
+    .b1 { width:500px;height:500px;background:var(--ink-amber);opacity:.1;top:-100px;right:-80px;animation:ink-drift 10s ease-in-out infinite alternate; }
+    .b2 { width:400px;height:400px;background:#7B4FBF;opacity:.15;bottom:-80px;left:-60px;animation:ink-drift 12s ease-in-out infinite alternate-reverse; }
+    .hero-inner { position:relative;z-index:2;max-width:640px;margin:0 auto; }
+
+    /* CATEGORIES */
+    .blog-cats { padding:32px 20px;background:var(--ink-white);border-bottom:1px solid var(--ink-slate-light); }
+    .blog-cats-inner { display:flex;gap:8px;flex-wrap:wrap;max-width:1100px;margin:0 auto; }
+    .cat-btn { padding:8px 18px;border-radius:999px;border:1.5px solid var(--ink-slate-light);background:transparent;font-family:'DM Sans',sans-serif;font-size:13px;font-weight:700;color:var(--ink-slate);cursor:pointer;transition:all .15s; }
+    .cat-btn:hover,.cat-btn.active { background:var(--ink-aubergine);border-color:var(--ink-aubergine);color:var(--ink-white); }
+
+    /* FEATURED POST */
+    .blog-main { padding:clamp(48px,6vw,80px) 20px; }
+    .blog-inner { max-width:1100px;margin:0 auto; }
+    .featured-post {
+      display:grid;grid-template-columns:1fr 1fr;gap:clamp(32px,5vw,56px);align-items:center;
+      background:var(--ink-white);border-radius:24px;padding:clamp(28px,4vw,48px);
+      box-shadow:0 4px 20px rgba(45,27,78,.08);margin-bottom:48px;
+      border:1.5px solid transparent;transition:border-color .2s;
+    }
+    .featured-post:hover { border-color:var(--ink-amber); }
+    .featured-img { height:280px;background:var(--ink-aubergine);border-radius:16px;display:flex;align-items:center;justify-content:center;font-size:72px;position:relative;overflow:hidden; }
+    .featured-img::before { content:'';position:absolute;inset:0;background:radial-gradient(circle at 30% 40%,rgba(245,166,35,.15) 0%,transparent 60%); }
+    .featured-badge { display:inline-flex;align-items:center;gap:6px;background:rgba(245,166,35,.15);border:1px solid rgba(245,166,35,.3);border-radius:999px;padding:5px 12px;font-size:11px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-amber-dark);margin-bottom:14px; }
+    .featured-title { font-family:'Playfair Display',serif;font-size:clamp(20px,2.5vw,30px);font-weight:900;line-height:1.2;margin-bottom:12px; }
+    .featured-excerpt { font-size:14px;color:var(--ink-slate);line-height:1.7;margin-bottom:18px; }
+    .post-meta { display:flex;align-items:center;gap:14px;font-size:12px;color:var(--ink-slate);flex-wrap:wrap; }
+    .post-meta-author { font-weight:700;color:var(--ink-aubergine); }
+
+    /* POSTS GRID */
+    .posts-grid { display:grid;grid-template-columns:repeat(3,1fr);gap:24px; }
+    .post-card {
+      background:var(--ink-white);border-radius:18px;overflow:hidden;
+      box-shadow:0 2px 12px rgba(45,27,78,.07);
+      border:1.5px solid transparent;transition:border-color .2s,transform .2s,box-shadow .2s;
+    }
+    .post-card:hover { border-color:var(--ink-amber);transform:translateY(-3px);box-shadow:0 12px 32px rgba(45,27,78,.1); }
+    .post-card-img { height:160px;background:var(--ink-aubergine);display:flex;align-items:center;justify-content:center;font-size:48px;position:relative;overflow:hidden; }
+    .post-card-img::before { content:'';position:absolute;inset:0;background:radial-gradient(circle at 50% 50%,rgba(245,166,35,.1) 0%,transparent 70%); }
+    .post-card-body { padding:20px; }
+    .post-cat { font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.08em;color:var(--ink-amber);margin-bottom:8px; }
+    .post-title { font-family:'Playfair Display',serif;font-size:17px;font-weight:700;line-height:1.3;margin-bottom:8px; }
+    .post-excerpt { font-size:13px;color:var(--ink-slate);line-height:1.6;margin-bottom:12px; }
+    .post-footer { display:flex;justify-content:space-between;align-items:center;font-size:11px;color:var(--ink-slate); }
+    .post-read { font-size:13px;font-weight:700;color:var(--ink-aubergine);text-decoration:none;transition:color .15s; }
+    .post-read:hover { color:var(--ink-amber); }
+
+    /* NEWSLETTER */
+    .newsletter-section { background:var(--ink-aubergine);padding:clamp(48px,6vw,80px) 20px;text-align:center;color:var(--ink-white);margin-top:48px; }
+    .newsletter-inner { max-width:520px;margin:0 auto; }
+    .newsletter-inner h2 { font-family:'Playfair Display',serif;font-size:clamp(24px,3vw,36px);font-weight:900;margin-bottom:10px; }
+    .newsletter-inner p { font-size:15px;color:rgba(255,255,255,.65);margin-bottom:24px; }
+    .newsletter-form { display:flex;gap:10px;flex-wrap:wrap;justify-content:center; }
+    .newsletter-input { flex:1;min-width:200px;padding:13px 16px;border-radius:10px;border:none;font-family:'DM Sans',sans-serif;font-size:14px;background:rgba(255,255,255,.1);color:var(--ink-white);outline:none;border:1.5px solid rgba(255,255,255,.15); }
+    .newsletter-input::placeholder { color:rgba(255,255,255,.45); }
+    .newsletter-input:focus { border-color:var(--ink-amber); }
+    .newsletter-btn { padding:13px 24px;border-radius:10px;border:none;background:var(--ink-amber);color:var(--ink-aubergine);font-family:'DM Sans',sans-serif;font-weight:900;font-size:14px;cursor:pointer;transition:opacity .15s;white-space:nowrap; }
+    .newsletter-btn:hover { opacity:.88; }
+
+    @media(max-width:900px) { .featured-post { grid-template-columns:1fr; } .posts-grid { grid-template-columns:repeat(2,1fr); } }
+    @media(max-width:580px) { .posts-grid { grid-template-columns:1fr; } }
+  </style>
+</head>
+<body>
+  <div id="inkwell-header-mount"></div>
+
+  <section class="page-hero" aria-label="Blog hero">
+    <div class="blob b1" aria-hidden="true"></div>
+    <div class="blob b2" aria-hidden="true"></div>
+    <div class="hero-inner ink-animate-up">
+      <div class="ink-badge ink-badge-white" style="margin-bottom:20px;display:inline-flex;">The InkwellMedia Journal</div>
+      <h1 class="ink-h1">Stories, strategies,<br>and creator insights.</h1>
+      <p class="ink-lead" style="color:rgba(255,255,255,.7);margin:16px auto 0;max-width:480px;">Tips for growing your creator business, platform updates, and deep-dives into the creator economy.</p>
+    </div>
+  </section>
+
+  <!-- CATEGORIES -->
+  <div class="blog-cats" aria-label="Blog categories">
+    <div class="blog-cats-inner">
+      <button class="cat-btn active" onclick="filterCat('all', this)">All Posts</button>
+      <button class="cat-btn" onclick="filterCat('creator-tips', this)">Creator Tips</button>
+      <button class="cat-btn" onclick="filterCat('platform', this)">Platform News</button>
+      <button class="cat-btn" onclick="filterCat('creator-economy', this)">Creator Economy</button>
+      <button class="cat-btn" onclick="filterCat('success-stories', this)">Success Stories</button>
+      <button class="cat-btn" onclick="filterCat('how-to', this)">How-To Guides</button>
+    </div>
+  </div>
+
+  <div class="blog-main">
+    <div class="blog-inner">
+      <!-- FEATURED -->
+      <article class="featured-post" data-cat="creator-economy">
+        <div class="featured-img" aria-hidden="true">&#x1F4B0;</div>
+        <div>
+          <div class="featured-badge">Featured</div>
+          <h2 class="featured-title">Why 1,000 true fans beats 1,000,000 followers — every time.</h2>
+          <p class="featured-excerpt">The creator economy has a dirty secret: follower counts are almost meaningless as a proxy for income. Here's the data, the math, and how InkwellMedia creators are building more sustainable income with smaller, paying audiences than mega-influencers with millions of free followers.</p>
+          <div class="post-meta">
+            <span class="post-meta-author">Naledi Khumalo</span>
+            <span>&#x2022; 8 min read</span>
+            <span>&#x2022; June 2026</span>
+          </div>
+          <a href="#" class="ink-btn ink-btn-aubergine ink-btn-sm" style="margin-top:18px;display:inline-flex;">Read Article</a>
+        </div>
+      </article>
+
+      <!-- POSTS GRID -->
+      <div class="posts-grid" id="posts-grid">
+        <article class="post-card" data-cat="creator-tips">
+          <div class="post-card-img" style="background:linear-gradient(135deg,#2D1B4E,#7B4FBF);">&#x1F4F7;</div>
+          <div class="post-card-body">
+            <div class="post-cat">Creator Tips</div>
+            <div class="post-title">How to set your Creator Pass price without underselling yourself.</div>
+            <p class="post-excerpt">Pricing your creative work is one of the hardest things about being a creator. Here's a framework that actually works.</p>
+            <div class="post-footer"><span>5 min read · May 2026</span><a href="#" class="post-read">Read →</a></div>
+          </div>
+        </article>
+        <article class="post-card" data-cat="creator-economy">
+          <div class="post-card-img" style="background:linear-gradient(135deg,#1A4A3A,#059669);">&#x1F4CA;</div>
+          <div class="post-card-body">
+            <div class="post-cat">Creator Economy</div>
+            <div class="post-title">South Africa's creator economy by the numbers: 2026 report.</div>
+            <p class="post-excerpt">The local creator economy is growing faster than the global average. Here's what the data shows and what it means for South African creators.</p>
+            <div class="post-footer"><span>12 min read · April 2026</span><a href="#" class="post-read">Read →</a></div>
+          </div>
+        </article>
+        <article class="post-card" data-cat="success-stories">
+          <div class="post-card-img" style="background:linear-gradient(135deg,#4A1A1A,#D4891A);">&#x1F3A8;</div>
+          <div class="post-card-body">
+            <div class="post-cat">Success Story</div>
+            <div class="post-title">From 0 to R12,000/month: Leila's first year on InkwellMedia.</div>
+            <p class="post-excerpt">Fashion photographer Leila Osman shares exactly how she built a subscriber base of 83 fans in 12 months without paid advertising.</p>
+            <div class="post-footer"><span>7 min read · April 2026</span><a href="#" class="post-read">Read →</a></div>
+          </div>
+        </article>
+        <article class="post-card" data-cat="how-to">
+          <div class="post-card-img" style="background:linear-gradient(135deg,#1A2A4A,#3B6FD4);">&#x1F4E4;</div>
+          <div class="post-card-body">
+            <div class="post-cat">How-To Guide</div>
+            <div class="post-title">How to upload your first album on InkwellMedia: a complete guide.</div>
+            <p class="post-excerpt">Step-by-step walkthrough for new creators — from profile setup to your first album going live in the Explore feed.</p>
+            <div class="post-footer"><span>4 min read · March 2026</span><a href="#" class="post-read">Read →</a></div>
+          </div>
+        </article>
+        <article class="post-card" data-cat="platform">
+          <div class="post-card-img" style="background:linear-gradient(135deg,#2D1B4E,#F5A623);">&#x1F6E0;&#xFE0F;</div>
+          <div class="post-card-body">
+            <div class="post-cat">Platform News</div>
+            <div class="post-title">Introducing Creator Pro: advanced tools for established creators.</div>
+            <p class="post-excerpt">We're building our Creator Pro tier with advanced analytics, priority Explore placement, and a reduced platform fee. Here's what's coming.</p>
+            <div class="post-footer"><span>3 min read · March 2026</span><a href="#" class="post-read">Read →</a></div>
+          </div>
+        </article>
+        <article class="post-card" data-cat="creator-tips">
+          <div class="post-card-img" style="background:linear-gradient(135deg,#2A1A3A,#8B5CF6);">&#x1F9F2;</div>
+          <div class="post-card-body">
+            <div class="post-cat">Creator Tips</div>
+            <div class="post-title">The free preview strategy: how to convert browsers into subscribers.</div>
+            <p class="post-excerpt">Your free preview content is your most powerful sales tool. Here's how top creators use the Explore feed to consistently convert new subscribers.</p>
+            <div class="post-footer"><span>6 min read · February 2026</span><a href="#" class="post-read">Read →</a></div>
+          </div>
+        </article>
+      </div>
+    </div>
+
+    <!-- NEWSLETTER -->
+    <section class="newsletter-section" aria-labelledby="newsletter-heading">
+      <div class="newsletter-inner">
+        <h2 id="newsletter-heading">Get creator insights<br>in your inbox.</h2>
+        <p>New articles, platform updates, and creator economy data — every two weeks. No spam, ever.</p>
+        <form class="newsletter-form" onsubmit="submitNewsletter(event)">
+          <input class="newsletter-input" type="email" id="nl-email" placeholder="your@email.com" required aria-label="Email address">
+          <button class="newsletter-btn" type="submit">Subscribe</button>
+        </form>
+        <p id="nl-msg" style="margin-top:14px;font-size:13px;display:none;"></p>
+      </div>
+    </section>
+  </div>
+
+  <div id="inkwell-footer-mount"></div>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="inkwell-config.js"></script>
+  <script src="inkwell-layout.js"></script>
+  <script>
+    function filterCat(cat, btn) {
+      document.querySelectorAll('.cat-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      document.querySelectorAll('#posts-grid .post-card').forEach(card => {
+        card.style.display = (cat === 'all' || card.dataset.cat === cat) ? 'block' : 'none';
+      });
+    }
+    function submitNewsletter(e) {
+      e.preventDefault();
+      const msg = document.getElementById('nl-msg');
+      msg.textContent = '&#x2705; You\'re subscribed! Watch your inbox.';
+      msg.style.color = '#2EAD7B';
+      msg.style.display = 'block';
+      document.getElementById('nl-email').value = '';
+    }
+  </script>
+</body>
+</html>

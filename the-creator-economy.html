@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Creator Economy | InkwellMedia</title>
+  <meta name="description" content="The creator economy is the fastest-growing economic movement of our time. Explore the data, the trends, and why independent platforms are winning.">
+  <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://ndfqavpmqahdqpsqndbz.supabase.co" crossorigin>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body { background:var(--ink-aubergine); color:var(--ink-white); }
+
+    /* HERO */
+    .ec-hero { min-height:88vh;display:flex;align-items:center;padding:clamp(100px,12vw,160px) clamp(20px,5vw,80px) clamp(60px,8vw,100px);position:relative;overflow:hidden; }
+    .ec-blob { position:absolute;border-radius:50%;filter:blur(100px);pointer-events:none; }
+    .ec-b1 { width:600px;height:600px;background:var(--ink-amber);opacity:.1;top:-120px;right:-80px;animation:ink-drift 10s ease-in-out infinite alternate; }
+    .ec-b2 { width:500px;height:500px;background:#5B2E8F;opacity:.18;bottom:-80px;left:-60px;animation:ink-drift 14s ease-in-out infinite alternate-reverse; }
+    .ec-hero-inner { position:relative;z-index:2;max-width:800px; }
+    .ec-hero h1 { font-family:'Playfair Display',serif;font-size:clamp(42px,7vw,90px);font-weight:900;line-height:1.02;margin-bottom:24px; }
+    .ec-hero h1 em { font-style:italic;color:var(--ink-amber); }
+    .ec-hero p { font-size:clamp(16px,1.5vw,20px);color:rgba(255,255,255,.7);line-height:1.7;max-width:580px;margin-bottom:32px; }
+
+    /* STATS BAND */
+    .ec-stats { background:rgba(255,255,255,.04);border-top:1px solid rgba(255,255,255,.07);border-bottom:1px solid rgba(255,255,255,.07);padding:36px 20px; }
+    .ec-stats-row { display:flex;justify-content:center;gap:clamp(32px,6vw,80px);flex-wrap:wrap;max-width:900px;margin:0 auto; }
+    .ec-stat { text-align:center; }
+    .ec-stat-num { font-family:'Playfair Display',serif;font-size:clamp(32px,4.5vw,52px);font-weight:900;color:var(--ink-amber);line-height:1; }
+    .ec-stat-lbl { font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:rgba(255,255,255,.5);margin-top:6px; }
+
+    /* EDITORIAL SECTIONS */
+    .ec-section { padding:clamp(60px,8vw,110px) 20px;background:var(--ink-aubergine); }
+    .ec-section-light { background:var(--ink-parchment);color:var(--ink-aubergine); }
+    .ec-article { max-width:780px;margin:0 auto; }
+    .ec-article h2 { font-family:'Playfair Display',serif;font-size:clamp(26px,3.5vw,44px);font-weight:900;margin-bottom:20px;line-height:1.1; }
+    .ec-section-light .ec-article h2 { color:var(--ink-aubergine); }
+    .ec-article p { font-size:16px;line-height:1.85;margin-bottom:18px; }
+    .ec-section-light .ec-article p { color:var(--ink-aubergine); }
+    .ec-article p:last-child { margin-bottom:0; }
+    .ec-article .lead { font-size:18px;font-weight:500;line-height:1.75;color:rgba(255,255,255,.85);margin-bottom:24px; }
+    .ec-section-light .ec-article .lead { color:rgba(45,27,78,.8); }
+
+    /* PULL QUOTE */
+    .ec-pullquote { border-left:4px solid var(--ink-amber);padding:20px 28px;margin:32px 0;background:rgba(255,255,255,.04);border-radius:0 12px 12px 0; }
+    .ec-section-light .ec-pullquote { background:var(--ink-slate-light);border-radius:0 12px 12px 0; }
+    .ec-pullquote p { font-family:'Playfair Display',serif;font-size:clamp(18px,2vw,24px);font-style:italic;line-height:1.5;color:var(--ink-amber);margin-bottom:8px; }
+    .ec-section-light .ec-pullquote p { color:var(--ink-aubergine); }
+    .ec-pullquote cite { font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:rgba(255,255,255,.45); }
+    .ec-section-light .ec-pullquote cite { color:var(--ink-slate); }
+
+    /* DATA CARDS */
+    .ec-data-grid { display:grid;grid-template-columns:repeat(2,1fr);gap:20px;margin:32px 0; }
+    .ec-data-card { background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);border-radius:16px;padding:24px; }
+    .ec-section-light .ec-data-card { background:var(--ink-white);border:1.5px solid var(--ink-slate-light);box-shadow:0 2px 12px rgba(45,27,78,.07); }
+    .ec-data-num { font-family:'Playfair Display',serif;font-size:36px;font-weight:900;color:var(--ink-amber);line-height:1;margin-bottom:6px; }
+    .ec-section-light .ec-data-num { color:var(--ink-aubergine); }
+    .ec-data-label { font-size:13px;font-weight:700;margin-bottom:6px; }
+    .ec-data-desc { font-size:13px;color:rgba(255,255,255,.55);line-height:1.55; }
+    .ec-section-light .ec-data-desc { color:var(--ink-slate); }
+
+    /* ARCHETYPES */
+    .archetypes-grid { display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin:32px 0; }
+    .archetype-card { border-radius:16px;padding:24px;border:1.5px solid rgba(255,255,255,.08); }
+    .archetype-icon { font-size:32px;margin-bottom:12px; }
+    .archetype-name { font-family:'Playfair Display',serif;font-size:18px;font-weight:700;margin-bottom:6px; }
+    .archetype-desc { font-size:13px;color:rgba(255,255,255,.6);line-height:1.6; }
+
+    /* INKWELL THESIS */
+    .thesis-section { background:var(--ink-amber);padding:clamp(60px,8vw,100px) 20px;color:var(--ink-aubergine); }
+    .thesis-inner { max-width:780px;margin:0 auto;text-align:center; }
+    .thesis-inner h2 { font-family:'Playfair Display',serif;font-size:clamp(28px,4vw,52px);font-weight:900;margin-bottom:20px;line-height:1.15; }
+    .thesis-inner p { font-size:17px;line-height:1.75;color:rgba(45,27,78,.75);margin-bottom:16px; }
+
+    @media(max-width:720px) { .ec-data-grid { grid-template-columns:1fr; } .archetypes-grid { grid-template-columns:1fr; } }
+  </style>
+</head>
+<body>
+  <div id="inkwell-header-mount"></div>
+
+  <!-- HERO -->
+  <section class="ec-hero" aria-label="The Creator Economy">
+    <div class="ec-blob ec-b1" aria-hidden="true"></div>
+    <div class="ec-blob ec-b2" aria-hidden="true"></div>
+    <div class="ec-hero-inner ink-animate-up">
+      <div class="ink-badge ink-badge-white" style="display:inline-flex;margin-bottom:24px;">Editorial</div>
+      <h1>The <em>creator economy</em><br>is the biggest economic<br>shift of our generation.</h1>
+      <p>Over 200 million people now identify as professional creators. By 2030, the creator economy will be worth R82 trillion globally. This is not a trend — it's a structural transformation of how human beings create and exchange value.</p>
+      <a href="creator-apply.html" class="ink-btn ink-btn-amber ink-btn-lg">Join as a Creator</a>
+    </div>
+  </section>
+
+  <!-- STATS BAND -->
+  <div class="ec-stats" aria-label="Creator economy statistics">
+    <div class="ec-stats-row">
+      <div class="ec-stat"><div class="ec-stat-num">200M+</div><div class="ec-stat-lbl">Professional Creators Globally</div></div>
+      <div class="ec-stat"><div class="ec-stat-num">R82T</div><div class="ec-stat-lbl">Projected Market by 2030</div></div>
+      <div class="ec-stat"><div class="ec-stat-num">3.4x</div><div class="ec-stat-lbl">InkwellMedia vs. YouTube Earnings Per Sub</div></div>
+      <div class="ec-stat"><div class="ec-stat-num">46%</div><div class="ec-stat-lbl">Gen Z Aspire to Be Full-Time Creators</div></div>
+    </div>
+  </div>
+
+  <!-- SECTION 1 -->
+  <section class="ec-section" aria-labelledby="ec-s1">
+    <div class="ec-article">
+      <div class="ink-overline" style="color:var(--ink-amber)">Chapter 1</div>
+      <h2 id="ec-s1">What is the creator economy, really?</h2>
+      <p class="lead">The creator economy is the ecosystem of independent individuals who earn income by producing and distributing content — and the tools, platforms, and businesses that support them.</p>
+      <p>For most of human history, creative work was either a luxury or a subsistence activity. A painter might survive on commissions from wealthy patrons. A musician might scrape a living from live performances. A writer might land a publishing deal if they were extraordinarily lucky.</p>
+      <p>The internet changed everything. Suddenly, a photographer in Durban could reach 100,000 people without a gallery. A filmmaker in Cape Town could distribute a short film without a distribution deal. A teacher in Lagos could charge for a masterclass without a university affiliation.</p>
+      <p>But the first generation of the creator economy — social media platforms — had a fatal flaw. They harvested creator content to sell advertising and kept almost all of the value for themselves. Creators were tenants building on land they didn't own.</p>
+      <div class="ec-pullquote">
+        <p>"Creators were tenants building on land they didn't own. The second generation of the creator economy is about giving creators the deed."</p>
+        <cite>— InkwellMedia Founding Thesis, 2023</cite>
+      </div>
+      <p>The second generation — subscription platforms, direct-to-fan models, and creator-owned communities — is correcting this. InkwellMedia is part of this second wave.</p>
+    </div>
+  </section>
+
+  <!-- SECTION 2 — LIGHT -->
+  <section class="ec-section ec-section-light" aria-labelledby="ec-s2">
+    <div class="ec-article">
+      <div class="ink-overline">Chapter 2</div>
+      <h2 id="ec-s2">The data behind the transformation.</h2>
+      <p class="lead">The creator economy isn't a speculative bubble. It's backed by irreversible behavioural shifts in how people consume, pay for, and value content.</p>
+      <div class="ec-data-grid">
+        <div class="ec-data-card"><div class="ec-data-num">46%</div><div class="ec-data-label">Gen Z want to be creators</div><div class="ec-data-desc">Nearly half of Generation Z aspire to creator careers as their primary income source — outranking traditional professional roles.</div></div>
+        <div class="ec-data-card"><div class="ec-data-num">73%</div><div class="ec-data-label">Fans prefer direct support</div><div class="ec-data-desc">73% of fans who subscribe to a creator say they prefer paying directly over ad-supported models because they feel more connected to the creator.</div></div>
+        <div class="ec-data-card"><div class="ec-data-num">$10B+</div><div class="ec-data-label">Paid to subscription creators annually</div><div class="ec-data-desc">Global subscription revenue flowing directly to independent creators surpassed $10 billion USD in 2023 and is growing at 40% per year.</div></div>
+        <div class="ec-data-card"><div class="ec-data-num">2031</div><div class="ec-data-label">Year creator economy overtakes traditional media</div><div class="ec-data-desc">Analysts project that independent creator revenue will surpass traditional media industry revenue globally by 2031.</div></div>
+      </div>
+      <p>In South Africa specifically, the creator economy is accelerating faster than the global average. Mobile-first content consumption, a young population (median age 27), and growing digital payment infrastructure are creating a unique opportunity for local creators to build significant income streams.</p>
+    </div>
+  </section>
+
+  <!-- SECTION 3 — ARCHETYPES -->
+  <section class="ec-section" aria-labelledby="ec-s3">
+    <div class="ec-article">
+      <div class="ink-overline" style="color:var(--ink-amber)">Chapter 3</div>
+      <h2 id="ec-s3">The creator archetypes<br>building this economy.</h2>
+      <p class="lead">The creator economy is not monolithic. It is populated by distinct archetypes, each with their own audience relationship and monetisation dynamic.</p>
+      <div class="archetypes-grid">
+        <div class="archetype-card"><div class="archetype-icon">&#x1F4F8;</div><div class="archetype-name">The Visual Artist</div><p class="archetype-desc">Photographers, videographers, illustrators. Monetises through album access, exclusive shoots, and behind-the-scenes content. InkwellMedia's most common creator type.</p></div>
+        <div class="archetype-card"><div class="archetype-icon">&#x1F4DA;</div><div class="archetype-name">The Educator</div><p class="archetype-desc">Teachers, coaches, tutors. Monetises through gated tutorial libraries, masterclasses, and study resources. Subscription model is ideal — recurring value, recurring income.</p></div>
+        <div class="archetype-card"><div class="archetype-icon">&#x1F3B5;</div><div class="archetype-name">The Entertainer</div><p class="archetype-desc">Musicians, comedians, performers. Monetises through exclusive recordings, early access, and fan-only content. The most emotionally connected creator-fan relationship.</p></div>
+        <div class="archetype-card"><div class="archetype-icon">&#x270D;&#xFE0F;</div><div class="archetype-name">The Storyteller</div><p class="archetype-desc">Writers, podcasters, essayists. Monetises through serialised fiction, premium newsletters, and audio content. Small but deeply loyal subscriber bases.</p></div>
+        <div class="archetype-card"><div class="archetype-icon">&#x1F4A1;</div><div class="archetype-name">The Expert</div><p class="archetype-desc">Analysts, researchers, specialists. Monetises through access to frameworks, templates, and insider knowledge. Highest average subscription price point.</p></div>
+        <div class="archetype-card"><div class="archetype-icon">&#x1F30D;</div><div class="archetype-name">The Community Builder</div><p class="archetype-desc">Lifestyle creators, travel documentarians, cultural voices. Monetises through belonging — fans subscribe for identity and connection as much as content.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- INKWELL THESIS -->
+  <section class="thesis-section" aria-labelledby="ec-thesis">
+    <div class="thesis-inner">
+      <div class="ink-overline" style="margin-bottom:16px;">The InkwellMedia Thesis</div>
+      <h2 id="ec-thesis">Micro-communities outperform mass audiences — every time.</h2>
+      <p>The creator economy taught us that 1,000 true fans — people who will pay for your work directly — are worth more than 1,000,000 passive followers who scroll past you.</p>
+      <p>InkwellMedia was built on this truth. We don't optimise for reach. We optimise for depth of connection and directness of economic relationship between creator and fan.</p>
+      <p>The future of content is not mass. It's personal. It's paid. And it belongs to the creator.</p>
+      <div style="margin-top:32px;">
+        <a href="creator-apply.html" style="background:var(--ink-aubergine);color:var(--ink-white);padding:15px 34px;border-radius:12px;font-weight:800;font-size:16px;text-decoration:none;display:inline-block;margin:0 8px 8px;">Apply as a Creator</a>
+        <a href="for-creators.html" style="background:transparent;color:var(--ink-aubergine);border:2px solid rgba(45,27,78,.3);padding:15px 34px;border-radius:12px;font-weight:800;font-size:16px;text-decoration:none;display:inline-block;margin:0 8px 8px;">For Creators</a>
+      </div>
+    </div>
+  </section>
+
+  <div id="inkwell-footer-mount"></div>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="inkwell-config.js"></script>
+  <script src="inkwell-layout.js"></script>
+</body>
+</html>

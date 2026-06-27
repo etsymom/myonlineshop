@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Apply as a Creator | InkwellMedia</title>
+  <meta name="description" content="Apply to become a creator on InkwellMedia. Free to join. Get approved in 24 hours. Start earning on your terms.">
+  <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://ndfqavpmqahdqpsqndbz.supabase.co" crossorigin>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body { background: var(--ink-parchment); color: var(--ink-aubergine); }
+    .apply-layout { display:grid;grid-template-columns:1fr 1fr;min-height:100vh; }
+    .apply-left {
+      background:var(--ink-aubergine);color:var(--ink-white);
+      padding:clamp(60px,8vw,100px) clamp(32px,5vw,64px);
+      display:flex;flex-direction:column;justify-content:center;
+      position:relative;overflow:hidden;
+    }
+    .apply-blob { position:absolute;border-radius:50%;filter:blur(80px);pointer-events:none; }
+    .ab1 { width:400px;height:400px;background:var(--ink-amber);opacity:.1;top:-80px;right:-80px;animation:ink-drift 10s ease-in-out infinite alternate; }
+    .ab2 { width:350px;height:350px;background:#5B2E8F;opacity:.18;bottom:-60px;left:-60px;animation:ink-drift 12s ease-in-out infinite alternate-reverse; }
+    .apply-left-inner { position:relative;z-index:2; }
+    .apply-perks { display:flex;flex-direction:column;gap:16px;margin-top:36px; }
+    .apply-perk { display:flex;align-items:flex-start;gap:14px; }
+    .apply-perk-icon { width:40px;height:40px;border-radius:12px;background:rgba(245,166,35,.15);border:1px solid rgba(245,166,35,.2);display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0; }
+    .apply-perk-text .perk-title { font-weight:700;font-size:15px;margin-bottom:2px; }
+    .apply-perk-text .perk-desc { font-size:13px;color:rgba(255,255,255,.6);line-height:1.5; }
+    .apply-right { padding:clamp(60px,8vw,100px) clamp(32px,5vw,64px);display:flex;flex-direction:column;justify-content:center; }
+    .apply-form { max-width:480px; }
+    .apply-form h2 { font-family:'Playfair Display',serif;font-size:clamp(24px,3vw,36px);font-weight:900;margin-bottom:8px; }
+    .apply-form > p { font-size:14px;color:var(--ink-slate);margin-bottom:32px;line-height:1.6; }
+    .form-row { display:grid;grid-template-columns:1fr 1fr;gap:16px; }
+    .form-group { display:flex;flex-direction:column;gap:6px;margin-bottom:16px; }
+    .form-label { font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--ink-aubergine); }
+    .form-input { width:100%;padding:12px 14px;border:2px solid var(--ink-slate-light);border-radius:10px;font-family:'DM Sans',sans-serif;font-size:14px;color:var(--ink-aubergine);background:var(--ink-white);outline:none;transition:border-color .2s; }
+    .form-input:focus { border-color:var(--ink-amber); }
+    .form-input::placeholder { color:var(--ink-slate); }
+    select.form-input { cursor:pointer; }
+    textarea.form-input { min-height:100px;resize:vertical; }
+    .form-checkbox { display:flex;align-items:flex-start;gap:10px;margin-bottom:20px; }
+    .form-checkbox input { margin-top:2px;accent-color:var(--ink-amber);cursor:pointer; }
+    .form-checkbox label { font-size:13px;color:var(--ink-slate);line-height:1.5;cursor:pointer; }
+    .form-checkbox a { color:var(--ink-amber);text-decoration:none; }
+    .submit-btn { width:100%;padding:15px;border-radius:12px;border:none;background:var(--ink-amber);color:var(--ink-aubergine);font-family:'DM Sans',sans-serif;font-weight:900;font-size:16px;cursor:pointer;transition:opacity .15s,transform .1s; }
+    .submit-btn:hover { opacity:.88; }
+    .submit-btn:active { transform:scale(.98); }
+    .submit-btn:disabled { opacity:.5;cursor:not-allowed; }
+    .form-success { display:none;background:#EBF9F4;border:1.5px solid #2EAD7B;border-radius:14px;padding:24px;text-align:center;color:#1A7A56; }
+    .form-success h3 { font-family:'Playfair Display',serif;font-size:22px;font-weight:700;margin-bottom:8px; }
+    .form-error { display:none;background:#FEF0F2;border:1.5px solid var(--ink-danger);border-radius:10px;padding:12px 16px;font-size:13px;color:#9B1825;margin-bottom:16px; }
+    @media(max-width:860px) {
+      .apply-layout { grid-template-columns:1fr; }
+      .apply-left { padding:60px 24px; }
+      .apply-right { padding:48px 24px; }
+      .form-row { grid-template-columns:1fr; }
+    }
+  </style>
+</head>
+<body>
+  <div id="inkwell-header-mount"></div>
+
+  <main class="apply-layout" role="main">
+    <!-- LEFT PANEL -->
+    <div class="apply-left">
+      <div class="apply-blob ab1" aria-hidden="true"></div>
+      <div class="apply-blob ab2" aria-hidden="true"></div>
+      <div class="apply-left-inner">
+        <div class="ink-badge ink-badge-white" style="display:inline-flex;margin-bottom:20px;">Free to Join</div>
+        <h1 class="ink-h1">Start earning<br>from your craft<br><span style="color:var(--ink-amber);">today.</span></h1>
+        <p style="color:rgba(255,255,255,.7);margin-top:16px;font-size:16px;line-height:1.7;">Applications are reviewed within 24 hours. Once approved, your profile is live and you can start uploading immediately.</p>
+        <div class="apply-perks">
+          <div class="apply-perk">
+            <div class="apply-perk-icon">&#x1F4B0;</div>
+            <div class="apply-perk-text">
+              <div class="perk-title">Keep 85% of every subscription</div>
+              <div class="perk-desc">Our 15% platform fee covers all payment processing — no extra charges.</div>
+            </div>
+          </div>
+          <div class="apply-perk">
+            <div class="apply-perk-icon">&#x26A1;</div>
+            <div class="apply-perk-text">
+              <div class="perk-title">48-hour payout turnaround</div>
+              <div class="perk-desc">No 30-day holds. Withdraw via EFT or XRP whenever you like, with no minimum.</div>
+            </div>
+          </div>
+          <div class="apply-perk">
+            <div class="apply-perk-icon">&#x1F4F1;</div>
+            <div class="apply-perk-text">
+              <div class="perk-title">Automatic Explore feed visibility</div>
+              <div class="perk-desc">Your preview content surfaces to thousands of users on day one — no ads required.</div>
+            </div>
+          </div>
+          <div class="apply-perk">
+            <div class="apply-perk-icon">&#x1F510;</div>
+            <div class="apply-perk-text">
+              <div class="perk-title">You own your subscriber relationship</div>
+              <div class="perk-desc">No algorithm decides your reach. Your subscribers see your content because they chose to.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- RIGHT PANEL — FORM -->
+    <div class="apply-right">
+      <div class="apply-form">
+        <h2>Creator Application</h2>
+        <p>Tell us about yourself and your creative work. We review every application personally.</p>
+
+        <div id="form-error" class="form-error" role="alert">Something went wrong. Please try again.</div>
+        <div id="form-success" class="form-success" role="status">
+          <div style="font-size:40px;margin-bottom:12px;">&#x2705;</div>
+          <h3>Application received!</h3>
+          <p>We'll review your application within 24 hours and send a confirmation to your email.</p>
+        </div>
+
+        <form id="apply-form" novalidate>
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label" for="first-name">First Name</label>
+              <input class="form-input" type="text" id="first-name" name="first_name" placeholder="Leila" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="last-name">Last Name</label>
+              <input class="form-input" type="text" id="last-name" name="last_name" placeholder="Osman" required>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="email">Email Address</label>
+            <input class="form-input" type="email" id="email" name="email" placeholder="leila@example.com" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="niche">Your Creative Niche</label>
+            <select class="form-input" id="niche" name="niche" required>
+              <option value="">Select your main content type...</option>
+              <option value="photography">Photography</option>
+              <option value="videography">Videography / Film</option>
+              <option value="digital-art">Digital Art / Illustration</option>
+              <option value="music">Music</option>
+              <option value="education">Education / Tutorials</option>
+              <option value="writing">Writing / Storytelling</option>
+              <option value="fitness">Fitness / Wellness</option>
+              <option value="lifestyle">Lifestyle / Travel</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="portfolio">Portfolio / Social Link</label>
+            <input class="form-input" type="url" id="portfolio" name="portfolio" placeholder="https://instagram.com/yourhandle">
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="bio">Tell us about your work</label>
+            <textarea class="form-input" id="bio" name="bio" placeholder="Briefly describe what you create, your experience, and what you'd offer subscribers on InkwellMedia..." required></textarea>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="pass-price">Planned Creator Pass Price (ZAR/month)</label>
+            <select class="form-input" id="pass-price" name="pass_price">
+              <option value="50">R50 / month</option>
+              <option value="100">R100 / month</option>
+              <option value="150" selected>R150 / month</option>
+              <option value="200">R200 / month</option>
+              <option value="300">R300 / month</option>
+              <option value="500">R500 / month</option>
+            </select>
+          </div>
+          <div class="form-checkbox">
+            <input type="checkbox" id="terms" name="terms" required>
+            <label for="terms">I agree to the <a href="creator-terms.html" target="_blank">Creator Terms of Service</a> and confirm my content complies with InkwellMedia's content policy.</label>
+          </div>
+          <button type="submit" class="submit-btn" id="submit-btn">Submit Application</button>
+        </form>
+      </div>
+    </div>
+  </main>
+
+  <div id="inkwell-footer-mount"></div>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="inkwell-config.js"></script>
+  <script src="inkwell-layout.js"></script>
+  <script>
+    document.getElementById('apply-form').addEventListener('submit', async function(e) {
+      e.preventDefault();
+      const btn = document.getElementById('submit-btn');
+      const errEl = document.getElementById('form-error');
+      const successEl = document.getElementById('form-success');
+      errEl.style.display = 'none';
+      btn.disabled = true;
+      btn.textContent = 'Submitting...';
+      const data = {
+        first_name: document.getElementById('first-name').value.trim(),
+        last_name: document.getElementById('last-name').value.trim(),
+        email: document.getElementById('email').value.trim(),
+        niche: document.getElementById('niche').value,
+        portfolio: document.getElementById('portfolio').value.trim(),
+        bio: document.getElementById('bio').value.trim(),
+        pass_price: parseInt(document.getElementById('pass-price').value),
+        status: 'pending'
+      };
+      if (!data.first_name || !data.email || !data.niche || !data.bio) {
+        errEl.textContent = 'Please fill in all required fields.';
+        errEl.style.display = 'block';
+        btn.disabled = false; btn.textContent = 'Submit Application'; return;
+      }
+      if (!document.getElementById('terms').checked) {
+        errEl.textContent = 'Please agree to the Creator Terms to continue.';
+        errEl.style.display = 'block';
+        btn.disabled = false; btn.textContent = 'Submit Application'; return;
+      }
+      try {
+        const sb = supabase.createClient(window.INK_CONFIG.SUPABASE_URL, window.INK_CONFIG.SUPABASE_ANON);
+        const { error } = await sb.from('creator_applications').insert(data);
+        if (error) throw error;
+        document.getElementById('apply-form').style.display = 'none';
+        successEl.style.display = 'block';
+      } catch(err) {
+        errEl.textContent = 'Submission failed: ' + (err.message || 'Please try again.');
+        errEl.style.display = 'block';
+        btn.disabled = false; btn.textContent = 'Submit Application';
+      }
+    });
+  </script>
+</body>
+</html>

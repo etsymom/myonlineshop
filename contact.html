@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact | InkwellMedia</title>
+  <meta name="description" content="Get in touch with the InkwellMedia team. Support, creator inquiries, partnerships, and press.">
+  <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://ndfqavpmqahdqpsqndbz.supabase.co" crossorigin>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body { background:var(--ink-parchment); color:var(--ink-aubergine); }
+    .contact-layout { display:grid;grid-template-columns:1fr 1fr;min-height:calc(100vh - 68px); }
+    .contact-left { background:var(--ink-aubergine);color:var(--ink-white);padding:clamp(60px,8vw,100px) clamp(32px,5vw,64px);display:flex;flex-direction:column;justify-content:center;position:relative;overflow:hidden; }
+    .contact-blob { position:absolute;border-radius:50%;filter:blur(80px);pointer-events:none; }
+    .cb1 { width:400px;height:400px;background:var(--ink-amber);opacity:.1;top:-80px;right:-60px;animation:ink-drift 10s ease-in-out infinite alternate; }
+    .cb2 { width:350px;height:350px;background:#5B2E8F;opacity:.18;bottom:-60px;left:-40px;animation:ink-drift 13s ease-in-out infinite alternate-reverse; }
+    .contact-left-inner { position:relative;z-index:2; }
+    .contact-channels { display:flex;flex-direction:column;gap:20px;margin-top:36px; }
+    .contact-channel { display:flex;align-items:flex-start;gap:16px;padding:18px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);border-radius:14px;transition:background .2s; }
+    .contact-channel:hover { background:rgba(255,255,255,.08); }
+    .contact-channel-icon { font-size:22px;width:44px;height:44px;border-radius:12px;background:rgba(245,166,35,.15);display:flex;align-items:center;justify-content:center;flex-shrink:0; }
+    .channel-label { font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.08em;color:var(--ink-amber);margin-bottom:2px; }
+    .channel-value { font-size:15px;font-weight:600;color:var(--ink-white); }
+    .channel-desc { font-size:12px;color:rgba(255,255,255,.5);margin-top:2px; }
+    .contact-right { padding:clamp(60px,8vw,100px) clamp(32px,5vw,64px);display:flex;flex-direction:column;justify-content:center; }
+    .contact-form { max-width:480px; }
+    .contact-form h2 { font-family:'Playfair Display',serif;font-size:clamp(24px,3vw,36px);font-weight:900;margin-bottom:8px; }
+    .contact-form > p { font-size:14px;color:var(--ink-slate);margin-bottom:28px; }
+    .form-group { display:flex;flex-direction:column;gap:6px;margin-bottom:14px; }
+    .form-label { font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--ink-aubergine); }
+    .form-input { width:100%;padding:12px 14px;border:2px solid var(--ink-slate-light);border-radius:10px;font-family:'DM Sans',sans-serif;font-size:14px;color:var(--ink-aubergine);background:var(--ink-white);outline:none;transition:border-color .2s; }
+    .form-input:focus { border-color:var(--ink-amber); }
+    .form-input::placeholder { color:var(--ink-slate); }
+    select.form-input { cursor:pointer; }
+    textarea.form-input { min-height:120px;resize:vertical; }
+    .submit-btn { width:100%;padding:14px;border-radius:12px;border:none;background:var(--ink-amber);color:var(--ink-aubergine);font-family:'DM Sans',sans-serif;font-weight:900;font-size:15px;cursor:pointer;transition:opacity .15s,transform .1s;margin-top:4px; }
+    .submit-btn:hover { opacity:.88; }
+    .submit-btn:active { transform:scale(.98); }
+    .submit-btn:disabled { opacity:.5;cursor:not-allowed; }
+    .form-success { display:none;background:#EBF9F4;border:1.5px solid #2EAD7B;border-radius:14px;padding:24px;text-align:center;color:#1A7A56; }
+    .form-success h3 { font-family:'Playfair Display',serif;font-size:20px;font-weight:700;margin-bottom:8px; }
+    .form-err { display:none;background:#FEF0F2;border:1.5px solid var(--ink-danger);border-radius:10px;padding:12px 16px;font-size:13px;color:#9B1825;margin-bottom:12px; }
+    @media(max-width:860px) { .contact-layout { grid-template-columns:1fr; } .contact-left,.contact-right { padding:48px 24px; } }
+  </style>
+</head>
+<body>
+  <div id="inkwell-header-mount"></div>
+
+  <main class="contact-layout" role="main">
+    <div class="contact-left">
+      <div class="contact-blob cb1" aria-hidden="true"></div>
+      <div class="contact-blob cb2" aria-hidden="true"></div>
+      <div class="contact-left-inner">
+        <div class="ink-badge ink-badge-white" style="display:inline-flex;margin-bottom:20px;">We're here to help</div>
+        <h1 class="ink-h1">Get in touch<br>with our team.</h1>
+        <p style="color:rgba(255,255,255,.7);margin-top:14px;font-size:15px;line-height:1.7;max-width:400px;">We typically respond within 4 hours during business hours (Mon–Fri, 8am–6pm SAST).</p>
+        <div class="contact-channels">
+          <div class="contact-channel">
+            <div class="contact-channel-icon">&#x1F4AC;</div>
+            <div>
+              <div class="channel-label">General Support</div>
+              <div class="channel-value">support@inkwellmedia.co.za</div>
+              <div class="channel-desc">Account issues, subscription help, technical problems</div>
+            </div>
+          </div>
+          <div class="contact-channel">
+            <div class="contact-channel-icon">&#x1F3A8;</div>
+            <div>
+              <div class="channel-label">Creator Relations</div>
+              <div class="channel-value">creators@inkwellmedia.co.za</div>
+              <div class="channel-desc">Application follow-ups, creator tools, payout queries</div>
+            </div>
+          </div>
+          <div class="contact-channel">
+            <div class="contact-channel-icon">&#x1F4BC;</div>
+            <div>
+              <div class="channel-label">Partnerships &amp; Press</div>
+              <div class="channel-value">hello@inkwellmedia.co.za</div>
+              <div class="channel-desc">Brand collaborations, media inquiries, investor relations</div>
+            </div>
+          </div>
+          <div class="contact-channel">
+            <div class="contact-channel-icon">&#x1F6E1;&#xFE0F;</div>
+            <div>
+              <div class="channel-label">Safety &amp; Abuse</div>
+              <div class="channel-value">safety@inkwellmedia.co.za</div>
+              <div class="channel-desc">Content policy violations, account safety, urgent issues</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="contact-right">
+      <div class="contact-form">
+        <h2>Send us a message</h2>
+        <p>Fill out the form and we'll get back to you as soon as possible.</p>
+        <div id="form-err" class="form-err" role="alert"></div>
+        <div id="form-success" class="form-success" role="status">
+          <div style="font-size:36px;margin-bottom:10px;">&#x1F4EC;</div>
+          <h3>Message sent!</h3>
+          <p>We've received your message and will reply to your email within 4 hours.</p>
+        </div>
+        <form id="contact-form" novalidate>
+          <div class="form-group">
+            <label class="form-label" for="c-name">Your Name</label>
+            <input class="form-input" type="text" id="c-name" placeholder="Leila Osman" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="c-email">Email Address</label>
+            <input class="form-input" type="email" id="c-email" placeholder="leila@example.com" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="c-topic">Topic</label>
+            <select class="form-input" id="c-topic">
+              <option value="support">General Support</option>
+              <option value="creator">Creator Inquiry</option>
+              <option value="payout">Payout / Payment Issue</option>
+              <option value="partnership">Partnership / Press</option>
+              <option value="safety">Safety / Content Report</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="c-message">Message</label>
+            <textarea class="form-input" id="c-message" placeholder="Describe your question or issue in as much detail as possible..." required></textarea>
+          </div>
+          <button type="submit" class="submit-btn" id="contact-submit">Send Message</button>
+        </form>
+      </div>
+    </div>
+  </main>
+
+  <div id="inkwell-footer-mount"></div>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="inkwell-config.js"></script>
+  <script src="inkwell-layout.js"></script>
+  <script>
+    document.getElementById('contact-form').addEventListener('submit', async function(e) {
+      e.preventDefault();
+      const btn = document.getElementById('contact-submit');
+      const errEl = document.getElementById('form-err');
+      errEl.style.display = 'none';
+      const name = document.getElementById('c-name').value.trim();
+      const email = document.getElementById('c-email').value.trim();
+      const topic = document.getElementById('c-topic').value;
+      const message = document.getElementById('c-message').value.trim();
+      if (!name || !email || !message) { errEl.textContent = 'Please fill in all required fields.'; errEl.style.display = 'block'; return; }
+      btn.disabled = true; btn.textContent = 'Sending...';
+      try {
+        const sb = supabase.createClient(window.INK_CONFIG.SUPABASE_URL, window.INK_CONFIG.SUPABASE_ANON);
+        const { error } = await sb.from('contact_messages').insert({ name, email, topic, message, status: 'new' });
+        if (error) throw error;
+        document.getElementById('contact-form').style.display = 'none';
+        document.getElementById('form-success').style.display = 'block';
+      } catch(err) {
+        errEl.textContent = 'Failed to send: ' + (err.message || 'Please try again.');
+        errEl.style.display = 'block';
+        btn.disabled = false; btn.textContent = 'Send Message';
+      }
+    });
+  </script>
+</body>
+</html>

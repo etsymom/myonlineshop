@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pricing | InkwellMedia</title>
+  <meta name="description" content="InkwellMedia pricing — free to join as a creator. Fans subscribe to Creator Passes from R150/month. Simple, transparent pricing with no hidden fees.">
+  <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://ndfqavpmqahdqpsqndbz.supabase.co" crossorigin>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body { background: var(--ink-parchment); color: var(--ink-aubergine); }
+
+    .page-hero { background:var(--ink-aubergine);color:var(--ink-white);padding:clamp(100px,12vw,160px) 20px clamp(60px,8vw,100px);text-align:center;position:relative;overflow:hidden; }
+    .hero-blob { position:absolute;border-radius:50%;filter:blur(90px);pointer-events:none; }
+    .hb1 { width:500px;height:500px;background:var(--ink-amber);opacity:.1;top:-100px;right:-80px;animation:ink-drift 10s ease-in-out infinite alternate; }
+    .hb2 { width:400px;height:400px;background:#7B4FBF;opacity:.15;bottom:-80px;left:-60px;animation:ink-drift 12s ease-in-out infinite alternate-reverse; }
+    .hero-inner { position:relative;z-index:2;max-width:680px;margin:0 auto; }
+
+    /* PRICING TABS */
+    .pricing-section { padding:clamp(60px,8vw,100px) 20px; }
+    .pricing-tabs { display:flex;justify-content:center;gap:0;margin-bottom:48px; }
+    .pricing-tab { padding:11px 28px;border:1.5px solid var(--ink-slate-light);background:var(--ink-white);font-family:'DM Sans',sans-serif;font-weight:700;font-size:14px;color:var(--ink-slate);cursor:pointer;transition:all .2s; }
+    .pricing-tab:first-child { border-radius:12px 0 0 12px; }
+    .pricing-tab:last-child { border-radius:0 12px 12px 0; }
+    .pricing-tab.active { background:var(--ink-aubergine);color:var(--ink-white);border-color:var(--ink-aubergine); }
+
+    /* CARDS */
+    .pricing-grid { display:grid;grid-template-columns:repeat(3,1fr);gap:24px;max-width:1000px;margin:0 auto; }
+    .pricing-card {
+      background:var(--ink-white);border-radius:22px;padding:32px 28px;
+      border:2px solid var(--ink-slate-light);
+      display:flex;flex-direction:column;
+      transition:border-color .2s,transform .2s,box-shadow .2s;
+      position:relative;
+    }
+    .pricing-card:hover { border-color:var(--ink-amber);transform:translateY(-4px);box-shadow:0 16px 40px rgba(45,27,78,0.1); }
+    .pricing-card.featured {
+      border-color:var(--ink-aubergine);
+      background:var(--ink-aubergine);color:var(--ink-white);
+    }
+    .pricing-card.featured:hover { border-color:var(--ink-amber); }
+    .featured-badge {
+      position:absolute;top:-14px;left:50%;transform:translateX(-50%);
+      background:var(--ink-amber);color:var(--ink-aubergine);
+      border-radius:999px;padding:5px 16px;
+      font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.08em;
+      white-space:nowrap;
+    }
+    .plan-name { font-family:'Playfair Display',serif;font-size:20px;font-weight:700;margin-bottom:6px; }
+    .plan-desc { font-size:13px;margin-bottom:24px;line-height:1.5; }
+    .pricing-card .plan-desc { color:var(--ink-slate); }
+    .pricing-card.featured .plan-desc { color:rgba(255,255,255,0.65); }
+    .plan-price { font-family:'Playfair Display',serif;font-size:clamp(36px,4vw,52px);font-weight:900;line-height:1;margin-bottom:4px; }
+    .plan-price span { font-size:18px;font-weight:400; }
+    .plan-period { font-size:13px;margin-bottom:28px; }
+    .pricing-card .plan-period { color:var(--ink-slate); }
+    .pricing-card.featured .plan-period { color:rgba(255,255,255,.55); }
+    .plan-features { list-style:none;margin:0 0 28px;padding:0;display:flex;flex-direction:column;gap:10px;flex:1; }
+    .plan-feature { font-size:14px;display:flex;align-items:center;gap:10px; }
+    .plan-feature::before { content:'✓';width:20px;height:20px;border-radius:50%;background:var(--ink-amber);color:var(--ink-aubergine);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:900;flex-shrink:0; }
+    .pricing-card.featured .plan-feature { color:rgba(255,255,255,.85); }
+    .plan-btn { width:100%;padding:14px;border-radius:12px;border:none;font-family:'DM Sans',sans-serif;font-weight:900;font-size:15px;cursor:pointer;text-decoration:none;display:block;text-align:center;transition:opacity .15s,transform .1s; }
+    .plan-btn:hover { opacity:.88; }
+    .plan-btn:active { transform:scale(.97); }
+    .plan-btn-amber { background:var(--ink-amber);color:var(--ink-aubergine); }
+    .plan-btn-aubergine { background:var(--ink-aubergine);color:var(--ink-white); }
+    .plan-btn-ghost { background:transparent;color:var(--ink-aubergine);border:2px solid var(--ink-slate-light); }
+
+    /* CREATOR PRICING */
+    #creator-view { display:none; }
+    #fan-view { display:block; }
+
+    /* CREATOR FEE */
+    .fee-section { background:var(--ink-aubergine-deep);color:var(--ink-white);padding:clamp(48px,6vw,80px) 20px;text-align:center; }
+    .fee-visual {
+      max-width:540px;margin:40px auto 0;
+      background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);
+      border-radius:20px;padding:32px;
+    }
+    .fee-bar { display:flex;border-radius:10px;overflow:hidden;height:48px;margin:16px 0; }
+    .fee-bar-creator { background:var(--ink-amber);display:flex;align-items:center;justify-content:center;font-weight:900;font-size:15px;color:var(--ink-aubergine);width:85%; }
+    .fee-bar-platform { background:rgba(255,255,255,0.12);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:13px;color:rgba(255,255,255,0.5);width:15%; }
+    .fee-legend { display:flex;gap:20px;justify-content:center;font-size:13px;margin-top:12px; }
+    .fee-dot { width:10px;height:10px;border-radius:50%;display:inline-block;margin-right:6px; }
+
+    /* FAQ */
+    .faq-section { padding:clamp(60px,7vw,100px) 20px; }
+    .faq-list { max-width:680px;margin:0 auto;display:flex;flex-direction:column;gap:4px; }
+    .faq-item { border-radius:12px;overflow:hidden;border:1.5px solid var(--ink-slate-light);background:var(--ink-white); }
+    .faq-q { width:100%;background:none;border:none;text-align:left;padding:16px 20px;font-family:'DM Sans',sans-serif;font-size:15px;font-weight:700;color:var(--ink-aubergine);cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:12px; }
+    .faq-q::after { content:'＋';font-size:18px;color:var(--ink-amber);flex-shrink:0;transition:transform .25s; }
+    .faq-item.open .faq-q::after { transform:rotate(45deg); }
+    .faq-a { display:none;padding:0 20px 16px;font-size:14px;color:var(--ink-slate);line-height:1.7; }
+    .faq-item.open .faq-a { display:block; }
+
+    @media(max-width:780px) { .pricing-grid { grid-template-columns:1fr; } }
+  </style>
+</head>
+<body>
+  <div id="inkwell-header-mount"></div>
+
+  <section class="page-hero" aria-label="Pricing hero">
+    <div class="hero-blob hb1" aria-hidden="true"></div>
+    <div class="hero-blob hb2" aria-hidden="true"></div>
+    <div class="hero-inner ink-animate-up">
+      <div class="ink-badge ink-badge-white" style="margin-bottom:20px;display:inline-flex;">Simple, Transparent Pricing</div>
+      <h1 class="ink-h1">No tricks. No hidden fees.<br>Just fair pricing.</h1>
+      <p class="ink-lead" style="color:rgba(255,255,255,.7);max-width:500px;margin:18px auto 0;">Whether you're a fan subscribing to your favourite creator or a creator building your income, our pricing is built to be fair.</p>
+    </div>
+  </section>
+
+  <!-- PRICING -->
+  <section class="pricing-section" aria-labelledby="pricing-heading">
+    <h2 id="pricing-heading" class="ink-sr-only">Pricing plans</h2>
+    <div class="pricing-tabs" role="tablist">
+      <button class="pricing-tab active" role="tab" aria-selected="true" aria-controls="fan-view" onclick="switchView('fan', this)">For Fans</button>
+      <button class="pricing-tab" role="tab" aria-selected="false" aria-controls="creator-view" onclick="switchView('creator', this)">For Creators</button>
+    </div>
+
+    <!-- FAN PLANS -->
+    <div id="fan-view" role="tabpanel">
+      <div class="pricing-grid">
+        <div class="pricing-card">
+          <div class="plan-name">Free Explorer</div>
+          <p class="plan-desc">Browse the platform, watch free preview content, and follow creators you love.</p>
+          <div class="plan-price">R0<span></span></div>
+          <div class="plan-period">Always free</div>
+          <ul class="plan-features">
+            <li class="plan-feature">Browse Explore feed (free content)</li>
+            <li class="plan-feature">Follow unlimited creators</li>
+            <li class="plan-feature">Watch free preview videos &amp; images</li>
+            <li class="plan-feature">Create an account and profile</li>
+          </ul>
+          <a href="index.html" class="plan-btn plan-btn-ghost">Create Free Account</a>
+        </div>
+        <div class="pricing-card featured" style="margin-top:0;">
+          <div class="featured-badge">Most Popular</div>
+          <div class="plan-name">Creator Pass</div>
+          <p class="plan-desc">Subscribe to one creator and unlock every piece of premium content they've ever posted.</p>
+          <div class="plan-price" style="color:var(--ink-amber);">R150<span>/mo</span></div>
+          <div class="plan-period">per creator, cancel anytime</div>
+          <ul class="plan-features">
+            <li class="plan-feature">Full access to 1 creator's premium library</li>
+            <li class="plan-feature">Download any album to your device</li>
+            <li class="plan-feature">Instant access — no waiting</li>
+            <li class="plan-feature">Access all future content automatically</li>
+            <li class="plan-feature">Multi-currency pricing (ZAR, USD, EUR)</li>
+          </ul>
+          <a href="explore.html" class="plan-btn plan-btn-amber">Browse Creators</a>
+        </div>
+        <div class="pricing-card">
+          <div class="plan-name">Multi-Creator Pass</div>
+          <p class="plan-desc">Subscribe to unlimited creators on the platform for one flat monthly fee.</p>
+          <div class="plan-price">R350<span>/mo</span></div>
+          <div class="plan-period">unlimited creators, cancel anytime</div>
+          <ul class="plan-features">
+            <li class="plan-feature">Unlimited Creator Pass subscriptions</li>
+            <li class="plan-feature">Download from any creator</li>
+            <li class="plan-feature">Priority subscriber badge on your profile</li>
+            <li class="plan-feature">Early access to new creator launches</li>
+          </ul>
+          <a href="index.html" class="plan-btn plan-btn-aubergine">Get Started</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- CREATOR PLANS -->
+    <div id="creator-view" role="tabpanel">
+      <div class="pricing-grid" style="max-width:680px;grid-template-columns:1fr 1fr;">
+        <div class="pricing-card">
+          <div class="plan-name">Standard Creator</div>
+          <p class="plan-desc">Everything you need to launch your creator page and start earning.</p>
+          <div class="plan-price">R0<span></span></div>
+          <div class="plan-period">free to join — 15% platform fee on earnings</div>
+          <ul class="plan-features">
+            <li class="plan-feature">Creator profile + custom link</li>
+            <li class="plan-feature">Unlimited album uploads</li>
+            <li class="plan-feature">Explore feed visibility</li>
+            <li class="plan-feature">Wallet + EFT/XRP payouts</li>
+            <li class="plan-feature">Basic analytics dashboard</li>
+            <li class="plan-feature">Referral commission earnings</li>
+          </ul>
+          <a href="creator-apply.html" class="plan-btn plan-btn-ghost">Apply Free</a>
+        </div>
+        <div class="pricing-card featured">
+          <div class="featured-badge">Coming Soon</div>
+          <div class="plan-name">Creator Pro</div>
+          <p class="plan-desc">Advanced tools for established creators who want to scale their income.</p>
+          <div class="plan-price" style="color:var(--ink-amber);">R99<span>/mo</span></div>
+          <div class="plan-period">reduced to 8% platform fee on earnings</div>
+          <ul class="plan-features">
+            <li class="plan-feature">Everything in Standard</li>
+            <li class="plan-feature">Advanced analytics + subscriber insights</li>
+            <li class="plan-feature">Priority Explore feed placement</li>
+            <li class="plan-feature">Custom branded subscriber emails</li>
+            <li class="plan-feature">Dedicated creator support</li>
+          </ul>
+          <a href="contact.html" class="plan-btn plan-btn-amber">Join Waitlist</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEE VISUALISER -->
+  <section class="fee-section" aria-labelledby="fee-heading">
+    <div class="ink-container">
+      <div class="ink-overline" style="color:var(--ink-amber)">The Honest Breakdown</div>
+      <h2 id="fee-heading" class="ink-h2" style="color:var(--ink-white);margin-top:8px;">You keep 85%.<br>We keep 15%. That's it.</h2>
+      <div class="fee-visual" aria-label="Revenue split visualisation">
+        <p style="font-size:13px;color:rgba(255,255,255,.5);margin-bottom:12px;">On a R150 Creator Pass subscription:</p>
+        <div class="fee-bar">
+          <div class="fee-bar-creator">Creator — R127.50 (85%)</div>
+          <div class="fee-bar-platform">15%</div>
+        </div>
+        <div class="fee-legend">
+          <span><span class="fee-dot" style="background:var(--ink-amber);"></span>Your earnings — R127.50</span>
+          <span><span class="fee-dot" style="background:rgba(255,255,255,.2);"></span>Platform fee — R22.50</span>
+        </div>
+        <p style="font-size:12px;color:rgba(255,255,255,.3);margin-top:16px;">No payment processing surcharges on top. No surprise deductions. The 15% covers everything.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="faq-section" aria-labelledby="pfaq-heading">
+    <div style="max-width:680px;margin:0 auto;">
+      <div class="ink-section-header" style="text-align:left;max-width:100%;margin-bottom:32px;">
+        <div class="ink-overline">Pricing FAQ</div>
+        <h2 id="pfaq-heading" class="ink-h2">Common questions<br>about pricing.</h2>
+      </div>
+      <div class="faq-list">
+        <div class="faq-item"><button class="faq-q">Can fans cancel their subscription anytime?</button><div class="faq-a">Yes. Subscriptions can be cancelled at any time from your profile dashboard. You retain access until the end of your current billing period.</div></div>
+        <div class="faq-item"><button class="faq-q">Are there hidden payment processing fees?</button><div class="faq-a">No. Our 15% platform fee covers all processing costs. What you see is what you get — creators keep exactly 85%.</div></div>
+        <div class="faq-item"><button class="faq-q">Can I set my own Creator Pass price?</button><div class="faq-a">Yes. Creators can set their Creator Pass at any price from R50 to R500 per month. You can change it at any time.</div></div>
+        <div class="faq-item"><button class="faq-q">Do fans get a refund if they cancel early?</button><div class="faq-a">Subscriptions are non-refundable once content access has been granted. Fans retain access until their current period ends.</div></div>
+        <div class="faq-item"><button class="faq-q">Is the Multi-Creator Pass available now?</button><div class="faq-a">The Multi-Creator Pass is currently in development. Join the waitlist via the contact page to be notified on launch.</div></div>
+      </div>
+    </div>
+  </section>
+
+  <div id="inkwell-footer-mount"></div>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="inkwell-config.js"></script>
+  <script src="inkwell-layout.js"></script>
+  <script>
+    function switchView(view, btn) {
+      document.getElementById('fan-view').style.display = view === 'fan' ? 'block' : 'none';
+      document.getElementById('creator-view').style.display = view === 'creator' ? 'block' : 'none';
+      document.querySelectorAll('.pricing-tab').forEach(t => t.classList.remove('active'));
+      btn.classList.add('active');
+    }
+    document.querySelectorAll('.faq-q').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const item = btn.closest('.faq-item');
+        const isOpen = item.classList.contains('open');
+        document.querySelectorAll('.faq-item.open').forEach(i => i.classList.remove('open'));
+        if (!isOpen) item.classList.add('open');
+      });
+    });
+  </script>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"Product","name":"InkwellMedia Creator Pass","description":"Monthly subscription to unlock a creator's full premium content library.","offers":{"@type":"Offer","priceCurrency":"ZAR","price":"150","availability":"https://schema.org/InStock"}}
+  </script>
+</body>
+</html>
