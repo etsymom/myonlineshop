@@ -818,6 +818,8 @@
         
         if (profile.assets && profile.assets.hero) {
            document.getElementById("profile-cover").style.backgroundImage = `url('${profile.assets.hero}')`;
+           document.getElementById("profile-cover").style.filter = "none";
+           document.getElementById("profile-cover").style.transform = "none";
         } else {
            document.getElementById("profile-cover").style.backgroundImage = `url('${avatarUrl}')`;
         }

@@ -53,6 +53,45 @@ function compileProfiles() {
             }
           }
           
+          // Auto-generate albums from subfolders in images/ and videos/
+          const mediaDirs = ['images', 'videos'];
+          if (!profileData.albums) profileData.albums = [];
+
+          for (const mediaDir of mediaDirs) {
+            const fullMediaDirPath = path.join(itemPath, mediaDir);
+            if (fs.existsSync(fullMediaDirPath) && fs.statSync(fullMediaDirPath).isDirectory()) {
+              const subItems = fs.readdirSync(fullMediaDirPath);
+              for (const subItem of subItems) {
+                const subItemPath = path.join(fullMediaDirPath, subItem);
+                if (fs.statSync(subItemPath).isDirectory()) {
+                  // This is a subfolder, treat it as an album!
+                  const albumMedia = [];
+                  const files = fs.readdirSync(subItemPath);
+                  for (const file of files) {
+                    // ignore hidden files like .DS_Store
+                    if (file.startsWith('.')) continue;
+                    
+                    const ext = path.extname(file).toLowerCase();
+                    const type = ['.mp4', '.webm', '.mov'].includes(ext) ? 'video' : 'image';
+                    albumMedia.push({
+                      type: type,
+                      url: `profiles/${item}/${mediaDir}/${subItem}/${file}`
+                    });
+                  }
+                  
+                  if (albumMedia.length > 0) {
+                    profileData.albums.push({
+                      title: subItem.replace(/_/g, ' '),
+                      description: `Auto-generated album from folder: ${subItem}`,
+                      media: albumMedia,
+                      price: 0
+                    });
+                  }
+                }
+              }
+            }
+          }
+          
           allProfiles.push(profileData);
           console.log(`Compiled profile: ${item}`);
         } catch (err) {
