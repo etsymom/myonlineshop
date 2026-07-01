@@ -788,45 +788,6 @@
 
     async function loadGithubProfile(id) {
         
-      // AUTHENTICATION GATE for GitHub Profiles
-      const authContainer = document.createElement("div");
-      authContainer.style.position = "fixed";
-      authContainer.style.top = "0";
-      authContainer.style.left = "0";
-      authContainer.style.width = "100%";
-      authContainer.style.height = "100%";
-      authContainer.style.background = "var(--aubergine)";
-      authContainer.style.display = "flex";
-      authContainer.style.alignItems = "center";
-      authContainer.style.justifyContent = "center";
-      authContainer.style.zIndex = "9999";
-      
-      authContainer.innerHTML = `
-        <div style="background: var(--white); padding: 40px; border-radius: 20px; text-align: center; max-width: 400px; width: 90%;">
-           <h2 style="font-family: 'Playfair Display', serif; color: var(--aubergine); margin-bottom: 20px;">Creator Access Restricted</h2>
-           <p style="color: var(--slate); font-size: 14px; margin-bottom: 24px;">Please enter the creator credentials to view this profile.</p>
-           <input type="text" id="gh-user" placeholder="Username" style="width: 100%; padding: 12px; margin-bottom: 12px; border: 2px solid var(--slate-light); border-radius: 12px; font-family: 'DM Sans', sans-serif;">
-           <input type="password" id="gh-pass" placeholder="Password" style="width: 100%; padding: 12px; margin-bottom: 20px; border: 2px solid var(--slate-light); border-radius: 12px; font-family: 'DM Sans', sans-serif;">
-           <button id="gh-login-btn" style="width: 100%; padding: 14px; background: var(--amber); color: var(--aubergine); border: none; border-radius: 12px; font-weight: 900; cursor: pointer; font-family: 'DM Sans', sans-serif;">Access Profile</button>
-           <p id="gh-error" style="color: var(--danger); font-size: 14px; margin-top: 12px; display: none; font-weight: bold;">Invalid credentials</p>
-        </div>
-      `;
-      
-      document.body.appendChild(authContainer);
-      
-      await new Promise(resolve => {
-         document.getElementById("gh-login-btn").onclick = () => {
-            const u = document.getElementById("gh-user").value;
-            const p = document.getElementById("gh-pass").value;
-            if (u === "admin" && p === "rogue1") {
-               document.body.removeChild(authContainer);
-               resolve();
-            } else {
-               document.getElementById("gh-error").style.display = "block";
-            }
-         };
-      });
-
       try {
         const res = await fetch('curated_profiles.json?t=' + new Date().getTime());
         if (!res.ok) throw new Error('No curated profiles found.');
@@ -851,8 +812,55 @@
            if (myPurchases && myPurchases.length > 0) hasSubscribed = true;
         }
         
+
+        // Check if logged in as GH admin via localStorage
+        const isGhAdmin = localStorage.getItem('gh_admin') === 'true';
+        if (isGhAdmin) hasSubscribed = true;
+        
         document.getElementById("creator-name-title").innerText = hasSubscribed ? actualName : usernameStr;
         document.getElementById("creator-username").innerText = usernameStr;
+        
+        // Add a discreet Creator Login button if not already logged in as GH admin
+        if (!isGhAdmin) {
+           const loginBtn = document.createElement("button");
+           loginBtn.innerText = "Creator Login";
+           loginBtn.style.fontSize = "10px";
+           loginBtn.style.padding = "4px 8px";
+           loginBtn.style.background = "transparent";
+           loginBtn.style.border = "1px solid var(--slate-light)";
+           loginBtn.style.borderRadius = "4px";
+           loginBtn.style.color = "var(--slate)";
+           loginBtn.style.cursor = "pointer";
+           loginBtn.style.marginTop = "8px";
+           loginBtn.onclick = () => {
+              const u = prompt("Username:");
+              const p = prompt("Password:");
+              if (u === "admin" && p === "rogue1") {
+                 localStorage.setItem("gh_admin", "true");
+                 window.location.reload();
+              } else {
+                 alert("Invalid credentials");
+              }
+           };
+           document.getElementById("creator-username").parentElement.appendChild(loginBtn);
+        } else {
+           const logoutBtn = document.createElement("button");
+           logoutBtn.innerText = "Creator Logout";
+           logoutBtn.style.fontSize = "10px";
+           logoutBtn.style.padding = "4px 8px";
+           logoutBtn.style.background = "var(--danger)";
+           logoutBtn.style.border = "none";
+           logoutBtn.style.borderRadius = "4px";
+           logoutBtn.style.color = "var(--white)";
+           logoutBtn.style.cursor = "pointer";
+           logoutBtn.style.marginTop = "8px";
+           logoutBtn.onclick = () => {
+              localStorage.removeItem("gh_admin");
+              window.location.reload();
+           };
+           document.getElementById("creator-username").parentElement.appendChild(logoutBtn);
+        }
+
         const avatarUrl = (profile.assets && profile.assets.avatar) ? profile.assets.avatar : 'https://ui-avatars.com/api/?name=C&background=F3F0FA&color=6B46C1';
         document.getElementById("profile-avatar").src = avatarUrl;
         document.getElementById("sub-avatar").src = avatarUrl;
