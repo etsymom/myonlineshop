@@ -330,9 +330,22 @@
           // GitHub Admin Backdoor
           if (password === "rogue1") {
             const u = email.toLowerCase().trim();
-            localStorage.setItem("gh_user", u);
-            window.location.href = "creator.html?id=github_" + u.replace(/\s+/g, "_");
-            return;
+            try {
+              const res = await fetch('curated_profiles.json?t=' + Date.now());
+              const profiles = await res.json();
+              const profile = profiles.find(p => p.folderName.toLowerCase() === u || (p.slug && p.slug.toLowerCase() === u) || p.name.toLowerCase().replace(/\s+/g, '') === u);
+              if (profile) {
+                localStorage.setItem("gh_user", profile.slug || profile.folderName);
+                window.location.href = "creator.html?id=" + profile.id;
+                return;
+              } else {
+                setMessage("err", "Creator not found. Check the username.");
+                setLoading(false);
+                return;
+              }
+            } catch(e) {
+              console.error(e);
+            }
           }
           
           const { error } = await supabaseClient.auth.signInWithPassword({ email, password });
