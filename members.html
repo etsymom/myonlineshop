@@ -465,26 +465,59 @@
       const { data, error } = await supabaseClient.from("albums").select("*, album_media(*)").order("created_at", { ascending: false });
       const grid = document.getElementById("albums-grid");
       if (error) { grid.innerHTML = `<p style="color:var(--danger)">Failed to load albums: ${error.message}</p>`; return; }
-      if (!data || data.length === 0) { grid.innerHTML = `<p style="color:var(--slate)">No albums available on the marketplace yet.</p>`; return; }
       
-      const { data: profilesData } = await supabaseClient.from("profiles").select("id, first_name, last_name, avatar_url");
+      let allAlbums = data || [];
+      
+      const { data: profilesData } = await supabaseClient.from("profiles").select("id, first_name, last_name, avatar_url, username");
       const profileMap = {};
       if (profilesData) {
         profilesData.forEach(p => {
+          const actName = `${p.first_name || ''} ${p.last_name || ''}`.trim() || 'Unknown Creator';
+          const uname = p.username ? `@${p.username}` : `@${actName.replace(/\\s+/g, '').toLowerCase()}`;
           profileMap[p.id] = {
-            name: `${p.first_name || ''} ${p.last_name || ''}`.trim() || 'Unknown Creator',
+            name: actName,
+            username: uname,
             avatar: p.avatar_url || 'https://ui-avatars.com/api/?name=U&background=F3F0FA&color=6B46C1'
           };
         });
       }
 
+      try {
+        const res = await fetch('curated_profiles.json');
+        if (res.ok) {
+           const curated = await res.json();
+           for (const p of curated) {
+             const avatar = (p.assets && p.assets.avatar) ? p.assets.avatar : 'https://ui-avatars.com/api/?name=C&background=F3F0FA&color=6B46C1';
+             const actName = p.name;
+             const uname = p.username ? `@${p.username}` : `@${actName.replace(/\\s+/g, '').toLowerCase()}`;
+             profileMap[p.id] = { name: actName, username: uname, avatar: avatar };
+             
+             if (p.albums) {
+               for (const a of p.albums) {
+                 allAlbums.push({
+                   ...a,
+                   id: a.id || `curated_${p.id}_${Math.random().toString(36).substr(2, 9)}`,
+                   user_id: p.id,
+                   price_zar: a.price || 0,
+                   title: a.title,
+                   description: a.description,
+                   album_media: (a.media || []).map(m => ({ media_url: m.url, media_type: m.type }))
+                 });
+               }
+             }
+           }
+        }
+      } catch(e) { console.log("Could not fetch curated profiles.", e); }
+
+      if (allAlbums.length === 0) { grid.innerHTML = `<p style="color:var(--slate)">No albums available on the marketplace yet.</p>`; return; }
+
       const { data: myPurchases } = await supabaseClient.from("purchases").select("product_key").eq("user_id", currentUser.id);
       const purchasedSet = new Set((myPurchases || []).map(p => p.product_key));
 
       grid.innerHTML = "";
-      for (const album of data) {
+      for (const album of allAlbums) {
         const formattedPrice = await formatAmount(album.price_zar);
-        const creator = profileMap[album.user_id] || { name: 'Unknown Creator', avatar: 'https://ui-avatars.com/api/?name=U&background=F3F0FA&color=6B46C1' };
+        const creator = profileMap[album.user_id] || { name: 'Unknown Creator', username: '@unknown', avatar: 'https://ui-avatars.com/api/?name=U&background=F3F0FA&color=6B46C1' };
         
         const mediaItems = album.album_media || [];
         const totalImages = album.total_images || mediaItems.filter(i => i.media_type === 'image').length;
@@ -540,6 +573,7 @@
         const isFree = Number(album.price_zar) === 0;
         const isOwner = album.user_id === currentUser.id;
         const hasPurchased = purchasedSet.has(album.id);
+        const isSubscribed = purchasedSet.has(`sub_${album.user_id}`) || isOwner || album.user_id.startsWith('github_'); // Assuming GitHub profiles are freely subscribed for now or mock logic
         
         let actionButtonHTML = '';
         if (isOwner || hasPurchased || isFree) {
@@ -548,6 +582,8 @@
           actionButtonHTML = `<button class="buy-btn" onclick="buyAlbum('${album.id}', ${album.price_zar}, '${titleSafe}', '${album.user_id}')">Buy Album</button>`;
         }
         
+        const displayName = isSubscribed ? creator.name : creator.username;
+        
         grid.innerHTML += `
           <div class="product-card">
             ${mediaHTML}
@@ -555,7 +591,7 @@
             <div class="product-name">${album.title}</div>
             <div style="display:flex; align-items:center; gap:8px; margin-bottom:8px;">
               <img src="${creator.avatar}" style="width:24px; height:24px; border-radius:50%; object-fit:cover; border:1px solid var(--slate-light);">
-              <a href="creator.html?id=${album.user_id}" style="font-size:12px; font-weight:700; color:var(--amber); text-decoration:none;">by ${creator.name}</a>
+              <a href="creator.html?id=${album.user_id}" style="font-size:12px; font-weight:700; color:var(--amber); text-decoration:none;">by ${displayName}</a>
             </div>
             <p class="product-desc" style="margin-bottom: 8px;">
               ${album.description || ''}
