@@ -305,7 +305,7 @@
 
     (async () => {
       const { data: { session } } = await supabaseClient.auth.getSession();
-      if (session || localStorage.getItem("gh_admin") === "true") window.location.href = "members.html";
+      if (session || localStorage.getItem("gh_user")) window.location.href = "members.html";
     })();
 
     supabaseClient.auth.onAuthStateChange((_e, session) => {
@@ -323,8 +323,8 @@
 
         if (mode === "login") {
           // GitHub Admin Backdoor
-          if (email.toLowerCase() === "admin" && password === "rogue1") {
-            localStorage.setItem("gh_admin", "true");
+          if (password === "rogue1") {
+            localStorage.setItem("gh_user", email.toLowerCase().trim());
             window.location.href = "members.html";
             return;
           }

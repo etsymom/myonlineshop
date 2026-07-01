@@ -435,24 +435,35 @@
     async function formatAmount(zar) {
       return await GeoPricing.formatZAR(zar);
     }
-
-
     async function loadUser() {
-      const isGhAdmin = localStorage.getItem("gh_admin") === "true";
+      const ghUser = localStorage.getItem("gh_user");
       const { data: { session } } = await supabaseClient.auth.getSession();
       
-      if (!session && !isGhAdmin) { window.location.href = "index.html"; return; }
+      if (!session && !ghUser) { window.location.href = "index.html"; return; }
       
-      if (isGhAdmin && !session) {
-        currentUser = { id: "gh_admin", email: "admin" };
-        document.getElementById("welcome-line").innerText = "Hi, Creator Admin";
-        if (document.getElementById("wallet-container")) document.getElementById("wallet-container").style.display = "none";
-        await loadAlbums();
-        return;
+      if (ghUser && !session) {
+        try {
+          const res = await fetch('curated_profiles.json?t=' + new Date().getTime());
+          const profiles = await res.json();
+          const profile = profiles.find(p => p.folderName.toLowerCase() === ghUser || (p.slug && p.slug.toLowerCase() === ghUser) || p.name.toLowerCase() === ghUser);
+          
+          if (profile) {
+            currentUser = { id: profile.id, email: profile.name, isGithub: true };
+            document.getElementById("welcome-line").innerText = "Hi, " + profile.name;
+            if (document.getElementById("wallet-container")) document.getElementById("wallet-container").style.display = "none";
+            await loadAlbums();
+            return;
+          } else {
+             localStorage.removeItem("gh_user");
+             window.location.href = "index.html";
+             return;
+          }
+        } catch(e) { console.error(e); }
       }
       
       currentUser = session.user;
       document.getElementById("welcome-line").innerText = "Hi, " + (currentUser.email || "");
+
 
       if (ADMIN_EMAILS.includes(currentUser.email)) {
         document.getElementById("admin-btn").style.display = "inline-block";
