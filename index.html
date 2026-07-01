@@ -305,11 +305,16 @@
 
     (async () => {
       const { data: { session } } = await supabaseClient.auth.getSession();
-      if (session || localStorage.getItem("gh_user")) window.location.href = "members.html";
+      if (localStorage.getItem("gh_user")) {
+        const u = localStorage.getItem("gh_user");
+        window.location.href = "creator.html?id=github_" + u.replace(/\s+/g, "_");
+      } else if (session) {
+        window.location.href = "members.html";
+      }
     })();
 
     supabaseClient.auth.onAuthStateChange((_e, session) => {
-      if (session) window.location.href = "members.html";
+      if (session) window.location.href = "members.html"; // handled above
     });
 
     form.addEventListener("submit", async (e) => {
