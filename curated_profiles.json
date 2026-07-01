@@ -35,5 +35,43 @@
     ],
     "id": "github_testcreator",
     "folderName": "TestCreator"
+  },
+  {
+    "name": "Cherry Circuit",
+    "username": "cherrycircuit",
+    "niche": "Tech & Coding",
+    "theme": "dark-cyber",
+    "assets": {
+      "hero": "profiles/_template/images/hero.jpg",
+      "avatar": "profiles/_template/images/avatar.jpg"
+    },
+    "social_links": {
+      "instagram": "@cherrycircuit",
+      "tiktok": "@cherrycircuit"
+    },
+    "albums": [
+      {
+        "title": "My Daily Coding Routine",
+        "description": "Watch my daily routine in 4k.",
+        "price": 0,
+        "media": [
+          {
+            "type": "video",
+            "url": "profiles/_template/videos/sample.mp4",
+            "thumbnail": "profiles/_template/images/sample_thumb.jpg"
+          }
+        ]
+      }
+    ],
+    "blogs": [
+      {
+        "title": "Welcome to my new blog!",
+        "content": "This is my first post on my new platform. Stay tuned for more!",
+        "date": "2026-07-01",
+        "image": "profiles/_template/images/blog_header.jpg"
+      }
+    ],
+    "id": "github_cherry-circuit",
+    "folderName": "cherry-circuit"
   }
 ]

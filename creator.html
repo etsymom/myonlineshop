@@ -561,11 +561,11 @@
 
       // Fetch creator profile
       const { data: profile } = await supabaseClient.from("profiles").select("*").eq("id", creatorId).maybeSingle();
-      const creatorName = profile ? `${profile.first_name || ''} ${profile.last_name || ''}`.trim() || 'Creator' : 'Creator';
+      const actualName = profile ? `${profile.first_name || ''} ${profile.last_name || ''}`.trim() || 'Creator' : 'Creator';
+      const usernameStr = profile?.username ? `@${profile.username}` : `@${actualName.replace(/\\s+/g, '').toLowerCase()}`;
+      
       const creatorAvatar = profile?.avatar_url || 'https://ui-avatars.com/api/?name=C&background=F3F0FA&color=6B46C1';
       
-      document.getElementById("creator-name-title").innerText = creatorName;
-      document.getElementById("creator-username").innerText = `@${creatorName.replace(/\\s+/g, '').toLowerCase()}`;
       document.getElementById("profile-avatar").src = creatorAvatar;
       document.getElementById("sub-avatar").src = creatorAvatar;
       
@@ -589,6 +589,11 @@
       if (purchasedSet.has(`sub_${creatorId}`) || currentUser.id === creatorId) {
         isSubscribed = true;
       }
+      
+      // Feature: Only show actual name if subscribed
+      document.getElementById("creator-name-title").innerText = isSubscribed ? actualName : usernameStr;
+      document.getElementById("creator-username").innerText = usernameStr;
+      document.title = `${isSubscribed ? actualName : usernameStr} | InkwellMedia`;
 
       let allMediaNodes = [];
       let albumCardsHTML = [];
@@ -791,8 +796,21 @@
           return;
         }
 
-        document.getElementById("creator-name-title").innerText = profile.name;
-        document.getElementById("creator-username").innerText = `@${profile.name.replace(/\\s+/g, '').toLowerCase()}`;
+        const actualName = profile.name;
+        const usernameStr = profile.username ? `@${profile.username}` : `@${actualName.replace(/\\s+/g, '').toLowerCase()}`;
+        
+        // Mocking subscription state for GitHub profiles since they are free right now
+        const isSubscribed = true; // Assume subscribed so we see their actual name, or we could say false to always see username.
+        // If we want to hide it until a user subscribes, we'd need to link the github id to the user purchases table.
+        // Let's implement actual subscription check for GitHub profiles!
+        let hasSubscribed = false;
+        if (currentUser) {
+           const { data: myPurchases } = await supabaseClient.from("purchases").select("product_key").eq("user_id", currentUser.id).eq("product_key", `sub_${id}`);
+           if (myPurchases && myPurchases.length > 0) hasSubscribed = true;
+        }
+        
+        document.getElementById("creator-name-title").innerText = hasSubscribed ? actualName : usernameStr;
+        document.getElementById("creator-username").innerText = usernameStr;
         const avatarUrl = (profile.assets && profile.assets.avatar) ? profile.assets.avatar : 'https://ui-avatars.com/api/?name=C&background=F3F0FA&color=6B46C1';
         document.getElementById("profile-avatar").src = avatarUrl;
         document.getElementById("sub-avatar").src = avatarUrl;
@@ -877,9 +895,13 @@
         renderNextBatch();
         setupIntersectionObserver();
         
-        // Hide subscription/wallet since these are free profiles
-        document.getElementById("subscription-banner").style.display = "none";
-        document.getElementById("wallet-ui").style.display = "none";
+        if (!hasSubscribed) {
+          document.getElementById("subscription-banner").style.display = "block";
+          document.getElementById("wallet-ui").style.display = "flex";
+        } else {
+          document.getElementById("subscription-banner").style.display = "none";
+          document.getElementById("wallet-ui").style.display = "none";
+        }
         
       } catch (err) {
         console.error(err);
