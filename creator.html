@@ -813,15 +813,16 @@
         }
         
 
-        // Check if logged in as GH admin via localStorage
-        const isGhAdmin = localStorage.getItem('gh_admin') === 'true';
-        if (isGhAdmin) hasSubscribed = true;
+        // Check if logged in as GH user via localStorage
+        const ghUser = localStorage.getItem('gh_user');
+        const isOwner = ghUser && (profile.slug === ghUser || profile.folderName.toLowerCase() === ghUser || profile.name.toLowerCase() === ghUser);
+        if (isOwner) hasSubscribed = true;
         
         document.getElementById("creator-name-title").innerText = hasSubscribed ? actualName : usernameStr;
         document.getElementById("creator-username").innerText = usernameStr;
         
         // Add a discreet Creator Login button if not already logged in as GH admin
-        if (!isGhAdmin) {
+        if (!isOwner) {
            const loginBtn = document.createElement("button");
            loginBtn.innerText = "Creator Login";
            loginBtn.style.fontSize = "10px";
@@ -836,7 +837,7 @@
               const u = prompt("Username:");
               const p = prompt("Password:");
               if (u === "admin" && p === "rogue1") {
-                 localStorage.setItem("gh_admin", "true");
+                 localStorage.setItem("gh_user", profile.slug || profile.folderName);
                  window.location.reload();
               } else {
                  alert("Invalid credentials");
@@ -855,7 +856,7 @@
            logoutBtn.style.cursor = "pointer";
            logoutBtn.style.marginTop = "8px";
            logoutBtn.onclick = () => {
-              localStorage.removeItem("gh_admin");
+              localStorage.removeItem("gh_user");
               window.location.reload();
            };
            document.getElementById("creator-username").parentElement.appendChild(logoutBtn);

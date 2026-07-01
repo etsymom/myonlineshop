@@ -483,7 +483,9 @@
     `;
   }
 
+
   async function checkSession() {
+    if (localStorage.getItem('gh_user')) return true;
     if (!window.supabase) return false;
     try {
       const client = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON, {
@@ -493,6 +495,7 @@
       return !!(data && data.session);
     } catch { return false; }
   }
+
 
   async function init() {
     // Inject styles
@@ -538,13 +541,16 @@
     }
   }
 
+
   window.inkwellLogout = async function() {
+    localStorage.removeItem('gh_user');
     if (window.supabase) {
       const client = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON);
       await client.auth.signOut();
     }
     window.location.href = "index.html";
   };
+
 
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', init);
