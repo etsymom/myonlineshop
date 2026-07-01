@@ -269,7 +269,10 @@
       <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"></path></svg>
       Dashboard
     </a>
-    <div style="font-family: 'Playfair Display', serif; font-size: 20px; font-weight: 900;">Explore</div>
+    <div style="display:flex; gap:16px; align-items:center;">
+       <div id="nav-videos" onclick="switchExploreTab('videos')" style="font-family: 'Playfair Display', serif; font-size: 20px; font-weight: 900; cursor:pointer; transition: 0.2s;">Videos</div>
+       <div id="nav-blogs" onclick="switchExploreTab('blogs')" style="font-family: 'Playfair Display', serif; font-size: 18px; font-weight: 700; color:var(--slate); cursor:pointer; transition: 0.2s;">Blogs</div>
+    </div>
     <div style="width: 24px;"></div> <!-- Spacer -->
   </div>
 
@@ -290,22 +293,12 @@
       return num;
     };
 
-    let currentUser = null;
-    let profilesMap = {};
-
-    async function init() {
-      const { data: { session } } = await supabaseClient.auth.getSession();
-      if (!session) {
-        window.location.href = "index.html";
-        return;
-      }
-      currentUser = session.user;
-
-      await loadFeed();
-    }
+    let videoFeedItems = [];
+    let blogFeedItems = [];
+    let currentTab = 'videos';
 
     async function loadFeed() {
-      // 1. Fetch Profiles
+      // 1. Fetch Supabase Profiles
       const { data: profilesData } = await supabaseClient.from("profiles").select("id, first_name, last_name, avatar_url");
       if (profilesData) {
         for (const p of profilesData) {
@@ -316,54 +309,171 @@
         }
       }
 
-      // 2. Fetch Albums & Media
+      // Fetch curated github profiles
+      try {
+        const res = await fetch('curated_profiles.json');
+        if (res.ok) {
+           const curated = await res.json();
+           for (const p of curated) {
+             const avatar = (p.assets && p.assets.avatar) ? p.assets.avatar : 'https://ui-avatars.com/api/?name=C&background=F3F0FA&color=6B46C1';
+             profilesMap[p.id] = { name: p.name, avatar: avatar };
+             
+             // Add curated albums to video feed
+             if (p.albums) {
+               for (const a of p.albums) {
+                 const videos = (a.media || []).filter(m => m.type === 'video');
+                 for (const vid of videos) {
+                   videoFeedItems.push({
+                     album: { title: a.title, description: a.description, user_id: p.id },
+                     videoUrl: vid.url,
+                     creator: profilesMap[p.id],
+                     likes: Math.floor(Math.random() * 500) + 50,
+                     comments: Math.floor(Math.random() * 50) + 5
+                   });
+                 }
+               }
+             }
+             
+             // Add curated blogs
+             if (p.blogs) {
+               for (const b of p.blogs) {
+                 blogFeedItems.push({
+                   creator: profilesMap[p.id],
+                   user_id: p.id,
+                   title: b.title,
+                   content: b.content,
+                   image: b.image,
+                   date: b.date
+                 });
+               }
+             }
+           }
+        }
+      } catch (err) {
+        console.log("No curated profiles or error fetching:", err);
+      }
+
+      // 2. Fetch Supabase Albums & Media
       const { data: albums, error } = await supabaseClient.from("albums")
         .select("*, album_media(*)")
         .order("created_at", { ascending: false });
 
-      if (error) {
-        console.error("Error fetching albums:", error);
-        document.getElementById('loading').innerHTML = `<p style="color:var(--danger)">Failed to load feed.</p>`;
-        return;
-      }
-
-      // 3. Filter for Free Albums that have Videos
-      const feedItems = [];
-      
-      for (const album of albums) {
-        const mediaItems = album.album_media || [];
-        const videos = mediaItems.filter(m => m.media_type === 'video');
-        
-        // The first 3 videos of every album are free to view
-        const freeVideos = videos.slice(0, 3);
-        
-        if (freeVideos.length > 0) {
-          // Add each video as a feed item
-          for (const vid of freeVideos) {
-            feedItems.push({
-              album: album,
-              videoUrl: vid.media_url,
-              creator: profilesMap[album.user_id] || { name: 'Unknown', avatar: 'https://ui-avatars.com/api/?name=U' },
-              likes: Math.floor(Math.random() * 500) + 50, // Mock stats for UI
-              comments: Math.floor(Math.random() * 50) + 5,
-              bookmarks: Math.floor(Math.random() * 100) + 10,
-              shares: Math.floor(Math.random() * 20) + 2
-            });
+      if (!error && albums) {
+        for (const album of albums) {
+          const mediaItems = album.album_media || [];
+          const videos = mediaItems.filter(m => m.media_type === 'video');
+          const freeVideos = videos.slice(0, 3);
+          
+          if (freeVideos.length > 0) {
+            for (const vid of freeVideos) {
+              videoFeedItems.push({
+                album: album,
+                videoUrl: vid.media_url,
+                creator: profilesMap[album.user_id] || { name: 'Unknown', avatar: 'https://ui-avatars.com/api/?name=U' },
+                likes: Math.floor(Math.random() * 500) + 50,
+                comments: Math.floor(Math.random() * 50) + 5
+              });
+            }
           }
         }
       }
 
-      if (feedItems.length === 0) {
-        document.getElementById('loading').innerHTML = `<p style="color:var(--slate)">No free videos found in the community yet.</p>`;
+      // Fetch Supabase blogs if table exists
+      try {
+        const { data: blogs, error: blogErr } = await supabaseClient.from("blogs").select("*").order("created_at", { ascending: false });
+        if (!blogErr && blogs) {
+          for (const b of blogs) {
+             blogFeedItems.push({
+               creator: profilesMap[b.user_id] || { name: 'Unknown', avatar: 'https://ui-avatars.com/api/?name=U' },
+               user_id: b.user_id,
+               title: b.title,
+               content: b.content,
+               image: b.image_url,
+               date: new Date(b.created_at).toLocaleDateString()
+             });
+          }
+        }
+      } catch (e) {
+        console.log("Blogs table might not exist yet.");
+      }
+      
+      // Shuffle video feed slightly for discovery
+      videoFeedItems = videoFeedItems.sort(() => Math.random() - 0.5);
+
+      if (videoFeedItems.length === 0 && blogFeedItems.length === 0) {
+        document.getElementById('loading').innerHTML = `<p style="color:var(--slate)">No content found in the community yet.</p>`;
         return;
       }
 
-      renderFeed(feedItems);
+      switchExploreTab('videos');
+    }
+    
+    window.switchExploreTab = function(tab) {
+       currentTab = tab;
+       const vNav = document.getElementById("nav-videos");
+       const bNav = document.getElementById("nav-blogs");
+       
+       if (tab === 'videos') {
+         vNav.style.fontSize = '20px'; vNav.style.color = 'var(--white)';
+         bNav.style.fontSize = '18px'; bNav.style.color = 'var(--slate)';
+         renderFeed(videoFeedItems);
+       } else {
+         bNav.style.fontSize = '20px'; bNav.style.color = 'var(--white)';
+         vNav.style.fontSize = '18px'; vNav.style.color = 'var(--slate)';
+         renderBlogs(blogFeedItems);
+       }
+    }
+
+    function renderBlogs(items) {
+      const container = document.getElementById('feed-container');
+      container.innerHTML = ''; 
+      container.style.scrollSnapType = 'none'; // free scroll for blogs
+      container.style.padding = '80px 20px 20px';
+
+      if (items.length === 0) {
+         container.innerHTML = '<p style="text-align:center; color:var(--slate); margin-top:40px;">No blogs found.</p>';
+         document.getElementById('loading').style.display = 'none';
+         return;
+      }
+
+      items.forEach(item => {
+        const card = document.createElement('div');
+        card.style.background = 'var(--aubergine)';
+        card.style.borderRadius = '16px';
+        card.style.padding = '20px';
+        card.style.marginBottom = '20px';
+        card.style.border = '1px solid var(--slate)';
+        
+        let imgHtml = item.image ? `<img src="${item.image}" style="width:100%; height:200px; object-fit:cover; border-radius:12px; margin-bottom:16px;">` : '';
+        
+        card.innerHTML = `
+          ${imgHtml}
+          <div style="display:flex; align-items:center; gap:10px; margin-bottom:12px;">
+             <a href="creator.html?id=${item.user_id}"><img src="${item.creator.avatar}" style="width:36px; height:36px; border-radius:50%; object-fit:cover;"></a>
+             <div>
+                <div style="font-weight:700; font-size:14px;">${item.creator.name}</div>
+                <div style="font-size:12px; color:var(--slate);">${item.date || ''}</div>
+             </div>
+          </div>
+          <h2 style="font-family:'Playfair Display',serif; font-size:20px; margin-bottom:8px;">${item.title}</h2>
+          <p style="font-size:14px; color:var(--parchment); line-height:1.5;">${item.content}</p>
+        `;
+        container.appendChild(card);
+      });
+      document.getElementById('loading').style.display = 'none';
     }
 
     function renderFeed(items) {
       const container = document.getElementById('feed-container');
       container.innerHTML = ''; // Clear
+      container.style.scrollSnapType = 'y mandatory';
+      container.style.padding = '0';
+      
+      if (items.length === 0) {
+         container.innerHTML = '<p style="text-align:center; color:var(--slate); margin-top:80px;">No videos found.</p>';
+         document.getElementById('loading').style.display = 'none';
+         return;
+      }
 
       items.forEach((item, index) => {
         const card = document.createElement('div');
@@ -395,9 +505,7 @@
         container.appendChild(card);
       });
 
-      // Hide loading screen
       document.getElementById('loading').style.display = 'none';
-
       setupInteractions();
     }
 

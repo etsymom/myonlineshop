@@ -1,0 +1,35 @@
+{
+  "name": "Creator Name",
+  "niche": "Beauty & Lifestyle",
+  "theme": "dark-cyber",
+  "assets": {
+    "hero": "path/to/hero.jpg",
+    "avatar": "path/to/avatar.jpg"
+  },
+  "social_links": {
+    "instagram": "@creator",
+    "tiktok": "@creator"
+  },
+  "albums": [
+    {
+      "title": "My Daily Routine",
+      "description": "Watch my daily routine in 4k.",
+      "price": 0,
+      "media": [
+        {
+          "type": "video",
+          "url": "profiles/_template/videos/sample.mp4",
+          "thumbnail": "profiles/_template/images/sample_thumb.jpg"
+        }
+      ]
+    }
+  ],
+  "blogs": [
+    {
+      "title": "Welcome to my new blog!",
+      "content": "This is my first post on my new platform. Stay tuned for more!",
+      "date": "2026-07-01",
+      "image": "profiles/_template/images/blog_header.jpg"
+    }
+  ]
+}

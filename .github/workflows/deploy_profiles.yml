@@ -1,0 +1,29 @@
+name: Compile Profiles
+on:
+  push:
+    branches: [ "main", "master" ]
+    paths:
+      - 'profiles/**'
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+          
+      - name: Compile Curated Profiles
+        run: node scripts/compile_profiles.js
+        
+      - name: Commit and push changes
+        run: |
+          git config --global user.name 'GitHub Action'
+          git config --global user.email 'action@github.com'
+          git add curated_profiles.json
+          git commit -m "Auto-compile curated profiles" || echo "No changes to commit"
+          git push

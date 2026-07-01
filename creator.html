@@ -413,6 +413,7 @@
     <div style="display: flex; justify-content: center; gap: 40px; border-bottom: 1px solid var(--slate-light); margin-bottom: 20px; padding-bottom: 12px;">
       <div id="tab-media" onclick="switchTab('media')" style="font-weight: 900; color: var(--aubergine); border-bottom: 2px solid var(--aubergine); padding-bottom: 10px; margin-bottom: -13px; cursor: pointer;">𐄹 ALL MEDIA</div>
       <div id="tab-albums" onclick="switchTab('albums')" style="font-weight: 700; color: var(--slate); padding-bottom: 10px; cursor: pointer;">💿 ALBUMS</div>
+      <div id="tab-blogs" onclick="switchTab('blogs')" style="font-weight: 700; color: var(--slate); padding-bottom: 10px; cursor: pointer;">📝 BLOGS</div>
     </div>
 
     <!-- TAB 1: ALL MEDIA (Infinite Grid) -->
@@ -429,6 +430,13 @@
     <div id="albums-tab-content" style="display: none;">
       <div class="product-grid" id="legacy-albums-grid">
         <!-- Populated via JS -->
+      </div>
+    </div>
+
+    <!-- TAB 3: BLOGS -->
+    <div id="blogs-tab-content" style="display: none;">
+      <div class="product-grid" id="blogs-grid">
+        <p style="font-size: 14px; color: var(--slate); grid-column: span 3; text-align: center;">No blogs yet.</p>
       </div>
     </div>
   </div>
@@ -543,6 +551,11 @@
 
       if (!creatorId) {
         grid.innerHTML = `<p style="color:var(--danger); grid-column:span 3;">No creator specified.</p>`;
+        return;
+      }
+
+      if (creatorId.startsWith('github_')) {
+        await loadGithubProfile(creatorId);
         return;
       }
 
@@ -720,33 +733,157 @@
     window.switchTab = function(tab) {
       const mediaTab = document.getElementById("tab-media");
       const albumsTab = document.getElementById("tab-albums");
+      const blogsTab = document.getElementById("tab-blogs");
       const mediaContent = document.getElementById("media-tab-content");
       const albumsContent = document.getElementById("albums-tab-content");
+      const blogsContent = document.getElementById("blogs-tab-content");
+
+      // Reset all
+      mediaContent.style.display = 'none';
+      albumsContent.style.display = 'none';
+      blogsContent.style.display = 'none';
+      
+      mediaTab.style.fontWeight = '700';
+      mediaTab.style.color = 'var(--slate)';
+      mediaTab.style.borderBottom = 'none';
+      mediaTab.style.marginBottom = '0';
+      
+      albumsTab.style.fontWeight = '700';
+      albumsTab.style.color = 'var(--slate)';
+      albumsTab.style.borderBottom = 'none';
+      albumsTab.style.marginBottom = '0';
+      
+      blogsTab.style.fontWeight = '700';
+      blogsTab.style.color = 'var(--slate)';
+      blogsTab.style.borderBottom = 'none';
+      blogsTab.style.marginBottom = '0';
 
       if (tab === 'media') {
         mediaContent.style.display = 'block';
-        albumsContent.style.display = 'none';
         mediaTab.style.fontWeight = '900';
         mediaTab.style.color = 'var(--aubergine)';
         mediaTab.style.borderBottom = '2px solid var(--aubergine)';
         mediaTab.style.marginBottom = '-13px';
-        
-        albumsTab.style.fontWeight = '700';
-        albumsTab.style.color = 'var(--slate)';
-        albumsTab.style.borderBottom = 'none';
-        albumsTab.style.marginBottom = '0';
-      } else {
-        mediaContent.style.display = 'none';
+      } else if (tab === 'albums') {
         albumsContent.style.display = 'block';
         albumsTab.style.fontWeight = '900';
         albumsTab.style.color = 'var(--aubergine)';
         albumsTab.style.borderBottom = '2px solid var(--aubergine)';
         albumsTab.style.marginBottom = '-13px';
+      } else if (tab === 'blogs') {
+        blogsContent.style.display = 'block';
+        blogsTab.style.fontWeight = '900';
+        blogsTab.style.color = 'var(--aubergine)';
+        blogsTab.style.borderBottom = '2px solid var(--aubergine)';
+        blogsTab.style.marginBottom = '-13px';
+      }
+    }
+
+    async function loadGithubProfile(id) {
+      try {
+        const res = await fetch('curated_profiles.json');
+        if (!res.ok) throw new Error('No curated profiles found.');
+        const profiles = await res.json();
+        const profile = profiles.find(p => p.id === id);
         
-        mediaTab.style.fontWeight = '700';
-        mediaTab.style.color = 'var(--slate)';
-        mediaTab.style.borderBottom = 'none';
-        mediaTab.style.marginBottom = '0';
+        if (!profile) {
+          document.getElementById("albums-grid").innerHTML = `<p style="color:var(--danger); grid-column:span 3;">Creator not found.</p>`;
+          return;
+        }
+
+        document.getElementById("creator-name-title").innerText = profile.name;
+        document.getElementById("creator-username").innerText = `@${profile.name.replace(/\\s+/g, '').toLowerCase()}`;
+        const avatarUrl = (profile.assets && profile.assets.avatar) ? profile.assets.avatar : 'https://ui-avatars.com/api/?name=C&background=F3F0FA&color=6B46C1';
+        document.getElementById("profile-avatar").src = avatarUrl;
+        document.getElementById("sub-avatar").src = avatarUrl;
+        
+        if (profile.assets && profile.assets.hero) {
+           document.getElementById("profile-cover").style.backgroundImage = `url('${profile.assets.hero}')`;
+        } else {
+           document.getElementById("profile-cover").style.backgroundImage = `url('${avatarUrl}')`;
+        }
+        document.getElementById("creator-desc").innerText = `${profile.niche} | ${profile.social_links?.instagram || ''}`;
+
+        let totalMedia = 0;
+        let allMediaNodes = [];
+        let albumCardsHTML = [];
+
+        if (profile.albums) {
+          for (const album of profile.albums) {
+             const mediaItems = album.media || [];
+             totalMedia += mediaItems.length;
+
+             let mediaHTML = '';
+             if (mediaItems.length > 0) {
+               const itemsHTML = mediaItems.map(m => {
+                 if (m.type === 'video') {
+                   return `<video src="${m.url}" preload="none" style="min-width:85%; height:160px; object-fit:cover; border-radius:8px; background:black; flex-shrink:0; scroll-snap-align:start;" controls></video>`;
+                 } else {
+                   return `<img src="${m.url}" style="min-width:85%; height:160px; object-fit:cover; border-radius:8px; flex-shrink:0; scroll-snap-align:start;">`;
+                 }
+               }).join("");
+               mediaHTML = `<div style="display:flex; overflow-x:auto; gap:8px; margin-bottom:12px; scroll-snap-type:x mandatory; padding-bottom:8px;">${itemsHTML}</div>`;
+             } else {
+               mediaHTML = `<div class="product-icon" style="margin-bottom:12px;">🎵</div>`;
+             }
+             
+             albumCardsHTML.push(`
+               <div class="product-card">
+                 ${mediaHTML}
+                 <div class="product-name">${album.title}</div>
+                 <p class="product-desc" style="margin-bottom: 8px;">${album.description || ''}</p>
+                 <button class="wallet-btn-amber" style="width:100%; border-radius:12px;" onclick="alert('This is a curated free album!')">Free Access</button>
+               </div>
+             `);
+
+             mediaItems.forEach((m) => {
+               let gridMedia = '';
+               if (m.type === 'video') {
+                 gridMedia = `<video src="${m.url}" preload="metadata" style="width:100%; height:100%; object-fit:cover;" controls></video>`;
+               } else {
+                 gridMedia = `<img src="${m.url}" style="width:100%; height:100%; object-fit:cover;">`;
+               }
+
+               allMediaNodes.push(`
+                 <div style="position:relative; aspect-ratio:3/4; background:black; overflow:hidden; border-radius:4px; cursor:pointer;" onclick="${m.type==='video' ? `const v=this.querySelector('video'); v.paused ? v.play() : v.pause();` : ''}">
+                   ${gridMedia}
+                 </div>
+               `);
+             });
+          }
+        }
+        
+        document.getElementById("stat-posts").innerText = profile.albums ? profile.albums.length : 0;
+        document.getElementById("stat-media").innerText = totalMedia;
+        document.getElementById("legacy-albums-grid").innerHTML = albumCardsHTML.join("") || "<p>No albums</p>";
+
+        // Render blogs
+        if (profile.blogs && profile.blogs.length > 0) {
+           const blogsHTML = profile.blogs.map(b => `
+              <div class="product-card">
+                 ${b.image ? `<img src="${b.image}" style="width:100%; height:160px; object-fit:cover; border-radius:12px; margin-bottom:12px;">` : ''}
+                 <div class="product-name">${b.title}</div>
+                 <div style="font-size:11px; color:var(--slate); margin-bottom:8px;">${b.date}</div>
+                 <p class="product-desc">${b.content}</p>
+              </div>
+           `).join('');
+           document.getElementById("blogs-grid").innerHTML = blogsHTML;
+        }
+
+        // Populate Infinite Grid
+        window.globalMediaNodes = allMediaNodes;
+        window.currentRenderIndex = 0;
+        document.getElementById("albums-grid").innerHTML = "";
+        renderNextBatch();
+        setupIntersectionObserver();
+        
+        // Hide subscription/wallet since these are free profiles
+        document.getElementById("subscription-banner").style.display = "none";
+        document.getElementById("wallet-ui").style.display = "none";
+        
+      } catch (err) {
+        console.error(err);
+        document.getElementById("albums-grid").innerHTML = `<p style="color:var(--danger); grid-column:span 3;">Failed to load curated profile.</p>`;
       }
     }
 
