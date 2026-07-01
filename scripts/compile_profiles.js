@@ -19,7 +19,11 @@ function compileProfiles() {
 
     const itemPath = path.join(profilesDir, item);
     if (fs.statSync(itemPath).isDirectory()) {
-      const templatePath = path.join(itemPath, 'text folder', 'template.json');
+      let templatePath = path.join(itemPath, 'text folder', 'template.json');
+      if (!fs.existsSync(templatePath)) {
+        templatePath = path.join(itemPath, 'text', 'template.json');
+      }
+      
       if (fs.existsSync(templatePath)) {
         try {
           const fileContent = fs.readFileSync(templatePath, 'utf-8');
@@ -28,6 +32,26 @@ function compileProfiles() {
           // Add some generated ID and basic defaults if not present
           profileData.id = `github_${item.toLowerCase().replace(/\s+/g, '_')}`;
           profileData.folderName = item;
+          
+          // Map videos into an album so the frontend can render them
+          if (profileData.videos && Array.isArray(profileData.videos)) {
+            if (!profileData.albums) profileData.albums = [];
+            
+            const mediaItems = profileData.videos.map(v => ({
+              type: 'video',
+              url: v.video_path || v.thumbnail_path,
+              thumbnail: v.thumbnail_path
+            }));
+            
+            if (mediaItems.length > 0) {
+              profileData.albums.push({
+                title: "All Videos",
+                description: "Creator Videos",
+                media: mediaItems,
+                price: 0
+              });
+            }
+          }
           
           allProfiles.push(profileData);
           console.log(`Compiled profile: ${item}`);
