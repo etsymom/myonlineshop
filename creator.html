@@ -523,7 +523,8 @@
       const { data: { session } } = await supabaseClient.auth.getSession();
       if (!session) { window.location.href = "index.html"; return; }
       currentUser = session.user;
-      document.getElementById("welcome-line").innerText = "Hi, " + (currentUser.email || "");
+      const welcomeLine = document.getElementById("welcome-line");
+      if (welcomeLine) welcomeLine.innerText = "Hi, " + (currentUser.email || "");
       if (ADMIN_EMAILS.includes(currentUser.email)) {
         document.getElementById("admin-btn").style.display = "inline-block";
       }
