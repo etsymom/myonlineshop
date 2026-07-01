@@ -787,7 +787,7 @@
 
     async function loadGithubProfile(id) {
       try {
-        const res = await fetch('curated_profiles.json');
+        const res = await fetch('curated_profiles.json?t=' + new Date().getTime());
         if (!res.ok) throw new Error('No curated profiles found.');
         const profiles = await res.json();
         const profile = profiles.find(p => p.id === id);
