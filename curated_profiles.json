@@ -37,41 +37,112 @@
     "folderName": "TestCreator"
   },
   {
-    "name": "Cherry Circuit",
-    "username": "cherrycircuit",
-    "niche": "Tech & Coding",
-    "theme": "dark-cyber",
-    "assets": {
-      "hero": "profiles/_template/images/hero.jpg",
-      "avatar": "profiles/_template/images/avatar.jpg"
-    },
+    "id": "github_cherry-circuit",
+    "slug": "cherry-circuit",
+    "name": "CherryCircuit",
+    "tagline": "Born to press start. Built to explain why.",
+    "niche": "Gaming & PC Building",
+    "short_bio": "Bellville South gamer, PC builder, and digital entertainment critic making tech accessible and hilarious for everyone who was told gaming wasn't for them.",
+    "full_bio": "When I was twelve I took apart my family's broken desktop and put it back together. It still didn't work, but I understood it now. That felt like a superpower.\n\nI started gaming seriously at 13 on a borrowed laptop that could barely run Minecraft. Over the next five years I learned to build PCs from YouTube, forums, and a lot of trial and error — mostly error. My first build cost R4 200 and took me three months of saving. It was the most satisfying thing I had ever owned because I knew every component, what it did, and why I had chosen it over the alternative.\n\nCherryCircuit is for everyone who loves games but finds the PC building community alienating, gatekeepy, and exhausting. And it often is. I try to be the opposite: clear, honest, funny about my mistakes, and genuinely invested in helping people get into the hobby without spending more than they need to.\n\nI also write about gaming culture from a perspective that is not often represented: a young Black woman from Bellville South. The demographics of gaming are changing fast, and the culture is not always catching up. I have opinions about representation in games, about toxicity in online spaces, and about why the next generation of South African game developers is going to be extraordinary.",
+    "location": "Bellville South, Cape Town",
     "social_links": {
-      "instagram": "@cherrycircuit",
-      "tiktok": "@cherrycircuit"
+      "instagram": "",
+      "tiktok": "",
+      "youtube": "",
+      "facebook": "",
+      "twitter": "",
+      "website": ""
+    },
+    "assets": {
+      "avatar": "profiles/cherry-circuit/images/avatar.svg",
+      "hero": "profiles/cherry-circuit/images/hero.svg"
     },
     "albums": [
       {
-        "title": "My Daily Coding Routine",
-        "description": "Watch my daily routine in 4k.",
-        "price": 0,
+        "id": "album-cc-001",
+        "title": "Build Gallery: Rigs I Have Assembled",
+        "description": "Every PC I have built documented — budget, mid-range, and one absolute beast.",
+        "cover_image": "profiles/cherry-circuit/images/album1-cover.svg",
+        "media": []
+      },
+      {
+        "id": "album-cc-002",
+        "title": "Cape Town Gaming Scene",
+        "description": "LAN parties, tournaments, and the community growing around competitive gaming in the Cape.",
+        "cover_image": "profiles/cherry-circuit/images/album2-cover.svg",
+        "media": []
+      },
+      {
+        "title": "All Videos",
+        "description": "Creator Videos",
         "media": [
           {
             "type": "video",
-            "url": "profiles/_template/videos/sample.mp4",
-            "thumbnail": "profiles/_template/images/sample_thumb.jpg"
+            "url": "profiles/cherry-circuit/images/video-thumb.svg",
+            "thumbnail": "profiles/cherry-circuit/images/video-thumb.svg"
+          },
+          {
+            "type": "video",
+            "url": "profiles/cherry-circuit/images/video-thumb2.svg",
+            "thumbnail": "profiles/cherry-circuit/images/video-thumb2.svg"
           }
-        ]
+        ],
+        "price": 0
+      }
+    ],
+    "videos": [
+      {
+        "id": "video-cc-001",
+        "title": "R5000 Budget Gaming PC Build 2026",
+        "description": "A complete South African budget PC build — every component chosen for performance-per-rand.",
+        "video_path": "",
+        "thumbnail_path": "profiles/cherry-circuit/images/video-thumb.svg",
+        "published_at": "2026-06-01",
+        "member_only": false
+      },
+      {
+        "id": "video-cc-002",
+        "title": "Every Mistake I Made Building My First Three PCs (So You Don't Have To)",
+        "description": "Unfiltered mistakes, what I learned, and exactly how to avoid them.",
+        "video_path": "",
+        "thumbnail_path": "profiles/cherry-circuit/images/video-thumb2.svg",
+        "published_at": "2026-06-15",
+        "member_only": true
       }
     ],
     "blogs": [
       {
-        "title": "Welcome to my new blog!",
-        "content": "This is my first post on my new platform. Stay tuned for more!",
-        "date": "2026-07-01",
-        "image": "profiles/_template/images/blog_header.jpg"
+        "id": "blog-cc-001",
+        "slug": "black-women-in-gaming",
+        "title": "Black Women in Gaming: We Were Always Here",
+        "summary": "On representation, community, and why the 'gamer girl' narrative needs to be retired permanently.",
+        "content": "Let me tell you what happened the first time I played online multiplayer with voice chat on. Within four minutes of speaking, someone asked where I was from, then told me to go back there. I was fourteen.\n\nI did not stop playing. I turned off voice chat, found a group of friends who did not care what I sounded like, and kept going. But I carry that moment because I think it is important not to sanitise the experience of being a Black woman in online gaming spaces in 2026.\n\nHere is what is also true: gaming communities in South Africa have become genuinely more welcoming. Slowly, imperfectly, but measurably. I have met Black women gamers of all ages at LAN events who are not hiding their identities, who are competing openly, who are streaming and building audiences. That matters.\n\nThe 'gamer girl' trope — the idea that women who game are performing femininity in gaming spaces rather than just being gamers — needs to die. I play RPGs, FPS, strategy, and indie games. I build my own hardware. I have opinions about CPU architecture. I am not a gamer girl. I am a gamer. Full stop.",
+        "published_at": "2026-06-18",
+        "header_image": "profiles/cherry-circuit/images/blog-header.svg",
+        "author": "Thandi Ndlovu",
+        "member_only": false,
+        "published": true
       }
     ],
-    "id": "github_cherry-circuit",
+    "membership": {
+      "enabled": true,
+      "free_content_description": "Weekly PC builds, game reviews, and gaming culture commentary.",
+      "premium_content_description": "Component comparison spreadsheets, South African price-tracking guides, early access to build videos, and monthly Discord gaming sessions.",
+      "main_cta": "Build smarter. Game harder. Join CherryCircuit."
+    },
+    "products": [
+      {
+        "id": "product-cc-001",
+        "name": "South African PC Build Planner 2026",
+        "description": "A spreadsheet tool for planning a PC build with live South African retailer price links and performance tier guidance.",
+        "price": 69,
+        "currency": "ZAR",
+        "image": "profiles/cherry-circuit/images/product-thumb.svg",
+        "purchase_url": "",
+        "active": true
+      }
+    ],
+    "published": true,
     "folderName": "cherry-circuit"
   }
 ]
