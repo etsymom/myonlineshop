@@ -54,8 +54,8 @@
       "website": ""
     },
     "assets": {
-      "avatar": "profiles/cherry-circuit/images/avatar.svg",
-      "hero": "profiles/cherry-circuit/images/hero.svg"
+      "avatar": "profiles/cherry-circuit/images/me/FcQVExsX0AEm0ia.jpeg",
+      "hero": "profiles/cherry-circuit/images/me/b316ddde-f35a-4c61-85eb-eb648a2802db_496cbbf1-9fff-46a2-af02.jpg"
     },
     "albums": [
       {
@@ -85,6 +85,45 @@
             "type": "video",
             "url": "profiles/cherry-circuit/images/video-thumb2.svg",
             "thumbnail": "profiles/cherry-circuit/images/video-thumb2.svg"
+          }
+        ],
+        "price": 0
+      },
+      {
+        "title": "me",
+        "description": "Auto-generated album from folder: me",
+        "media": [
+          {
+            "type": "image",
+            "url": "profiles/cherry-circuit/images/me/0b93916c-b8ee-49af-b795-f49f92fa74f9_11.jpg"
+          },
+          {
+            "type": "image",
+            "url": "profiles/cherry-circuit/images/me/6c4c1e5f-4b79-4e59-9782-6a398eb6dd5b_2.jpg"
+          },
+          {
+            "type": "image",
+            "url": "profiles/cherry-circuit/images/me/6rEwVjkc8zoVqTPA.jpeg"
+          },
+          {
+            "type": "image",
+            "url": "profiles/cherry-circuit/images/me/FafZeCvWIAAlZqQ.jpeg"
+          },
+          {
+            "type": "image",
+            "url": "profiles/cherry-circuit/images/me/Fb6nXwkWYAAZiWb.jpeg"
+          },
+          {
+            "type": "image",
+            "url": "profiles/cherry-circuit/images/me/FcQVExsX0AEm0ia.jpeg"
+          },
+          {
+            "type": "image",
+            "url": "profiles/cherry-circuit/images/me/b316ddde-f35a-4c61-85eb-eb648a2802db_496cbbf1-9fff-46a2-af02.jpg"
+          },
+          {
+            "type": "image",
+            "url": "profiles/cherry-circuit/images/me/bb34f67d-2c95-4a7b-8a09-817ec31402ec_myxj_20220821183537578_.jpg"
           }
         ],
         "price": 0
