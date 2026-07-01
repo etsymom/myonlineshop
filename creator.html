@@ -521,8 +521,15 @@
     }
 
     async function loadUser() {
+      const ghUser = localStorage.getItem("gh_user");
       const { data: { session } } = await supabaseClient.auth.getSession();
-      if (!session) { window.location.href = "index.html"; return; }
+      if (!session && !ghUser) { return; }
+      
+      if (ghUser && !session) {
+         currentUser = { id: "github_" + ghUser };
+         return;
+      }
+      
       currentUser = session.user;
       const welcomeLine = document.getElementById("welcome-line");
       if (welcomeLine) welcomeLine.innerText = "Hi, " + (currentUser.email || "");
