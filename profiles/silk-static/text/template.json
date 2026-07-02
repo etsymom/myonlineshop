@@ -1,0 +1,203 @@
+{
+  "id": "silk-static-001",
+  "slug": "silk-static",
+  "name": "SilkStatic",
+  "tagline": "Elegance should feel effortless, but never ordinary.",
+  "niche": "Luxury Fashion, Beauty & Editorial Styling",
+  "short_bio": "I'm a Cape Town-based fashion and beauty creator exploring quiet luxury, editorial styling, personal identity, and the work that goes into creating a polished image.",
+  "full_bio": "I grew up surrounded by beautiful homes, carefully planned events, expensive clothes, and opportunities that many people never receive. I'm aware of that privilege, and I don't want to pretend that everything I have achieved happened without it.\n\nFor a long time, I felt as though people had already decided who I was before I entered a room. If I succeeded, it was because of my background. If I cared about fashion, it was assumed that I only cared about labels. If I shared something beautiful, people saw the result but not the hours of planning behind it.\n\nI started creating small fashion editorials because I wanted to build something that reflected my own taste rather than the life people expected me to present. I borrowed clothing from friends, styled shoots myself, learned how lighting changed a face, and discovered that one carefully chosen detail could say more than an entire designer outfit.\n\nMy content is about beauty, fashion, confidence, and the discipline behind a polished image. I love luxury, but I'm more interested in craftsmanship, fit, colour, atmosphere, and the way someone carries herself than in displaying a price tag.\n\nI'm still learning how to separate my own voice from the expectations attached to me. My goal is to create an editorial production and styling studio that supports emerging African designers, photographers, makeup artists, and models.\n\nI want this platform to show both sides of my world: the finished image and everything that happened before the camera switched on.",
+  "location": "Cape Town, South Africa",
+  "social_links": {
+    "instagram": "",
+    "tiktok": "",
+    "youtube": "",
+    "facebook": "",
+    "twitter": "",
+    "website": ""
+  },
+  "assets": {
+    "avatar": "profiles/silk-static/images/avatar.svg",
+    "hero": "profiles/silk-static/images/hero.svg"
+  },
+  "albums": [
+    {
+      "id": "album-ss-plum-001",
+      "title": "Plum Hour",
+      "description": "A fashion and beauty album built around rich plum tones, sleek silhouettes, evening light, and elegant portrait photography.",
+      "cover_image": "profiles/silk-static/images/plum-hour-cover.svg",
+      "media": []
+    },
+    {
+      "id": "album-ss-quiet-001",
+      "title": "Quiet Luxury",
+      "description": "Tailored outfits, refined accessories, neutral locations, and styling focused on craftsmanship rather than visible logos.",
+      "cover_image": "profiles/silk-static/images/quiet-luxury-cover.svg",
+      "media": []
+    },
+    {
+      "id": "album-ss-after-001",
+      "title": "After the Event",
+      "description": "Behind-the-scenes photographs showing preparation, makeup details, outfit changes, quiet moments, and what happens after polished events end.",
+      "cover_image": "profiles/silk-static/images/after-event-cover.svg",
+      "media": []
+    }
+  ],
+  "videos": [
+    {
+      "id": "video-ss-001",
+      "title": "Getting Ready for a Cape Town Editorial Shoot",
+      "description": "A complete behind-the-scenes video covering makeup, hair, clothing selection, lighting, posing, and the final photographs.",
+      "video_path": "",
+      "thumbnail_path": "profiles/silk-static/images/video-thumb-1.svg",
+      "published_at": "2026-06-10",
+      "member_only": false
+    },
+    {
+      "id": "video-ss-002",
+      "title": "How I Style a Monochrome Outfit Without Making It Boring",
+      "description": "A styling tutorial focused on texture, silhouette, accessories, makeup, and subtle colour variation.",
+      "video_path": "",
+      "thumbnail_path": "profiles/silk-static/images/video-thumb-2.svg",
+      "published_at": "2026-06-24",
+      "member_only": false
+    },
+    {
+      "id": "video-ss-003",
+      "title": "The Work Behind a Polished Image",
+      "description": "An honest look at planning, preparation, retakes, editing, and the people involved in producing elegant content.",
+      "video_path": "",
+      "thumbnail_path": "profiles/silk-static/images/video-thumb-3.svg",
+      "published_at": "2026-07-08",
+      "member_only": true
+    }
+  ],
+  "blogs": [
+    {
+      "id": "blog-ss-001",
+      "slug": "quiet-luxury-not-about-price",
+      "title": "Quiet Luxury Is Not About the Price Tag",
+      "summary": "My thoughts on fit, fabric, confidence, restraint, and why expensive clothing does not automatically create personal style.",
+      "content": "I have borrowed expensive clothing, stood in a dressing room in a department store, and watched someone in a perfectly fitted R300 blazer walk past someone else in a R6 000 jacket. The person in the R300 blazer looked better. Not because the blazer was technically superior. Because it fit.\n\nQuiet luxury is a phrase that gets used and misused. Brands use it to justify charging more for less visible branding. Influencers use it to describe a particular beige aesthetic that has more to do with art direction than substance. But the underlying principle, when it is applied honestly, is about something real: the difference between clothing that works and clothing that merely costs.\n\nHere is what actually creates a quiet luxury effect:\n\nFit. Nothing compensates for a garment that does not fit properly. Not the label, not the fabric, not the price. A tailored second-hand coat reads as more intentional than an ill-fitting piece from a prestige house. Alterations are one of the most underrated investments in personal style.\n\nFabric with substance. Quality fabric has weight, drape, and a response to movement that cheap fabric cannot replicate. You feel the difference before you see it. Natural fibres — wool, silk, heavy cotton — tend to behave better over time and photograph better. But this is not a rule. Some performance fabrics are exceptional. Some natural fibres are poorly made. Learn to assess fabric by touch and movement, not by composition labels.\n\nRestraint. Every element in an outfit is either earning its place or creating noise. Quiet luxury outfits tend to have a logic: one focal point, everything else in support. This is a discipline, not a budget. It requires editing, which requires confidence.\n\nConfidence itself. I have seen extraordinary garments worn badly. I have seen humble pieces carried with complete authority. The way someone stands, moves, and makes eye contact with a room is part of the outfit. This cannot be purchased. It can be practised.\n\nThe most honest version of quiet luxury is simply: wear what fits well, choose quality where you can, edit until nothing is unnecessary, and carry yourself as though you chose every element deliberately. Because you did.",
+      "published_at": "2026-05-22",
+      "header_image": "profiles/silk-static/images/blog-header-1.svg",
+      "author": "Kiara Naidoo",
+      "member_only": false,
+      "published": true
+    },
+    {
+      "id": "blog-ss-002",
+      "slug": "building-personal-brand-without-copy",
+      "title": "Building a Personal Brand Without Becoming a Copy",
+      "summary": "How I find inspiration without recreating someone else's entire identity.",
+      "content": "The first time someone told me my work looked like a specific international creator's feed, I felt two things simultaneously: flattered and hollow. Flattered because the comparison was to someone whose work I genuinely admired. Hollow because I recognised, when I looked at my own images, that they were right.\n\nI had been absorbing so much inspiration from one source that it had begun to replicate itself in my own output without me choosing it. The colour palette, the composition angles, even the pacing between posts. I had not copied anything deliberately, but I had not been sufficiently careful about filtering inspiration through my own perspective before it became my practice.\n\nBuilding a personal brand without becoming a copy is not about refusing to be influenced. Influence is unavoidable and largely good. It is about the quality of the translation between what you absorb and what you produce.\n\nWhat I changed:\n\nI diversified my sources aggressively. Film photographers. Architects. Ceramicists. Textile designers. Vintage fashion historians. When your reference pool is deep and wide, no single influence can dominate.\n\nI started asking a different question. Instead of asking what would look good here, I started asking what is true here. What do I actually notice about this location, this garment, this person's posture? What would I photograph if nobody was watching?\n\nI gave myself constraints. Constraints are one of the most useful creative tools available. If I decide that I will only shoot on film for the next month, or that I will only use natural window light, or that I will only style outfits I can assemble from what I already own, the resulting limitations force me to solve problems creatively rather than defaulting to what I have seen work for someone else.\n\nI accepted that distinctiveness takes time. You do not arrive at your own voice overnight. You arrive at it through accumulated practice, through recognising when something you have produced feels genuinely yours and doing more of that, deliberately, until it becomes a habit rather than an accident.",
+      "published_at": "2026-06-05",
+      "header_image": "profiles/silk-static/images/blog-header-2.svg",
+      "author": "Kiara Naidoo",
+      "member_only": false,
+      "published": true
+    },
+    {
+      "id": "blog-ss-003",
+      "slug": "why-details-matter-more-than-labels",
+      "title": "Why Details Matter More Than Labels",
+      "summary": "A reflection on tailoring, posture, grooming, colour, and the small choices that make an outfit feel intentional.",
+      "content": "I spent a long time believing that the outfit was the primary unit of personal style. That a great look was assembled at the garment level — this piece, that piece, those shoes.\n\nI have since revised this. The garment is the last thing. Before it: posture, grooming, colour against your skin, the fit of every seam, and the quality of every decision that brought the whole thing together.\n\nHere is what I mean specifically:\n\nTailoring. A piece that fits your exact proportions communicates a level of intentionality that no label can buy. The shoulder seam should sit at the exact edge of your shoulder. The sleeve should end at the right point on your wrist. The trouser break should be deliberate. These are not cosmetic details. They are structural. They determine how a garment reads from across the room.\n\nColour against skin tone. The way a colour interacts with your specific complexion changes everything. There is a version of champagne that makes my skin look grey and a version that makes it look luminous. Same colour family. Completely different result. Understanding which colours work against your skin is more valuable than any trend forecast.\n\nGrooming as styling. Skin, nails, hair — these are part of the outfit. A beautifully styled look with neglected details in any of these areas loses coherence. I do not mean perfection. I mean intention. Controlled rather than unconsidered.\n\nAccessories as editing. The best accessory decision is often removal. I try on everything and then take off one thing. Usually the outfit becomes more interesting immediately. The piece I removed was creating noise rather than contributing to the composition.\n\nPosture and carriage. A great garment worn with collapsed posture is a different garment to the same piece worn with height and stillness. Posture is not about stiffness. It is about being present in your own body. The people who look consistently excellent in clothes are almost always people who move and stand as though they are comfortable where they are.\n\nThe label is almost never the detail that matters most. It is usually the last resort of someone who has not figured out the other things yet.",
+      "published_at": "2026-06-19",
+      "header_image": "profiles/silk-static/images/blog-header-3.svg",
+      "author": "Kiara Naidoo",
+      "member_only": false,
+      "published": true
+    },
+    {
+      "id": "blog-ss-004",
+      "slug": "what-people-dont-see-before-final-photograph",
+      "title": "What People Do Not See Before the Final Photograph",
+      "summary": "The planning, mistakes, lighting problems, outfit changes, and creative decisions behind one finished image.",
+      "content": "People tell me they love the finished photographs. They describe them as effortless. I find this both gratifying and slightly funny, because effortless is precisely the wrong word.\n\nWhat actually happened before any single image:\n\nConcept development took two to three days. I made a mood board, rejected most of it, rebuilt it, and arrived at something with a clear logic: one colour family, one light quality, one emotional register. Getting to that clarity required eliminating all the things that were almost right.\n\nLocation scouting. I visited four locations before selecting one. Two were rejected on the first visit because the light was wrong at the time of day we needed to shoot. One had the right light but the wrong background. The fourth had a wall and a window that together did exactly what I needed.\n\nStyling involved twelve garment combinations. I photographed each combination flat before the shoot to see how they read without a body in them. Six were eliminated immediately. Two more were eliminated when I tried them on. The final selection was three looks, not the seven I had originally planned.\n\nHair and makeup took an hour and forty minutes. The first version of the hair was wrong. We tried three more approaches. The version that worked was the simplest one, which is usually the case.\n\nDuring the shoot itself we took two hundred and forty photographs. I edited those down to forty for serious consideration. From forty to twelve. From twelve to three, which were the images I shared.\n\nBetween the first concept note and the final posted image: eleven days, four other people, one rescheduled day due to light, one outfit I was certain about that photographed badly, and one piece I had nearly discarded that became the detail everyone noticed.\n\nI share this not to perform the work, but because I think the myth of effortlessness does real damage to people who are learning. When you believe great images are produced by people who simply have a natural gift, you do not understand what the discipline actually looks like. You do not give yourself permission to produce something imperfect on the way to something good.\n\nNothing I have made that I am genuinely proud of arrived without the version I had to discard first.",
+      "published_at": "2026-07-01",
+      "header_image": "profiles/silk-static/images/blog-header-4.svg",
+      "author": "Kiara Naidoo",
+      "member_only": true,
+      "published": true
+    }
+  ],
+  "membership": {
+    "enabled": true,
+    "free_content_description": "Weekly fashion and beauty content, editorial shoots, styling essays, and Cape Town lifestyle posts.",
+    "premium_content_description": "Private style diaries, full beauty breakdowns, seasonal digital lookbooks, extended behind-the-scenes videos, early access to editorial shoots, and monthly styling challenges.",
+    "main_cta": "Join SilkStatic and see both sides of the image."
+  },
+  "products": [
+    {
+      "id": "product-ss-001",
+      "name": "Digital Styling Guide",
+      "description": "A comprehensive personal styling framework covering colour analysis, proportion, wardrobe editing, and outfit architecture. Written for real wardrobes, not aspirational ones.",
+      "price": 199,
+      "currency": "ZAR",
+      "image": "profiles/silk-static/images/product-styling-guide.svg",
+      "purchase_url": "",
+      "active": true
+    },
+    {
+      "id": "product-ss-002",
+      "name": "Seasonal Lookbook",
+      "description": "A curated digital lookbook of seasonal editorial styling — mood boards, outfit breakdowns, and styling notes for each look. Updated twice yearly.",
+      "price": 249,
+      "currency": "ZAR",
+      "image": "profiles/silk-static/images/product-lookbook.svg",
+      "purchase_url": "",
+      "active": true
+    },
+    {
+      "id": "product-ss-003",
+      "name": "Editorial Photography Presets",
+      "description": "Six Lightroom presets developed for editorial fashion photography — warm, structured, and designed to make neutral tones and deep colours work together.",
+      "price": 179,
+      "currency": "ZAR",
+      "image": "profiles/silk-static/images/product-presets.svg",
+      "purchase_url": "",
+      "active": true
+    },
+    {
+      "id": "product-ss-004",
+      "name": "Personal Wardrobe Consultation",
+      "description": "A one-hour private consultation to review your current wardrobe, identify gaps, and build a personalised styling direction. Conducted via video call.",
+      "price": 850,
+      "currency": "ZAR",
+      "image": "profiles/silk-static/images/product-wardrobe.svg",
+      "purchase_url": "",
+      "active": true
+    },
+    {
+      "id": "product-ss-005",
+      "name": "Event Styling Consultation",
+      "description": "Full outfit planning for a specific event — sourcing guidance, fitting notes, accessories, hair and makeup direction, and a final look document.",
+      "price": 650,
+      "currency": "ZAR",
+      "image": "profiles/silk-static/images/product-event.svg",
+      "purchase_url": "",
+      "active": true
+    },
+    {
+      "id": "product-ss-006",
+      "name": "Personal-Brand Mood Board",
+      "description": "A custom visual identity mood board for creators, entrepreneurs, or professionals — colour palette, typography direction, styling references, and brand language notes.",
+      "price": 499,
+      "currency": "ZAR",
+      "image": "profiles/silk-static/images/product-moodboard.svg",
+      "purchase_url": "",
+      "active": true
+    },
+    {
+      "id": "product-ss-007",
+      "name": "Beauty and Outfit Planning Templates",
+      "description": "A set of planning templates for events, shoots, and daily styling — look sheets, beauty run-of-show, outfit flat-lay guides, and a pre-shoot checklist.",
+      "price": 129,
+      "currency": "ZAR",
+      "image": "profiles/silk-static/images/product-templates.svg",
+      "purchase_url": "",
+      "active": true
+    }
+  ],
+  "published": true
+}
