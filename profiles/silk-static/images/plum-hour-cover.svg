@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="400" viewBox="0 0 400 400">
+  <defs>
+    <linearGradient id="g" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#4A0E5C;stop-opacity:1"/>
+      <stop offset="100%" style="stop-color:#1A0A26;stop-opacity:1"/>
+    </linearGradient>
+  </defs>
+  <rect width="400" height="400" fill="url(#g)"/>
+  <rect x="30" y="175" width="340" height="1" fill="#C8A97E" opacity="0.4"/>
+  <text x="200" y="215" text-anchor="middle" font-family="Georgia,serif" font-size="24" font-weight="bold" fill="#C8A97E">Plum Hour</text>
+  <rect x="30" y="225" width="340" height="1" fill="#C8A97E" opacity="0.4"/>
+</svg>

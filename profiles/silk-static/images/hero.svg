@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="400" viewBox="0 0 1200 400">
+  <defs>
+    <linearGradient id="g" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#4A0E5C;stop-opacity:1"/>
+      <stop offset="60%" style="stop-color:#2D1B4E;stop-opacity:1"/>
+      <stop offset="100%" style="stop-color:#1A0A26;stop-opacity:1"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="400" fill="url(#g)"/>
+  <rect x="60" y="155" width="4" height="90" fill="#C8A97E" opacity="0.7"/>
+  <text x="88" y="213" font-family="Georgia,serif" font-size="52" font-weight="bold" fill="#FAF7F2" letter-spacing="2">SilkStatic</text>
+  <text x="88" y="248" font-family="sans-serif" font-size="20" fill="#C8A97E" opacity="0.9" letter-spacing="1">Elegance should feel effortless, but never ordinary.</text>
+</svg>
