@@ -1,0 +1,1122 @@
+{
+  "_generated": "2026-07-02T09:27:19.355Z",
+  "_count": 11,
+  "profiles": [
+    {
+      "id": "cherry-circuit-001",
+      "slug": "cherry-circuit",
+      "name": "CherryCircuit",
+      "tagline": "Born to press start. Built to explain why.",
+      "niche": "Gaming & PC Building",
+      "short_bio": "Bellville South gamer, PC builder, and digital entertainment critic making tech accessible and hilarious for everyone who was told gaming wasn't for them.",
+      "full_bio": "When I was twelve I took apart my family's broken desktop and put it back together. It still didn't work, but I understood it now. That felt like a superpower.\n\nI started gaming seriously at 13 on a borrowed laptop that could barely run Minecraft. Over the next five years I learned to build PCs from YouTube, forums, and a lot of trial and error — mostly error. My first build cost R4 200 and took me three months of saving. It was the most satisfying thing I had ever owned because I knew every component, what it did, and why I had chosen it over the alternative.\n\nCherryCircuit is for everyone who loves games but finds the PC building community alienating, gatekeepy, and exhausting. And it often is. I try to be the opposite: clear, honest, funny about my mistakes, and genuinely invested in helping people get into the hobby without spending more than they need to.\n\nI also write about gaming culture from a perspective that is not often represented: a young Black woman from Bellville South. The demographics of gaming are changing fast, and the culture is not always catching up. I have opinions about representation in games, about toxicity in online spaces, and about why the next generation of South African game developers is going to be extraordinary.",
+      "location": "Bellville South, Cape Town",
+      "social_links": {
+        "instagram": "",
+        "tiktok": "",
+        "youtube": "",
+        "facebook": "",
+        "twitter": "",
+        "website": ""
+      },
+      "assets": {
+        "avatar": "profiles/cherry-circuit/images/avatar.svg",
+        "hero": "profiles/cherry-circuit/images/hero.svg"
+      },
+      "albums": [
+        {
+          "id": "album-cc-001",
+          "title": "Build Gallery: Rigs I Have Assembled",
+          "description": "Every PC I have built documented — budget, mid-range, and one absolute beast.",
+          "cover_image": "profiles/cherry-circuit/images/album1-cover.svg",
+          "media": []
+        },
+        {
+          "id": "album-cc-002",
+          "title": "Cape Town Gaming Scene",
+          "description": "LAN parties, tournaments, and the community growing around competitive gaming in the Cape.",
+          "cover_image": "profiles/cherry-circuit/images/album2-cover.svg",
+          "media": []
+        }
+      ],
+      "videos": [
+        {
+          "id": "video-cc-001",
+          "title": "R5000 Budget Gaming PC Build 2026",
+          "description": "A complete South African budget PC build — every component chosen for performance-per-rand.",
+          "video_path": "",
+          "thumbnail_path": "profiles/cherry-circuit/images/video-thumb.svg",
+          "published_at": "2026-06-01",
+          "member_only": false
+        },
+        {
+          "id": "video-cc-002",
+          "title": "Every Mistake I Made Building My First Three PCs (So You Don't Have To)",
+          "description": "Unfiltered mistakes, what I learned, and exactly how to avoid them.",
+          "thumbnail_path": "profiles/cherry-circuit/images/video-thumb2.svg",
+          "published_at": "2026-06-15",
+          "member_only": true,
+          "video_path": null
+        }
+      ],
+      "blogs": [
+        {
+          "id": "blog-cc-001",
+          "slug": "black-women-in-gaming",
+          "title": "Black Women in Gaming: We Were Always Here",
+          "summary": "On representation, community, and why the 'gamer girl' narrative needs to be retired permanently.",
+          "content": "Let me tell you what happened the first time I played online multiplayer with voice chat on. Within four minutes of speaking, someone asked where I was from, then told me to go back there. I was fourteen.\n\nI did not stop playing. I turned off voice chat, found a group of friends who did not care what I sounded like, and kept going. But I carry that moment because I think it is important not to sanitise the experience of being a Black woman in online gaming spaces in 2026.\n\nHere is what is also true: gaming communities in South Africa have become genuinely more welcoming. Slowly, imperfectly, but measurably. I have met Black women gamers of all ages at LAN events who are not hiding their identities, who are competing openly, who are streaming and building audiences. That matters.\n\nThe 'gamer girl' trope — the idea that women who game are performing femininity in gaming spaces rather than just being gamers — needs to die. I play RPGs, FPS, strategy, and indie games. I build my own hardware. I have opinions about CPU architecture. I am not a gamer girl. I am a gamer. Full stop.",
+          "published_at": "2026-06-18",
+          "header_image": "profiles/cherry-circuit/images/blog-header.svg",
+          "author": "Thandi Ndlovu",
+          "member_only": false,
+          "published": true
+        }
+      ],
+      "membership": {
+        "enabled": true,
+        "free_content_description": "Weekly PC builds, game reviews, and gaming culture commentary.",
+        "premium_content_description": "Component comparison spreadsheets, South African price-tracking guides, early access to build videos, and monthly Discord gaming sessions.",
+        "main_cta": "Build smarter. Game harder. Join CherryCircuit."
+      },
+      "products": [
+        {
+          "id": "product-cc-001",
+          "name": "South African PC Build Planner 2026",
+          "description": "A spreadsheet tool for planning a PC build with live South African retailer price links and performance tier guidance.",
+          "price": 69,
+          "currency": "ZAR",
+          "image": "profiles/cherry-circuit/images/product-thumb.svg",
+          "purchase_url": "",
+          "active": true
+        }
+      ],
+      "published": true
+    },
+    {
+      "id": "demo-creator-001",
+      "slug": "demo-creator",
+      "name": "Alex Rivera (Demo)",
+      "tagline": "Creative storyteller and digital artist",
+      "niche": "Digital Art & Photography",
+      "short_bio": "DEMO PROFILE — This profile demonstrates all InkwellMedia creator features using placeholder content.",
+      "full_bio": "This is a demonstration profile created to showcase all available InkwellMedia creator features. Alex Rivera is a fictional creator used for testing and previewing the platform. All content, images, and descriptions on this profile are placeholder data and do not represent a real person or business.",
+      "location": "Cape Town, South Africa",
+      "social_links": {
+        "instagram": "https://instagram.com/demo",
+        "tiktok": "https://tiktok.com/@demo",
+        "youtube": "https://youtube.com/@demo",
+        "facebook": "",
+        "twitter": "https://twitter.com/demo",
+        "website": "https://example.com"
+      },
+      "assets": {
+        "avatar": "profiles/demo-creator/images/avatar.svg",
+        "hero": "profiles/demo-creator/images/hero.svg"
+      },
+      "albums": [
+        {
+          "id": "album-demo-001",
+          "title": "Digital Landscapes Collection",
+          "description": "A curated collection of digital landscape artwork exploring light and shadow. This is demonstration content.",
+          "cover_image": "profiles/demo-creator/images/album-cover.svg",
+          "media": [
+            {
+              "id": "media-demo-001",
+              "file": "profiles/demo-creator/images/album-cover.svg",
+              "type": "image",
+              "caption": "Mountain at dusk — demo placeholder"
+            }
+          ]
+        }
+      ],
+      "videos": [
+        {
+          "id": "video-demo-001",
+          "title": "Introduction to Digital Art (Demo)",
+          "description": "A short introduction video demonstrating the video entry feature. No actual video file is included in this demo.",
+          "video_path": "",
+          "thumbnail_path": "profiles/demo-creator/images/video-thumb.svg",
+          "published_at": "2026-06-01",
+          "member_only": false
+        }
+      ],
+      "blogs": [
+        {
+          "id": "blog-demo-001",
+          "slug": "hello-world-demo",
+          "title": "Hello World — My First Post (Demo)",
+          "summary": "A demonstration blog post showing the blog feature on InkwellMedia.",
+          "content": "This is a placeholder blog post.\n\nReal creators write their own content here. You can include multiple paragraphs of plain text. Line breaks are preserved when displayed on the site.\n\nThis post is part of the demo-creator profile used for testing and showcasing the InkwellMedia platform features. It is clearly labelled as demonstration content and does not represent real advice, news, or information.",
+          "published_at": "2026-06-01",
+          "header_image": "profiles/demo-creator/images/blog-header.svg",
+          "author": "Alex Rivera",
+          "member_only": false,
+          "published": true
+        }
+      ],
+      "membership": {
+        "enabled": true,
+        "free_content_description": "Browse my public portfolio and introductory content.",
+        "premium_content_description": "Get full access to all my exclusive artwork, behind-the-scenes videos, and premium tutorials.",
+        "main_cta": "Join the Demo Community"
+      },
+      "products": [
+        {
+          "id": "product-demo-001",
+          "name": "Digital Art Starter Pack (Demo)",
+          "description": "A demonstration product listing. Real creators add their own digital downloads and products here. This is placeholder content only.",
+          "price": 99,
+          "currency": "ZAR",
+          "image": "profiles/demo-creator/images/product-thumb.svg",
+          "purchase_url": "",
+          "active": true
+        }
+      ],
+      "published": true
+    },
+    {
+      "id": "golden-fig-001",
+      "slug": "golden-fig",
+      "name": "GoldenFig",
+      "tagline": "Ink and fabric. Beauty with intention.",
+      "niche": "Modest Fashion & Calligraphy",
+      "short_bio": "Grassy Park artist combining calligraphy, modest fashion design, and small business storytelling to show that faith, beauty, and ambition belong together.",
+      "full_bio": "I have kept a journal since I was eight years old. The act of writing by hand felt sacred to me even before I understood why. When I discovered Islamic calligraphy at 13 — the Thuluth script, the Naskh, the way a single letter can be a piece of architecture — something clicked permanently into place.\n\nGoldenFig is where my two loves meet. Calligraphy and fashion design — both are about proportion, negative space, the relationship between restraint and expression. I design modest wear: abayas, modest formal sets, everyday tunics. Everything I make is informed by the same sensibility as my calligraphy: clean lines, intentional detail, nothing unnecessary.\n\nI also write honestly about building a small creative business as a young Muslim woman in South Africa. The particular challenges of pricing premium work in a community that sometimes expects you to donate your skills, the navigation of social media algorithms that shadow-restrict modest content, the complicated feelings about becoming 'the Muslim fashion girl' as an identity versus simply being a person who makes beautiful things.\n\nGrassy Park is a deeply creative suburb that does not get nearly enough attention from the city's cultural conversation. I am trying to change that, one post at a time.",
+      "location": "Grassy Park, Cape Town",
+      "social_links": {
+        "instagram": "",
+        "tiktok": "",
+        "youtube": "",
+        "facebook": "",
+        "twitter": "",
+        "website": ""
+      },
+      "assets": {
+        "avatar": "profiles/golden-fig/images/avatar.svg",
+        "hero": "profiles/golden-fig/images/hero.svg"
+      },
+      "albums": [
+        {
+          "id": "album-gf-001",
+          "title": "Calligraphy Portfolio 2026",
+          "description": "My latest Arabic and English calligraphy work — commissions, experiments, and personal pieces.",
+          "cover_image": "profiles/golden-fig/images/album1-cover.svg",
+          "media": []
+        },
+        {
+          "id": "album-gf-002",
+          "title": "Modest Fashion: Current Collection",
+          "description": "The abayas, tunics, and formal sets from my current ready-to-wear line.",
+          "cover_image": "profiles/golden-fig/images/album2-cover.svg",
+          "media": []
+        }
+      ],
+      "videos": [
+        {
+          "id": "video-gf-001",
+          "title": "Calligraphy for Beginners: The Basics of Thuluth Script",
+          "description": "A gentle introduction to one of the most beautiful Arabic scripts.",
+          "video_path": "",
+          "thumbnail_path": "profiles/golden-fig/images/video-thumb.svg",
+          "published_at": "2026-06-01",
+          "member_only": false
+        },
+        {
+          "id": "video-gf-002",
+          "title": "How I Price Custom Calligraphy Commissions",
+          "description": "My pricing framework, client communication templates, and the mistakes I made early on.",
+          "thumbnail_path": "profiles/golden-fig/images/video-thumb2.svg",
+          "published_at": "2026-06-15",
+          "member_only": true,
+          "video_path": null
+        }
+      ],
+      "blogs": [
+        {
+          "id": "blog-gf-001",
+          "slug": "the-modest-fashion-algorithm",
+          "title": "Why the Algorithm Hides Modest Fashion (And What I Do About It)",
+          "summary": "Investigating how social media platforms suppress modest and religious content — and practical workarounds.",
+          "content": "I have run the experiment multiple times. I post a photo of myself in an abaya — fully covered, elegant, zero skin showing — and it gets half the reach of a post where I am in a blazer with my hair out. The difference in engagement is consistent and significant.\n\nThis is not paranoia. Researchers at multiple universities have documented the systematic under-promotion of modest fashion, hijab-wearing creators, and Islamic content on major platforms. The algorithms are trained on engagement data, and engagement data reflects the existing biases of what platforms have historically amplified. The result is a feedback loop that suppresses the exact content that millions of Muslim women are looking for.\n\nMy practical workarounds:\n\nFirst, I prioritise long-form content over short-form. YouTube and this platform reward consistent watch time, which favours creators with genuinely engaged audiences over those gaming short-form metrics.\n\nSecond, I build directly with my community. Every person who signs up to my membership list is someone the algorithm cannot take from me.\n\nThird, I collaborate with other modest fashion creators specifically. Cross-promotion within the community multiplies all of our reach.\n\nThe algorithm is not going to advocate for us. We have to build around it.",
+          "published_at": "2026-06-10",
+          "header_image": "profiles/golden-fig/images/blog-header.svg",
+          "author": "Farah Davids",
+          "member_only": false,
+          "published": true
+        }
+      ],
+      "membership": {
+        "enabled": true,
+        "free_content_description": "Weekly calligraphy posts, fashion lookbooks, and small business reflections.",
+        "premium_content_description": "Full calligraphy tutorials with practice sheets, pattern downloads for modest fashion designs, and business templates for creative commissions.",
+        "main_cta": "Support independent modest fashion. Join GoldenFig."
+      },
+      "products": [
+        {
+          "id": "product-gf-001",
+          "name": "Calligraphy Practice Set: Thuluth Foundations",
+          "description": "Printable practice sheets and ink guide for learning Thuluth script from scratch. Designed for complete beginners.",
+          "price": 129,
+          "currency": "ZAR",
+          "image": "profiles/golden-fig/images/product-thumb.svg",
+          "purchase_url": "",
+          "active": true
+        }
+      ],
+      "published": true
+    },
+    {
+      "id": "moonlit-mango-001",
+      "slug": "moonlit-mango",
+      "name": "MoonlitMango",
+      "tagline": "Where heritage tastes like golden hour.",
+      "niche": "Food Photography & Cape Malay Lifestyle",
+      "short_bio": "Bo-Kaap-born food photographer capturing the colours, recipes, and café culture of Cape Malay life through a lens dipped in turmeric and light.",
+      "full_bio": "I was born in a house that always smelled of cardamom. Growing up in Bo-Kaap, food was never just food — it was ceremony, memory, identity. My grandmother Moemienah could tell you the history of a spice just by rubbing it between her fingers. I inherited that reverence and added a camera.\n\nMoonlitMango is my attempt to document a culture before it is gentrified away. Bo-Kaap is changing faster than anyone wants to admit. The brightly coloured houses are becoming Airbnbs. The corner koesisters shop is under threat. I photograph these places and these recipes with an urgency that I try to keep gentle on camera but that burns in my chest.\n\nMy food photography style is warm, natural light, slightly over-exposed because that is how it feels in my grandmother's kitchen at 11 AM with the sun pouring through the lace curtains. I use a secondhand Sony mirrorless I bought in instalments. I style every shot myself with props sourced from the same markets where the Bo-Kaap aunties buy their fabrics.\n\nI am also building a digital archive of Cape Malay recipes. Not a cookbook — an archive. Stories attached to each dish, voice recordings of elders, old photographs. I want it to outlast all of us.",
+      "location": "Bo-Kaap, Cape Town",
+      "social_links": {
+        "instagram": "",
+        "tiktok": "",
+        "youtube": "",
+        "facebook": "",
+        "twitter": "",
+        "website": ""
+      },
+      "assets": {
+        "avatar": "profiles/moonlit-mango/images/avatar.svg",
+        "hero": "profiles/moonlit-mango/images/hero.svg"
+      },
+      "albums": [
+        {
+          "id": "album-mm-001",
+          "title": "Bo-Kaap Golden Hour",
+          "description": "Food portraits shot in natural window light across Bo-Kaap kitchens.",
+          "cover_image": "profiles/moonlit-mango/images/album1-cover.svg",
+          "media": []
+        },
+        {
+          "id": "album-mm-002",
+          "title": "Café Culture Cape Town",
+          "description": "Documenting the independent café scene and the culture it carries.",
+          "cover_image": "profiles/moonlit-mango/images/album2-cover.svg",
+          "media": []
+        }
+      ],
+      "videos": [
+        {
+          "id": "video-mm-001",
+          "title": "How I Style a Cape Malay Spread",
+          "description": "Behind the scenes of a full food styling and photography session using only natural light.",
+          "video_path": "",
+          "thumbnail_path": "profiles/moonlit-mango/images/video-thumb.svg",
+          "published_at": "2026-06-01",
+          "member_only": false
+        },
+        {
+          "id": "video-mm-002",
+          "title": "My Camera Settings for Golden Hour Food Shots",
+          "description": "The exact settings I use and why — a technical deep-dive.",
+          "thumbnail_path": "profiles/moonlit-mango/images/video-thumb2.svg",
+          "published_at": "2026-06-15",
+          "member_only": true,
+          "video_path": null
+        }
+      ],
+      "blogs": [
+        {
+          "id": "blog-mm-001",
+          "slug": "bo-kaap-kitchen-stories",
+          "title": "My Grandmother's Kitchen: Why I Document Before It Disappears",
+          "summary": "A personal essay on food, memory, and the urgency of Cape Malay preservation.",
+          "content": "My grandmother's kitchen is twelve square metres and it contains multitudes. There is the iron pot that has never been fully clean because the seasoning built up over forty years is part of the recipe. There is the windowsill where cardamom pods dry in the summer heat. There is the drawer of recipes written in her own code — measurements in handfuls and pinches that only make sense if you already know the dish.\n\nI started photographing her kitchen when I was fifteen because I was afraid. Afraid that these things would disappear and nobody would have thought to document them. The tourists photograph the painted houses from the street. I photograph the inside of the pots.\n\nCape Malay food culture is one of the most distinctive in the world, born from the intersection of slavery, Islam, Indonesian spice routes, and Cape Dutch colonialism. It lives in the bodies and hands of women who learned from their mothers who learned from theirs. It does not always survive translation into restaurant menus or food trend articles.\n\nMoonlitMango exists because I believe documentation is love.",
+          "published_at": "2026-04-15",
+          "header_image": "profiles/moonlit-mango/images/blog-header.svg",
+          "author": "Aaliyah Jacobs",
+          "member_only": false,
+          "published": true
+        }
+      ],
+      "membership": {
+        "enabled": true,
+        "free_content_description": "Weekly food photography posts, café reviews, and recipe spotlights.",
+        "premium_content_description": "Full recipe archive with stories, raw photography files, Lightroom presets, and monthly live cooking and shooting sessions.",
+        "main_cta": "Support Cape Malay food heritage — join MoonlitMango."
+      },
+      "products": [
+        {
+          "id": "product-mm-001",
+          "name": "Golden Hour Lightroom Preset Pack",
+          "description": "Five presets designed for warm, natural-light food photography. Works on mobile and desktop Lightroom.",
+          "price": 149,
+          "currency": "ZAR",
+          "image": "profiles/moonlit-mango/images/product-thumb.svg",
+          "purchase_url": "",
+          "active": true
+        }
+      ],
+      "published": true
+    },
+    {
+      "id": "neon-marigold-001",
+      "slug": "neon-marigold",
+      "name": "NeonMarigold",
+      "tagline": "Choreography is just music you can see. I make it visible.",
+      "niche": "Dance & Music Visuals",
+      "short_bio": "Woodstock dancer and music visual director creating movement-based content at the intersection of dance, youth culture, and South African sound.",
+      "full_bio": "I have been dancing since before I could read. My mother is a teacher and my father is a DJ — I grew up with discipline and basslines in equal measure. By eleven I was choreographing for school concerts. By fifteen I was making videos in my bedroom with a phone and whatever natural light the afternoon Woodstock sun provided.\n\nNeonMarigold is my creative world. I make dance videos that are intentionally cinematic — I think about shot composition, color grading, the relationship between the movement and the music before I press record. I am also building a choreography studio in the sense that I write down my work: notation, video breakdowns, the theory behind what I am doing and why.\n\nI am deeply invested in South African music culture. We are living through an extraordinary moment — Amapiano has crossed every border, Afrobeats has global reach, local artists are producing some of the most exciting music anywhere in the world. I want to create visuals worthy of that music. Dance that interprets and extends it, not just performs to it.\n\nWoodstock is the perfect place for this. It is genuinely diverse, genuinely creative, genuinely in flux. The street art, the music venues, the collision of cultures on Albert Road — I draw from all of it. My work is about this specific place and moment even when it is trying to be universal.",
+      "location": "Woodstock, Cape Town",
+      "social_links": {
+        "instagram": "",
+        "tiktok": "",
+        "youtube": "",
+        "facebook": "",
+        "twitter": "",
+        "website": ""
+      },
+      "assets": {
+        "avatar": "profiles/neon-marigold/images/avatar.svg",
+        "hero": "profiles/neon-marigold/images/hero.svg"
+      },
+      "albums": [
+        {
+          "id": "album-nm-001",
+          "title": "Music Visual Series: Amapiano",
+          "description": "Choreographed dance visuals created for South African Amapiano tracks.",
+          "cover_image": "profiles/neon-marigold/images/album1-cover.svg",
+          "media": []
+        },
+        {
+          "id": "album-nm-002",
+          "title": "Woodstock Street Sessions",
+          "description": "Spontaneous dance sessions shot in Woodstock locations — raw, minimal editing.",
+          "cover_image": "profiles/neon-marigold/images/album2-cover.svg",
+          "media": []
+        }
+      ],
+      "videos": [
+        {
+          "id": "video-nm-001",
+          "title": "Choreography Breakdown: My Amapiano Visual Process",
+          "description": "From concept to final cut — how I create a music visual start to finish.",
+          "video_path": "",
+          "thumbnail_path": "profiles/neon-marigold/images/video-thumb.svg",
+          "published_at": "2026-06-01",
+          "member_only": false
+        },
+        {
+          "id": "video-nm-002",
+          "title": "Advanced Footwork Tutorial: Amapiano Vocabulary",
+          "description": "Breaking down the specific footwork patterns I use and how to practice them.",
+          "thumbnail_path": "profiles/neon-marigold/images/video-thumb2.svg",
+          "published_at": "2026-06-15",
+          "member_only": true,
+          "video_path": null
+        }
+      ],
+      "blogs": [
+        {
+          "id": "blog-nm-001",
+          "slug": "dance-as-documentation",
+          "title": "Dance as Documentation: Why Choreography Is a Form of Journalism",
+          "summary": "An essay arguing that movement-based art carries historical and cultural information that written records cannot capture.",
+          "content": "In the mid-1950s, Miriam Makeba's performances in Johannesburg were a form of resistance documentation as much as entertainment. The physicality of her presence, the way she moved, what she chose to embody — these were claims about the humanity and dignity of Black South Africans that words in that political moment could not safely make.\n\nI think about this often when I choreograph. Dance records what a body knows. It carries the physical memory of culture, the muscle knowledge of a generation. When Amapiano spread across South Africa, it came with a dance vocabulary that was entirely specific — the lunge, the step-touch combinations, the relationship between the music's rhythmic complexity and the dancer's grounded, deliberate response. That vocabulary is documentation. It tells you something about who made this music, where they are from, what they value in how a body moves through space.\n\nI make dance visuals because I believe this documentation is worth making deliberately. The phone video, the social media clip, the quick tutorial — these preserve movement, but often with the minimum of thought given to them as cultural records. I want to be more careful than that. I want the visuals I make to be worth returning to in twenty years.",
+          "published_at": "2026-06-25",
+          "header_image": "profiles/neon-marigold/images/blog-header.svg",
+          "author": "Amara Petersen",
+          "member_only": false,
+          "published": true
+        }
+      ],
+      "membership": {
+        "enabled": true,
+        "free_content_description": "Weekly dance videos, choreography posts, and South African music and culture writing.",
+        "premium_content_description": "Full choreography breakdowns with notation, exclusive dance tutorials, behind-the-scenes from visual productions, and monthly live session feedback.",
+        "main_cta": "Move with purpose. Join NeonMarigold."
+      },
+      "products": [
+        {
+          "id": "product-nm-001",
+          "name": "Amapiano Footwork Fundamentals: Digital Tutorial Pack",
+          "description": "Six progressive video tutorials covering foundational Amapiano footwork vocabulary, with practice counts and music recommendations.",
+          "price": 159,
+          "currency": "ZAR",
+          "image": "profiles/neon-marigold/images/product-thumb.svg",
+          "purchase_url": "",
+          "active": true
+        }
+      ],
+      "published": true
+    },
+    {
+      "id": "ocean-cinder-001",
+      "slug": "ocean-cinder",
+      "name": "OceanCinder",
+      "tagline": "The ocean doesn't care who you are. I'm writing down who's in it.",
+      "niche": "Surfing & Coastal Environmental Storytelling",
+      "short_bio": "Muizenberg surfer and environmental storyteller documenting the coast, the community, and the quiet fight to protect what we love from what is killing it.",
+      "full_bio": "I learned to surf at nine in Muizenberg. The wave at Muizenberg is one of the most democratic in the world — it is long, slow, and forgiving enough that beginners from everywhere come here. What I love about it is also what broke my heart as I got older: the diversity of the water, the diversity of the community, set against an ocean that is slowly warming, slowly becoming hostile in ways that are not yet fully visible but that the older surfers can feel.\n\nOceanCinder is my environmental storytelling project. I surf, I write, I photograph, and I am honest about the complicated relationship between loving a place and watching it change. I write about False Bay's ecological crisis — the sardine run that has shifted, the great white sharks that have moved away because their prey has moved — with the same care I give to profiling the 60-year-old woman who surfs at sunrise every morning and knows these waves better than any scientist.\n\nI am also deeply invested in diversity in surf culture. South African surfing has a complex history with race. The coast was not for everyone for a long time. That is changing, slowly and beautifully. I document the Black surfers, the women surfers, the surfers from the Cape Flats who are reclaiming the ocean as their space. These stories need to be told and I intend to tell them.",
+      "location": "Muizenberg, Cape Town",
+      "social_links": {
+        "instagram": "",
+        "tiktok": "",
+        "youtube": "",
+        "facebook": "",
+        "twitter": "",
+        "website": ""
+      },
+      "assets": {
+        "avatar": "profiles/ocean-cinder/images/avatar.svg",
+        "hero": "profiles/ocean-cinder/images/hero.svg"
+      },
+      "albums": [
+        {
+          "id": "album-oc-001",
+          "title": "False Bay Portraits",
+          "description": "Documentary portraits of the Muizenberg surf community across all ages and backgrounds.",
+          "cover_image": "profiles/ocean-cinder/images/album1-cover.svg",
+          "media": []
+        },
+        {
+          "id": "album-oc-002",
+          "title": "The Warming Water: A Visual Essay",
+          "description": "Images documenting ecological change along the Cape False Bay coastline.",
+          "cover_image": "profiles/ocean-cinder/images/album2-cover.svg",
+          "media": []
+        }
+      ],
+      "videos": [
+        {
+          "id": "video-oc-001",
+          "title": "A Day in Muizenberg: Dawn to Dusk on the Water",
+          "description": "A full day of surfing, conversation, and coastline documentation.",
+          "video_path": "",
+          "thumbnail_path": "profiles/ocean-cinder/images/video-thumb.svg",
+          "published_at": "2026-06-01",
+          "member_only": false
+        },
+        {
+          "id": "video-oc-002",
+          "title": "Interview: The Marine Biologist Watching False Bay Change",
+          "description": "A long-form conversation about what the science actually says about False Bay's ecological future.",
+          "thumbnail_path": "profiles/ocean-cinder/images/video-thumb2.svg",
+          "published_at": "2026-06-15",
+          "member_only": true,
+          "video_path": null
+        }
+      ],
+      "blogs": [
+        {
+          "id": "blog-oc-001",
+          "slug": "who-owns-the-ocean",
+          "title": "Who Owns the Ocean? A Muizenberg Story",
+          "summary": "On access, history, race, and the slow reclamation of the South African coastline.",
+          "content": "Until 1990, the beach at Muizenberg was segregated by law. There were separate entrances, separate sections, separate ablution facilities. That ended — legally — with the repeal of the Separate Amenities Act. But the social inheritance of that exclusion does not end with a law.\n\nFor years afterwards, the water remained functionally white. Not by rule but by culture, by geography, by the absence of surf schools and equipment hire in the townships, by the distance between Khayelitsha and the beachfront, by a hundred small frictions that added up to: this is not for you.\n\nI surf at Muizenberg with a deliberate consciousness of this history. When I see a young Black child on a beginner board for the first time, wobbling and laughing and falling into that warm inside shore break, I feel something that is difficult to articulate cleanly. Joy, certainly. But also a kind of grief for all the waves those children's parents and grandparents were not allowed to catch.\n\nThe ocean does not care about our racial categories. It never did. We are the ones who built the fences. We are the ones who have to take them down.",
+          "published_at": "2026-04-28",
+          "header_image": "profiles/ocean-cinder/images/blog-header.svg",
+          "author": "Liyema Dlamini",
+          "member_only": false,
+          "published": true
+        }
+      ],
+      "membership": {
+        "enabled": true,
+        "free_content_description": "Weekly surf reports, community profiles, and coastal environmental updates.",
+        "premium_content_description": "Long-form documentary essays, raw interview recordings, photo archives, and access to my ongoing False Bay ecological project.",
+        "main_cta": "Protect what you love. Join OceanCinder."
+      },
+      "products": [
+        {
+          "id": "product-oc-001",
+          "name": "Coastal Journal: 30-Day Observation Guide",
+          "description": "A guided journaling and observation template for documenting your local coastline — designed for anyone, no science background needed.",
+          "price": 89,
+          "currency": "ZAR",
+          "image": "profiles/ocean-cinder/images/product-thumb.svg",
+          "purchase_url": "",
+          "active": true
+        }
+      ],
+      "published": true
+    },
+    {
+      "id": "quiet-thunder-001",
+      "slug": "quiet-thunder",
+      "name": "QuietThunder",
+      "tagline": "Code is the most affordable tool ever invented. I'm teaching Langa to use it.",
+      "niche": "Technology & Affordable Digital Tools",
+      "short_bio": "Self-taught coder from Langa making technology accessible and demystified for young people who can't afford to wait for someone else to show them.",
+      "full_bio": "I learned to code on a shared family computer that my mother kept clean with a cloth every single day. The internet was expensive. Data was rationed. Every tutorial I watched was buffered, paused, re-watched in pieces. That is how I learned: in fragments, with patience, and with absolute determination.\n\nBy the time I was 16 I had built my school's homework reminder app, taught myself three languages — Python, JavaScript, and a little SQL — and started a small Telegram bot service for local businesses who needed automated responses but could not afford a developer.\n\nQuietThunder is my channel for showing other young people from areas like Langa that technology is not gatekept. You do not need a MacBook. You do not need a fast connection all the time. You do not need to be in a suburb. Free tools exist. Offline tools exist. Community internet cafés exist. I navigate all of it and share what I find.\n\nI also write about the politics of digital access in South Africa. Connectivity is not equal. Device access is not equal. That is not an accident — it is a policy failure, and young people should understand it as such so we can demand better.",
+      "location": "Langa, Cape Town",
+      "social_links": {
+        "instagram": "",
+        "tiktok": "",
+        "youtube": "",
+        "facebook": "",
+        "twitter": "",
+        "website": ""
+      },
+      "assets": {
+        "avatar": "profiles/quiet-thunder/images/avatar.svg",
+        "hero": "profiles/quiet-thunder/images/hero.svg"
+      },
+      "albums": [
+        {
+          "id": "album-qt-001",
+          "title": "Free Tools That Changed My Life",
+          "description": "Screenshots and walkthroughs of every free tech tool I use daily.",
+          "cover_image": "profiles/quiet-thunder/images/album1-cover.svg",
+          "media": []
+        },
+        {
+          "id": "album-qt-002",
+          "title": "Langa Tech Community",
+          "description": "Documenting the coding workshops and study groups I have helped start.",
+          "cover_image": "profiles/quiet-thunder/images/album2-cover.svg",
+          "media": []
+        }
+      ],
+      "videos": [
+        {
+          "id": "video-qt-001",
+          "title": "Build Your First Python Bot — For Free",
+          "description": "A complete beginner walkthrough using only free tools that work on a low-spec laptop.",
+          "video_path": "",
+          "thumbnail_path": "profiles/quiet-thunder/images/video-thumb.svg",
+          "published_at": "2026-06-01",
+          "member_only": false
+        },
+        {
+          "id": "video-qt-002",
+          "title": "Getting Your First Tech Job From Langa: My Research Notes",
+          "description": "The companies, learnership programmes, and application strategies I found that nobody talks about.",
+          "thumbnail_path": "profiles/quiet-thunder/images/video-thumb2.svg",
+          "published_at": "2026-06-15",
+          "member_only": true,
+          "video_path": null
+        }
+      ],
+      "blogs": [
+        {
+          "id": "blog-qt-001",
+          "slug": "coding-on-data-budget",
+          "title": "How to Learn to Code on R50 of Data a Month",
+          "summary": "The offline tools, cached tutorials, and data-light strategies I used to teach myself programming.",
+          "content": "Let me be specific about my constraints when I started. We had one device between five people. Our home Wi-Fi was pay-as-you-go. During matric I was budgeting R50 a month for data — roughly 1.5 GB if I bought the right bundle at the right time.\n\nHere is what I did:\n\n1. Downloaded documentation. Every official docs page for Python, MDN for JavaScript — downloaded as PDF or HTML offline. You can do this for free. A full Python docs set is about 40 MB.\n\n2. Used VS Code offline. It does not need internet to run. I wrote code, tested it locally, debugged it without Stack Overflow — which forced me to actually read error messages properly.\n\n3. Cached YouTube tutorials in bulk when I did have Wi-Fi. I would download 10 tutorials at a time during off-peak hours using a free Android app and then watch them offline for the week.\n\n4. Used freeCodeCamp's offline mode. Their curriculum works when you cache it.\n\nThe myth that you need constant internet to learn coding is just that — a myth. You need time, focus, and a strategy. The tools are free. The internet is mostly optional if you plan ahead.",
+          "published_at": "2026-03-20",
+          "header_image": "profiles/quiet-thunder/images/blog-header.svg",
+          "author": "Naledi Mokoena",
+          "member_only": false,
+          "published": true
+        }
+      ],
+      "membership": {
+        "enabled": true,
+        "free_content_description": "Weekly tech tutorials, tool reviews, and digital access articles.",
+        "premium_content_description": "Full project source code, weekly live coding sessions, private Discord, and personalised career roadmap consultations.",
+        "main_cta": "Learn to build. Join QuietThunder."
+      },
+      "products": [
+        {
+          "id": "product-qt-001",
+          "name": "Low-Data Dev Starter Kit",
+          "description": "A curated collection of offline-capable tools, documentation downloads, and a 30-day learning schedule designed for low-connectivity environments.",
+          "price": 99,
+          "currency": "ZAR",
+          "image": "profiles/quiet-thunder/images/product-thumb.svg",
+          "purchase_url": "",
+          "active": true
+        }
+      ],
+      "published": true
+    },
+    {
+      "id": "silk-static-001",
+      "slug": "silk-static",
+      "name": "SilkStatic",
+      "tagline": "Elegance should feel effortless, but never ordinary.",
+      "niche": "Luxury Fashion, Beauty & Editorial Styling",
+      "short_bio": "I'm a Cape Town-based fashion and beauty creator exploring quiet luxury, editorial styling, personal identity, and the work that goes into creating a polished image.",
+      "full_bio": "I grew up surrounded by beautiful homes, carefully planned events, expensive clothes, and opportunities that many people never receive. I'm aware of that privilege, and I don't want to pretend that everything I have achieved happened without it.\n\nFor a long time, I felt as though people had already decided who I was before I entered a room. If I succeeded, it was because of my background. If I cared about fashion, it was assumed that I only cared about labels. If I shared something beautiful, people saw the result but not the hours of planning behind it.\n\nI started creating small fashion editorials because I wanted to build something that reflected my own taste rather than the life people expected me to present. I borrowed clothing from friends, styled shoots myself, learned how lighting changed a face, and discovered that one carefully chosen detail could say more than an entire designer outfit.\n\nMy content is about beauty, fashion, confidence, and the discipline behind a polished image. I love luxury, but I'm more interested in craftsmanship, fit, colour, atmosphere, and the way someone carries herself than in displaying a price tag.\n\nI'm still learning how to separate my own voice from the expectations attached to me. My goal is to create an editorial production and styling studio that supports emerging African designers, photographers, makeup artists, and models.\n\nI want this platform to show both sides of my world: the finished image and everything that happened before the camera switched on.",
+      "location": "Cape Town, South Africa",
+      "social_links": {
+        "instagram": "",
+        "tiktok": "",
+        "youtube": "",
+        "facebook": "",
+        "twitter": "",
+        "website": ""
+      },
+      "assets": {
+        "avatar": "profiles/silk-static/images/avatar.svg",
+        "hero": "profiles/silk-static/images/hero.svg"
+      },
+      "albums": [
+        {
+          "id": "album-ss-plum-001",
+          "title": "Plum Hour",
+          "description": "A fashion and beauty album built around rich plum tones, sleek silhouettes, evening light, and elegant portrait photography.",
+          "cover_image": "profiles/silk-static/images/plum-hour-cover.svg",
+          "media": []
+        },
+        {
+          "id": "album-ss-quiet-001",
+          "title": "Quiet Luxury",
+          "description": "Tailored outfits, refined accessories, neutral locations, and styling focused on craftsmanship rather than visible logos.",
+          "cover_image": "profiles/silk-static/images/quiet-luxury-cover.svg",
+          "media": []
+        },
+        {
+          "id": "album-ss-after-001",
+          "title": "After the Event",
+          "description": "Behind-the-scenes photographs showing preparation, makeup details, outfit changes, quiet moments, and what happens after polished events end.",
+          "cover_image": "profiles/silk-static/images/after-event-cover.svg",
+          "media": []
+        }
+      ],
+      "videos": [
+        {
+          "id": "video-ss-001",
+          "title": "Getting Ready for a Cape Town Editorial Shoot",
+          "description": "A complete behind-the-scenes video covering makeup, hair, clothing selection, lighting, posing, and the final photographs.",
+          "video_path": "",
+          "thumbnail_path": "profiles/silk-static/images/video-thumb-1.svg",
+          "published_at": "2026-06-10",
+          "member_only": false
+        },
+        {
+          "id": "video-ss-002",
+          "title": "How I Style a Monochrome Outfit Without Making It Boring",
+          "description": "A styling tutorial focused on texture, silhouette, accessories, makeup, and subtle colour variation.",
+          "video_path": "",
+          "thumbnail_path": "profiles/silk-static/images/video-thumb-2.svg",
+          "published_at": "2026-06-24",
+          "member_only": false
+        },
+        {
+          "id": "video-ss-003",
+          "title": "The Work Behind a Polished Image",
+          "description": "An honest look at planning, preparation, retakes, editing, and the people involved in producing elegant content.",
+          "thumbnail_path": "profiles/silk-static/images/video-thumb-3.svg",
+          "published_at": "2026-07-08",
+          "member_only": true,
+          "video_path": null
+        }
+      ],
+      "blogs": [
+        {
+          "id": "blog-ss-001",
+          "slug": "quiet-luxury-not-about-price",
+          "title": "Quiet Luxury Is Not About the Price Tag",
+          "summary": "My thoughts on fit, fabric, confidence, restraint, and why expensive clothing does not automatically create personal style.",
+          "content": "I have borrowed expensive clothing, stood in a dressing room in a department store, and watched someone in a perfectly fitted R300 blazer walk past someone else in a R6 000 jacket. The person in the R300 blazer looked better. Not because the blazer was technically superior. Because it fit.\n\nQuiet luxury is a phrase that gets used and misused. Brands use it to justify charging more for less visible branding. Influencers use it to describe a particular beige aesthetic that has more to do with art direction than substance. But the underlying principle, when it is applied honestly, is about something real: the difference between clothing that works and clothing that merely costs.\n\nHere is what actually creates a quiet luxury effect:\n\nFit. Nothing compensates for a garment that does not fit properly. Not the label, not the fabric, not the price. A tailored second-hand coat reads as more intentional than an ill-fitting piece from a prestige house. Alterations are one of the most underrated investments in personal style.\n\nFabric with substance. Quality fabric has weight, drape, and a response to movement that cheap fabric cannot replicate. You feel the difference before you see it. Natural fibres — wool, silk, heavy cotton — tend to behave better over time and photograph better. But this is not a rule. Some performance fabrics are exceptional. Some natural fibres are poorly made. Learn to assess fabric by touch and movement, not by composition labels.\n\nRestraint. Every element in an outfit is either earning its place or creating noise. Quiet luxury outfits tend to have a logic: one focal point, everything else in support. This is a discipline, not a budget. It requires editing, which requires confidence.\n\nConfidence itself. I have seen extraordinary garments worn badly. I have seen humble pieces carried with complete authority. The way someone stands, moves, and makes eye contact with a room is part of the outfit. This cannot be purchased. It can be practised.\n\nThe most honest version of quiet luxury is simply: wear what fits well, choose quality where you can, edit until nothing is unnecessary, and carry yourself as though you chose every element deliberately. Because you did.",
+          "published_at": "2026-05-22",
+          "header_image": "profiles/silk-static/images/blog-header-1.svg",
+          "author": "Kiara Naidoo",
+          "member_only": false,
+          "published": true
+        },
+        {
+          "id": "blog-ss-002",
+          "slug": "building-personal-brand-without-copy",
+          "title": "Building a Personal Brand Without Becoming a Copy",
+          "summary": "How I find inspiration without recreating someone else's entire identity.",
+          "content": "The first time someone told me my work looked like a specific international creator's feed, I felt two things simultaneously: flattered and hollow. Flattered because the comparison was to someone whose work I genuinely admired. Hollow because I recognised, when I looked at my own images, that they were right.\n\nI had been absorbing so much inspiration from one source that it had begun to replicate itself in my own output without me choosing it. The colour palette, the composition angles, even the pacing between posts. I had not copied anything deliberately, but I had not been sufficiently careful about filtering inspiration through my own perspective before it became my practice.\n\nBuilding a personal brand without becoming a copy is not about refusing to be influenced. Influence is unavoidable and largely good. It is about the quality of the translation between what you absorb and what you produce.\n\nWhat I changed:\n\nI diversified my sources aggressively. Film photographers. Architects. Ceramicists. Textile designers. Vintage fashion historians. When your reference pool is deep and wide, no single influence can dominate.\n\nI started asking a different question. Instead of asking what would look good here, I started asking what is true here. What do I actually notice about this location, this garment, this person's posture? What would I photograph if nobody was watching?\n\nI gave myself constraints. Constraints are one of the most useful creative tools available. If I decide that I will only shoot on film for the next month, or that I will only use natural window light, or that I will only style outfits I can assemble from what I already own, the resulting limitations force me to solve problems creatively rather than defaulting to what I have seen work for someone else.\n\nI accepted that distinctiveness takes time. You do not arrive at your own voice overnight. You arrive at it through accumulated practice, through recognising when something you have produced feels genuinely yours and doing more of that, deliberately, until it becomes a habit rather than an accident.",
+          "published_at": "2026-06-05",
+          "header_image": "profiles/silk-static/images/blog-header-2.svg",
+          "author": "Kiara Naidoo",
+          "member_only": false,
+          "published": true
+        },
+        {
+          "id": "blog-ss-003",
+          "slug": "why-details-matter-more-than-labels",
+          "title": "Why Details Matter More Than Labels",
+          "summary": "A reflection on tailoring, posture, grooming, colour, and the small choices that make an outfit feel intentional.",
+          "content": "I spent a long time believing that the outfit was the primary unit of personal style. That a great look was assembled at the garment level — this piece, that piece, those shoes.\n\nI have since revised this. The garment is the last thing. Before it: posture, grooming, colour against your skin, the fit of every seam, and the quality of every decision that brought the whole thing together.\n\nHere is what I mean specifically:\n\nTailoring. A piece that fits your exact proportions communicates a level of intentionality that no label can buy. The shoulder seam should sit at the exact edge of your shoulder. The sleeve should end at the right point on your wrist. The trouser break should be deliberate. These are not cosmetic details. They are structural. They determine how a garment reads from across the room.\n\nColour against skin tone. The way a colour interacts with your specific complexion changes everything. There is a version of champagne that makes my skin look grey and a version that makes it look luminous. Same colour family. Completely different result. Understanding which colours work against your skin is more valuable than any trend forecast.\n\nGrooming as styling. Skin, nails, hair — these are part of the outfit. A beautifully styled look with neglected details in any of these areas loses coherence. I do not mean perfection. I mean intention. Controlled rather than unconsidered.\n\nAccessories as editing. The best accessory decision is often removal. I try on everything and then take off one thing. Usually the outfit becomes more interesting immediately. The piece I removed was creating noise rather than contributing to the composition.\n\nPosture and carriage. A great garment worn with collapsed posture is a different garment to the same piece worn with height and stillness. Posture is not about stiffness. It is about being present in your own body. The people who look consistently excellent in clothes are almost always people who move and stand as though they are comfortable where they are.\n\nThe label is almost never the detail that matters most. It is usually the last resort of someone who has not figured out the other things yet.",
+          "published_at": "2026-06-19",
+          "header_image": "profiles/silk-static/images/blog-header-3.svg",
+          "author": "Kiara Naidoo",
+          "member_only": false,
+          "published": true
+        },
+        {
+          "id": "blog-ss-004",
+          "slug": "what-people-dont-see-before-final-photograph",
+          "title": "What People Do Not See Before the Final Photograph",
+          "summary": "The planning, mistakes, lighting problems, outfit changes, and creative decisions behind one finished image.",
+          "published_at": "2026-07-01",
+          "author": "Kiara Naidoo",
+          "member_only": true,
+          "published": true,
+          "content": null,
+          "header_image": null
+        }
+      ],
+      "membership": {
+        "enabled": true,
+        "free_content_description": "Weekly fashion and beauty content, editorial shoots, styling essays, and Cape Town lifestyle posts.",
+        "premium_content_description": "Private style diaries, full beauty breakdowns, seasonal digital lookbooks, extended behind-the-scenes videos, early access to editorial shoots, and monthly styling challenges.",
+        "main_cta": "Join SilkStatic and see both sides of the image."
+      },
+      "products": [
+        {
+          "id": "product-ss-001",
+          "name": "Digital Styling Guide",
+          "description": "A comprehensive personal styling framework covering colour analysis, proportion, wardrobe editing, and outfit architecture. Written for real wardrobes, not aspirational ones.",
+          "price": 199,
+          "currency": "ZAR",
+          "image": "profiles/silk-static/images/product-styling-guide.svg",
+          "purchase_url": "",
+          "active": true
+        },
+        {
+          "id": "product-ss-002",
+          "name": "Seasonal Lookbook",
+          "description": "A curated digital lookbook of seasonal editorial styling — mood boards, outfit breakdowns, and styling notes for each look. Updated twice yearly.",
+          "price": 249,
+          "currency": "ZAR",
+          "image": "profiles/silk-static/images/product-lookbook.svg",
+          "purchase_url": "",
+          "active": true
+        },
+        {
+          "id": "product-ss-003",
+          "name": "Editorial Photography Presets",
+          "description": "Six Lightroom presets developed for editorial fashion photography — warm, structured, and designed to make neutral tones and deep colours work together.",
+          "price": 179,
+          "currency": "ZAR",
+          "image": "profiles/silk-static/images/product-presets.svg",
+          "purchase_url": "",
+          "active": true
+        },
+        {
+          "id": "product-ss-004",
+          "name": "Personal Wardrobe Consultation",
+          "description": "A one-hour private consultation to review your current wardrobe, identify gaps, and build a personalised styling direction. Conducted via video call.",
+          "price": 850,
+          "currency": "ZAR",
+          "image": "profiles/silk-static/images/product-wardrobe.svg",
+          "purchase_url": "",
+          "active": true
+        },
+        {
+          "id": "product-ss-005",
+          "name": "Event Styling Consultation",
+          "description": "Full outfit planning for a specific event — sourcing guidance, fitting notes, accessories, hair and makeup direction, and a final look document.",
+          "price": 650,
+          "currency": "ZAR",
+          "image": "profiles/silk-static/images/product-event.svg",
+          "purchase_url": "",
+          "active": true
+        },
+        {
+          "id": "product-ss-006",
+          "name": "Personal-Brand Mood Board",
+          "description": "A custom visual identity mood board for creators, entrepreneurs, or professionals — colour palette, typography direction, styling references, and brand language notes.",
+          "price": 499,
+          "currency": "ZAR",
+          "image": "profiles/silk-static/images/product-moodboard.svg",
+          "purchase_url": "",
+          "active": true
+        },
+        {
+          "id": "product-ss-007",
+          "name": "Beauty and Outfit Planning Templates",
+          "description": "A set of planning templates for events, shoots, and daily styling — look sheets, beauty run-of-show, outfit flat-lay guides, and a pre-shoot checklist.",
+          "price": 129,
+          "currency": "ZAR",
+          "image": "profiles/silk-static/images/product-templates.svg",
+          "purchase_url": "",
+          "active": true
+        }
+      ],
+      "published": true
+    },
+    {
+      "id": "velvet-harbour-001",
+      "slug": "velvet-harbour",
+      "name": "VelvetHarbour",
+      "tagline": "Details define the experience. I find them, so you don't have to.",
+      "niche": "Luxury Travel & Hospitality",
+      "short_bio": "Camps Bay-born hospitality obsessive and travel writer curating the refined, the beautiful, and the genuinely worth experiencing — from architecture to afternoon teas.",
+      "full_bio": "I grew up in a house with a view of the Atlantic and parents who treated every meal as an event worth preparing for. My mother would iron the tablecloth before Sunday lunch. My father would spend forty minutes selecting the right music for a dinner party. These were not affectations — they were a philosophy. The details of an experience tell the people in it that they matter.\n\nVelvetHarbour grew from that sensibility. I write about travel and hospitality with a particular focus on the invisible work that separates a good experience from an exceptional one. The thread count of the linen. The knowledge of the sommelier. The way a good hotel lobby makes you exhale before you have even checked in.\n\nI also write critical pieces. The luxury travel industry is full of pretension dressed as quality, and I think honest criticism is more useful than breathless marketing. When something is genuinely excellent, I say so with evidence. When it is trading on reputation it no longer earns, I say that too.\n\nI am also building content about Cape Town as a world-class hospitality destination — not from a tourist's perspective but from a local's. The hidden restaurants, the boutique stays that outperform the big hotels, the private wine farms that would rather not be in the guides.",
+      "location": "Camps Bay, Cape Town",
+      "social_links": {
+        "instagram": "",
+        "tiktok": "",
+        "youtube": "",
+        "facebook": "",
+        "twitter": "",
+        "website": ""
+      },
+      "assets": {
+        "avatar": "profiles/velvet-harbour/images/avatar.svg",
+        "hero": "profiles/velvet-harbour/images/hero.svg"
+      },
+      "albums": [
+        {
+          "id": "album-vh-001",
+          "title": "Cape Town Architecture & Interiors",
+          "description": "Documenting exceptional hospitality design across the Cape Peninsula.",
+          "cover_image": "profiles/velvet-harbour/images/album1-cover.svg",
+          "media": []
+        },
+        {
+          "id": "album-vh-002",
+          "title": "Africa Travels: East & South",
+          "description": "Photography from Zambia, Tanzania, and Mauritius — luxury and authentic local experience.",
+          "cover_image": "profiles/velvet-harbour/images/album2-cover.svg",
+          "media": []
+        }
+      ],
+      "videos": [
+        {
+          "id": "video-vh-001",
+          "title": "What Makes a Hotel Worth Its Rate: A Room-by-Room Checklist",
+          "description": "The specific details I check in every hotel I stay in to assess genuine quality versus performance.",
+          "video_path": "",
+          "thumbnail_path": "profiles/velvet-harbour/images/video-thumb.svg",
+          "published_at": "2026-06-01",
+          "member_only": false
+        },
+        {
+          "id": "video-vh-002",
+          "title": "Cape Town's Best Kept Restaurants: My Private List",
+          "description": "Restaurants I genuinely recommend — not sponsored, not paid for, just places I return to.",
+          "thumbnail_path": "profiles/velvet-harbour/images/video-thumb2.svg",
+          "published_at": "2026-06-15",
+          "member_only": true,
+          "video_path": null
+        }
+      ],
+      "blogs": [
+        {
+          "id": "blog-vh-001",
+          "slug": "the-detail-philosophy",
+          "title": "The Detail Philosophy: Why Small Things Define Great Experiences",
+          "summary": "An essay on how hospitality details communicate care — and why most properties get this wrong.",
+          "content": "The first thing I notice in any hotel room is the gap between the curtains. Not whether they block light — that is basic competency — but whether they hang with perfect weight and meet at the center with intention. Curtains that gap by five centimetres tell me something about the rest of the room before I have looked at anything else.\n\nThis sounds extreme. It is not. Every detail in a designed space is a decision. When a detail is poor, it usually means one of three things: nobody noticed, someone noticed and didn't care enough to fix it, or fixing it was deemed not worth the cost. Any of these answers tells you something about the operation's relationship to quality.\n\nThe properties I respect most — not necessarily the most expensive, but the most genuinely excellent — are the ones where you sense that someone cares about every surface and every interaction. The welcome note written by hand. The minibar restocked with locally sourced products rather than multinational brands. The concierge who remembers you mentioned you were celebrating an anniversary.\n\nNone of these things are expensive to do. They require attention, not budget. And that is exactly what makes them rare.",
+          "published_at": "2026-05-05",
+          "header_image": "profiles/velvet-harbour/images/blog-header.svg",
+          "author": "Mia van Wyk",
+          "member_only": false,
+          "published": true
+        }
+      ],
+      "membership": {
+        "enabled": true,
+        "free_content_description": "Weekly travel writing, hotel and restaurant reviews, and hospitality design essays.",
+        "premium_content_description": "Full property reviews with ratings, private Cape Town experience guides, event and venue recommendations, and seasonal travel itineraries.",
+        "main_cta": "Experience more, settle for less. Join VelvetHarbour."
+      },
+      "products": [
+        {
+          "id": "product-vh-001",
+          "name": "Cape Town Experience Guide 2026",
+          "description": "My comprehensive private guide to the best of Cape Town hospitality — 50 pages, updated annually, written for people who already know the tourist spots.",
+          "price": 249,
+          "currency": "ZAR",
+          "image": "profiles/velvet-harbour/images/product-thumb.svg",
+          "purchase_url": "",
+          "active": true
+        }
+      ],
+      "published": true
+    },
+    {
+      "id": "velvet-voltage-001",
+      "slug": "velvet-voltage",
+      "name": "VelvetVoltage",
+      "tagline": "Turning second-hand into first-rate — fashion for every pocket.",
+      "niche": "Thrift Fashion & Youth Entrepreneurship",
+      "short_bio": "18-year-old from Khayelitsha redefining style through thrift, sewing, and honest conversations about making it on your own terms.",
+      "full_bio": "My name is Zanele, and I grew up surrounded by creativity even when resources were tight. In Khayelitsha, you learn early that style is not about money — it is about imagination. I started thrifting at 13, turning R20 finds into outfits my friends would beg me to recreate. By 15 I had taught myself to sew from YouTube tutorials and library books. By 16 I was alterring dresses for neighbours and saving every rand.\n\nVelvetVoltage is my platform and my proof. It is proof that a girl from the Cape Flats can build something beautiful from almost nothing. I share every haul, every pattern, every business lesson — the wins and the embarrassing failures too. I want young women to see that entrepreneurship does not start with capital; it starts with a needle, thread, and the courage to begin.\n\nI am also deeply interested in the youth economy. I run free sewing workshops at my local community centre on Saturdays. Fashion is the hook, but the real lesson is always about ownership, pricing your work fairly, and building something that lasts. My dream is a cooperative studio space in Khayelitsha where young creatives can share equipment and skills.",
+      "location": "Khayelitsha, Cape Town",
+      "social_links": {
+        "instagram": "",
+        "tiktok": "",
+        "youtube": "",
+        "facebook": "",
+        "twitter": "",
+        "website": ""
+      },
+      "assets": {
+        "avatar": "profiles/velvet-voltage/images/avatar.svg",
+        "hero": "profiles/velvet-voltage/images/hero.svg"
+      },
+      "albums": [
+        {
+          "id": "album-vv-001",
+          "title": "R50 Challenge Lookbook",
+          "description": "Six complete outfits assembled from thrift stores for R50 each.",
+          "cover_image": "profiles/velvet-voltage/images/album1-cover.svg",
+          "media": []
+        },
+        {
+          "id": "album-vv-002",
+          "title": "Sewing Workshop Highlights",
+          "description": "Photos from my Saturday workshops at the Khayelitsha community centre.",
+          "cover_image": "profiles/velvet-voltage/images/album2-cover.svg",
+          "media": []
+        }
+      ],
+      "videos": [
+        {
+          "id": "video-vv-001",
+          "title": "Thrift & Transform: Episode 1",
+          "description": "I spend R80 at a Bellville market and transform a blazer into something completely new.",
+          "video_path": "",
+          "thumbnail_path": "profiles/velvet-voltage/images/video-thumb.svg",
+          "published_at": "2026-06-01",
+          "member_only": false
+        },
+        {
+          "id": "video-vv-002",
+          "title": "How I Price My Sewing Services",
+          "description": "Real numbers, real talk about charging what your work is worth.",
+          "thumbnail_path": "profiles/velvet-voltage/images/video-thumb2.svg",
+          "published_at": "2026-06-15",
+          "member_only": true,
+          "video_path": null
+        }
+      ],
+      "blogs": [
+        {
+          "id": "blog-vv-001",
+          "slug": "thrifting-101",
+          "title": "Thrifting 101: My Khayelitsha Starter Guide",
+          "summary": "The exact markets, timing tips, and haggling scripts I use every weekend.",
+          "content": "Every Saturday morning at 6 AM I am already moving through the Khayelitsha market before the tourists from the City Bowl arrive. The early-bird advantage is real. Here is everything I know about finding gold in the pile.\n\nFirst, know your measurements by heart. You will not always have a changing room. I know my bust, waist, hips, and inseam off the top of my head, and I keep a measuring tape on my keyring.\n\nSecond, think in terms of fabric, not finished garment. A men's XL button-down shirt becomes a cropped jacket. A full skirt becomes two pencil skirts. When you see fabric, not clothing, every rack opens up.\n\nThird, haggle with respect. The sellers at these markets work hard. I never offer less than 70% of the asking price, and I always explain why — a missing button, a small stain I will fix myself. Most sellers appreciate honesty.\n\nFinally, bring cash in small denominations. It speeds things up and you won't accidentally flash a large note.",
+          "published_at": "2026-05-10",
+          "header_image": "profiles/velvet-voltage/images/blog-header.svg",
+          "author": "Zanele Nkomo",
+          "member_only": false,
+          "published": true
+        },
+        {
+          "id": "blog-vv-002",
+          "slug": "pricing-your-work",
+          "title": "Stop Undercharging: A Young Seamstress's Manifesto",
+          "summary": "Why we underprice our creative work and how to stop.",
+          "published_at": "2026-06-01",
+          "author": "Zanele Nkomo",
+          "member_only": true,
+          "published": true,
+          "content": null,
+          "header_image": null
+        }
+      ],
+      "membership": {
+        "enabled": true,
+        "free_content_description": "Weekly thrift hauls, outfit lookbooks, and community workshop updates.",
+        "premium_content_description": "Business templates, pricing spreadsheets, full sewing pattern downloads, and exclusive 1-on-1 Q&A sessions.",
+        "main_cta": "Join VelvetVoltage and build your creative business."
+      },
+      "products": [
+        {
+          "id": "product-vv-001",
+          "name": "Beginner Sewing Kit Guide",
+          "description": "My recommended beginner kit — what to buy, where to buy it affordably in Cape Town, and how to use each piece.",
+          "price": 79,
+          "currency": "ZAR",
+          "image": "profiles/velvet-voltage/images/product-thumb.svg",
+          "purchase_url": "",
+          "active": true
+        }
+      ],
+      "published": true
+    },
+    {
+      "id": "wild-juniper-001",
+      "slug": "wild-juniper",
+      "name": "WildJuniper",
+      "tagline": "Baking as love language. South African flavour, contemporary form.",
+      "niche": "Baking & Modern South African Food",
+      "short_bio": "Gugulethu baker and pop-up dining host reinterpreting South African classics through modern pastry techniques and a deep belief that everyone deserves beautiful food.",
+      "full_bio": "My relationship with food began at my grandmother's stove in Gugulethu, watching her make umngqusho in a cast iron pot the size of a small universe. She did not measure anything. She cooked by feel, by smell, by the sound of a boil. I was desperate to preserve what she knew but also to extend it — to take these flavours somewhere new.\n\nI started baking at fifteen. First the standard things: vanilla sponge, chocolate cake, rusks. Then I started experimenting: a milk tart with a cardamom crust and hibiscus coulis. A malva pudding served cold with whipped cream and preserved naartjie. Koeksisters made with saffron and pistachio filling. The reaction from my family was extraordinary — recognition and surprise at the same time.\n\nWildJuniper is my platform and my business. I host monthly pop-up dinners in Gugulethu — small, intimate, four courses, fifteen guests maximum. Every menu is anchored in South African culinary tradition and refracted through contemporary pastry technique. I source locally as much as possible: Boland stone fruit, Karoo honey, Cape Malay spices from the markets.\n\nI want to be clear about the political dimension of this project. South African food has been systematically excluded from the 'fine dining' conversation in our own country. The cuisine of Black South Africa — umngqusho, isopho, vetkoek, morogo — is eaten everywhere but rarely elevated or celebrated in the spaces where food culture is formally discussed. I am changing that, one pop-up at a time.",
+      "location": "Gugulethu, Cape Town",
+      "social_links": {
+        "instagram": "",
+        "tiktok": "",
+        "youtube": "",
+        "facebook": "",
+        "twitter": "",
+        "website": ""
+      },
+      "assets": {
+        "avatar": "profiles/wild-juniper/images/avatar.svg",
+        "hero": "profiles/wild-juniper/images/hero.svg"
+      },
+      "albums": [
+        {
+          "id": "album-wj-001",
+          "title": "Pop-Up Dinner: June 2026",
+          "description": "Behind the scenes and plating photography from my June pop-up in Gugulethu.",
+          "cover_image": "profiles/wild-juniper/images/album1-cover.svg",
+          "media": []
+        },
+        {
+          "id": "album-wj-002",
+          "title": "Reinterpreted Classics",
+          "description": "My experimental bakes — South African flavours in new forms.",
+          "cover_image": "profiles/wild-juniper/images/album2-cover.svg",
+          "media": []
+        }
+      ],
+      "videos": [
+        {
+          "id": "video-wj-001",
+          "title": "Making Malva Pudding Three Ways",
+          "description": "The classic, the contemporary, and the experimental — one dish, three interpretations.",
+          "video_path": "",
+          "thumbnail_path": "profiles/wild-juniper/images/video-thumb.svg",
+          "published_at": "2026-06-01",
+          "member_only": false
+        },
+        {
+          "id": "video-wj-002",
+          "title": "How I Plan and Cost a Pop-Up Dinner",
+          "description": "The full business side: menu costing, venue setup, ticketing, and what I have learned.",
+          "thumbnail_path": "profiles/wild-juniper/images/video-thumb2.svg",
+          "published_at": "2026-06-15",
+          "member_only": true,
+          "video_path": null
+        }
+      ],
+      "blogs": [
+        {
+          "id": "blog-wj-001",
+          "slug": "south-african-fine-dining-gap",
+          "title": "Why Is South African Food Missing From Our Own Fine Dining Scene?",
+          "summary": "An essay on the systemic exclusion of Black South African cuisine from elevated restaurant culture — and what is changing.",
+          "content": "Last month I ate at a well-reviewed Cape Town restaurant that described itself as celebrating South African cuisine. The menu had ostrich, Cape Malay bobotie, and a wine list with excellent Stellenbosch selections. It was good. I enjoyed it. And I could not stop thinking about what was missing.\n\nNo umngqusho. No isopho. No phuthu. No morogo. No reference whatsoever to the food traditions of the majority of South Africans.\n\nThis is not an accident. The fine dining conversation in South Africa has historically been shaped by the tastes and references of those who could afford to participate in it. That has meant European techniques, Cape Malay and Afrikaner traditions, and a systematic elision of the food cultures that sustained Black South Africa through the apartheid era and long before it.\n\nI make no claim to a definitive solution. My pop-ups are small. My platform is growing. But what I know is that every time I plate an umngqusho with precision, serve phuthu with a sauce that takes three days to make, and watch a table full of people eat it thoughtfully and with pleasure, something shifts. These flavours deserve tables that treat them with care. I intend to keep setting those tables.",
+          "published_at": "2026-07-01",
+          "header_image": "profiles/wild-juniper/images/blog-header.svg",
+          "author": "Noxolo Maseko",
+          "member_only": false,
+          "published": true
+        }
+      ],
+      "membership": {
+        "enabled": true,
+        "free_content_description": "Weekly baking posts, pop-up updates, and South African food history and culture essays.",
+        "premium_content_description": "Full recipe card downloads with technique notes, pop-up menu archives, and priority booking for WildJuniper dinners.",
+        "main_cta": "Eat beautifully. Join WildJuniper."
+      },
+      "products": [
+        {
+          "id": "product-wj-001",
+          "name": "Reinterpreted Classics Recipe Zine Vol. 1",
+          "description": "Ten South African recipes reimagined with contemporary technique — photographed, annotated, and printed on quality stock. Ships within Cape Town.",
+          "price": 189,
+          "currency": "ZAR",
+          "image": "profiles/wild-juniper/images/product-thumb.svg",
+          "purchase_url": "",
+          "active": true
+        }
+      ],
+      "published": true
+    }
+  ]
+}

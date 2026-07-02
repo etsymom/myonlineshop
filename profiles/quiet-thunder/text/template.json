@@ -1,0 +1,91 @@
+{
+  "id": "quiet-thunder-001",
+  "slug": "quiet-thunder",
+  "name": "QuietThunder",
+  "tagline": "Code is the most affordable tool ever invented. I'm teaching Langa to use it.",
+  "niche": "Technology & Affordable Digital Tools",
+  "short_bio": "Self-taught coder from Langa making technology accessible and demystified for young people who can't afford to wait for someone else to show them.",
+  "full_bio": "I learned to code on a shared family computer that my mother kept clean with a cloth every single day. The internet was expensive. Data was rationed. Every tutorial I watched was buffered, paused, re-watched in pieces. That is how I learned: in fragments, with patience, and with absolute determination.\n\nBy the time I was 16 I had built my school's homework reminder app, taught myself three languages — Python, JavaScript, and a little SQL — and started a small Telegram bot service for local businesses who needed automated responses but could not afford a developer.\n\nQuietThunder is my channel for showing other young people from areas like Langa that technology is not gatekept. You do not need a MacBook. You do not need a fast connection all the time. You do not need to be in a suburb. Free tools exist. Offline tools exist. Community internet cafés exist. I navigate all of it and share what I find.\n\nI also write about the politics of digital access in South Africa. Connectivity is not equal. Device access is not equal. That is not an accident — it is a policy failure, and young people should understand it as such so we can demand better.",
+  "location": "Langa, Cape Town",
+  "social_links": {
+    "instagram": "",
+    "tiktok": "",
+    "youtube": "",
+    "facebook": "",
+    "twitter": "",
+    "website": ""
+  },
+  "assets": {
+    "avatar": "profiles/quiet-thunder/images/avatar.svg",
+    "hero": "profiles/quiet-thunder/images/hero.svg"
+  },
+  "albums": [
+    {
+      "id": "album-qt-001",
+      "title": "Free Tools That Changed My Life",
+      "description": "Screenshots and walkthroughs of every free tech tool I use daily.",
+      "cover_image": "profiles/quiet-thunder/images/album1-cover.svg",
+      "media": []
+    },
+    {
+      "id": "album-qt-002",
+      "title": "Langa Tech Community",
+      "description": "Documenting the coding workshops and study groups I have helped start.",
+      "cover_image": "profiles/quiet-thunder/images/album2-cover.svg",
+      "media": []
+    }
+  ],
+  "videos": [
+    {
+      "id": "video-qt-001",
+      "title": "Build Your First Python Bot — For Free",
+      "description": "A complete beginner walkthrough using only free tools that work on a low-spec laptop.",
+      "video_path": "",
+      "thumbnail_path": "profiles/quiet-thunder/images/video-thumb.svg",
+      "published_at": "2026-06-01",
+      "member_only": false
+    },
+    {
+      "id": "video-qt-002",
+      "title": "Getting Your First Tech Job From Langa: My Research Notes",
+      "description": "The companies, learnership programmes, and application strategies I found that nobody talks about.",
+      "video_path": "",
+      "thumbnail_path": "profiles/quiet-thunder/images/video-thumb2.svg",
+      "published_at": "2026-06-15",
+      "member_only": true
+    }
+  ],
+  "blogs": [
+    {
+      "id": "blog-qt-001",
+      "slug": "coding-on-data-budget",
+      "title": "How to Learn to Code on R50 of Data a Month",
+      "summary": "The offline tools, cached tutorials, and data-light strategies I used to teach myself programming.",
+      "content": "Let me be specific about my constraints when I started. We had one device between five people. Our home Wi-Fi was pay-as-you-go. During matric I was budgeting R50 a month for data — roughly 1.5 GB if I bought the right bundle at the right time.\n\nHere is what I did:\n\n1. Downloaded documentation. Every official docs page for Python, MDN for JavaScript — downloaded as PDF or HTML offline. You can do this for free. A full Python docs set is about 40 MB.\n\n2. Used VS Code offline. It does not need internet to run. I wrote code, tested it locally, debugged it without Stack Overflow — which forced me to actually read error messages properly.\n\n3. Cached YouTube tutorials in bulk when I did have Wi-Fi. I would download 10 tutorials at a time during off-peak hours using a free Android app and then watch them offline for the week.\n\n4. Used freeCodeCamp's offline mode. Their curriculum works when you cache it.\n\nThe myth that you need constant internet to learn coding is just that — a myth. You need time, focus, and a strategy. The tools are free. The internet is mostly optional if you plan ahead.",
+      "published_at": "2026-03-20",
+      "header_image": "profiles/quiet-thunder/images/blog-header.svg",
+      "author": "Naledi Mokoena",
+      "member_only": false,
+      "published": true
+    }
+  ],
+  "membership": {
+    "enabled": true,
+    "free_content_description": "Weekly tech tutorials, tool reviews, and digital access articles.",
+    "premium_content_description": "Full project source code, weekly live coding sessions, private Discord, and personalised career roadmap consultations.",
+    "main_cta": "Learn to build. Join QuietThunder."
+  },
+  "products": [
+    {
+      "id": "product-qt-001",
+      "name": "Low-Data Dev Starter Kit",
+      "description": "A curated collection of offline-capable tools, documentation downloads, and a 30-day learning schedule designed for low-connectivity environments.",
+      "price": 99,
+      "currency": "ZAR",
+      "image": "profiles/quiet-thunder/images/product-thumb.svg",
+      "purchase_url": "",
+      "active": true
+    }
+  ],
+  "published": true
+}

@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="400" viewBox="0 0 400 400">
+  <rect width="400" height="400" fill="#EDE9F5" rx="16"/>
+  <path d="M140,160 L140,260 L260,260 L260,160 Z" fill="none" stroke="#2D1B4E" stroke-width="3"/>
+  <path d="M160,160 Q160,130 200,130 Q240,130 240,160" fill="none" stroke="#2D1B4E" stroke-width="3"/>
+  <circle cx="168" cy="195" r="6" fill="#F5A623"/>
+  <circle cx="232" cy="195" r="6" fill="#F5A623"/>
+  <text x="200" y="310" text-anchor="middle" font-family="Georgia, serif" font-size="18" font-weight="bold" fill="#2D1B4E">Digital Art Pack</text>
+  <text x="200" y="335" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" fill="#8A7FA0">DEMO PRODUCT</text>
+  <text x="200" y="365" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="#059669">ZAR 99</text>
+</svg>

@@ -1,0 +1,91 @@
+{
+  "id": "neon-marigold-001",
+  "slug": "neon-marigold",
+  "name": "NeonMarigold",
+  "tagline": "Choreography is just music you can see. I make it visible.",
+  "niche": "Dance & Music Visuals",
+  "short_bio": "Woodstock dancer and music visual director creating movement-based content at the intersection of dance, youth culture, and South African sound.",
+  "full_bio": "I have been dancing since before I could read. My mother is a teacher and my father is a DJ — I grew up with discipline and basslines in equal measure. By eleven I was choreographing for school concerts. By fifteen I was making videos in my bedroom with a phone and whatever natural light the afternoon Woodstock sun provided.\n\nNeonMarigold is my creative world. I make dance videos that are intentionally cinematic — I think about shot composition, color grading, the relationship between the movement and the music before I press record. I am also building a choreography studio in the sense that I write down my work: notation, video breakdowns, the theory behind what I am doing and why.\n\nI am deeply invested in South African music culture. We are living through an extraordinary moment — Amapiano has crossed every border, Afrobeats has global reach, local artists are producing some of the most exciting music anywhere in the world. I want to create visuals worthy of that music. Dance that interprets and extends it, not just performs to it.\n\nWoodstock is the perfect place for this. It is genuinely diverse, genuinely creative, genuinely in flux. The street art, the music venues, the collision of cultures on Albert Road — I draw from all of it. My work is about this specific place and moment even when it is trying to be universal.",
+  "location": "Woodstock, Cape Town",
+  "social_links": {
+    "instagram": "",
+    "tiktok": "",
+    "youtube": "",
+    "facebook": "",
+    "twitter": "",
+    "website": ""
+  },
+  "assets": {
+    "avatar": "profiles/neon-marigold/images/avatar.svg",
+    "hero": "profiles/neon-marigold/images/hero.svg"
+  },
+  "albums": [
+    {
+      "id": "album-nm-001",
+      "title": "Music Visual Series: Amapiano",
+      "description": "Choreographed dance visuals created for South African Amapiano tracks.",
+      "cover_image": "profiles/neon-marigold/images/album1-cover.svg",
+      "media": []
+    },
+    {
+      "id": "album-nm-002",
+      "title": "Woodstock Street Sessions",
+      "description": "Spontaneous dance sessions shot in Woodstock locations — raw, minimal editing.",
+      "cover_image": "profiles/neon-marigold/images/album2-cover.svg",
+      "media": []
+    }
+  ],
+  "videos": [
+    {
+      "id": "video-nm-001",
+      "title": "Choreography Breakdown: My Amapiano Visual Process",
+      "description": "From concept to final cut — how I create a music visual start to finish.",
+      "video_path": "",
+      "thumbnail_path": "profiles/neon-marigold/images/video-thumb.svg",
+      "published_at": "2026-06-01",
+      "member_only": false
+    },
+    {
+      "id": "video-nm-002",
+      "title": "Advanced Footwork Tutorial: Amapiano Vocabulary",
+      "description": "Breaking down the specific footwork patterns I use and how to practice them.",
+      "video_path": "",
+      "thumbnail_path": "profiles/neon-marigold/images/video-thumb2.svg",
+      "published_at": "2026-06-15",
+      "member_only": true
+    }
+  ],
+  "blogs": [
+    {
+      "id": "blog-nm-001",
+      "slug": "dance-as-documentation",
+      "title": "Dance as Documentation: Why Choreography Is a Form of Journalism",
+      "summary": "An essay arguing that movement-based art carries historical and cultural information that written records cannot capture.",
+      "content": "In the mid-1950s, Miriam Makeba's performances in Johannesburg were a form of resistance documentation as much as entertainment. The physicality of her presence, the way she moved, what she chose to embody — these were claims about the humanity and dignity of Black South Africans that words in that political moment could not safely make.\n\nI think about this often when I choreograph. Dance records what a body knows. It carries the physical memory of culture, the muscle knowledge of a generation. When Amapiano spread across South Africa, it came with a dance vocabulary that was entirely specific — the lunge, the step-touch combinations, the relationship between the music's rhythmic complexity and the dancer's grounded, deliberate response. That vocabulary is documentation. It tells you something about who made this music, where they are from, what they value in how a body moves through space.\n\nI make dance visuals because I believe this documentation is worth making deliberately. The phone video, the social media clip, the quick tutorial — these preserve movement, but often with the minimum of thought given to them as cultural records. I want to be more careful than that. I want the visuals I make to be worth returning to in twenty years.",
+      "published_at": "2026-06-25",
+      "header_image": "profiles/neon-marigold/images/blog-header.svg",
+      "author": "Amara Petersen",
+      "member_only": false,
+      "published": true
+    }
+  ],
+  "membership": {
+    "enabled": true,
+    "free_content_description": "Weekly dance videos, choreography posts, and South African music and culture writing.",
+    "premium_content_description": "Full choreography breakdowns with notation, exclusive dance tutorials, behind-the-scenes from visual productions, and monthly live session feedback.",
+    "main_cta": "Move with purpose. Join NeonMarigold."
+  },
+  "products": [
+    {
+      "id": "product-nm-001",
+      "name": "Amapiano Footwork Fundamentals: Digital Tutorial Pack",
+      "description": "Six progressive video tutorials covering foundational Amapiano footwork vocabulary, with practice counts and music recommendations.",
+      "price": 159,
+      "currency": "ZAR",
+      "image": "profiles/neon-marigold/images/product-thumb.svg",
+      "purchase_url": "",
+      "active": true
+    }
+  ],
+  "published": true
+}

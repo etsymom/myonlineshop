@@ -1,0 +1,82 @@
+{
+  "id": "demo-creator-001",
+  "slug": "demo-creator",
+  "name": "Alex Rivera (Demo)",
+  "tagline": "Creative storyteller and digital artist",
+  "niche": "Digital Art & Photography",
+  "short_bio": "DEMO PROFILE — This profile demonstrates all InkwellMedia creator features using placeholder content.",
+  "full_bio": "This is a demonstration profile created to showcase all available InkwellMedia creator features. Alex Rivera is a fictional creator used for testing and previewing the platform. All content, images, and descriptions on this profile are placeholder data and do not represent a real person or business.",
+  "location": "Cape Town, South Africa",
+  "social_links": {
+    "instagram": "https://instagram.com/demo",
+    "tiktok": "https://tiktok.com/@demo",
+    "youtube": "https://youtube.com/@demo",
+    "facebook": "",
+    "twitter": "https://twitter.com/demo",
+    "website": "https://example.com"
+  },
+  "assets": {
+    "avatar": "profiles/demo-creator/images/avatar.svg",
+    "hero": "profiles/demo-creator/images/hero.svg"
+  },
+  "albums": [
+    {
+      "id": "album-demo-001",
+      "title": "Digital Landscapes Collection",
+      "description": "A curated collection of digital landscape artwork exploring light and shadow. This is demonstration content.",
+      "cover_image": "profiles/demo-creator/images/album-cover.svg",
+      "media": [
+        {
+          "id": "media-demo-001",
+          "file": "profiles/demo-creator/images/album-cover.svg",
+          "type": "image",
+          "caption": "Mountain at dusk — demo placeholder"
+        }
+      ]
+    }
+  ],
+  "videos": [
+    {
+      "id": "video-demo-001",
+      "title": "Introduction to Digital Art (Demo)",
+      "description": "A short introduction video demonstrating the video entry feature. No actual video file is included in this demo.",
+      "video_path": "",
+      "thumbnail_path": "profiles/demo-creator/images/video-thumb.svg",
+      "published_at": "2026-06-01",
+      "member_only": false
+    }
+  ],
+  "blogs": [
+    {
+      "id": "blog-demo-001",
+      "slug": "hello-world-demo",
+      "title": "Hello World — My First Post (Demo)",
+      "summary": "A demonstration blog post showing the blog feature on InkwellMedia.",
+      "content": "This is a placeholder blog post.\n\nReal creators write their own content here. You can include multiple paragraphs of plain text. Line breaks are preserved when displayed on the site.\n\nThis post is part of the demo-creator profile used for testing and showcasing the InkwellMedia platform features. It is clearly labelled as demonstration content and does not represent real advice, news, or information.",
+      "published_at": "2026-06-01",
+      "header_image": "profiles/demo-creator/images/blog-header.svg",
+      "author": "Alex Rivera",
+      "member_only": false,
+      "published": true
+    }
+  ],
+  "membership": {
+    "enabled": true,
+    "free_content_description": "Browse my public portfolio and introductory content.",
+    "premium_content_description": "Get full access to all my exclusive artwork, behind-the-scenes videos, and premium tutorials.",
+    "main_cta": "Join the Demo Community"
+  },
+  "products": [
+    {
+      "id": "product-demo-001",
+      "name": "Digital Art Starter Pack (Demo)",
+      "description": "A demonstration product listing. Real creators add their own digital downloads and products here. This is placeholder content only.",
+      "price": 99,
+      "currency": "ZAR",
+      "image": "profiles/demo-creator/images/product-thumb.svg",
+      "purchase_url": "",
+      "active": true
+    }
+  ],
+  "published": true
+}

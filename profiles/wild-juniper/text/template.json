@@ -1,0 +1,91 @@
+{
+  "id": "wild-juniper-001",
+  "slug": "wild-juniper",
+  "name": "WildJuniper",
+  "tagline": "Baking as love language. South African flavour, contemporary form.",
+  "niche": "Baking & Modern South African Food",
+  "short_bio": "Gugulethu baker and pop-up dining host reinterpreting South African classics through modern pastry techniques and a deep belief that everyone deserves beautiful food.",
+  "full_bio": "My relationship with food began at my grandmother's stove in Gugulethu, watching her make umngqusho in a cast iron pot the size of a small universe. She did not measure anything. She cooked by feel, by smell, by the sound of a boil. I was desperate to preserve what she knew but also to extend it — to take these flavours somewhere new.\n\nI started baking at fifteen. First the standard things: vanilla sponge, chocolate cake, rusks. Then I started experimenting: a milk tart with a cardamom crust and hibiscus coulis. A malva pudding served cold with whipped cream and preserved naartjie. Koeksisters made with saffron and pistachio filling. The reaction from my family was extraordinary — recognition and surprise at the same time.\n\nWildJuniper is my platform and my business. I host monthly pop-up dinners in Gugulethu — small, intimate, four courses, fifteen guests maximum. Every menu is anchored in South African culinary tradition and refracted through contemporary pastry technique. I source locally as much as possible: Boland stone fruit, Karoo honey, Cape Malay spices from the markets.\n\nI want to be clear about the political dimension of this project. South African food has been systematically excluded from the 'fine dining' conversation in our own country. The cuisine of Black South Africa — umngqusho, isopho, vetkoek, morogo — is eaten everywhere but rarely elevated or celebrated in the spaces where food culture is formally discussed. I am changing that, one pop-up at a time.",
+  "location": "Gugulethu, Cape Town",
+  "social_links": {
+    "instagram": "",
+    "tiktok": "",
+    "youtube": "",
+    "facebook": "",
+    "twitter": "",
+    "website": ""
+  },
+  "assets": {
+    "avatar": "profiles/wild-juniper/images/avatar.svg",
+    "hero": "profiles/wild-juniper/images/hero.svg"
+  },
+  "albums": [
+    {
+      "id": "album-wj-001",
+      "title": "Pop-Up Dinner: June 2026",
+      "description": "Behind the scenes and plating photography from my June pop-up in Gugulethu.",
+      "cover_image": "profiles/wild-juniper/images/album1-cover.svg",
+      "media": []
+    },
+    {
+      "id": "album-wj-002",
+      "title": "Reinterpreted Classics",
+      "description": "My experimental bakes — South African flavours in new forms.",
+      "cover_image": "profiles/wild-juniper/images/album2-cover.svg",
+      "media": []
+    }
+  ],
+  "videos": [
+    {
+      "id": "video-wj-001",
+      "title": "Making Malva Pudding Three Ways",
+      "description": "The classic, the contemporary, and the experimental — one dish, three interpretations.",
+      "video_path": "",
+      "thumbnail_path": "profiles/wild-juniper/images/video-thumb.svg",
+      "published_at": "2026-06-01",
+      "member_only": false
+    },
+    {
+      "id": "video-wj-002",
+      "title": "How I Plan and Cost a Pop-Up Dinner",
+      "description": "The full business side: menu costing, venue setup, ticketing, and what I have learned.",
+      "video_path": "",
+      "thumbnail_path": "profiles/wild-juniper/images/video-thumb2.svg",
+      "published_at": "2026-06-15",
+      "member_only": true
+    }
+  ],
+  "blogs": [
+    {
+      "id": "blog-wj-001",
+      "slug": "south-african-fine-dining-gap",
+      "title": "Why Is South African Food Missing From Our Own Fine Dining Scene?",
+      "summary": "An essay on the systemic exclusion of Black South African cuisine from elevated restaurant culture — and what is changing.",
+      "content": "Last month I ate at a well-reviewed Cape Town restaurant that described itself as celebrating South African cuisine. The menu had ostrich, Cape Malay bobotie, and a wine list with excellent Stellenbosch selections. It was good. I enjoyed it. And I could not stop thinking about what was missing.\n\nNo umngqusho. No isopho. No phuthu. No morogo. No reference whatsoever to the food traditions of the majority of South Africans.\n\nThis is not an accident. The fine dining conversation in South Africa has historically been shaped by the tastes and references of those who could afford to participate in it. That has meant European techniques, Cape Malay and Afrikaner traditions, and a systematic elision of the food cultures that sustained Black South Africa through the apartheid era and long before it.\n\nI make no claim to a definitive solution. My pop-ups are small. My platform is growing. But what I know is that every time I plate an umngqusho with precision, serve phuthu with a sauce that takes three days to make, and watch a table full of people eat it thoughtfully and with pleasure, something shifts. These flavours deserve tables that treat them with care. I intend to keep setting those tables.",
+      "published_at": "2026-07-01",
+      "header_image": "profiles/wild-juniper/images/blog-header.svg",
+      "author": "Noxolo Maseko",
+      "member_only": false,
+      "published": true
+    }
+  ],
+  "membership": {
+    "enabled": true,
+    "free_content_description": "Weekly baking posts, pop-up updates, and South African food history and culture essays.",
+    "premium_content_description": "Full recipe card downloads with technique notes, pop-up menu archives, and priority booking for WildJuniper dinners.",
+    "main_cta": "Eat beautifully. Join WildJuniper."
+  },
+  "products": [
+    {
+      "id": "product-wj-001",
+      "name": "Reinterpreted Classics Recipe Zine Vol. 1",
+      "description": "Ten South African recipes reimagined with contemporary technique — photographed, annotated, and printed on quality stock. Ships within Cape Town.",
+      "price": 189,
+      "currency": "ZAR",
+      "image": "profiles/wild-juniper/images/product-thumb.svg",
+      "purchase_url": "",
+      "active": true
+    }
+  ],
+  "published": true
+}

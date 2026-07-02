@@ -1,0 +1,103 @@
+{
+  "id": "velvet-voltage-001",
+  "slug": "velvet-voltage",
+  "name": "VelvetVoltage",
+  "tagline": "Turning second-hand into first-rate — fashion for every pocket.",
+  "niche": "Thrift Fashion & Youth Entrepreneurship",
+  "short_bio": "18-year-old from Khayelitsha redefining style through thrift, sewing, and honest conversations about making it on your own terms.",
+  "full_bio": "My name is Zanele, and I grew up surrounded by creativity even when resources were tight. In Khayelitsha, you learn early that style is not about money — it is about imagination. I started thrifting at 13, turning R20 finds into outfits my friends would beg me to recreate. By 15 I had taught myself to sew from YouTube tutorials and library books. By 16 I was alterring dresses for neighbours and saving every rand.\n\nVelvetVoltage is my platform and my proof. It is proof that a girl from the Cape Flats can build something beautiful from almost nothing. I share every haul, every pattern, every business lesson — the wins and the embarrassing failures too. I want young women to see that entrepreneurship does not start with capital; it starts with a needle, thread, and the courage to begin.\n\nI am also deeply interested in the youth economy. I run free sewing workshops at my local community centre on Saturdays. Fashion is the hook, but the real lesson is always about ownership, pricing your work fairly, and building something that lasts. My dream is a cooperative studio space in Khayelitsha where young creatives can share equipment and skills.",
+  "location": "Khayelitsha, Cape Town",
+  "social_links": {
+    "instagram": "",
+    "tiktok": "",
+    "youtube": "",
+    "facebook": "",
+    "twitter": "",
+    "website": ""
+  },
+  "assets": {
+    "avatar": "profiles/velvet-voltage/images/avatar.svg",
+    "hero": "profiles/velvet-voltage/images/hero.svg"
+  },
+  "albums": [
+    {
+      "id": "album-vv-001",
+      "title": "R50 Challenge Lookbook",
+      "description": "Six complete outfits assembled from thrift stores for R50 each.",
+      "cover_image": "profiles/velvet-voltage/images/album1-cover.svg",
+      "media": []
+    },
+    {
+      "id": "album-vv-002",
+      "title": "Sewing Workshop Highlights",
+      "description": "Photos from my Saturday workshops at the Khayelitsha community centre.",
+      "cover_image": "profiles/velvet-voltage/images/album2-cover.svg",
+      "media": []
+    }
+  ],
+  "videos": [
+    {
+      "id": "video-vv-001",
+      "title": "Thrift & Transform: Episode 1",
+      "description": "I spend R80 at a Bellville market and transform a blazer into something completely new.",
+      "video_path": "",
+      "thumbnail_path": "profiles/velvet-voltage/images/video-thumb.svg",
+      "published_at": "2026-06-01",
+      "member_only": false
+    },
+    {
+      "id": "video-vv-002",
+      "title": "How I Price My Sewing Services",
+      "description": "Real numbers, real talk about charging what your work is worth.",
+      "video_path": "",
+      "thumbnail_path": "profiles/velvet-voltage/images/video-thumb2.svg",
+      "published_at": "2026-06-15",
+      "member_only": true
+    }
+  ],
+  "blogs": [
+    {
+      "id": "blog-vv-001",
+      "slug": "thrifting-101",
+      "title": "Thrifting 101: My Khayelitsha Starter Guide",
+      "summary": "The exact markets, timing tips, and haggling scripts I use every weekend.",
+      "content": "Every Saturday morning at 6 AM I am already moving through the Khayelitsha market before the tourists from the City Bowl arrive. The early-bird advantage is real. Here is everything I know about finding gold in the pile.\n\nFirst, know your measurements by heart. You will not always have a changing room. I know my bust, waist, hips, and inseam off the top of my head, and I keep a measuring tape on my keyring.\n\nSecond, think in terms of fabric, not finished garment. A men's XL button-down shirt becomes a cropped jacket. A full skirt becomes two pencil skirts. When you see fabric, not clothing, every rack opens up.\n\nThird, haggle with respect. The sellers at these markets work hard. I never offer less than 70% of the asking price, and I always explain why — a missing button, a small stain I will fix myself. Most sellers appreciate honesty.\n\nFinally, bring cash in small denominations. It speeds things up and you won't accidentally flash a large note.",
+      "published_at": "2026-05-10",
+      "header_image": "profiles/velvet-voltage/images/blog-header.svg",
+      "author": "Zanele Nkomo",
+      "member_only": false,
+      "published": true
+    },
+    {
+      "id": "blog-vv-002",
+      "slug": "pricing-your-work",
+      "title": "Stop Undercharging: A Young Seamstress's Manifesto",
+      "summary": "Why we underprice our creative work and how to stop.",
+      "content": "I used to charge R50 for a full dress alteration. I am not proud of it. A friend sat me down and made me calculate my time, my electricity, my thread and needles. The real cost was closer to R180 — and that was before any profit.\n\nHere is the formula I use now: (materials cost × 1.3) + (hours worked × your hourly rate). My hourly rate is R60 — below minimum wage for a skilled craft, but I am building clientele. In a year it will be R100.\n\nThe hardest part is not the maths. It is the mindset. We are trained to think our time is worth less because we are young, because we are from the township, because we are women. Every time you undercharge, you confirm that lie. Charge your worth. Lose some clients. Keep the good ones.",
+      "published_at": "2026-06-01",
+      "header_image": "profiles/velvet-voltage/images/blog-header2.svg",
+      "author": "Zanele Nkomo",
+      "member_only": true,
+      "published": true
+    }
+  ],
+  "membership": {
+    "enabled": true,
+    "free_content_description": "Weekly thrift hauls, outfit lookbooks, and community workshop updates.",
+    "premium_content_description": "Business templates, pricing spreadsheets, full sewing pattern downloads, and exclusive 1-on-1 Q&A sessions.",
+    "main_cta": "Join VelvetVoltage and build your creative business."
+  },
+  "products": [
+    {
+      "id": "product-vv-001",
+      "name": "Beginner Sewing Kit Guide",
+      "description": "My recommended beginner kit — what to buy, where to buy it affordably in Cape Town, and how to use each piece.",
+      "price": 79,
+      "currency": "ZAR",
+      "image": "profiles/velvet-voltage/images/product-thumb.svg",
+      "purchase_url": "",
+      "active": true
+    }
+  ],
+  "published": true
+}

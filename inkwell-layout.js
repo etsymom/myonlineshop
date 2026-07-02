@@ -15,6 +15,7 @@
   const NAV_LINKS = [
     { label: 'Platform', href: 'landing.html', pages: ['landing.html', ''] },
     { label: 'For Creators', href: 'for-creators.html', pages: ['for-creators.html'] },
+    { label: 'Creators', href: 'creators.html', pages: ['creators.html', 'creator-profile.html'] },
     { label: 'Pricing', href: 'pricing.html', pages: ['pricing.html'] },
     { label: 'The Creator Economy', href: 'the-creator-economy.html', pages: ['the-creator-economy.html'] },
     { label: 'Blog', href: 'blog.html', pages: ['blog.html'] },

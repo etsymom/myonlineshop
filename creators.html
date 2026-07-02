@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Discover Creators | InkwellMedia</title>
+  <meta name="description" content="Discover independent creators on InkwellMedia. Browse profiles, explore content, and support the creators you love.">
+  <link rel="icon" type="image/png" href="favicon.png">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --aubergine:       #2D1B4E;
+      --aubergine-deep:  #1A0F30;
+      --amber:           #F5A623;
+      --amber-dark:      #D4891A;
+      --parchment:       #FAF7F2;
+      --white:           #FFFFFF;
+      --slate:           #8A7FA0;
+      --slate-light:     #EDE9F5;
+      --success:         #059669;
+      --danger:          #E3394A;
+      --radius:          16px;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'DM Sans', sans-serif; background: var(--parchment); color: var(--aubergine); }
+
+    /* ── HERO ─────────────────────────────────────────────── */
+    .creators-hero {
+      background: var(--aubergine);
+      padding: 72px clamp(20px, 5vw, 80px) 80px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .creators-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 70% 50%, rgba(245,166,35,0.12) 0%, transparent 60%);
+      pointer-events: none;
+    }
+    .creators-hero-eyebrow {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--amber);
+      background: rgba(245,166,35,0.12);
+      border: 1px solid rgba(245,166,35,0.25);
+      border-radius: 999px;
+      padding: 5px 14px;
+      margin-bottom: 20px;
+    }
+    .creators-hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(36px, 6vw, 64px);
+      font-weight: 900;
+      color: var(--white);
+      line-height: 1.1;
+      margin-bottom: 18px;
+    }
+    .creators-hero h1 span { color: var(--amber); }
+    .creators-hero p {
+      font-size: 18px;
+      color: rgba(255,255,255,0.65);
+      max-width: 560px;
+      margin: 0 auto 32px;
+      line-height: 1.6;
+    }
+
+    /* ── SEARCH / FILTER ─────────────────────────────────── */
+    .creators-toolbar {
+      max-width: 1100px;
+      margin: -28px auto 36px;
+      padding: 0 clamp(16px, 3vw, 40px);
+      position: relative;
+      z-index: 2;
+    }
+    .creators-search-wrap {
+      background: var(--white);
+      border-radius: 14px;
+      box-shadow: 0 8px 32px rgba(45,27,78,0.12);
+      padding: 18px 22px;
+      display: flex;
+      gap: 12px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .creators-search-wrap input {
+      flex: 1;
+      min-width: 200px;
+      border: 2px solid var(--slate-light);
+      border-radius: 10px;
+      padding: 11px 14px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 15px;
+      color: var(--aubergine);
+      background: var(--parchment);
+      outline: none;
+      transition: border-color 0.2s;
+    }
+    .creators-search-wrap input:focus { border-color: var(--amber); }
+    .creators-search-wrap input::placeholder { color: var(--slate); }
+    .creators-count {
+      font-size: 13px;
+      color: var(--slate);
+      font-weight: 600;
+      white-space: nowrap;
+    }
+
+    /* ── GRID ─────────────────────────────────────────────── */
+    .creators-section {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 clamp(16px, 3vw, 40px) 80px;
+    }
+
+    .creators-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 24px;
+    }
+
+    /* ── CARD ─────────────────────────────────────────────── */
+    .creator-card {
+      background: var(--white);
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: 0 2px 12px rgba(45,27,78,0.07);
+      border: 2px solid transparent;
+      transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
+      display: flex;
+      flex-direction: column;
+      text-decoration: none;
+      color: inherit;
+    }
+    .creator-card:hover {
+      border-color: var(--amber);
+      box-shadow: 0 8px 32px rgba(245,166,35,0.18);
+      transform: translateY(-2px);
+    }
+
+    .creator-card-hero {
+      height: 100px;
+      background: var(--aubergine);
+      position: relative;
+      overflow: hidden;
+    }
+    .creator-card-hero img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .creator-card-hero-placeholder {
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, var(--aubergine) 0%, #4A2E7A 60%, rgba(245,166,35,0.3) 100%);
+    }
+
+    .creator-card-avatar-wrap {
+      position: absolute;
+      bottom: -24px;
+      left: 20px;
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      padding: 3px;
+      background: var(--white);
+    }
+    .creator-card-avatar {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      object-fit: cover;
+      background: var(--slate-light);
+    }
+
+    .creator-card-body {
+      padding: 34px 20px 20px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .creator-card-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--aubergine);
+      line-height: 1.2;
+    }
+    .creator-card-tagline {
+      font-size: 13px;
+      color: var(--slate);
+      line-height: 1.5;
+    }
+    .creator-card-niche {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      padding: 3px 10px;
+      border-radius: 999px;
+      background: var(--slate-light);
+      color: var(--aubergine);
+      margin-top: 2px;
+      align-self: flex-start;
+    }
+    .creator-card-bio {
+      font-size: 13px;
+      color: var(--slate);
+      line-height: 1.5;
+      flex: 1;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+    .creator-card-footer {
+      padding: 0 20px 20px;
+    }
+    .creator-card-btn {
+      display: block;
+      width: 100%;
+      padding: 11px 16px;
+      border-radius: 10px;
+      border: none;
+      background: var(--aubergine);
+      color: var(--white);
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 700;
+      font-size: 14px;
+      text-align: center;
+      text-decoration: none;
+      cursor: pointer;
+      transition: opacity 0.15s;
+    }
+    .creator-card-btn:hover { opacity: 0.85; }
+
+    /* ── STATES ─────────────────────────────────────────── */
+    .state-loading,
+    .state-empty,
+    .state-error {
+      grid-column: 1 / -1;
+      text-align: center;
+      padding: 64px 24px;
+    }
+    .state-loading .spinner {
+      width: 36px; height: 36px;
+      border: 4px solid var(--slate-light);
+      border-top-color: var(--amber);
+      border-radius: 50%;
+      animation: spin 0.9s linear infinite;
+      margin: 0 auto 16px;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    .state-icon { font-size: 48px; margin-bottom: 12px; }
+    .state-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--aubergine);
+      margin-bottom: 8px;
+    }
+    .state-sub { font-size: 15px; color: var(--slate); line-height: 1.5; }
+
+    @media (max-width: 600px) {
+      .creators-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <div id="inkwell-header-mount"></div>
+
+  <!-- Hero -->
+  <section class="creators-hero">
+    <div class="creators-hero-eyebrow">Independent Creators</div>
+    <h1>Discover <span>Creators</span></h1>
+    <p>Support independent creators. Browse profiles, explore content, and connect directly with the talent you love.</p>
+  </section>
+
+  <!-- Search toolbar -->
+  <div class="creators-toolbar">
+    <div class="creators-search-wrap">
+      <input
+        type="search"
+        id="creators-search"
+        placeholder="Search by name or niche…"
+        aria-label="Search creators"
+        autocomplete="off"
+      >
+      <span class="creators-count" id="creators-count" aria-live="polite"></span>
+    </div>
+  </div>
+
+  <!-- Creator grid -->
+  <section class="creators-section" aria-label="Creator listings">
+    <div class="creators-grid" id="creators-grid">
+      <div class="state-loading">
+        <div class="spinner" role="status" aria-label="Loading creators"></div>
+        <div class="state-title">Loading creators…</div>
+      </div>
+    </div>
+  </section>
+
+  <div id="inkwell-footer-mount"></div>
+
+  <script src="inkwell-config.js"></script>
+  <script src="inkwell-layout.js"></script>
+
+  <script>
+    (function () {
+      'use strict';
+
+      let allProfiles = [];
+
+      function escapeHtml(str) {
+        return String(str || '')
+          .replace(/&/g, '&amp;')
+          .replace(/</g, '&lt;')
+          .replace(/>/g, '&gt;')
+          .replace(/"/g, '&quot;');
+      }
+
+      function safeSrc(url) {
+        if (!url) return '';
+        if (/^(https?:\/\/|profiles\/)/.test(url)) return escapeHtml(url);
+        return '';
+      }
+
+      function avatarFallback(name) {
+        const initials = (name || 'C').split(' ').map(w => w[0]).slice(0, 2).join('').toUpperCase();
+        return `data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='52' height='52'%3E%3Crect width='52' height='52' rx='26' fill='%23EDE9F5'/%3E%3Ctext x='26' y='33' text-anchor='middle' font-family='sans-serif' font-size='20' font-weight='bold' fill='%232D1B4E'%3E${encodeURIComponent(initials)}%3C/text%3E%3C/svg%3E`;
+      }
+
+      function renderCard(profile) {
+        const slug     = escapeHtml(profile.slug || '');
+        const name     = escapeHtml(profile.name || 'Creator');
+        const tagline  = escapeHtml(profile.tagline || '');
+        const niche    = escapeHtml(profile.niche || '');
+        const bio      = escapeHtml(profile.short_bio || '');
+        const heroSrc  = safeSrc(profile.assets && profile.assets.hero);
+        const avatarSrc = safeSrc(profile.assets && profile.assets.avatar) || avatarFallback(profile.name);
+
+        const heroHtml = heroSrc
+          ? `<img src="${heroSrc}" alt="" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='block'"><div class="creator-card-hero-placeholder" style="display:none"></div>`
+          : `<div class="creator-card-hero-placeholder"></div>`;
+
+        return `
+          <a href="creator-profile.html?slug=${slug}" class="creator-card" aria-label="View ${name}'s profile">
+            <div class="creator-card-hero">
+              ${heroHtml}
+              <div class="creator-card-avatar-wrap">
+                <img src="${avatarSrc}" alt="${name} avatar" class="creator-card-avatar" loading="lazy"
+                  onerror="this.src='${avatarFallback(profile.name)}'">
+              </div>
+            </div>
+            <div class="creator-card-body">
+              <div class="creator-card-name">${name}</div>
+              ${niche ? `<span class="creator-card-niche">${niche}</span>` : ''}
+              ${tagline ? `<div class="creator-card-tagline">${tagline}</div>` : ''}
+              ${bio    ? `<div class="creator-card-bio">${bio}</div>` : ''}
+            </div>
+            <div class="creator-card-footer">
+              <span class="creator-card-btn">View Profile</span>
+            </div>
+          </a>
+        `;
+      }
+
+      function render(profiles) {
+        const grid = document.getElementById('creators-grid');
+        const count = document.getElementById('creators-count');
+
+        if (profiles.length === 0) {
+          grid.innerHTML = `
+            <div class="state-empty">
+              <div class="state-icon" aria-hidden="true">🔍</div>
+              <div class="state-title">No creators found</div>
+              <div class="state-sub">Try a different search, or check back soon.</div>
+            </div>`;
+          count.textContent = '0 creators';
+          return;
+        }
+
+        grid.innerHTML = profiles.map(renderCard).join('');
+        count.textContent = `${profiles.length} creator${profiles.length === 1 ? '' : 's'}`;
+      }
+
+      function filterProfiles(query) {
+        const q = query.toLowerCase().trim();
+        if (!q) return allProfiles;
+        return allProfiles.filter(p =>
+          (p.name || '').toLowerCase().includes(q) ||
+          (p.niche || '').toLowerCase().includes(q) ||
+          (p.tagline || '').toLowerCase().includes(q) ||
+          (p.short_bio || '').toLowerCase().includes(q)
+        );
+      }
+
+      async function init() {
+        const grid = document.getElementById('creators-grid');
+        try {
+          const res  = await fetch('data/curated_profiles.json');
+          if (!res.ok) throw new Error(`HTTP ${res.status}`);
+          const data = await res.json();
+          allProfiles = (data.profiles || []).filter(p => p.published !== false);
+
+          if (allProfiles.length === 0) {
+            grid.innerHTML = `
+              <div class="state-empty">
+                <div class="state-icon" aria-hidden="true">✨</div>
+                <div class="state-title">Coming soon</div>
+                <div class="state-sub">Creator profiles are being curated. Check back shortly.</div>
+              </div>`;
+            document.getElementById('creators-count').textContent = '0 creators';
+            return;
+          }
+
+          render(allProfiles);
+
+          const searchEl = document.getElementById('creators-search');
+          searchEl.addEventListener('input', () => render(filterProfiles(searchEl.value)));
+
+        } catch (err) {
+          grid.innerHTML = `
+            <div class="state-error">
+              <div class="state-icon" aria-hidden="true">⚠️</div>
+              <div class="state-title">Could not load creators</div>
+              <div class="state-sub">Please refresh the page or try again later.</div>
+            </div>`;
+        }
+      }
+
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', init);
+      } else {
+        init();
+      }
+    })();
+  </script>
+</body>
+</html>

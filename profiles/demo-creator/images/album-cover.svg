@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="400" viewBox="0 0 400 400">
+  <rect width="400" height="400" fill="#EDE9F5"/>
+  <rect x="0" y="220" width="400" height="180" fill="#2D1B4E"/>
+  <circle cx="200" cy="180" r="90" fill="#4A2E7A"/>
+  <circle cx="200" cy="140" r="55" fill="#F5A623" opacity="0.3"/>
+  <polygon points="200,80 230,140 180,140" fill="#F5A623" opacity="0.6"/>
+  <text x="200" y="275" text-anchor="middle" font-family="Georgia, serif" font-size="18" font-weight="bold" fill="white">Digital Landscapes</text>
+  <text x="200" y="298" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="rgba(255,255,255,0.5)">DEMO ALBUM COVER</text>
+</svg>

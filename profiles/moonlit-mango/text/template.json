@@ -1,0 +1,91 @@
+{
+  "id": "moonlit-mango-001",
+  "slug": "moonlit-mango",
+  "name": "MoonlitMango",
+  "tagline": "Where heritage tastes like golden hour.",
+  "niche": "Food Photography & Cape Malay Lifestyle",
+  "short_bio": "Bo-Kaap-born food photographer capturing the colours, recipes, and café culture of Cape Malay life through a lens dipped in turmeric and light.",
+  "full_bio": "I was born in a house that always smelled of cardamom. Growing up in Bo-Kaap, food was never just food — it was ceremony, memory, identity. My grandmother Moemienah could tell you the history of a spice just by rubbing it between her fingers. I inherited that reverence and added a camera.\n\nMoonlitMango is my attempt to document a culture before it is gentrified away. Bo-Kaap is changing faster than anyone wants to admit. The brightly coloured houses are becoming Airbnbs. The corner koesisters shop is under threat. I photograph these places and these recipes with an urgency that I try to keep gentle on camera but that burns in my chest.\n\nMy food photography style is warm, natural light, slightly over-exposed because that is how it feels in my grandmother's kitchen at 11 AM with the sun pouring through the lace curtains. I use a secondhand Sony mirrorless I bought in instalments. I style every shot myself with props sourced from the same markets where the Bo-Kaap aunties buy their fabrics.\n\nI am also building a digital archive of Cape Malay recipes. Not a cookbook — an archive. Stories attached to each dish, voice recordings of elders, old photographs. I want it to outlast all of us.",
+  "location": "Bo-Kaap, Cape Town",
+  "social_links": {
+    "instagram": "",
+    "tiktok": "",
+    "youtube": "",
+    "facebook": "",
+    "twitter": "",
+    "website": ""
+  },
+  "assets": {
+    "avatar": "profiles/moonlit-mango/images/avatar.svg",
+    "hero": "profiles/moonlit-mango/images/hero.svg"
+  },
+  "albums": [
+    {
+      "id": "album-mm-001",
+      "title": "Bo-Kaap Golden Hour",
+      "description": "Food portraits shot in natural window light across Bo-Kaap kitchens.",
+      "cover_image": "profiles/moonlit-mango/images/album1-cover.svg",
+      "media": []
+    },
+    {
+      "id": "album-mm-002",
+      "title": "Café Culture Cape Town",
+      "description": "Documenting the independent café scene and the culture it carries.",
+      "cover_image": "profiles/moonlit-mango/images/album2-cover.svg",
+      "media": []
+    }
+  ],
+  "videos": [
+    {
+      "id": "video-mm-001",
+      "title": "How I Style a Cape Malay Spread",
+      "description": "Behind the scenes of a full food styling and photography session using only natural light.",
+      "video_path": "",
+      "thumbnail_path": "profiles/moonlit-mango/images/video-thumb.svg",
+      "published_at": "2026-06-01",
+      "member_only": false
+    },
+    {
+      "id": "video-mm-002",
+      "title": "My Camera Settings for Golden Hour Food Shots",
+      "description": "The exact settings I use and why — a technical deep-dive.",
+      "video_path": "",
+      "thumbnail_path": "profiles/moonlit-mango/images/video-thumb2.svg",
+      "published_at": "2026-06-15",
+      "member_only": true
+    }
+  ],
+  "blogs": [
+    {
+      "id": "blog-mm-001",
+      "slug": "bo-kaap-kitchen-stories",
+      "title": "My Grandmother's Kitchen: Why I Document Before It Disappears",
+      "summary": "A personal essay on food, memory, and the urgency of Cape Malay preservation.",
+      "content": "My grandmother's kitchen is twelve square metres and it contains multitudes. There is the iron pot that has never been fully clean because the seasoning built up over forty years is part of the recipe. There is the windowsill where cardamom pods dry in the summer heat. There is the drawer of recipes written in her own code — measurements in handfuls and pinches that only make sense if you already know the dish.\n\nI started photographing her kitchen when I was fifteen because I was afraid. Afraid that these things would disappear and nobody would have thought to document them. The tourists photograph the painted houses from the street. I photograph the inside of the pots.\n\nCape Malay food culture is one of the most distinctive in the world, born from the intersection of slavery, Islam, Indonesian spice routes, and Cape Dutch colonialism. It lives in the bodies and hands of women who learned from their mothers who learned from theirs. It does not always survive translation into restaurant menus or food trend articles.\n\nMoonlitMango exists because I believe documentation is love.",
+      "published_at": "2026-04-15",
+      "header_image": "profiles/moonlit-mango/images/blog-header.svg",
+      "author": "Aaliyah Jacobs",
+      "member_only": false,
+      "published": true
+    }
+  ],
+  "membership": {
+    "enabled": true,
+    "free_content_description": "Weekly food photography posts, café reviews, and recipe spotlights.",
+    "premium_content_description": "Full recipe archive with stories, raw photography files, Lightroom presets, and monthly live cooking and shooting sessions.",
+    "main_cta": "Support Cape Malay food heritage — join MoonlitMango."
+  },
+  "products": [
+    {
+      "id": "product-mm-001",
+      "name": "Golden Hour Lightroom Preset Pack",
+      "description": "Five presets designed for warm, natural-light food photography. Works on mobile and desktop Lightroom.",
+      "price": 149,
+      "currency": "ZAR",
+      "image": "profiles/moonlit-mango/images/product-thumb.svg",
+      "purchase_url": "",
+      "active": true
+    }
+  ],
+  "published": true
+}

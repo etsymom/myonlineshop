@@ -1,0 +1,91 @@
+{
+  "id": "velvet-harbour-001",
+  "slug": "velvet-harbour",
+  "name": "VelvetHarbour",
+  "tagline": "Details define the experience. I find them, so you don't have to.",
+  "niche": "Luxury Travel & Hospitality",
+  "short_bio": "Camps Bay-born hospitality obsessive and travel writer curating the refined, the beautiful, and the genuinely worth experiencing — from architecture to afternoon teas.",
+  "full_bio": "I grew up in a house with a view of the Atlantic and parents who treated every meal as an event worth preparing for. My mother would iron the tablecloth before Sunday lunch. My father would spend forty minutes selecting the right music for a dinner party. These were not affectations — they were a philosophy. The details of an experience tell the people in it that they matter.\n\nVelvetHarbour grew from that sensibility. I write about travel and hospitality with a particular focus on the invisible work that separates a good experience from an exceptional one. The thread count of the linen. The knowledge of the sommelier. The way a good hotel lobby makes you exhale before you have even checked in.\n\nI also write critical pieces. The luxury travel industry is full of pretension dressed as quality, and I think honest criticism is more useful than breathless marketing. When something is genuinely excellent, I say so with evidence. When it is trading on reputation it no longer earns, I say that too.\n\nI am also building content about Cape Town as a world-class hospitality destination — not from a tourist's perspective but from a local's. The hidden restaurants, the boutique stays that outperform the big hotels, the private wine farms that would rather not be in the guides.",
+  "location": "Camps Bay, Cape Town",
+  "social_links": {
+    "instagram": "",
+    "tiktok": "",
+    "youtube": "",
+    "facebook": "",
+    "twitter": "",
+    "website": ""
+  },
+  "assets": {
+    "avatar": "profiles/velvet-harbour/images/avatar.svg",
+    "hero": "profiles/velvet-harbour/images/hero.svg"
+  },
+  "albums": [
+    {
+      "id": "album-vh-001",
+      "title": "Cape Town Architecture & Interiors",
+      "description": "Documenting exceptional hospitality design across the Cape Peninsula.",
+      "cover_image": "profiles/velvet-harbour/images/album1-cover.svg",
+      "media": []
+    },
+    {
+      "id": "album-vh-002",
+      "title": "Africa Travels: East & South",
+      "description": "Photography from Zambia, Tanzania, and Mauritius — luxury and authentic local experience.",
+      "cover_image": "profiles/velvet-harbour/images/album2-cover.svg",
+      "media": []
+    }
+  ],
+  "videos": [
+    {
+      "id": "video-vh-001",
+      "title": "What Makes a Hotel Worth Its Rate: A Room-by-Room Checklist",
+      "description": "The specific details I check in every hotel I stay in to assess genuine quality versus performance.",
+      "video_path": "",
+      "thumbnail_path": "profiles/velvet-harbour/images/video-thumb.svg",
+      "published_at": "2026-06-01",
+      "member_only": false
+    },
+    {
+      "id": "video-vh-002",
+      "title": "Cape Town's Best Kept Restaurants: My Private List",
+      "description": "Restaurants I genuinely recommend — not sponsored, not paid for, just places I return to.",
+      "video_path": "",
+      "thumbnail_path": "profiles/velvet-harbour/images/video-thumb2.svg",
+      "published_at": "2026-06-15",
+      "member_only": true
+    }
+  ],
+  "blogs": [
+    {
+      "id": "blog-vh-001",
+      "slug": "the-detail-philosophy",
+      "title": "The Detail Philosophy: Why Small Things Define Great Experiences",
+      "summary": "An essay on how hospitality details communicate care — and why most properties get this wrong.",
+      "content": "The first thing I notice in any hotel room is the gap between the curtains. Not whether they block light — that is basic competency — but whether they hang with perfect weight and meet at the center with intention. Curtains that gap by five centimetres tell me something about the rest of the room before I have looked at anything else.\n\nThis sounds extreme. It is not. Every detail in a designed space is a decision. When a detail is poor, it usually means one of three things: nobody noticed, someone noticed and didn't care enough to fix it, or fixing it was deemed not worth the cost. Any of these answers tells you something about the operation's relationship to quality.\n\nThe properties I respect most — not necessarily the most expensive, but the most genuinely excellent — are the ones where you sense that someone cares about every surface and every interaction. The welcome note written by hand. The minibar restocked with locally sourced products rather than multinational brands. The concierge who remembers you mentioned you were celebrating an anniversary.\n\nNone of these things are expensive to do. They require attention, not budget. And that is exactly what makes them rare.",
+      "published_at": "2026-05-05",
+      "header_image": "profiles/velvet-harbour/images/blog-header.svg",
+      "author": "Mia van Wyk",
+      "member_only": false,
+      "published": true
+    }
+  ],
+  "membership": {
+    "enabled": true,
+    "free_content_description": "Weekly travel writing, hotel and restaurant reviews, and hospitality design essays.",
+    "premium_content_description": "Full property reviews with ratings, private Cape Town experience guides, event and venue recommendations, and seasonal travel itineraries.",
+    "main_cta": "Experience more, settle for less. Join VelvetHarbour."
+  },
+  "products": [
+    {
+      "id": "product-vh-001",
+      "name": "Cape Town Experience Guide 2026",
+      "description": "My comprehensive private guide to the best of Cape Town hospitality — 50 pages, updated annually, written for people who already know the tourist spots.",
+      "price": 249,
+      "currency": "ZAR",
+      "image": "profiles/velvet-harbour/images/product-thumb.svg",
+      "purchase_url": "",
+      "active": true
+    }
+  ],
+  "published": true
+}

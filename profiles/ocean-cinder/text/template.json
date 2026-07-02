@@ -1,0 +1,91 @@
+{
+  "id": "ocean-cinder-001",
+  "slug": "ocean-cinder",
+  "name": "OceanCinder",
+  "tagline": "The ocean doesn't care who you are. I'm writing down who's in it.",
+  "niche": "Surfing & Coastal Environmental Storytelling",
+  "short_bio": "Muizenberg surfer and environmental storyteller documenting the coast, the community, and the quiet fight to protect what we love from what is killing it.",
+  "full_bio": "I learned to surf at nine in Muizenberg. The wave at Muizenberg is one of the most democratic in the world — it is long, slow, and forgiving enough that beginners from everywhere come here. What I love about it is also what broke my heart as I got older: the diversity of the water, the diversity of the community, set against an ocean that is slowly warming, slowly becoming hostile in ways that are not yet fully visible but that the older surfers can feel.\n\nOceanCinder is my environmental storytelling project. I surf, I write, I photograph, and I am honest about the complicated relationship between loving a place and watching it change. I write about False Bay's ecological crisis — the sardine run that has shifted, the great white sharks that have moved away because their prey has moved — with the same care I give to profiling the 60-year-old woman who surfs at sunrise every morning and knows these waves better than any scientist.\n\nI am also deeply invested in diversity in surf culture. South African surfing has a complex history with race. The coast was not for everyone for a long time. That is changing, slowly and beautifully. I document the Black surfers, the women surfers, the surfers from the Cape Flats who are reclaiming the ocean as their space. These stories need to be told and I intend to tell them.",
+  "location": "Muizenberg, Cape Town",
+  "social_links": {
+    "instagram": "",
+    "tiktok": "",
+    "youtube": "",
+    "facebook": "",
+    "twitter": "",
+    "website": ""
+  },
+  "assets": {
+    "avatar": "profiles/ocean-cinder/images/avatar.svg",
+    "hero": "profiles/ocean-cinder/images/hero.svg"
+  },
+  "albums": [
+    {
+      "id": "album-oc-001",
+      "title": "False Bay Portraits",
+      "description": "Documentary portraits of the Muizenberg surf community across all ages and backgrounds.",
+      "cover_image": "profiles/ocean-cinder/images/album1-cover.svg",
+      "media": []
+    },
+    {
+      "id": "album-oc-002",
+      "title": "The Warming Water: A Visual Essay",
+      "description": "Images documenting ecological change along the Cape False Bay coastline.",
+      "cover_image": "profiles/ocean-cinder/images/album2-cover.svg",
+      "media": []
+    }
+  ],
+  "videos": [
+    {
+      "id": "video-oc-001",
+      "title": "A Day in Muizenberg: Dawn to Dusk on the Water",
+      "description": "A full day of surfing, conversation, and coastline documentation.",
+      "video_path": "",
+      "thumbnail_path": "profiles/ocean-cinder/images/video-thumb.svg",
+      "published_at": "2026-06-01",
+      "member_only": false
+    },
+    {
+      "id": "video-oc-002",
+      "title": "Interview: The Marine Biologist Watching False Bay Change",
+      "description": "A long-form conversation about what the science actually says about False Bay's ecological future.",
+      "video_path": "",
+      "thumbnail_path": "profiles/ocean-cinder/images/video-thumb2.svg",
+      "published_at": "2026-06-15",
+      "member_only": true
+    }
+  ],
+  "blogs": [
+    {
+      "id": "blog-oc-001",
+      "slug": "who-owns-the-ocean",
+      "title": "Who Owns the Ocean? A Muizenberg Story",
+      "summary": "On access, history, race, and the slow reclamation of the South African coastline.",
+      "content": "Until 1990, the beach at Muizenberg was segregated by law. There were separate entrances, separate sections, separate ablution facilities. That ended — legally — with the repeal of the Separate Amenities Act. But the social inheritance of that exclusion does not end with a law.\n\nFor years afterwards, the water remained functionally white. Not by rule but by culture, by geography, by the absence of surf schools and equipment hire in the townships, by the distance between Khayelitsha and the beachfront, by a hundred small frictions that added up to: this is not for you.\n\nI surf at Muizenberg with a deliberate consciousness of this history. When I see a young Black child on a beginner board for the first time, wobbling and laughing and falling into that warm inside shore break, I feel something that is difficult to articulate cleanly. Joy, certainly. But also a kind of grief for all the waves those children's parents and grandparents were not allowed to catch.\n\nThe ocean does not care about our racial categories. It never did. We are the ones who built the fences. We are the ones who have to take them down.",
+      "published_at": "2026-04-28",
+      "header_image": "profiles/ocean-cinder/images/blog-header.svg",
+      "author": "Liyema Dlamini",
+      "member_only": false,
+      "published": true
+    }
+  ],
+  "membership": {
+    "enabled": true,
+    "free_content_description": "Weekly surf reports, community profiles, and coastal environmental updates.",
+    "premium_content_description": "Long-form documentary essays, raw interview recordings, photo archives, and access to my ongoing False Bay ecological project.",
+    "main_cta": "Protect what you love. Join OceanCinder."
+  },
+  "products": [
+    {
+      "id": "product-oc-001",
+      "name": "Coastal Journal: 30-Day Observation Guide",
+      "description": "A guided journaling and observation template for documenting your local coastline — designed for anyone, no science background needed.",
+      "price": 89,
+      "currency": "ZAR",
+      "image": "profiles/ocean-cinder/images/product-thumb.svg",
+      "purchase_url": "",
+      "active": true
+    }
+  ],
+  "published": true
+}

@@ -1,0 +1,91 @@
+{
+  "id": "golden-fig-001",
+  "slug": "golden-fig",
+  "name": "GoldenFig",
+  "tagline": "Ink and fabric. Beauty with intention.",
+  "niche": "Modest Fashion & Calligraphy",
+  "short_bio": "Grassy Park artist combining calligraphy, modest fashion design, and small business storytelling to show that faith, beauty, and ambition belong together.",
+  "full_bio": "I have kept a journal since I was eight years old. The act of writing by hand felt sacred to me even before I understood why. When I discovered Islamic calligraphy at 13 — the Thuluth script, the Naskh, the way a single letter can be a piece of architecture — something clicked permanently into place.\n\nGoldenFig is where my two loves meet. Calligraphy and fashion design — both are about proportion, negative space, the relationship between restraint and expression. I design modest wear: abayas, modest formal sets, everyday tunics. Everything I make is informed by the same sensibility as my calligraphy: clean lines, intentional detail, nothing unnecessary.\n\nI also write honestly about building a small creative business as a young Muslim woman in South Africa. The particular challenges of pricing premium work in a community that sometimes expects you to donate your skills, the navigation of social media algorithms that shadow-restrict modest content, the complicated feelings about becoming 'the Muslim fashion girl' as an identity versus simply being a person who makes beautiful things.\n\nGrassy Park is a deeply creative suburb that does not get nearly enough attention from the city's cultural conversation. I am trying to change that, one post at a time.",
+  "location": "Grassy Park, Cape Town",
+  "social_links": {
+    "instagram": "",
+    "tiktok": "",
+    "youtube": "",
+    "facebook": "",
+    "twitter": "",
+    "website": ""
+  },
+  "assets": {
+    "avatar": "profiles/golden-fig/images/avatar.svg",
+    "hero": "profiles/golden-fig/images/hero.svg"
+  },
+  "albums": [
+    {
+      "id": "album-gf-001",
+      "title": "Calligraphy Portfolio 2026",
+      "description": "My latest Arabic and English calligraphy work — commissions, experiments, and personal pieces.",
+      "cover_image": "profiles/golden-fig/images/album1-cover.svg",
+      "media": []
+    },
+    {
+      "id": "album-gf-002",
+      "title": "Modest Fashion: Current Collection",
+      "description": "The abayas, tunics, and formal sets from my current ready-to-wear line.",
+      "cover_image": "profiles/golden-fig/images/album2-cover.svg",
+      "media": []
+    }
+  ],
+  "videos": [
+    {
+      "id": "video-gf-001",
+      "title": "Calligraphy for Beginners: The Basics of Thuluth Script",
+      "description": "A gentle introduction to one of the most beautiful Arabic scripts.",
+      "video_path": "",
+      "thumbnail_path": "profiles/golden-fig/images/video-thumb.svg",
+      "published_at": "2026-06-01",
+      "member_only": false
+    },
+    {
+      "id": "video-gf-002",
+      "title": "How I Price Custom Calligraphy Commissions",
+      "description": "My pricing framework, client communication templates, and the mistakes I made early on.",
+      "video_path": "",
+      "thumbnail_path": "profiles/golden-fig/images/video-thumb2.svg",
+      "published_at": "2026-06-15",
+      "member_only": true
+    }
+  ],
+  "blogs": [
+    {
+      "id": "blog-gf-001",
+      "slug": "the-modest-fashion-algorithm",
+      "title": "Why the Algorithm Hides Modest Fashion (And What I Do About It)",
+      "summary": "Investigating how social media platforms suppress modest and religious content — and practical workarounds.",
+      "content": "I have run the experiment multiple times. I post a photo of myself in an abaya — fully covered, elegant, zero skin showing — and it gets half the reach of a post where I am in a blazer with my hair out. The difference in engagement is consistent and significant.\n\nThis is not paranoia. Researchers at multiple universities have documented the systematic under-promotion of modest fashion, hijab-wearing creators, and Islamic content on major platforms. The algorithms are trained on engagement data, and engagement data reflects the existing biases of what platforms have historically amplified. The result is a feedback loop that suppresses the exact content that millions of Muslim women are looking for.\n\nMy practical workarounds:\n\nFirst, I prioritise long-form content over short-form. YouTube and this platform reward consistent watch time, which favours creators with genuinely engaged audiences over those gaming short-form metrics.\n\nSecond, I build directly with my community. Every person who signs up to my membership list is someone the algorithm cannot take from me.\n\nThird, I collaborate with other modest fashion creators specifically. Cross-promotion within the community multiplies all of our reach.\n\nThe algorithm is not going to advocate for us. We have to build around it.",
+      "published_at": "2026-06-10",
+      "header_image": "profiles/golden-fig/images/blog-header.svg",
+      "author": "Farah Davids",
+      "member_only": false,
+      "published": true
+    }
+  ],
+  "membership": {
+    "enabled": true,
+    "free_content_description": "Weekly calligraphy posts, fashion lookbooks, and small business reflections.",
+    "premium_content_description": "Full calligraphy tutorials with practice sheets, pattern downloads for modest fashion designs, and business templates for creative commissions.",
+    "main_cta": "Support independent modest fashion. Join GoldenFig."
+  },
+  "products": [
+    {
+      "id": "product-gf-001",
+      "name": "Calligraphy Practice Set: Thuluth Foundations",
+      "description": "Printable practice sheets and ink guide for learning Thuluth script from scratch. Designed for complete beginners.",
+      "price": 129,
+      "currency": "ZAR",
+      "image": "profiles/golden-fig/images/product-thumb.svg",
+      "purchase_url": "",
+      "active": true
+    }
+  ],
+  "published": true
+}

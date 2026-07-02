@@ -1,0 +1,82 @@
+{
+  "id": "",
+  "slug": "",
+  "name": "",
+  "tagline": "",
+  "niche": "",
+  "short_bio": "",
+  "full_bio": "",
+  "location": "",
+  "social_links": {
+    "instagram": "",
+    "tiktok": "",
+    "youtube": "",
+    "facebook": "",
+    "twitter": "",
+    "website": ""
+  },
+  "assets": {
+    "avatar": "",
+    "hero": ""
+  },
+  "albums": [
+    {
+      "id": "",
+      "title": "",
+      "description": "",
+      "cover_image": "",
+      "media": [
+        {
+          "id": "",
+          "file": "",
+          "type": "image",
+          "caption": ""
+        }
+      ]
+    }
+  ],
+  "videos": [
+    {
+      "id": "",
+      "title": "",
+      "description": "",
+      "video_path": "",
+      "thumbnail_path": "",
+      "published_at": "",
+      "member_only": false
+    }
+  ],
+  "blogs": [
+    {
+      "id": "",
+      "slug": "",
+      "title": "",
+      "summary": "",
+      "content": "",
+      "published_at": "",
+      "header_image": "",
+      "author": "",
+      "member_only": false,
+      "published": true
+    }
+  ],
+  "membership": {
+    "enabled": false,
+    "free_content_description": "",
+    "premium_content_description": "",
+    "main_cta": ""
+  },
+  "products": [
+    {
+      "id": "",
+      "name": "",
+      "description": "",
+      "price": 0,
+      "currency": "ZAR",
+      "image": "",
+      "purchase_url": "",
+      "active": true
+    }
+  ],
+  "published": false
+}

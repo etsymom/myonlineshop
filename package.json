@@ -1,0 +1,11 @@
+{
+  "name": "inkwellmedia",
+  "version": "1.0.0",
+  "private": true,
+  "description": "InkwellMedia — creator economy platform",
+  "scripts": {
+    "profiles:compile": "node scripts/compile_profiles.js",
+    "profiles:validate": "node scripts/compile_profiles.js --validate",
+    "profiles:test": "node scripts/test_compile_profiles.js"
+  }
+}

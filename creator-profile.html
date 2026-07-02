@@ -1,0 +1,995 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Creator Profile | InkwellMedia</title>
+  <meta name="description" content="Creator profile on InkwellMedia">
+  <link rel="icon" type="image/png" href="favicon.png">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --aubergine:      #2D1B4E;
+      --aubergine-deep: #1A0F30;
+      --amber:          #F5A623;
+      --parchment:      #FAF7F2;
+      --white:          #FFFFFF;
+      --slate:          #8A7FA0;
+      --slate-light:    #EDE9F5;
+      --success:        #059669;
+      --danger:         #E3394A;
+      --radius:         16px;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'DM Sans', sans-serif; background: var(--parchment); color: var(--aubergine); }
+
+    /* ── HERO ──────────────────────────────────── */
+    .profile-hero {
+      position: relative;
+      height: 220px;
+      overflow: hidden;
+      background: var(--aubergine);
+    }
+    .profile-hero-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .profile-hero-fallback {
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, var(--aubergine) 0%, #4A2E7A 60%, rgba(245,166,35,0.25) 100%);
+    }
+
+    .profile-avatar-ring {
+      position: absolute;
+      bottom: -44px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 96px;
+      height: 96px;
+      border-radius: 50%;
+      padding: 4px;
+      background: var(--parchment);
+      z-index: 2;
+      box-shadow: 0 4px 16px rgba(45,27,78,0.2);
+    }
+    .profile-avatar-img {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      object-fit: cover;
+      background: var(--slate-light);
+    }
+
+    /* ── IDENTITY ─────────────────────────────── */
+    .profile-identity {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 60px 24px 0;
+      text-align: center;
+    }
+    .profile-demo-badge {
+      display: inline-block;
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--amber);
+      background: rgba(245,166,35,0.12);
+      border: 1px solid rgba(245,166,35,0.3);
+      border-radius: 999px;
+      padding: 4px 12px;
+      margin-bottom: 12px;
+    }
+    .profile-name {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(26px, 5vw, 40px);
+      font-weight: 900;
+      line-height: 1.15;
+      margin-bottom: 8px;
+    }
+    .profile-tagline {
+      font-size: 16px;
+      color: var(--slate);
+      margin-bottom: 6px;
+    }
+    .profile-meta {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin-top: 10px;
+      font-size: 13px;
+      color: var(--slate);
+    }
+    .profile-meta-item { display: flex; align-items: center; gap: 5px; }
+
+    /* Social links */
+    .profile-socials {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin: 20px 0;
+    }
+    .profile-social-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 7px 14px;
+      border-radius: 999px;
+      background: var(--white);
+      border: 1.5px solid var(--slate-light);
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--aubergine);
+      text-decoration: none;
+      transition: border-color 0.15s, background 0.15s;
+    }
+    .profile-social-link:hover {
+      border-color: var(--amber);
+      background: rgba(245,166,35,0.05);
+    }
+
+    /* Bio section */
+    .profile-bio-block {
+      max-width: 680px;
+      margin: 28px auto 0;
+      padding: 0 24px;
+    }
+    .profile-short-bio {
+      font-size: 15px;
+      line-height: 1.7;
+      color: #4A3A6E;
+    }
+    .profile-bio-toggle {
+      background: none;
+      border: none;
+      color: var(--amber);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 13px;
+      font-weight: 700;
+      cursor: pointer;
+      margin-top: 8px;
+      padding: 0;
+      text-decoration: underline;
+    }
+    .profile-full-bio {
+      font-size: 14px;
+      line-height: 1.75;
+      color: #4A3A6E;
+      margin-top: 12px;
+      white-space: pre-wrap;
+    }
+
+    /* ── CONTENT WRAPPER ───────────────────────── */
+    .profile-content {
+      max-width: 1080px;
+      margin: 48px auto;
+      padding: 0 24px 80px;
+    }
+
+    /* ── SECTION TITLE ─────────────────────────── */
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 24px;
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+    .section-sub { font-size: 14px; color: var(--slate); margin-bottom: 24px; }
+    .section-block { margin-bottom: 56px; }
+
+    /* ── ALBUMS ─────────────────────────────────── */
+    .albums-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 20px;
+    }
+    .album-card {
+      background: var(--white);
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: 0 2px 10px rgba(45,27,78,0.07);
+      border: 2px solid transparent;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    .album-card:hover { border-color: var(--amber); box-shadow: 0 6px 24px rgba(245,166,35,0.15); }
+    .album-cover {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      background: var(--slate-light);
+      display: block;
+    }
+    .album-cover-placeholder {
+      width: 100%;
+      height: 180px;
+      background: linear-gradient(135deg, var(--aubergine) 0%, #4A2E7A 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 36px;
+    }
+    .album-info { padding: 16px; }
+    .album-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 16px;
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+    .album-desc { font-size: 13px; color: var(--slate); line-height: 1.5; }
+    .album-count { font-size: 11px; font-weight: 700; color: var(--slate); margin-top: 8px; text-transform: uppercase; letter-spacing: 0.05em; }
+
+    /* ── VIDEOS ─────────────────────────────────── */
+    .videos-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 20px;
+    }
+    .video-card {
+      background: var(--white);
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: 0 2px 10px rgba(45,27,78,0.07);
+      border: 2px solid transparent;
+      transition: border-color 0.2s;
+    }
+    .video-card:hover { border-color: var(--amber); }
+    .video-thumb-wrap {
+      position: relative;
+      width: 100%;
+      padding-top: 56.25%;
+      overflow: hidden;
+      background: var(--aubergine-deep);
+    }
+    .video-thumb-wrap img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .video-thumb-placeholder {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, var(--aubergine-deep), #4A2E7A);
+    }
+    .video-play-icon {
+      width: 48px; height: 48px;
+      background: rgba(245,166,35,0.9);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .video-play-icon svg { fill: var(--aubergine); margin-left: 4px; }
+    .video-lock-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(20,10,35,0.7);
+      backdrop-filter: blur(4px);
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      color: white;
+      font-size: 12px; font-weight: 700;
+      gap: 6px;
+    }
+    .video-lock-overlay span { font-size: 26px; }
+    .video-info { padding: 14px 16px; }
+    .video-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 15px;
+      font-weight: 700;
+      margin-bottom: 6px;
+      line-height: 1.3;
+    }
+    .video-desc { font-size: 13px; color: var(--slate); line-height: 1.5; }
+    .video-date { font-size: 11px; color: var(--slate); margin-top: 8px; }
+    .video-badge-member {
+      display: inline-block;
+      font-size: 10px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.08em;
+      padding: 2px 8px; border-radius: 999px;
+      background: rgba(245,166,35,0.12); color: var(--amber);
+      border: 1px solid rgba(245,166,35,0.3);
+      margin-top: 6px;
+    }
+
+    /* ── BLOGS ─────────────────────────────────── */
+    .blogs-list { display: flex; flex-direction: column; gap: 20px; }
+    .blog-card {
+      background: var(--white);
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: 0 2px 10px rgba(45,27,78,0.07);
+      border: 2px solid transparent;
+      display: flex;
+      gap: 0;
+      transition: border-color 0.2s;
+    }
+    .blog-card:hover { border-color: var(--amber); }
+    .blog-header-img-wrap {
+      width: 200px;
+      flex-shrink: 0;
+    }
+    .blog-header-img-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .blog-header-placeholder {
+      width: 100%;
+      height: 100%;
+      min-height: 140px;
+      background: linear-gradient(135deg, var(--aubergine), #4A2E7A);
+    }
+    .blog-body { padding: 20px 22px; flex: 1; }
+    .blog-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 18px;
+      font-weight: 700;
+      margin-bottom: 8px;
+      line-height: 1.3;
+    }
+    .blog-summary { font-size: 14px; color: var(--slate); line-height: 1.6; margin-bottom: 10px; }
+    .blog-meta { font-size: 12px; color: var(--slate); display: flex; gap: 14px; flex-wrap: wrap; }
+    .blog-lock-notice {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 12px;
+      font-size: 13px;
+      color: var(--amber);
+      font-weight: 600;
+    }
+
+    /* Blog post expanded view */
+    .blog-post-modal {
+      position: fixed;
+      inset: 0;
+      background: rgba(20,10,35,0.7);
+      z-index: 200;
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      padding: 24px 16px;
+      overflow-y: auto;
+      backdrop-filter: blur(6px);
+    }
+    .blog-post-modal[hidden] { display: none; }
+    .blog-post-inner {
+      background: var(--white);
+      border-radius: 20px;
+      width: min(720px, 100%);
+      padding: 36px 32px;
+      position: relative;
+      margin: auto;
+    }
+    .blog-post-close {
+      position: absolute;
+      top: 16px; right: 20px;
+      background: var(--slate-light); border: none;
+      border-radius: 50%;
+      width: 36px; height: 36px;
+      font-size: 18px; cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      color: var(--aubergine);
+      transition: background 0.15s;
+    }
+    .blog-post-close:hover { background: var(--amber); color: var(--white); }
+    .blog-post-header-img {
+      width: 100%;
+      max-height: 260px;
+      object-fit: cover;
+      border-radius: 12px;
+      margin-bottom: 24px;
+      display: block;
+    }
+    .blog-post-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 28px;
+      font-weight: 900;
+      margin-bottom: 8px;
+      line-height: 1.2;
+    }
+    .blog-post-meta { font-size: 13px; color: var(--slate); margin-bottom: 24px; display: flex; gap: 14px; flex-wrap: wrap; }
+    .blog-post-content {
+      font-size: 16px;
+      line-height: 1.8;
+      color: #3A2A5E;
+      white-space: pre-wrap;
+      word-break: break-word;
+    }
+
+    /* ── PRODUCTS ──────────────────────────────── */
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 20px;
+    }
+    .product-card {
+      background: var(--white);
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: 0 2px 10px rgba(45,27,78,0.07);
+      border: 2px solid transparent;
+      transition: border-color 0.2s, box-shadow 0.2s;
+      display: flex;
+      flex-direction: column;
+    }
+    .product-card:hover { border-color: var(--amber); box-shadow: 0 6px 24px rgba(245,166,35,0.15); }
+    .product-img-wrap {
+      width: 100%;
+      padding-top: 75%;
+      position: relative;
+      overflow: hidden;
+      background: var(--slate-light);
+    }
+    .product-img-wrap img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .product-img-placeholder {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 42px;
+      background: var(--slate-light);
+    }
+    .product-body { padding: 16px; flex: 1; display: flex; flex-direction: column; gap: 6px; }
+    .product-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 16px;
+      font-weight: 700;
+    }
+    .product-desc { font-size: 13px; color: var(--slate); line-height: 1.5; flex: 1; }
+    .product-price {
+      font-size: 18px;
+      font-weight: 900;
+      color: var(--success);
+      margin-top: 4px;
+    }
+    .product-cta {
+      display: block;
+      padding: 11px 16px;
+      border-radius: 10px;
+      border: none;
+      background: var(--aubergine);
+      color: var(--white);
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 700;
+      font-size: 14px;
+      text-align: center;
+      text-decoration: none;
+      margin: 12px 16px 16px;
+      cursor: pointer;
+      transition: opacity 0.15s;
+    }
+    .product-cta:hover { opacity: 0.85; }
+    .product-cta-disabled {
+      background: var(--slate-light);
+      color: var(--slate);
+      cursor: default;
+    }
+    .product-cta-disabled:hover { opacity: 1; }
+
+    /* ── MEMBERSHIP CTA ─────────────────────────── */
+    .membership-cta {
+      background: var(--aubergine);
+      border-radius: 20px;
+      padding: 40px 36px;
+      text-align: center;
+      color: var(--white);
+      position: relative;
+      overflow: hidden;
+    }
+    .membership-cta::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 80% 50%, rgba(245,166,35,0.15) 0%, transparent 60%);
+      pointer-events: none;
+    }
+    .membership-cta-eyebrow {
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--amber);
+      margin-bottom: 14px;
+    }
+    .membership-cta h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(22px, 4vw, 34px);
+      font-weight: 900;
+      margin-bottom: 16px;
+      line-height: 1.2;
+    }
+    .membership-cta p {
+      font-size: 15px;
+      color: rgba(255,255,255,0.7);
+      max-width: 500px;
+      margin: 0 auto 28px;
+      line-height: 1.6;
+    }
+    .membership-cta-free {
+      font-size: 14px;
+      color: rgba(255,255,255,0.55);
+      margin-bottom: 24px;
+    }
+    .membership-btn {
+      display: inline-block;
+      padding: 14px 32px;
+      border-radius: 12px;
+      border: none;
+      background: var(--amber);
+      color: var(--aubergine);
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 900;
+      font-size: 16px;
+      text-decoration: none;
+      cursor: pointer;
+      transition: opacity 0.15s, transform 0.1s;
+    }
+    .membership-btn:hover { opacity: 0.88; }
+    .membership-btn:active { transform: scale(0.97); }
+
+    /* ── STATES ─────────────────────────────────── */
+    .empty-state {
+      text-align: center;
+      padding: 40px 24px;
+      background: var(--white);
+      border-radius: var(--radius);
+      border: 2px dashed var(--slate-light);
+    }
+    .empty-state-icon { font-size: 36px; margin-bottom: 10px; }
+    .empty-state-text { font-size: 14px; color: var(--slate); }
+
+    .page-loading {
+      min-height: 60vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+    }
+    .spinner {
+      width: 36px; height: 36px;
+      border: 4px solid var(--slate-light);
+      border-top-color: var(--amber);
+      border-radius: 50%;
+      animation: spin 0.9s linear infinite;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    @media (max-width: 640px) {
+      .blog-card { flex-direction: column; }
+      .blog-header-img-wrap { width: 100%; height: 160px; }
+    }
+    @media (max-width: 480px) {
+      .profile-identity { padding-top: 56px; }
+    }
+  </style>
+</head>
+<body>
+
+  <div id="inkwell-header-mount"></div>
+
+  <main id="profile-root">
+    <div class="page-loading">
+      <div class="spinner" role="status" aria-label="Loading profile"></div>
+      <div style="color:var(--slate); font-size:15px;">Loading profile…</div>
+    </div>
+  </main>
+
+  <!-- Blog post modal -->
+  <div class="blog-post-modal" id="blog-modal" hidden role="dialog" aria-modal="true" aria-labelledby="blog-modal-title">
+    <div class="blog-post-inner">
+      <button class="blog-post-close" id="blog-modal-close" aria-label="Close post">✕</button>
+      <div id="blog-modal-content"></div>
+    </div>
+  </div>
+
+  <div id="inkwell-footer-mount"></div>
+
+  <script src="inkwell-config.js"></script>
+  <script src="inkwell-layout.js"></script>
+
+  <script>
+  (function () {
+    'use strict';
+
+    // ── Helpers ─────────────────────────────────────────────────────────────
+    function escapeHtml(str) {
+      return String(str || '')
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;');
+    }
+
+    function safeSrc(url) {
+      if (!url) return '';
+      if (/^(https?:\/\/|profiles\/)/.test(url)) return url;
+      return '';
+    }
+
+    function safeHref(url) {
+      if (!url) return null;
+      try {
+        const u = new URL(url);
+        if (['http:', 'https:'].includes(u.protocol)) return url;
+      } catch (_) {}
+      return null;
+    }
+
+    function avatarFallback(name) {
+      const initials = (name || 'C').split(' ').map(w => w[0]).slice(0, 2).join('').toUpperCase();
+      return `data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='96' height='96'%3E%3Crect width='96' height='96' rx='48' fill='%23EDE9F5'/%3E%3Ctext x='48' y='62' text-anchor='middle' font-family='sans-serif' font-size='36' font-weight='bold' fill='%232D1B4E'%3E${encodeURIComponent(initials)}%3C/text%3E%3C/svg%3E`;
+    }
+
+    function formatDate(str) {
+      if (!str) return '';
+      try {
+        return new Date(str).toLocaleDateString('en-ZA', { year: 'numeric', month: 'long', day: 'numeric' });
+      } catch (_) { return str; }
+    }
+
+    // ── Social link config ───────────────────────────────────────────────────
+    const SOCIAL_CONFIG = {
+      instagram: { label: 'Instagram', icon: '📷' },
+      tiktok:    { label: 'TikTok',    icon: '🎵' },
+      youtube:   { label: 'YouTube',   icon: '▶️' },
+      facebook:  { label: 'Facebook',  icon: '🌐' },
+      twitter:   { label: 'X / Twitter', icon: '𝕏' },
+      website:   { label: 'Website',   icon: '🔗' },
+    };
+
+    // ── Render sections ──────────────────────────────────────────────────────
+    function renderAlbums(albums) {
+      if (!albums || albums.length === 0) return `
+        <div class="empty-state">
+          <div class="empty-state-icon" aria-hidden="true">🖼️</div>
+          <div class="empty-state-text">No albums yet.</div>
+        </div>`;
+
+      return `<div class="albums-grid">${albums.map(a => {
+        const coverSrc = safeSrc(a.cover_image);
+        const coverEl = coverSrc
+          ? `<img src="${escapeHtml(coverSrc)}" alt="${escapeHtml(a.title)} cover" class="album-cover" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">`
+          : '';
+        const mediaCount = (a.media || []).length;
+        return `
+          <article class="album-card">
+            ${coverEl}
+            <div class="album-cover-placeholder"${coverSrc ? ' style="display:none"' : ''}>🎨</div>
+            <div class="album-info">
+              <div class="album-title">${escapeHtml(a.title)}</div>
+              ${a.description ? `<div class="album-desc">${escapeHtml(a.description)}</div>` : ''}
+              ${mediaCount > 0 ? `<div class="album-count">${mediaCount} item${mediaCount !== 1 ? 's' : ''}</div>` : ''}
+            </div>
+          </article>`;
+      }).join('')}</div>`;
+    }
+
+    function renderVideos(videos) {
+      if (!videos || videos.length === 0) return `
+        <div class="empty-state">
+          <div class="empty-state-icon" aria-hidden="true">🎬</div>
+          <div class="empty-state-text">No videos yet.</div>
+        </div>`;
+
+      return `<div class="videos-grid">${videos.map(v => {
+        const thumbSrc = safeSrc(v.thumbnail_path);
+        const isLocked = v.member_only && !v.video_path;
+        return `
+          <article class="video-card">
+            <div class="video-thumb-wrap">
+              ${thumbSrc
+                ? `<img src="${escapeHtml(thumbSrc)}" alt="${escapeHtml(v.title)} thumbnail" loading="lazy" onerror="this.style.display='none'">`
+                : ''}
+              ${isLocked
+                ? `<div class="video-lock-overlay"><span aria-hidden="true">🔒</span>MEMBERS ONLY</div>`
+                : `<div class="video-thumb-placeholder" style="${thumbSrc ? 'display:none' : ''}">
+                     <div class="video-play-icon"><svg width="20" height="20" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+                   </div>`}
+            </div>
+            <div class="video-info">
+              <div class="video-title">${escapeHtml(v.title)}</div>
+              ${v.description ? `<div class="video-desc">${escapeHtml(v.description)}</div>` : ''}
+              ${v.published_at ? `<div class="video-date">${formatDate(v.published_at)}</div>` : ''}
+              ${v.member_only ? `<span class="video-badge-member">Members only</span>` : ''}
+            </div>
+          </article>`;
+      }).join('')}</div>`;
+    }
+
+    function renderBlogs(blogs) {
+      if (!blogs || blogs.length === 0) return `
+        <div class="empty-state">
+          <div class="empty-state-icon" aria-hidden="true">📝</div>
+          <div class="empty-state-text">No blog posts yet.</div>
+        </div>`;
+
+      return `<div class="blogs-list">${blogs.map((b, idx) => {
+        const headerSrc = !b.member_only ? safeSrc(b.header_image) : '';
+        return `
+          <article class="blog-card">
+            <div class="blog-header-img-wrap">
+              ${headerSrc
+                ? `<img src="${escapeHtml(headerSrc)}" alt="" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><div class="blog-header-placeholder" style="display:none"></div>`
+                : `<div class="blog-header-placeholder"></div>`}
+            </div>
+            <div class="blog-body">
+              <div class="blog-title">${escapeHtml(b.title)}</div>
+              ${b.summary ? `<div class="blog-summary">${escapeHtml(b.summary)}</div>` : ''}
+              <div class="blog-meta">
+                ${b.author ? `<span>By ${escapeHtml(b.author)}</span>` : ''}
+                ${b.published_at ? `<span>${formatDate(b.published_at)}</span>` : ''}
+              </div>
+              ${b.member_only
+                ? `<div class="blog-lock-notice">🔒 Full post for members only</div>`
+                : (b.content
+                    ? `<button class="profile-bio-toggle" data-blog-idx="${idx}" onclick="window.openBlogPost(${idx})">Read full post →</button>`
+                    : '')}
+            </div>
+          </article>`;
+      }).join('')}</div>`;
+    }
+
+    function renderProducts(products) {
+      const active = (products || []).filter(p => p.active !== false);
+      if (active.length === 0) return `
+        <div class="empty-state">
+          <div class="empty-state-icon" aria-hidden="true">🛍️</div>
+          <div class="empty-state-text">No products listed yet.</div>
+        </div>`;
+
+      return `<div class="products-grid">${active.map(p => {
+        const imgSrc = safeSrc(p.image);
+        const href = safeHref(p.purchase_url);
+        const price = p.price ? `${p.currency || 'ZAR'} ${Number(p.price).toLocaleString()}` : 'Contact for price';
+        return `
+          <article class="product-card">
+            <div class="product-img-wrap">
+              ${imgSrc
+                ? `<img src="${escapeHtml(imgSrc)}" alt="${escapeHtml(p.name)}" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">`
+                : ''}
+              <div class="product-img-placeholder"${imgSrc ? ' style="display:none"' : ''}>🛍️</div>
+            </div>
+            <div class="product-body">
+              <div class="product-name">${escapeHtml(p.name)}</div>
+              ${p.description ? `<div class="product-desc">${escapeHtml(p.description)}</div>` : ''}
+              <div class="product-price">${escapeHtml(price)}</div>
+            </div>
+            ${href
+              ? `<a href="${escapeHtml(href)}" class="product-cta" target="_blank" rel="noopener noreferrer">Buy Now</a>`
+              : `<span class="product-cta product-cta-disabled" aria-disabled="true">Contact Creator</span>`}
+          </article>`;
+      }).join('')}</div>`;
+    }
+
+    function renderMembership(membership, name) {
+      if (!membership || !membership.enabled) return '';
+      return `
+        <div class="membership-cta">
+          <div class="membership-cta-eyebrow">Membership</div>
+          <h3>${escapeHtml(membership.main_cta || 'Join the community')}</h3>
+          ${membership.premium_content_description
+            ? `<p>${escapeHtml(membership.premium_content_description)}</p>`
+            : ''}
+          ${membership.free_content_description
+            ? `<div class="membership-cta-free">Free: ${escapeHtml(membership.free_content_description)}</div>`
+            : ''}
+          <a href="index.html" class="membership-btn">Get Access</a>
+        </div>`;
+    }
+
+    // ── Full profile render ───────────────────────────────────────────────────
+    function renderProfile(profile) {
+      const root = document.getElementById('profile-root');
+
+      document.title = `${profile.name} | InkwellMedia`;
+      const metaDesc = document.querySelector('meta[name="description"]');
+      if (metaDesc) metaDesc.setAttribute('content', profile.short_bio || profile.tagline || `${profile.name} on InkwellMedia`);
+
+      const heroSrc   = safeSrc(profile.assets && profile.assets.hero);
+      const avatarSrc = safeSrc(profile.assets && profile.assets.avatar) || avatarFallback(profile.name);
+      const isDemo    = profile.id && profile.id.startsWith('demo-');
+
+      const socialLinks = Object.entries(profile.social_links || {})
+        .filter(([, url]) => safeHref(url))
+        .map(([key, url]) => {
+          const cfg = SOCIAL_CONFIG[key] || { label: key, icon: '🌐' };
+          return `<a href="${escapeHtml(url)}" class="profile-social-link" target="_blank" rel="noopener noreferrer" aria-label="${escapeHtml(cfg.label)}">${cfg.icon} <span>${escapeHtml(cfg.label)}</span></a>`;
+        }).join('');
+
+      const hasFullBio = profile.full_bio && profile.full_bio.trim() && profile.full_bio !== profile.short_bio;
+
+      root.innerHTML = `
+        <!-- Hero banner -->
+        <div class="profile-hero" role="banner">
+          ${heroSrc
+            ? `<img src="${escapeHtml(heroSrc)}" alt="" class="profile-hero-img" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><div class="profile-hero-fallback" style="display:none"></div>`
+            : `<div class="profile-hero-fallback"></div>`}
+          <div class="profile-avatar-ring">
+            <img src="${escapeHtml(avatarSrc)}" alt="${escapeHtml(profile.name)} profile photo"
+              class="profile-avatar-img" onerror="this.src='${avatarFallback(profile.name)}'">
+          </div>
+        </div>
+
+        <!-- Identity -->
+        <div class="profile-identity">
+          ${isDemo ? '<div class="profile-demo-badge" role="note">Demo Profile</div>' : ''}
+          <h1 class="profile-name">${escapeHtml(profile.name)}</h1>
+          ${profile.tagline ? `<p class="profile-tagline">${escapeHtml(profile.tagline)}</p>` : ''}
+          <div class="profile-meta">
+            ${profile.niche   ? `<span class="profile-meta-item">🎯 ${escapeHtml(profile.niche)}</span>` : ''}
+            ${profile.location ? `<span class="profile-meta-item">📍 ${escapeHtml(profile.location)}</span>` : ''}
+          </div>
+          ${socialLinks ? `<nav class="profile-socials" aria-label="Social links">${socialLinks}</nav>` : ''}
+        </div>
+
+        <!-- Bio -->
+        <div class="profile-bio-block">
+          ${profile.short_bio ? `<p class="profile-short-bio">${escapeHtml(profile.short_bio)}</p>` : ''}
+          ${hasFullBio ? `
+            <button class="profile-bio-toggle" id="bio-toggle-btn" aria-expanded="false" onclick="toggleBio()">Read more</button>
+            <div id="full-bio-block" class="profile-full-bio" hidden></div>
+          ` : ''}
+        </div>
+
+        <!-- Content sections -->
+        <div class="profile-content">
+          <!-- Albums -->
+          <div class="section-block">
+            <h2 class="section-title">Albums</h2>
+            <div class="section-sub">Photo and media collections</div>
+            ${renderAlbums(profile.albums)}
+          </div>
+
+          <!-- Videos -->
+          <div class="section-block">
+            <h2 class="section-title">Videos</h2>
+            <div class="section-sub">Watch content from this creator</div>
+            ${renderVideos(profile.videos)}
+          </div>
+
+          <!-- Blog posts -->
+          <div class="section-block">
+            <h2 class="section-title">Blog Posts</h2>
+            <div class="section-sub">Articles and updates</div>
+            ${renderBlogs(profile.blogs)}
+          </div>
+
+          <!-- Products -->
+          <div class="section-block">
+            <h2 class="section-title">Products &amp; Services</h2>
+            <div class="section-sub">Digital downloads, presets, and more</div>
+            ${renderProducts(profile.products)}
+          </div>
+
+          <!-- Membership CTA -->
+          ${renderMembership(profile.membership, profile.name)}
+        </div>
+      `;
+
+      // Wire bio toggle
+      if (hasFullBio) {
+        const bioBlock = document.getElementById('full-bio-block');
+        if (bioBlock) bioBlock.textContent = profile.full_bio;
+      }
+
+      // Store blogs on window for modal access
+      window._profileBlogs = profile.blogs || [];
+    }
+
+    // ── Bio toggle ────────────────────────────────────────────────────────────
+    window.toggleBio = function () {
+      const btn   = document.getElementById('bio-toggle-btn');
+      const block = document.getElementById('full-bio-block');
+      if (!btn || !block) return;
+      const isOpen = !block.hidden;
+      block.hidden = isOpen;
+      btn.textContent = isOpen ? 'Read more' : 'Show less';
+      btn.setAttribute('aria-expanded', String(!isOpen));
+    };
+
+    // ── Blog post modal ───────────────────────────────────────────────────────
+    window.openBlogPost = function (idx) {
+      const blog  = (window._profileBlogs || [])[idx];
+      if (!blog || blog.member_only) return;
+      const modal  = document.getElementById('blog-modal');
+      const inner  = document.getElementById('blog-modal-content');
+      const headerSrc = safeSrc(blog.header_image);
+
+      let html = '';
+      if (headerSrc) {
+        html += `<img src="${escapeHtml(headerSrc)}" alt="" class="blog-post-header-img" onerror="this.remove()">`;
+      }
+      html += `<h2 id="blog-modal-title" class="blog-post-title">${escapeHtml(blog.title)}</h2>`;
+      html += `<div class="blog-post-meta">`;
+      if (blog.author) html += `<span>By ${escapeHtml(blog.author)}</span>`;
+      if (blog.published_at) html += `<span>${formatDate(blog.published_at)}</span>`;
+      html += `</div>`;
+
+      inner.innerHTML = html;
+
+      // Render content safely via textContent
+      const contentEl = document.createElement('div');
+      contentEl.className = 'blog-post-content';
+      contentEl.textContent = blog.content || '';
+      inner.appendChild(contentEl);
+
+      modal.hidden = false;
+      document.body.style.overflow = 'hidden';
+      document.getElementById('blog-modal-close').focus();
+    };
+
+    function closeBlogModal() {
+      document.getElementById('blog-modal').hidden = true;
+      document.body.style.overflow = '';
+    }
+
+    document.getElementById('blog-modal-close').addEventListener('click', closeBlogModal);
+    document.getElementById('blog-modal').addEventListener('click', function (e) {
+      if (e.target === this) closeBlogModal();
+    });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') closeBlogModal();
+    });
+
+    // ── Initialise ────────────────────────────────────────────────────────────
+    async function init() {
+      // Validate slug from URL
+      const params   = new URLSearchParams(window.location.search);
+      const rawSlug  = params.get('slug') || '';
+      const slug     = rawSlug.replace(/[^a-z0-9-]/gi, '').toLowerCase();
+
+      if (!slug) {
+        showError('No creator specified.', 'Go to <a href="creators.html">Discover Creators</a> to browse profiles.');
+        return;
+      }
+
+      try {
+        const res  = await fetch('data/curated_profiles.json');
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+        const data = await res.json();
+        const profile = (data.profiles || []).find(p => p.slug === slug);
+
+        if (!profile) {
+          showError('Creator not found.', 'This profile does not exist or has been unpublished. <a href="creators.html">Browse all creators →</a>');
+          return;
+        }
+
+        renderProfile(profile);
+      } catch (err) {
+        showError('Could not load profile.', 'Please refresh the page or try again later.');
+      }
+    }
+
+    function showError(title, detail) {
+      const root = document.getElementById('profile-root');
+      root.innerHTML = `
+        <div class="page-loading">
+          <div style="font-size:48px" aria-hidden="true">😕</div>
+          <div style="font-family:'Playfair Display',serif; font-size:24px; font-weight:700; color:var(--aubergine)">${escapeHtml(title)}</div>
+          <div style="font-size:15px; color:var(--slate); text-align:center; max-width:400px; line-height:1.6">${detail}</div>
+        </div>`;
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', init);
+    } else {
+      init();
+    }
+  })();
+  </script>
+</body>
+</html>
