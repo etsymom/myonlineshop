@@ -311,6 +311,7 @@
 
   <script src="inkwell-config.js"></script>
   <script src="inkwell-layout.js"></script>
+  <script src="curated-profiles.js"></script>
 
   <script>
     (function () {
@@ -343,15 +344,15 @@
         const tagline  = escapeHtml(profile.tagline || '');
         const niche    = escapeHtml(profile.niche || '');
         const bio      = escapeHtml(profile.short_bio || '');
-        const heroSrc  = safeSrc(profile.assets && profile.assets.hero);
-        const avatarSrc = safeSrc(profile.assets && profile.assets.avatar) || avatarFallback(profile.name);
+        const heroSrc  = safeSrc(profile.assets && (profile.assets.hero_src || profile.assets.hero));
+        const avatarSrc = safeSrc(profile.assets && (profile.assets.avatar_src || profile.assets.avatar)) || avatarFallback(profile.name);
 
         const heroHtml = heroSrc
           ? `<img src="${heroSrc}" alt="" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='block'"><div class="creator-card-hero-placeholder" style="display:none"></div>`
           : `<div class="creator-card-hero-placeholder"></div>`;
 
         return `
-          <a href="creator-profile.html?slug=${slug}" class="creator-card" aria-label="View ${name}'s profile">
+          <a href="creator.html?id=${escapeHtml(profile.id || '')}" class="creator-card" aria-label="View ${name}'s profile">
             <div class="creator-card-hero">
               ${heroHtml}
               <div class="creator-card-avatar-wrap">
@@ -405,10 +406,8 @@
       async function init() {
         const grid = document.getElementById('creators-grid');
         try {
-          const res  = await fetch('data/curated_profiles.json');
-          if (!res.ok) throw new Error(`HTTP ${res.status}`);
-          const data = await res.json();
-          allProfiles = (data.profiles || []).filter(p => p.published !== false);
+          const { profiles } = await CuratedProfiles.load();
+          allProfiles = profiles.filter(p => p.published !== false);
 
           if (allProfiles.length === 0) {
             grid.innerHTML = `
