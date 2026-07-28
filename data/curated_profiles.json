@@ -1,9 +1,9 @@
 {
-  "_generated": "2026-07-02T09:27:19.355Z",
-  "_count": 11,
+  "_generated": "2026-07-28T13:19:43.791Z",
+  "_count": 12,
   "profiles": [
     {
-      "id": "cherry-circuit-001",
+      "id": "github_cherry-circuit",
       "slug": "cherry-circuit",
       "name": "CherryCircuit",
       "tagline": "Born to press start. Built to explain why.",
@@ -20,8 +20,8 @@
         "website": ""
       },
       "assets": {
-        "avatar": "profiles/cherry-circuit/images/avatar.svg",
-        "hero": "profiles/cherry-circuit/images/hero.svg"
+        "avatar": "profiles/cherry-circuit/images/me/FcQVExsX0AEm0ia.jpeg",
+        "hero": "profiles/cherry-circuit/images/me/b316ddde-f35a-4c61-85eb-eb648a2802db_496cbbf1-9fff-46a2-af02.jpg"
       },
       "albums": [
         {
@@ -37,6 +37,115 @@
           "description": "LAN parties, tournaments, and the community growing around competitive gaming in the Cape.",
           "cover_image": "profiles/cherry-circuit/images/album2-cover.svg",
           "media": []
+        },
+        {
+          "id": "album-all-videos",
+          "title": "All Videos",
+          "description": "Creator videos",
+          "media": [
+            {
+              "id": "media-1",
+              "type": "image",
+              "file": "profiles/cherry-circuit/images/video-thumb.svg",
+              "url": "profiles/cherry-circuit/images/video-thumb.svg",
+              "thumbnail": "profiles/cherry-circuit/images/video-thumb.svg",
+              "caption": "R5000 Budget Gaming PC Build 2026",
+              "member_only": false
+            },
+            {
+              "id": "media-2",
+              "type": "image",
+              "file": "profiles/cherry-circuit/images/video-thumb2.svg",
+              "url": "profiles/cherry-circuit/images/video-thumb2.svg",
+              "thumbnail": "profiles/cherry-circuit/images/video-thumb2.svg",
+              "caption": "Every Mistake I Made Building My First Three PCs (So You Don't Have To)",
+              "member_only": true
+            }
+          ],
+          "price": 0,
+          "auto_generated": true
+        },
+        {
+          "id": "auto-images-me",
+          "title": "me",
+          "description": "Album from images/me",
+          "cover_image": "profiles/cherry-circuit/images/me/0b93916c-b8ee-49af-b795-f49f92fa74f9_11.jpg",
+          "media": [
+            {
+              "id": "media-1",
+              "type": "image",
+              "file": "profiles/cherry-circuit/images/me/0b93916c-b8ee-49af-b795-f49f92fa74f9_11.jpg",
+              "url": "profiles/cherry-circuit/images/me/0b93916c-b8ee-49af-b795-f49f92fa74f9_11.jpg",
+              "thumbnail": "profiles/cherry-circuit/images/me/0b93916c-b8ee-49af-b795-f49f92fa74f9_11.jpg",
+              "caption": "",
+              "member_only": false
+            },
+            {
+              "id": "media-2",
+              "type": "image",
+              "file": "profiles/cherry-circuit/images/me/6c4c1e5f-4b79-4e59-9782-6a398eb6dd5b_2.jpg",
+              "url": "profiles/cherry-circuit/images/me/6c4c1e5f-4b79-4e59-9782-6a398eb6dd5b_2.jpg",
+              "thumbnail": "profiles/cherry-circuit/images/me/6c4c1e5f-4b79-4e59-9782-6a398eb6dd5b_2.jpg",
+              "caption": "",
+              "member_only": false
+            },
+            {
+              "id": "media-3",
+              "type": "image",
+              "file": "profiles/cherry-circuit/images/me/6rEwVjkc8zoVqTPA.jpeg",
+              "url": "profiles/cherry-circuit/images/me/6rEwVjkc8zoVqTPA.jpeg",
+              "thumbnail": "profiles/cherry-circuit/images/me/6rEwVjkc8zoVqTPA.jpeg",
+              "caption": "",
+              "member_only": false
+            },
+            {
+              "id": "media-4",
+              "type": "image",
+              "file": "profiles/cherry-circuit/images/me/b316ddde-f35a-4c61-85eb-eb648a2802db_496cbbf1-9fff-46a2-af02.jpg",
+              "url": "profiles/cherry-circuit/images/me/b316ddde-f35a-4c61-85eb-eb648a2802db_496cbbf1-9fff-46a2-af02.jpg",
+              "thumbnail": "profiles/cherry-circuit/images/me/b316ddde-f35a-4c61-85eb-eb648a2802db_496cbbf1-9fff-46a2-af02.jpg",
+              "caption": "",
+              "member_only": false
+            },
+            {
+              "id": "media-5",
+              "type": "image",
+              "file": "profiles/cherry-circuit/images/me/bb34f67d-2c95-4a7b-8a09-817ec31402ec_myxj_20220821183537578_.jpg",
+              "url": "profiles/cherry-circuit/images/me/bb34f67d-2c95-4a7b-8a09-817ec31402ec_myxj_20220821183537578_.jpg",
+              "thumbnail": "profiles/cherry-circuit/images/me/bb34f67d-2c95-4a7b-8a09-817ec31402ec_myxj_20220821183537578_.jpg",
+              "caption": "",
+              "member_only": false
+            },
+            {
+              "id": "media-6",
+              "type": "image",
+              "file": "profiles/cherry-circuit/images/me/FafZeCvWIAAlZqQ.jpeg",
+              "url": "profiles/cherry-circuit/images/me/FafZeCvWIAAlZqQ.jpeg",
+              "thumbnail": "profiles/cherry-circuit/images/me/FafZeCvWIAAlZqQ.jpeg",
+              "caption": "",
+              "member_only": false
+            },
+            {
+              "id": "media-7",
+              "type": "image",
+              "file": "profiles/cherry-circuit/images/me/Fb6nXwkWYAAZiWb.jpeg",
+              "url": "profiles/cherry-circuit/images/me/Fb6nXwkWYAAZiWb.jpeg",
+              "thumbnail": "profiles/cherry-circuit/images/me/Fb6nXwkWYAAZiWb.jpeg",
+              "caption": "",
+              "member_only": false
+            },
+            {
+              "id": "media-8",
+              "type": "image",
+              "file": "profiles/cherry-circuit/images/me/FcQVExsX0AEm0ia.jpeg",
+              "url": "profiles/cherry-circuit/images/me/FcQVExsX0AEm0ia.jpeg",
+              "thumbnail": "profiles/cherry-circuit/images/me/FcQVExsX0AEm0ia.jpeg",
+              "caption": "",
+              "member_only": false
+            }
+          ],
+          "price": 0,
+          "auto_generated": true
         }
       ],
       "videos": [
@@ -53,10 +162,10 @@
           "id": "video-cc-002",
           "title": "Every Mistake I Made Building My First Three PCs (So You Don't Have To)",
           "description": "Unfiltered mistakes, what I learned, and exactly how to avoid them.",
+          "video_path": null,
           "thumbnail_path": "profiles/cherry-circuit/images/video-thumb2.svg",
           "published_at": "2026-06-15",
-          "member_only": true,
-          "video_path": null
+          "member_only": true
         }
       ],
       "blogs": [
@@ -91,10 +200,11 @@
           "active": true
         }
       ],
-      "published": true
+      "published": true,
+      "folderName": "cherry-circuit"
     },
     {
-      "id": "demo-creator-001",
+      "id": "github_demo-creator",
       "slug": "demo-creator",
       "name": "Alex Rivera (Demo)",
       "tagline": "Creative storyteller and digital artist",
@@ -123,11 +233,32 @@
           "media": [
             {
               "id": "media-demo-001",
-              "file": "profiles/demo-creator/images/album-cover.svg",
               "type": "image",
-              "caption": "Mountain at dusk — demo placeholder"
+              "file": "profiles/demo-creator/images/album-cover.svg",
+              "url": "profiles/demo-creator/images/album-cover.svg",
+              "thumbnail": "profiles/demo-creator/images/album-cover.svg",
+              "caption": "Mountain at dusk — demo placeholder",
+              "member_only": false
             }
           ]
+        },
+        {
+          "id": "album-all-videos",
+          "title": "All Videos",
+          "description": "Creator videos",
+          "media": [
+            {
+              "id": "media-1",
+              "type": "image",
+              "file": "profiles/demo-creator/images/video-thumb.svg",
+              "url": "profiles/demo-creator/images/video-thumb.svg",
+              "thumbnail": "profiles/demo-creator/images/video-thumb.svg",
+              "caption": "Introduction to Digital Art (Demo)",
+              "member_only": false
+            }
+          ],
+          "price": 0,
+          "auto_generated": true
         }
       ],
       "videos": [
@@ -173,10 +304,11 @@
           "active": true
         }
       ],
-      "published": true
+      "published": true,
+      "folderName": "demo-creator"
     },
     {
-      "id": "golden-fig-001",
+      "id": "github_golden-fig",
       "slug": "golden-fig",
       "name": "GoldenFig",
       "tagline": "Ink and fabric. Beauty with intention.",
@@ -210,6 +342,33 @@
           "description": "The abayas, tunics, and formal sets from my current ready-to-wear line.",
           "cover_image": "profiles/golden-fig/images/album2-cover.svg",
           "media": []
+        },
+        {
+          "id": "album-all-videos",
+          "title": "All Videos",
+          "description": "Creator videos",
+          "media": [
+            {
+              "id": "media-1",
+              "type": "image",
+              "file": "profiles/golden-fig/images/video-thumb.svg",
+              "url": "profiles/golden-fig/images/video-thumb.svg",
+              "thumbnail": "profiles/golden-fig/images/video-thumb.svg",
+              "caption": "Calligraphy for Beginners: The Basics of Thuluth Script",
+              "member_only": false
+            },
+            {
+              "id": "media-2",
+              "type": "image",
+              "file": "profiles/golden-fig/images/video-thumb2.svg",
+              "url": "profiles/golden-fig/images/video-thumb2.svg",
+              "thumbnail": "profiles/golden-fig/images/video-thumb2.svg",
+              "caption": "How I Price Custom Calligraphy Commissions",
+              "member_only": true
+            }
+          ],
+          "price": 0,
+          "auto_generated": true
         }
       ],
       "videos": [
@@ -226,10 +385,10 @@
           "id": "video-gf-002",
           "title": "How I Price Custom Calligraphy Commissions",
           "description": "My pricing framework, client communication templates, and the mistakes I made early on.",
+          "video_path": null,
           "thumbnail_path": "profiles/golden-fig/images/video-thumb2.svg",
           "published_at": "2026-06-15",
-          "member_only": true,
-          "video_path": null
+          "member_only": true
         }
       ],
       "blogs": [
@@ -264,10 +423,11 @@
           "active": true
         }
       ],
-      "published": true
+      "published": true,
+      "folderName": "golden-fig"
     },
     {
-      "id": "moonlit-mango-001",
+      "id": "github_moonlit-mango",
       "slug": "moonlit-mango",
       "name": "MoonlitMango",
       "tagline": "Where heritage tastes like golden hour.",
@@ -301,6 +461,33 @@
           "description": "Documenting the independent café scene and the culture it carries.",
           "cover_image": "profiles/moonlit-mango/images/album2-cover.svg",
           "media": []
+        },
+        {
+          "id": "album-all-videos",
+          "title": "All Videos",
+          "description": "Creator videos",
+          "media": [
+            {
+              "id": "media-1",
+              "type": "image",
+              "file": "profiles/moonlit-mango/images/video-thumb.svg",
+              "url": "profiles/moonlit-mango/images/video-thumb.svg",
+              "thumbnail": "profiles/moonlit-mango/images/video-thumb.svg",
+              "caption": "How I Style a Cape Malay Spread",
+              "member_only": false
+            },
+            {
+              "id": "media-2",
+              "type": "image",
+              "file": "profiles/moonlit-mango/images/video-thumb2.svg",
+              "url": "profiles/moonlit-mango/images/video-thumb2.svg",
+              "thumbnail": "profiles/moonlit-mango/images/video-thumb2.svg",
+              "caption": "My Camera Settings for Golden Hour Food Shots",
+              "member_only": true
+            }
+          ],
+          "price": 0,
+          "auto_generated": true
         }
       ],
       "videos": [
@@ -317,10 +504,10 @@
           "id": "video-mm-002",
           "title": "My Camera Settings for Golden Hour Food Shots",
           "description": "The exact settings I use and why — a technical deep-dive.",
+          "video_path": null,
           "thumbnail_path": "profiles/moonlit-mango/images/video-thumb2.svg",
           "published_at": "2026-06-15",
-          "member_only": true,
-          "video_path": null
+          "member_only": true
         }
       ],
       "blogs": [
@@ -355,10 +542,11 @@
           "active": true
         }
       ],
-      "published": true
+      "published": true,
+      "folderName": "moonlit-mango"
     },
     {
-      "id": "neon-marigold-001",
+      "id": "github_neon-marigold",
       "slug": "neon-marigold",
       "name": "NeonMarigold",
       "tagline": "Choreography is just music you can see. I make it visible.",
@@ -392,6 +580,33 @@
           "description": "Spontaneous dance sessions shot in Woodstock locations — raw, minimal editing.",
           "cover_image": "profiles/neon-marigold/images/album2-cover.svg",
           "media": []
+        },
+        {
+          "id": "album-all-videos",
+          "title": "All Videos",
+          "description": "Creator videos",
+          "media": [
+            {
+              "id": "media-1",
+              "type": "image",
+              "file": "profiles/neon-marigold/images/video-thumb.svg",
+              "url": "profiles/neon-marigold/images/video-thumb.svg",
+              "thumbnail": "profiles/neon-marigold/images/video-thumb.svg",
+              "caption": "Choreography Breakdown: My Amapiano Visual Process",
+              "member_only": false
+            },
+            {
+              "id": "media-2",
+              "type": "image",
+              "file": "profiles/neon-marigold/images/video-thumb2.svg",
+              "url": "profiles/neon-marigold/images/video-thumb2.svg",
+              "thumbnail": "profiles/neon-marigold/images/video-thumb2.svg",
+              "caption": "Advanced Footwork Tutorial: Amapiano Vocabulary",
+              "member_only": true
+            }
+          ],
+          "price": 0,
+          "auto_generated": true
         }
       ],
       "videos": [
@@ -408,10 +623,10 @@
           "id": "video-nm-002",
           "title": "Advanced Footwork Tutorial: Amapiano Vocabulary",
           "description": "Breaking down the specific footwork patterns I use and how to practice them.",
+          "video_path": null,
           "thumbnail_path": "profiles/neon-marigold/images/video-thumb2.svg",
           "published_at": "2026-06-15",
-          "member_only": true,
-          "video_path": null
+          "member_only": true
         }
       ],
       "blogs": [
@@ -446,10 +661,11 @@
           "active": true
         }
       ],
-      "published": true
+      "published": true,
+      "folderName": "neon-marigold"
     },
     {
-      "id": "ocean-cinder-001",
+      "id": "github_ocean-cinder",
       "slug": "ocean-cinder",
       "name": "OceanCinder",
       "tagline": "The ocean doesn't care who you are. I'm writing down who's in it.",
@@ -483,6 +699,33 @@
           "description": "Images documenting ecological change along the Cape False Bay coastline.",
           "cover_image": "profiles/ocean-cinder/images/album2-cover.svg",
           "media": []
+        },
+        {
+          "id": "album-all-videos",
+          "title": "All Videos",
+          "description": "Creator videos",
+          "media": [
+            {
+              "id": "media-1",
+              "type": "image",
+              "file": "profiles/ocean-cinder/images/video-thumb.svg",
+              "url": "profiles/ocean-cinder/images/video-thumb.svg",
+              "thumbnail": "profiles/ocean-cinder/images/video-thumb.svg",
+              "caption": "A Day in Muizenberg: Dawn to Dusk on the Water",
+              "member_only": false
+            },
+            {
+              "id": "media-2",
+              "type": "image",
+              "file": "profiles/ocean-cinder/images/video-thumb2.svg",
+              "url": "profiles/ocean-cinder/images/video-thumb2.svg",
+              "thumbnail": "profiles/ocean-cinder/images/video-thumb2.svg",
+              "caption": "Interview: The Marine Biologist Watching False Bay Change",
+              "member_only": true
+            }
+          ],
+          "price": 0,
+          "auto_generated": true
         }
       ],
       "videos": [
@@ -499,10 +742,10 @@
           "id": "video-oc-002",
           "title": "Interview: The Marine Biologist Watching False Bay Change",
           "description": "A long-form conversation about what the science actually says about False Bay's ecological future.",
+          "video_path": null,
           "thumbnail_path": "profiles/ocean-cinder/images/video-thumb2.svg",
           "published_at": "2026-06-15",
-          "member_only": true,
-          "video_path": null
+          "member_only": true
         }
       ],
       "blogs": [
@@ -537,10 +780,11 @@
           "active": true
         }
       ],
-      "published": true
+      "published": true,
+      "folderName": "ocean-cinder"
     },
     {
-      "id": "quiet-thunder-001",
+      "id": "github_quiet-thunder",
       "slug": "quiet-thunder",
       "name": "QuietThunder",
       "tagline": "Code is the most affordable tool ever invented. I'm teaching Langa to use it.",
@@ -574,6 +818,33 @@
           "description": "Documenting the coding workshops and study groups I have helped start.",
           "cover_image": "profiles/quiet-thunder/images/album2-cover.svg",
           "media": []
+        },
+        {
+          "id": "album-all-videos",
+          "title": "All Videos",
+          "description": "Creator videos",
+          "media": [
+            {
+              "id": "media-1",
+              "type": "image",
+              "file": "profiles/quiet-thunder/images/video-thumb.svg",
+              "url": "profiles/quiet-thunder/images/video-thumb.svg",
+              "thumbnail": "profiles/quiet-thunder/images/video-thumb.svg",
+              "caption": "Build Your First Python Bot — For Free",
+              "member_only": false
+            },
+            {
+              "id": "media-2",
+              "type": "image",
+              "file": "profiles/quiet-thunder/images/video-thumb2.svg",
+              "url": "profiles/quiet-thunder/images/video-thumb2.svg",
+              "thumbnail": "profiles/quiet-thunder/images/video-thumb2.svg",
+              "caption": "Getting Your First Tech Job From Langa: My Research Notes",
+              "member_only": true
+            }
+          ],
+          "price": 0,
+          "auto_generated": true
         }
       ],
       "videos": [
@@ -590,10 +861,10 @@
           "id": "video-qt-002",
           "title": "Getting Your First Tech Job From Langa: My Research Notes",
           "description": "The companies, learnership programmes, and application strategies I found that nobody talks about.",
+          "video_path": null,
           "thumbnail_path": "profiles/quiet-thunder/images/video-thumb2.svg",
           "published_at": "2026-06-15",
-          "member_only": true,
-          "video_path": null
+          "member_only": true
         }
       ],
       "blogs": [
@@ -628,10 +899,11 @@
           "active": true
         }
       ],
-      "published": true
+      "published": true,
+      "folderName": "quiet-thunder"
     },
     {
-      "id": "silk-static-001",
+      "id": "github_silk-static",
       "slug": "silk-static",
       "name": "SilkStatic",
       "tagline": "Elegance should feel effortless, but never ordinary.",
@@ -672,6 +944,992 @@
           "description": "Behind-the-scenes photographs showing preparation, makeup details, outfit changes, quiet moments, and what happens after polished events end.",
           "cover_image": "profiles/silk-static/images/after-event-cover.svg",
           "media": []
+        },
+        {
+          "id": "album-all-videos",
+          "title": "All Videos",
+          "description": "Creator videos",
+          "media": [
+            {
+              "id": "media-1",
+              "type": "image",
+              "file": "profiles/silk-static/images/video-thumb-1.svg",
+              "url": "profiles/silk-static/images/video-thumb-1.svg",
+              "thumbnail": "profiles/silk-static/images/video-thumb-1.svg",
+              "caption": "Getting Ready for a Cape Town Editorial Shoot",
+              "member_only": false
+            },
+            {
+              "id": "media-2",
+              "type": "image",
+              "file": "profiles/silk-static/images/video-thumb-2.svg",
+              "url": "profiles/silk-static/images/video-thumb-2.svg",
+              "thumbnail": "profiles/silk-static/images/video-thumb-2.svg",
+              "caption": "How I Style a Monochrome Outfit Without Making It Boring",
+              "member_only": false
+            },
+            {
+              "id": "media-3",
+              "type": "image",
+              "file": "profiles/silk-static/images/video-thumb-3.svg",
+              "url": "profiles/silk-static/images/video-thumb-3.svg",
+              "thumbnail": "profiles/silk-static/images/video-thumb-3.svg",
+              "caption": "The Work Behind a Polished Image",
+              "member_only": true
+            }
+          ],
+          "price": 0,
+          "auto_generated": true
+        },
+        {
+          "id": "auto-images-me",
+          "title": "me",
+          "description": "Album from images/me",
+          "cover_image": "profiles/silk-static/images/me/31564192_1944275959236006_6985359197038706688_n.jpg",
+          "media": [
+            {
+              "id": "media-1",
+              "type": "image",
+              "file": "profiles/silk-static/images/me/31564192_1944275959236006_6985359197038706688_n.jpg",
+              "url": "profiles/silk-static/images/me/31564192_1944275959236006_6985359197038706688_n.jpg",
+              "thumbnail": "profiles/silk-static/images/me/31564192_1944275959236006_6985359197038706688_n.jpg",
+              "caption": "",
+              "member_only": false
+            },
+            {
+              "id": "media-2",
+              "type": "image",
+              "file": "profiles/silk-static/images/me/32191450_1949236852073250_5943834021510250496_n.jpg",
+              "url": "profiles/silk-static/images/me/32191450_1949236852073250_5943834021510250496_n.jpg",
+              "thumbnail": "profiles/silk-static/images/me/32191450_1949236852073250_5943834021510250496_n.jpg",
+              "caption": "",
+              "member_only": false
+            },
+            {
+              "id": "media-3",
+              "type": "image",
+              "file": "profiles/silk-static/images/me/32366657_1951523588511243_1880476058172522496_n.jpg",
+              "url": "profiles/silk-static/images/me/32366657_1951523588511243_1880476058172522496_n.jpg",
+              "thumbnail": "profiles/silk-static/images/me/32366657_1951523588511243_1880476058172522496_n.jpg",
+              "caption": "",
+              "member_only": false
+            },
+            {
+              "id": "media-4",
+              "type": "image",
+              "file": "profiles/silk-static/images/me/32399220_1953600278303574_8509486843773845504_n.jpg",
+              "url": "profiles/silk-static/images/me/32399220_1953600278303574_8509486843773845504_n.jpg",
+              "thumbnail": "profiles/silk-static/images/me/32399220_1953600278303574_8509486843773845504_n.jpg",
+              "caption": "",
+              "member_only": false
+            },
+            {
+              "id": "media-5",
+              "type": "image",
+              "file": "profiles/silk-static/images/me/34836228_1964793837184218_473588215320674304_n.jpg",
+              "url": "profiles/silk-static/images/me/34836228_1964793837184218_473588215320674304_n.jpg",
+              "thumbnail": "profiles/silk-static/images/me/34836228_1964793837184218_473588215320674304_n.jpg",
+              "caption": "",
+              "member_only": false
+            },
+            {
+              "id": "media-6",
+              "type": "image",
+              "file": "profiles/silk-static/images/me/34962940_1966656926997909_5450001460660011008_n.jpg",
+              "url": "profiles/silk-static/images/me/34962940_1966656926997909_5450001460660011008_n.jpg",
+              "thumbnail": "profiles/silk-static/images/me/34962940_1966656926997909_5450001460660011008_n.jpg",
+              "caption": "",
+              "member_only": false
+            },
+            {
+              "id": "media-7",
+              "type": "image",
+              "file": "profiles/silk-static/images/me/35521056_1971441923186076_5502027108186062848_n.jpg",
+              "url": "profiles/silk-static/images/me/35521056_1971441923186076_5502027108186062848_n.jpg",
+              "thumbnail": "profiles/silk-static/images/me/35521056_1971441923186076_5502027108186062848_n.jpg",
+              "caption": "",
+              "member_only": false
+            },
+            {
+              "id": "media-8",
+              "type": "image",
+              "file": "profiles/silk-static/images/me/35682388_1973332396330362_4970113249870610432_n.jpg",
+              "url": "profiles/silk-static/images/me/35682388_1973332396330362_4970113249870610432_n.jpg",
+              "thumbnail": "profiles/silk-static/images/me/35682388_1973332396330362_4970113249870610432_n.jpg",
+              "caption": "",
+              "member_only": false
+            },
+            {
+              "id": "media-9",
+              "type": "image",
+              "file": "profiles/silk-static/images/me/36823216_1994010764262525_7951482781417078784_n.jpg",
+              "url": "profiles/silk-static/images/me/36823216_1994010764262525_7951482781417078784_n.jpg",
+              "thumbnail": "profiles/silk-static/images/me/36823216_1994010764262525_7951482781417078784_n.jpg",
+              "caption": "",
+              "member_only": false
+            },
+            {
+              "id": "media-10",
+              "type": "image",
+              "file": "profiles/silk-static/images/me/37378041_2004181469912121_6759077805666861056_n.jpg",
+              "url": "profiles/silk-static/images/me/37378041_2004181469912121_6759077805666861056_n.jpg",
+              "thumbnail": "profiles/silk-static/images/me/37378041_2004181469912121_6759077805666861056_n.jpg",
+              "caption": "",
+              "member_only": false
+            },
+            {
+              "id": "media-11",
+              "type": "image",
+              "file": "profiles/silk-static/images/me/37679992_2009649949365273_8120586368393936896_n.jpg",
+              "url": "profiles/silk-static/images/me/37679992_2009649949365273_8120586368393936896_n.jpg",
+              "thumbnail": "profiles/silk-static/images/me/37679992_2009649949365273_8120586368393936896_n.jpg",
+              "caption": "",
+              "member_only": false
+            },
+            {
+              "id": "media-12",
+              "type": "image",
+              "file": "profiles/silk-static/images/me/37969209_2016369745359960_2284870696792227840_n.jpg",
+              "url": "profiles/silk-static/images/me/37969209_2016369745359960_2284870696792227840_n.jpg",
+              "thumbnail": "profiles/silk-static/images/me/37969209_2016369745359960_2284870696792227840_n.jpg",
+              "caption": "",
+              "member_only": false
+            },
+            {
+              "id": "media-13",
+              "type": "image",
+              "file": "profiles/silk-static/images/me/38125772_2018798458450422_1306584009844719616_n.jpg",
+              "url": "profiles/silk-static/images/me/38125772_2018798458450422_1306584009844719616_n.jpg",
+              "thumbnail": "profiles/silk-static/images/me/38125772_2018798458450422_1306584009844719616_n.jpg",
+              "caption": "",
+              "member_only": false
+            },
+            {
+              "id": "media-14",
+              "type": "image",
+              "file": "profiles/silk-static/images/me/38461401_2022938461369755_9023625301329969152_n.jpg",
+              "url": "profiles/silk-static/images/me/38461401_2022938461369755_9023625301329969152_n.jpg",
+              "thumbnail": "profiles/silk-static/images/me/38461401_2022938461369755_9023625301329969152_n.jpg",
+              "caption": "",
+              "member_only": false
+            },
+            {
+              "id": "media-15",
+              "type": "image",
+              "file": "profiles/silk-static/images/me/38612153_2024169041246697_1358767862491119616_n.jpg",
+              "url": "profiles/silk-static/images/me/38612153_2024169041246697_1358767862491119616_n.jpg",
+              "thumbnail": "profiles/silk-static/images/me/38612153_2024169041246697_1358767862491119616_n.jpg",
+              "caption": "",
+              "member_only": false
+            },
+            {
+              "id": "media-16",
+              "type": "image",
+              "file": "profiles/silk-static/images/me/38752142_2027713784225556_661652450821799936_n (1).jpg",
+              "url": "profiles/silk-static/images/me/38752142_2027713784225556_661652450821799936_n (1).jpg",
+              "thumbnail": "profiles/silk-static/images/me/38752142_2027713784225556_661652450821799936_n (1).jpg",
+              "caption": "",
+              "member_only": false
+            },
+            {
+              "id": "media-17",
+              "type": "image",
+              "file": "profiles/silk-static/images/me/38752142_2027713784225556_661652450821799936_n.jpg",
+              "url": "profiles/silk-static/images/me/38752142_2027713784225556_661652450821799936_n.jpg",
+              "thumbnail": "profiles/silk-static/images/me/38752142_2027713784225556_661652450821799936_n.jpg",
+              "caption": "",
+              "member_only": false
+            },
+            {
+              "id": "media-18",
+              "type": "image",
+              "file": "profiles/silk-static/images/me/39068347_2032468273750107_6714722248176959488_n.jpg",
+              "url": "profiles/silk-static/images/me/39068347_2032468273750107_6714722248176959488_n.jpg",
+              "thumbnail": "profiles/silk-static/images/me/39068347_2032468273750107_6714722248176959488_n.jpg",
+              "caption": "",
+              "member_only": false
+            },
+            {
+              "id": "media-19",
+              "type": "image",
+              "file": "profiles/silk-static/images/me/39401657_2035912200072381_6413200129360134144_n.jpg",
+              "url": "profiles/silk-static/images/me/39401657_2035912200072381_6413200129360134144_n.jpg",
+              "thumbnail": "profiles/silk-static/images/me/39401657_2035912200072381_6413200129360134144_n.jpg",
+              "caption": "",
+              "member_only": false
+            },
+            {
+              "id": "media-20",
+              "type": "image",
+              "file": "profiles/silk-static/images/me/39700649_2040204996309768_1145018477019398144_n.jpg",
+              "url": "profiles/silk-static/images/me/39700649_2040204996309768_1145018477019398144_n.jpg",
+              "thumbnail": "profiles/silk-static/images/me/39700649_2040204996309768_1145018477019398144_n.jpg",
+              "caption": "",
+              "member_only": false
+            },
+            {
+              "id": "media-21",
+              "type": "image",
+              "file": "profiles/silk-static/images/me/40343010_2047678762229058_1139192727544528896_n.jpg",
+              "url": "profiles/silk-static/images/me/40343010_2047678762229058_1139192727544528896_n.jpg",
+              "thumbnail": "profiles/silk-static/images/me/40343010_2047678762229058_1139192727544528896_n.jpg",
+              "caption": "",
+              "member_only": false
+            },
+            {
+              "id": "media-22",
+              "type": "image",
+              "file": "profiles/silk-static/images/me/40516061_2049673558696245_8893285318912901120_n.jpg",
+              "url": "profiles/silk-static/images/me/40516061_2049673558696245_8893285318912901120_n.jpg",
+              "thumbnail": "profiles/silk-static/images/me/40516061_2049673558696245_8893285318912901120_n.jpg",
+              "caption": "",
+              "member_only": false
+            },
+            {
+              "id": "media-23",
+              "type": "image",
+              "file": "profiles/silk-static/images/me/40685360_2051577211839213_7509917644686884864_n.jpg",
+              "url": "profiles/silk-static/images/me/40685360_2051577211839213_7509917644686884864_n.jpg",
+              "thumbnail": "profiles/silk-static/images/me/40685360_2051577211839213_7509917644686884864_n.jpg",
+              "caption": "",
+              "member_only": false
+            },
+            {
+              "id": "media-24",
+              "type": "image",
+              "file": "profiles/silk-static/images/me/41717090_2056773537986247_1062551170746155008_n.jpg",
+              "url": "profiles/silk-static/images/me/41717090_2056773537986247_1062551170746155008_n.jpg",
+              "thumbnail": "profiles/silk-static/images/me/41717090_2056773537986247_1062551170746155008_n.jpg",
+              "caption": "",
+              "member_only": false
+            },
+            {
+              "id": "media-25",
+              "type": "image",
+              "file": "profiles/silk-static/images/me/42058452_2058614064468861_4215629818294697984_n.jpg",
+              "url": "profiles/silk-static/images/me/42058452_2058614064468861_4215629818294697984_n.jpg",
+              "thumbnail": "profiles/silk-static/images/me/42058452_2058614064468861_4215629818294697984_n.jpg",
+              "caption": "",
+              "member_only": false
+            },
+            {
+              "id": "media-26",
+              "type": "image",
+              "file": "profiles/silk-static/images/me/43141246_2068247263505541_6014559544326225920_n.jpg",
+              "url": "profiles/silk-static/images/me/43141246_2068247263505541_6014559544326225920_n.jpg",
+              "thumbnail": "profiles/silk-static/images/me/43141246_2068247263505541_6014559544326225920_n.jpg",
+              "caption": "",
+              "member_only": false
+            },
+            {
+              "id": "media-27",
+              "type": "image",
+              "file": "profiles/silk-static/images/me/43649073_2080509192279348_3613003455209144320_n.jpg",
+              "url": "profiles/silk-static/images/me/43649073_2080509192279348_3613003455209144320_n.jpg",
+              "thumbnail": "profiles/silk-static/images/me/43649073_2080509192279348_3613003455209144320_n.jpg",
+              "caption": "",
+              "member_only": false
+            },
+            {
+              "id": "media-28",
+              "type": "image",
+              "file": "profiles/silk-static/images/me/43734028_2072291339767800_1554000260970315776_n.jpg",
+              "url": "profiles/silk-static/images/me/43734028_2072291339767800_1554000260970315776_n.jpg",
+              "thumbnail": "profiles/silk-static/images/me/43734028_2072291339767800_1554000260970315776_n.jpg",
+              "caption": "",
+              "member_only": false
+            },
+            {
+              "id": "media-29",
+              "type": "image",
+              "file": "profiles/silk-static/images/me/44522761_2078031689193765_4868928652215058432_n.jpg",
+              "url": "profiles/silk-static/images/me/44522761_2078031689193765_4868928652215058432_n.jpg",
+              "thumbnail": "profiles/silk-static/images/me/44522761_2078031689193765_4868928652215058432_n.jpg",
+              "caption": "",
+              "member_only": false
+            },
+            {
+              "id": "media-30",
+              "type": "image",
+              "file": "profiles/silk-static/images/me/45070770_2083341608662773_3237857247522455552_n.jpg",
+              "url": "profiles/silk-static/images/me/45070770_2083341608662773_3237857247522455552_n.jpg",
+              "thumbnail": "profiles/silk-static/images/me/45070770_2083341608662773_3237857247522455552_n.jpg",
+              "caption": "",
+              "member_only": false
+            },
+            {
+              "id": "media-31",
+              "type": "image",
+              "file": "profiles/silk-static/images/me/46133165_2090719171258350_6456724825426624512_n.jpg",
+              "url": "profiles/silk-static/images/me/46133165_2090719171258350_6456724825426624512_n.jpg",
+              "thumbnail": "profiles/silk-static/images/me/46133165_2090719171258350_6456724825426624512_n.jpg",
+              "caption": "",
+              "member_only": false
+            },
+            {
+              "id": "media-32",
+              "type": "image",
+              "file": "profiles/silk-static/images/me/46502241_2094484230881844_7681124820745977856_n.jpg",
+              "url": "profiles/silk-static/images/me/46502241_2094484230881844_7681124820745977856_n.jpg",
+              "thumbnail": "profiles/silk-static/images/me/46502241_2094484230881844_7681124820745977856_n.jpg",
+              "caption": "",
+              "member_only": false
+            },
+            {
+              "id": "media-33",
+              "type": "image",
+              "file": "profiles/silk-static/images/me/46685781_2098232537173680_5471865086169579520_n.jpg",
+              "url": "profiles/silk-static/images/me/46685781_2098232537173680_5471865086169579520_n.jpg",
+              "thumbnail": "profiles/silk-static/images/me/46685781_2098232537173680_5471865086169579520_n.jpg",
+              "caption": "",
+              "member_only": false
+            },
+            {
+              "id": "media-34",
+              "type": "image",
+              "file": "profiles/silk-static/images/me/467692349_18076105216595066_6968847839730486933_n.jpg",
+              "url": "profiles/silk-static/images/me/467692349_18076105216595066_6968847839730486933_n.jpg",
+              "thumbnail": "profiles/silk-static/images/me/467692349_18076105216595066_6968847839730486933_n.jpg",
+              "caption": "",
+              "member_only": false
+            },
+            {
+              "id": "media-35",
+              "type": "image",
+              "file": "profiles/silk-static/images/me/46868066_2098906223772978_2924786060430934016_n.jpg",
+              "url": "profiles/silk-static/images/me/46868066_2098906223772978_2924786060430934016_n.jpg",
+              "thumbnail": "profiles/silk-static/images/me/46868066_2098906223772978_2924786060430934016_n.jpg",
+              "caption": "",
+              "member_only": false
+            },
+            {
+              "id": "media-36",
+              "type": "image",
+              "file": "profiles/silk-static/images/me/469911416_18077727691595066_8543585863671317633_n.jpg",
+              "url": "profiles/silk-static/images/me/469911416_18077727691595066_8543585863671317633_n.jpg",
+              "thumbnail": "profiles/silk-static/images/me/469911416_18077727691595066_8543585863671317633_n.jpg",
+              "caption": "",
+              "member_only": false
+            },
+            {
+              "id": "media-37",
+              "type": "image",
+              "file": "profiles/silk-static/images/me/47686441_2105843156412618_4422510700656590848_n.jpg",
+              "url": "profiles/silk-static/images/me/47686441_2105843156412618_4422510700656590848_n.jpg",
+              "thumbnail": "profiles/silk-static/images/me/47686441_2105843156412618_4422510700656590848_n.jpg",
+              "caption": "",
+              "member_only": false
+            },
+            {
+              "id": "media-38",
+              "type": "image",
+              "file": "profiles/silk-static/images/me/48275649_2110195029310764_987702062714191872_n.jpg",
+              "url": "profiles/silk-static/images/me/48275649_2110195029310764_987702062714191872_n.jpg",
+              "thumbnail": "profiles/silk-static/images/me/48275649_2110195029310764_987702062714191872_n.jpg",
+              "caption": "",
+              "member_only": false
+            },
+            {
+              "id": "media-39",
+              "type": "image",
+              "file": "profiles/silk-static/images/me/482995630_18086468734595066_4961111825625365107_n.jpg",
+              "url": "profiles/silk-static/images/me/482995630_18086468734595066_4961111825625365107_n.jpg",
+              "thumbnail": "profiles/silk-static/images/me/482995630_18086468734595066_4961111825625365107_n.jpg",
+              "caption": "",
+              "member_only": false
+            },
+            {
+              "id": "media-40",
+              "type": "image",
+              "file": "profiles/silk-static/images/me/48388246_2112386605758273_3696353626369818624_n.jpg",
+              "url": "profiles/silk-static/images/me/48388246_2112386605758273_3696353626369818624_n.jpg",
+              "thumbnail": "profiles/silk-static/images/me/48388246_2112386605758273_3696353626369818624_n.jpg",
+              "caption": "",
+              "member_only": false
+            },
+            {
+              "id": "media-41",
+              "type": "image",
+              "file": "profiles/silk-static/images/me/48389509_2114025102261090_1612467556281483264_n.jpg",
+              "url": "profiles/silk-static/images/me/48389509_2114025102261090_1612467556281483264_n.jpg",
+              "thumbnail": "profiles/silk-static/images/me/48389509_2114025102261090_1612467556281483264_n.jpg",
+              "caption": "",
+              "member_only": false
+            },
+            {
+              "id": "media-42",
+              "type": "image",
+              "file": "profiles/silk-static/images/me/48923727_2116865415310392_621566288392617984_n.jpg",
+              "url": "profiles/silk-static/images/me/48923727_2116865415310392_621566288392617984_n.jpg",
+              "thumbnail": "profiles/silk-static/images/me/48923727_2116865415310392_621566288392617984_n.jpg",
+              "caption": "",
+              "member_only": false
+            },
+            {
+              "id": "media-43",
+              "type": "image",
+              "file": "profiles/silk-static/images/me/49005370_2121942371469363_5932286142941495296_n.jpg",
+              "url": "profiles/silk-static/images/me/49005370_2121942371469363_5932286142941495296_n.jpg",
+              "thumbnail": "profiles/silk-static/images/me/49005370_2121942371469363_5932286142941495296_n.jpg",
+              "caption": "",
+              "member_only": false
+            },
+            {
+              "id": "media-44",
+              "type": "image",
+              "file": "profiles/silk-static/images/me/49031540_2123478631315737_4085653383384399872_n.jpg",
+              "url": "profiles/silk-static/images/me/49031540_2123478631315737_4085653383384399872_n.jpg",
+              "thumbnail": "profiles/silk-static/images/me/49031540_2123478631315737_4085653383384399872_n.jpg",
+              "caption": "",
+              "member_only": false
+            },
+            {
+              "id": "media-45",
+              "type": "image",
+              "file": "profiles/silk-static/images/me/49136540_2118058968524370_8527773809497866240_n.jpg",
+              "url": "profiles/silk-static/images/me/49136540_2118058968524370_8527773809497866240_n.jpg",
+              "thumbnail": "profiles/silk-static/images/me/49136540_2118058968524370_8527773809497866240_n.jpg",
+              "caption": "",
+              "member_only": false
+            },
+            {
+              "id": "media-46",
+              "type": "image",
+              "file": "profiles/silk-static/images/me/49429038_2131913557138911_4290909604172267520_n.jpg",
+              "url": "profiles/silk-static/images/me/49429038_2131913557138911_4290909604172267520_n.jpg",
+              "thumbnail": "profiles/silk-static/images/me/49429038_2131913557138911_4290909604172267520_n.jpg",
+              "caption": "",
+              "member_only": false
+            },
+            {
+              "id": "media-47",
+              "type": "image",
+              "file": "profiles/silk-static/images/me/49725075_2128100690853531_2854815567095791616_n.jpg",
+              "url": "profiles/silk-static/images/me/49725075_2128100690853531_2854815567095791616_n.jpg",
+              "thumbnail": "profiles/silk-static/images/me/49725075_2128100690853531_2854815567095791616_n.jpg",
+              "caption": "",
+              "member_only": false
+            },
+            {
+              "id": "media-48",
+              "type": "image",
+              "file": "profiles/silk-static/images/me/510318953_18095746054595066_2749069658951221437_n.jpg",
+              "url": "profiles/silk-static/images/me/510318953_18095746054595066_2749069658951221437_n.jpg",
+              "thumbnail": "profiles/silk-static/images/me/510318953_18095746054595066_2749069658951221437_n.jpg",
+              "caption": "",
+              "member_only": false
+            },
+            {
+              "id": "media-49",
+              "type": "image",
+              "file": "profiles/silk-static/images/me/53176156_2157711814559085_389825942047948800_n.jpg",
+              "url": "profiles/silk-static/images/me/53176156_2157711814559085_389825942047948800_n.jpg",
+              "thumbnail": "profiles/silk-static/images/me/53176156_2157711814559085_389825942047948800_n.jpg",
+              "caption": "",
+              "member_only": false
+            },
+            {
+              "id": "media-50",
+              "type": "image",
+              "file": "profiles/silk-static/images/me/54349904_2171313169865616_1972156563216924672_n.jpg",
+              "url": "profiles/silk-static/images/me/54349904_2171313169865616_1972156563216924672_n.jpg",
+              "thumbnail": "profiles/silk-static/images/me/54349904_2171313169865616_1972156563216924672_n.jpg",
+              "caption": "",
+              "member_only": false
+            },
+            {
+              "id": "media-51",
+              "type": "image",
+              "file": "profiles/silk-static/images/me/54419082_2170935173236749_2246742824701657088_n.jpg",
+              "url": "profiles/silk-static/images/me/54419082_2170935173236749_2246742824701657088_n.jpg",
+              "thumbnail": "profiles/silk-static/images/me/54419082_2170935173236749_2246742824701657088_n.jpg",
+              "caption": "",
+              "member_only": false
+            },
+            {
+              "id": "media-52",
+              "type": "image",
+              "file": "profiles/silk-static/images/me/54518785_2173838042946462_1810242352061612032_n.jpg",
+              "url": "profiles/silk-static/images/me/54518785_2173838042946462_1810242352061612032_n.jpg",
+              "thumbnail": "profiles/silk-static/images/me/54518785_2173838042946462_1810242352061612032_n.jpg",
+              "caption": "",
+              "member_only": false
+            },
+            {
+              "id": "media-53",
+              "type": "image",
+              "file": "profiles/silk-static/images/me/54730434_2174466336216966_4861863074530852864_n.jpg",
+              "url": "profiles/silk-static/images/me/54730434_2174466336216966_4861863074530852864_n.jpg",
+              "thumbnail": "profiles/silk-static/images/me/54730434_2174466336216966_4861863074530852864_n.jpg",
+              "caption": "",
+              "member_only": false
+            },
+            {
+              "id": "media-54",
+              "type": "image",
+              "file": "profiles/silk-static/images/me/548874973_18103443664595066_3766819020834034854_n.jpg",
+              "url": "profiles/silk-static/images/me/548874973_18103443664595066_3766819020834034854_n.jpg",
+              "thumbnail": "profiles/silk-static/images/me/548874973_18103443664595066_3766819020834034854_n.jpg",
+              "caption": "",
+              "member_only": false
+            },
+            {
+              "id": "media-55",
+              "type": "image",
+              "file": "profiles/silk-static/images/me/55464982_2173837772946489_8241642220654952448_n.jpg",
+              "url": "profiles/silk-static/images/me/55464982_2173837772946489_8241642220654952448_n.jpg",
+              "thumbnail": "profiles/silk-static/images/me/55464982_2173837772946489_8241642220654952448_n.jpg",
+              "caption": "",
+              "member_only": false
+            },
+            {
+              "id": "media-56",
+              "type": "image",
+              "file": "profiles/silk-static/images/me/55576075_2178036639193269_5905645822309040128_n.jpg",
+              "url": "profiles/silk-static/images/me/55576075_2178036639193269_5905645822309040128_n.jpg",
+              "thumbnail": "profiles/silk-static/images/me/55576075_2178036639193269_5905645822309040128_n.jpg",
+              "caption": "",
+              "member_only": false
+            },
+            {
+              "id": "media-57",
+              "type": "image",
+              "file": "profiles/silk-static/images/me/55708861_2178037259193207_5843590004512653312_n.jpg",
+              "url": "profiles/silk-static/images/me/55708861_2178037259193207_5843590004512653312_n.jpg",
+              "thumbnail": "profiles/silk-static/images/me/55708861_2178037259193207_5843590004512653312_n.jpg",
+              "caption": "",
+              "member_only": false
+            },
+            {
+              "id": "media-58",
+              "type": "image",
+              "file": "profiles/silk-static/images/me/55711571_2178036705859929_6245183684505239552_n.jpg",
+              "url": "profiles/silk-static/images/me/55711571_2178036705859929_6245183684505239552_n.jpg",
+              "thumbnail": "profiles/silk-static/images/me/55711571_2178036705859929_6245183684505239552_n.jpg",
+              "caption": "",
+              "member_only": false
+            },
+            {
+              "id": "media-59",
+              "type": "image",
+              "file": "profiles/silk-static/images/me/55726136_2178027955860804_8270718603788025856_n.jpg",
+              "url": "profiles/silk-static/images/me/55726136_2178027955860804_8270718603788025856_n.jpg",
+              "thumbnail": "profiles/silk-static/images/me/55726136_2178027955860804_8270718603788025856_n.jpg",
+              "caption": "",
+              "member_only": false
+            },
+            {
+              "id": "media-60",
+              "type": "image",
+              "file": "profiles/silk-static/images/me/55786367_2178037525859847_3868181558347169792_n.jpg",
+              "url": "profiles/silk-static/images/me/55786367_2178037525859847_3868181558347169792_n.jpg",
+              "thumbnail": "profiles/silk-static/images/me/55786367_2178037525859847_3868181558347169792_n.jpg",
+              "caption": "",
+              "member_only": false
+            },
+            {
+              "id": "media-61",
+              "type": "image",
+              "file": "profiles/silk-static/images/me/55875513_2178036765859923_1284570631710441472_n.jpg",
+              "url": "profiles/silk-static/images/me/55875513_2178036765859923_1284570631710441472_n.jpg",
+              "thumbnail": "profiles/silk-static/images/me/55875513_2178036765859923_1284570631710441472_n.jpg",
+              "caption": "",
+              "member_only": false
+            },
+            {
+              "id": "media-62",
+              "type": "image",
+              "file": "profiles/silk-static/images/me/56874442_2186911448305788_4731191984495001600_n.jpg",
+              "url": "profiles/silk-static/images/me/56874442_2186911448305788_4731191984495001600_n.jpg",
+              "thumbnail": "profiles/silk-static/images/me/56874442_2186911448305788_4731191984495001600_n.jpg",
+              "caption": "",
+              "member_only": false
+            },
+            {
+              "id": "media-63",
+              "type": "image",
+              "file": "profiles/silk-static/images/me/56874517_2182473552082911_7192247698672582656_n.jpg",
+              "url": "profiles/silk-static/images/me/56874517_2182473552082911_7192247698672582656_n.jpg",
+              "thumbnail": "profiles/silk-static/images/me/56874517_2182473552082911_7192247698672582656_n.jpg",
+              "caption": "",
+              "member_only": false
+            },
+            {
+              "id": "media-64",
+              "type": "image",
+              "file": "profiles/silk-static/images/me/60071299_2204861856510747_5156271464785117184_n.jpg",
+              "url": "profiles/silk-static/images/me/60071299_2204861856510747_5156271464785117184_n.jpg",
+              "thumbnail": "profiles/silk-static/images/me/60071299_2204861856510747_5156271464785117184_n.jpg",
+              "caption": "",
+              "member_only": false
+            },
+            {
+              "id": "media-65",
+              "type": "image",
+              "file": "profiles/silk-static/images/me/60356819_2210264615970471_4592944752537632768_n.jpg",
+              "url": "profiles/silk-static/images/me/60356819_2210264615970471_4592944752537632768_n.jpg",
+              "thumbnail": "profiles/silk-static/images/me/60356819_2210264615970471_4592944752537632768_n.jpg",
+              "caption": "",
+              "member_only": false
+            },
+            {
+              "id": "media-66",
+              "type": "image",
+              "file": "profiles/silk-static/images/me/61157631_2216860871977512_7811569338372063232_n.jpg",
+              "url": "profiles/silk-static/images/me/61157631_2216860871977512_7811569338372063232_n.jpg",
+              "thumbnail": "profiles/silk-static/images/me/61157631_2216860871977512_7811569338372063232_n.jpg",
+              "caption": "",
+              "member_only": false
+            },
+            {
+              "id": "media-67",
+              "type": "image",
+              "file": "profiles/silk-static/images/me/61262402_2215514278778838_6996218996076838912_n.jpg",
+              "url": "profiles/silk-static/images/me/61262402_2215514278778838_6996218996076838912_n.jpg",
+              "thumbnail": "profiles/silk-static/images/me/61262402_2215514278778838_6996218996076838912_n.jpg",
+              "caption": "",
+              "member_only": false
+            },
+            {
+              "id": "media-68",
+              "type": "image",
+              "file": "profiles/silk-static/images/me/61368880_2216860955310837_5789916790351986688_n.jpg",
+              "url": "profiles/silk-static/images/me/61368880_2216860955310837_5789916790351986688_n.jpg",
+              "thumbnail": "profiles/silk-static/images/me/61368880_2216860955310837_5789916790351986688_n.jpg",
+              "caption": "",
+              "member_only": false
+            },
+            {
+              "id": "media-69",
+              "type": "image",
+              "file": "profiles/silk-static/images/me/61947064_2222108611452738_4340410236130033664_n.jpg",
+              "url": "profiles/silk-static/images/me/61947064_2222108611452738_4340410236130033664_n.jpg",
+              "thumbnail": "profiles/silk-static/images/me/61947064_2222108611452738_4340410236130033664_n.jpg",
+              "caption": "",
+              "member_only": false
+            },
+            {
+              "id": "media-70",
+              "type": "image",
+              "file": "profiles/silk-static/images/me/62086593_2226593451004254_4586579834343260160_n.jpg",
+              "url": "profiles/silk-static/images/me/62086593_2226593451004254_4586579834343260160_n.jpg",
+              "thumbnail": "profiles/silk-static/images/me/62086593_2226593451004254_4586579834343260160_n.jpg",
+              "caption": "",
+              "member_only": false
+            },
+            {
+              "id": "media-71",
+              "type": "image",
+              "file": "profiles/silk-static/images/me/62380152_2229726654024267_64381864709718016_n.jpg",
+              "url": "profiles/silk-static/images/me/62380152_2229726654024267_64381864709718016_n.jpg",
+              "thumbnail": "profiles/silk-static/images/me/62380152_2229726654024267_64381864709718016_n.jpg",
+              "caption": "",
+              "member_only": false
+            },
+            {
+              "id": "media-72",
+              "type": "image",
+              "file": "profiles/silk-static/images/me/62402256_2229726730690926_2207626337038893056_n.jpg",
+              "url": "profiles/silk-static/images/me/62402256_2229726730690926_2207626337038893056_n.jpg",
+              "thumbnail": "profiles/silk-static/images/me/62402256_2229726730690926_2207626337038893056_n.jpg",
+              "caption": "",
+              "member_only": false
+            },
+            {
+              "id": "media-73",
+              "type": "image",
+              "file": "profiles/silk-static/images/me/64216385_2231374090526190_4036532508139978752_n.jpg",
+              "url": "profiles/silk-static/images/me/64216385_2231374090526190_4036532508139978752_n.jpg",
+              "thumbnail": "profiles/silk-static/images/me/64216385_2231374090526190_4036532508139978752_n.jpg",
+              "caption": "",
+              "member_only": false
+            },
+            {
+              "id": "media-74",
+              "type": "image",
+              "file": "profiles/silk-static/images/me/64840731_2230457780617821_4548350540894961664_n.jpg",
+              "url": "profiles/silk-static/images/me/64840731_2230457780617821_4548350540894961664_n.jpg",
+              "thumbnail": "profiles/silk-static/images/me/64840731_2230457780617821_4548350540894961664_n.jpg",
+              "caption": "",
+              "member_only": false
+            },
+            {
+              "id": "media-75",
+              "type": "image",
+              "file": "profiles/silk-static/images/me/65974950_2247080952288837_1552241489042472960_n.jpg",
+              "url": "profiles/silk-static/images/me/65974950_2247080952288837_1552241489042472960_n.jpg",
+              "thumbnail": "profiles/silk-static/images/me/65974950_2247080952288837_1552241489042472960_n.jpg",
+              "caption": "",
+              "member_only": false
+            },
+            {
+              "id": "media-76",
+              "type": "image",
+              "file": "profiles/silk-static/images/me/66153789_2247076785622587_6355435890130550784_n.jpg",
+              "url": "profiles/silk-static/images/me/66153789_2247076785622587_6355435890130550784_n.jpg",
+              "thumbnail": "profiles/silk-static/images/me/66153789_2247076785622587_6355435890130550784_n.jpg",
+              "caption": "",
+              "member_only": false
+            },
+            {
+              "id": "media-77",
+              "type": "image",
+              "file": "profiles/silk-static/images/me/66649165_2251990771797855_170974049529233408_n.jpg",
+              "url": "profiles/silk-static/images/me/66649165_2251990771797855_170974049529233408_n.jpg",
+              "thumbnail": "profiles/silk-static/images/me/66649165_2251990771797855_170974049529233408_n.jpg",
+              "caption": "",
+              "member_only": false
+            },
+            {
+              "id": "media-78",
+              "type": "image",
+              "file": "profiles/silk-static/images/me/67371178_2253522494978016_5190496341180022784_n.jpg",
+              "url": "profiles/silk-static/images/me/67371178_2253522494978016_5190496341180022784_n.jpg",
+              "thumbnail": "profiles/silk-static/images/me/67371178_2253522494978016_5190496341180022784_n.jpg",
+              "caption": "",
+              "member_only": false
+            },
+            {
+              "id": "media-79",
+              "type": "image",
+              "file": "profiles/silk-static/images/me/67544608_2263127607350838_2254358944178765824_n.jpg",
+              "url": "profiles/silk-static/images/me/67544608_2263127607350838_2254358944178765824_n.jpg",
+              "thumbnail": "profiles/silk-static/images/me/67544608_2263127607350838_2254358944178765824_n.jpg",
+              "caption": "",
+              "member_only": false
+            },
+            {
+              "id": "media-80",
+              "type": "image",
+              "file": "profiles/silk-static/images/me/67548929_2263127514017514_8780969007839707136_n.jpg",
+              "url": "profiles/silk-static/images/me/67548929_2263127514017514_8780969007839707136_n.jpg",
+              "thumbnail": "profiles/silk-static/images/me/67548929_2263127514017514_8780969007839707136_n.jpg",
+              "caption": "",
+              "member_only": false
+            },
+            {
+              "id": "media-81",
+              "type": "image",
+              "file": "profiles/silk-static/images/me/67737217_2267694216894177_6477905121639399424_n.jpg",
+              "url": "profiles/silk-static/images/me/67737217_2267694216894177_6477905121639399424_n.jpg",
+              "thumbnail": "profiles/silk-static/images/me/67737217_2267694216894177_6477905121639399424_n.jpg",
+              "caption": "",
+              "member_only": false
+            },
+            {
+              "id": "media-82",
+              "type": "image",
+              "file": "profiles/silk-static/images/me/68343491_2272911313039134_6269353643028250624_n.jpg",
+              "url": "profiles/silk-static/images/me/68343491_2272911313039134_6269353643028250624_n.jpg",
+              "thumbnail": "profiles/silk-static/images/me/68343491_2272911313039134_6269353643028250624_n.jpg",
+              "caption": "",
+              "member_only": false
+            },
+            {
+              "id": "media-83",
+              "type": "image",
+              "file": "profiles/silk-static/images/me/69251398_2277852675878331_6053318338522644480_n.jpg",
+              "url": "profiles/silk-static/images/me/69251398_2277852675878331_6053318338522644480_n.jpg",
+              "thumbnail": "profiles/silk-static/images/me/69251398_2277852675878331_6053318338522644480_n.jpg",
+              "caption": "",
+              "member_only": false
+            },
+            {
+              "id": "media-84",
+              "type": "image",
+              "file": "profiles/silk-static/images/me/69540178_2287938098203122_5852509496240242688_n.jpg",
+              "url": "profiles/silk-static/images/me/69540178_2287938098203122_5852509496240242688_n.jpg",
+              "thumbnail": "profiles/silk-static/images/me/69540178_2287938098203122_5852509496240242688_n.jpg",
+              "caption": "",
+              "member_only": false
+            },
+            {
+              "id": "media-85",
+              "type": "image",
+              "file": "profiles/silk-static/images/me/70734802_2292586517738280_7849728855781670912_n.jpg",
+              "url": "profiles/silk-static/images/me/70734802_2292586517738280_7849728855781670912_n.jpg",
+              "thumbnail": "profiles/silk-static/images/me/70734802_2292586517738280_7849728855781670912_n.jpg",
+              "caption": "",
+              "member_only": false
+            },
+            {
+              "id": "media-86",
+              "type": "image",
+              "file": "profiles/silk-static/images/me/71475332_2312970129033252_6044598107507785728_n.jpg",
+              "url": "profiles/silk-static/images/me/71475332_2312970129033252_6044598107507785728_n.jpg",
+              "thumbnail": "profiles/silk-static/images/me/71475332_2312970129033252_6044598107507785728_n.jpg",
+              "caption": "",
+              "member_only": false
+            },
+            {
+              "id": "media-87",
+              "type": "image",
+              "file": "profiles/silk-static/images/me/71489491_2318131791850419_3818864119629479936_n.jpg",
+              "url": "profiles/silk-static/images/me/71489491_2318131791850419_3818864119629479936_n.jpg",
+              "thumbnail": "profiles/silk-static/images/me/71489491_2318131791850419_3818864119629479936_n.jpg",
+              "caption": "",
+              "member_only": false
+            },
+            {
+              "id": "media-88",
+              "type": "image",
+              "file": "profiles/silk-static/images/me/73197774_2335216946808570_1556990034949701632_n.jpg",
+              "url": "profiles/silk-static/images/me/73197774_2335216946808570_1556990034949701632_n.jpg",
+              "thumbnail": "profiles/silk-static/images/me/73197774_2335216946808570_1556990034949701632_n.jpg",
+              "caption": "",
+              "member_only": false
+            },
+            {
+              "id": "media-89",
+              "type": "image",
+              "file": "profiles/silk-static/images/me/73324879_2350680578595540_3067244786994905088_n.jpg",
+              "url": "profiles/silk-static/images/me/73324879_2350680578595540_3067244786994905088_n.jpg",
+              "thumbnail": "profiles/silk-static/images/me/73324879_2350680578595540_3067244786994905088_n.jpg",
+              "caption": "",
+              "member_only": false
+            },
+            {
+              "id": "media-90",
+              "type": "image",
+              "file": "profiles/silk-static/images/me/73422550_2350680415262223_1580404783603253248_n.jpg",
+              "url": "profiles/silk-static/images/me/73422550_2350680415262223_1580404783603253248_n.jpg",
+              "thumbnail": "profiles/silk-static/images/me/73422550_2350680415262223_1580404783603253248_n.jpg",
+              "caption": "",
+              "member_only": false
+            },
+            {
+              "id": "media-91",
+              "type": "image",
+              "file": "profiles/silk-static/images/me/73528661_2359086171088314_8047886011025326080_n.jpg",
+              "url": "profiles/silk-static/images/me/73528661_2359086171088314_8047886011025326080_n.jpg",
+              "thumbnail": "profiles/silk-static/images/me/73528661_2359086171088314_8047886011025326080_n.jpg",
+              "caption": "",
+              "member_only": false
+            },
+            {
+              "id": "media-92",
+              "type": "image",
+              "file": "profiles/silk-static/images/me/74278929_2335216726808592_2008894669789855744_n.jpg",
+              "url": "profiles/silk-static/images/me/74278929_2335216726808592_2008894669789855744_n.jpg",
+              "thumbnail": "profiles/silk-static/images/me/74278929_2335216726808592_2008894669789855744_n.jpg",
+              "caption": "",
+              "member_only": false
+            },
+            {
+              "id": "media-93",
+              "type": "image",
+              "file": "profiles/silk-static/images/me/74318236_2335216900141908_950867431046250496_n.jpg",
+              "url": "profiles/silk-static/images/me/74318236_2335216900141908_950867431046250496_n.jpg",
+              "thumbnail": "profiles/silk-static/images/me/74318236_2335216900141908_950867431046250496_n.jpg",
+              "caption": "",
+              "member_only": false
+            },
+            {
+              "id": "media-94",
+              "type": "image",
+              "file": "profiles/silk-static/images/me/74568183_2350680665262198_2267170973356654592_n.jpg",
+              "url": "profiles/silk-static/images/me/74568183_2350680665262198_2267170973356654592_n.jpg",
+              "thumbnail": "profiles/silk-static/images/me/74568183_2350680665262198_2267170973356654592_n.jpg",
+              "caption": "",
+              "member_only": false
+            },
+            {
+              "id": "media-95",
+              "type": "image",
+              "file": "profiles/silk-static/images/me/74607628_2335216786808586_3267704564400259072_n.jpg",
+              "url": "profiles/silk-static/images/me/74607628_2335216786808586_3267704564400259072_n.jpg",
+              "thumbnail": "profiles/silk-static/images/me/74607628_2335216786808586_3267704564400259072_n.jpg",
+              "caption": "",
+              "member_only": false
+            },
+            {
+              "id": "media-96",
+              "type": "image",
+              "file": "profiles/silk-static/images/me/74708912_2350680531928878_1694598158593556480_n.jpg",
+              "url": "profiles/silk-static/images/me/74708912_2350680531928878_1694598158593556480_n.jpg",
+              "thumbnail": "profiles/silk-static/images/me/74708912_2350680531928878_1694598158593556480_n.jpg",
+              "caption": "",
+              "member_only": false
+            },
+            {
+              "id": "media-97",
+              "type": "image",
+              "file": "profiles/silk-static/images/me/75442974_2350680471928884_7210446540257624064_n.jpg",
+              "url": "profiles/silk-static/images/me/75442974_2350680471928884_7210446540257624064_n.jpg",
+              "thumbnail": "profiles/silk-static/images/me/75442974_2350680471928884_7210446540257624064_n.jpg",
+              "caption": "",
+              "member_only": false
+            },
+            {
+              "id": "media-98",
+              "type": "image",
+              "file": "profiles/silk-static/images/me/75474039_2350680635262201_5877848604990767104_n.jpg",
+              "url": "profiles/silk-static/images/me/75474039_2350680635262201_5877848604990767104_n.jpg",
+              "thumbnail": "profiles/silk-static/images/me/75474039_2350680635262201_5877848604990767104_n.jpg",
+              "caption": "",
+              "member_only": false
+            },
+            {
+              "id": "media-99",
+              "type": "image",
+              "file": "profiles/silk-static/images/me/75580237_2350680381928893_5587753186535407616_n.jpg",
+              "url": "profiles/silk-static/images/me/75580237_2350680381928893_5587753186535407616_n.jpg",
+              "thumbnail": "profiles/silk-static/images/me/75580237_2350680381928893_5587753186535407616_n.jpg",
+              "caption": "",
+              "member_only": false
+            },
+            {
+              "id": "media-100",
+              "type": "image",
+              "file": "profiles/silk-static/images/me/76905974_2350681445262120_1154560223608832_n.jpg",
+              "url": "profiles/silk-static/images/me/76905974_2350681445262120_1154560223608832_n.jpg",
+              "thumbnail": "profiles/silk-static/images/me/76905974_2350681445262120_1154560223608832_n.jpg",
+              "caption": "",
+              "member_only": false
+            },
+            {
+              "id": "media-101",
+              "type": "video",
+              "file": "profiles/silk-static/images/me/AQNa3AIgTq4pCTQ4BamKZbUAkl0bDycuucafvtQRtRN80hHGUGTxA0Gm05f3Kt42UyVPq2MtjRQbVGZlNT7RvR_tXvNOUZoh.mp4",
+              "url": "profiles/silk-static/images/me/AQNa3AIgTq4pCTQ4BamKZbUAkl0bDycuucafvtQRtRN80hHGUGTxA0Gm05f3Kt42UyVPq2MtjRQbVGZlNT7RvR_tXvNOUZoh.mp4",
+              "caption": "",
+              "member_only": false
+            },
+            {
+              "id": "media-102",
+              "type": "video",
+              "file": "profiles/silk-static/images/me/AQO5j2kIwqueafH-XMqStBTfAvF97ZX44Ab4UK3NCGZg3NxE7b3u94IfBax5R8D_wQj7BZmgAheG-SJrobcw2fMEMm8RHoOG.mp4",
+              "url": "profiles/silk-static/images/me/AQO5j2kIwqueafH-XMqStBTfAvF97ZX44Ab4UK3NCGZg3NxE7b3u94IfBax5R8D_wQj7BZmgAheG-SJrobcw2fMEMm8RHoOG.mp4",
+              "caption": "",
+              "member_only": false
+            },
+            {
+              "id": "media-103",
+              "type": "video",
+              "file": "profiles/silk-static/images/me/AQPMl-zoQlCVkGT2rgwZn-pGzMEiEt-R9_dgfa5_HiXBcAMt-Jyx0O8yONUAde3IVsWyx2lbwN1qzAQKUvRr4y7_eEty48iD.mp4",
+              "url": "profiles/silk-static/images/me/AQPMl-zoQlCVkGT2rgwZn-pGzMEiEt-R9_dgfa5_HiXBcAMt-Jyx0O8yONUAde3IVsWyx2lbwN1qzAQKUvRr4y7_eEty48iD.mp4",
+              "caption": "",
+              "member_only": false
+            },
+            {
+              "id": "media-104",
+              "type": "video",
+              "file": "profiles/silk-static/images/me/Filencia Williams II filencia_williams Instagram reel (1).mp4",
+              "url": "profiles/silk-static/images/me/Filencia Williams II filencia_williams Instagram reel (1).mp4",
+              "caption": "",
+              "member_only": false
+            },
+            {
+              "id": "media-105",
+              "type": "video",
+              "file": "profiles/silk-static/images/me/Filencia Williams II filencia_williams Instagram reel.mp4",
+              "url": "profiles/silk-static/images/me/Filencia Williams II filencia_williams Instagram reel.mp4",
+              "caption": "",
+              "member_only": false
+            }
+          ],
+          "price": 0,
+          "auto_generated": true
         }
       ],
       "videos": [
@@ -697,10 +1955,10 @@
           "id": "video-ss-003",
           "title": "The Work Behind a Polished Image",
           "description": "An honest look at planning, preparation, retakes, editing, and the people involved in producing elegant content.",
+          "video_path": null,
           "thumbnail_path": "profiles/silk-static/images/video-thumb-3.svg",
           "published_at": "2026-07-08",
-          "member_only": true,
-          "video_path": null
+          "member_only": true
         }
       ],
       "blogs": [
@@ -745,12 +2003,13 @@
           "slug": "what-people-dont-see-before-final-photograph",
           "title": "What People Do Not See Before the Final Photograph",
           "summary": "The planning, mistakes, lighting problems, outfit changes, and creative decisions behind one finished image.",
+          "content": null,
           "published_at": "2026-07-01",
+          "header_image": null,
           "author": "Kiara Naidoo",
           "member_only": true,
           "published": true,
-          "content": null,
-          "header_image": null
+          "image": null
         }
       ],
       "membership": {
@@ -831,10 +2090,55 @@
           "active": true
         }
       ],
-      "published": true
+      "published": true,
+      "folderName": "silk-static"
     },
     {
-      "id": "velvet-harbour-001",
+      "name": "Creator Name",
+      "niche": "Beauty & Lifestyle",
+      "theme": "dark-cyber",
+      "assets": {
+        "hero": "path/to/hero.jpg",
+        "avatar": "path/to/avatar.jpg"
+      },
+      "social_links": {
+        "instagram": "@creator",
+        "tiktok": "@creator"
+      },
+      "albums": [
+        {
+          "title": "My Daily Routine",
+          "description": "Watch my daily routine in 4k.",
+          "price": 0,
+          "media": [
+            {
+              "id": "media-1",
+              "type": "video",
+              "file": "profiles/_template/videos/sample.mp4",
+              "url": "profiles/_template/videos/sample.mp4",
+              "thumbnail": "profiles/_template/images/sample_thumb.jpg",
+              "caption": "",
+              "member_only": false
+            }
+          ]
+        }
+      ],
+      "blogs": [
+        {
+          "title": "Welcome to my new blog!",
+          "content": "This is my first post on my new platform. Stay tuned for more!",
+          "date": "2026-07-01",
+          "image": "profiles/_template/images/blog_header.jpg"
+        }
+      ],
+      "id": "github_testcreator",
+      "slug": "testcreator",
+      "folderName": "TestCreator",
+      "published": true,
+      "videos": []
+    },
+    {
+      "id": "github_velvet-harbour",
       "slug": "velvet-harbour",
       "name": "VelvetHarbour",
       "tagline": "Details define the experience. I find them, so you don't have to.",
@@ -868,6 +2172,33 @@
           "description": "Photography from Zambia, Tanzania, and Mauritius — luxury and authentic local experience.",
           "cover_image": "profiles/velvet-harbour/images/album2-cover.svg",
           "media": []
+        },
+        {
+          "id": "album-all-videos",
+          "title": "All Videos",
+          "description": "Creator videos",
+          "media": [
+            {
+              "id": "media-1",
+              "type": "image",
+              "file": "profiles/velvet-harbour/images/video-thumb.svg",
+              "url": "profiles/velvet-harbour/images/video-thumb.svg",
+              "thumbnail": "profiles/velvet-harbour/images/video-thumb.svg",
+              "caption": "What Makes a Hotel Worth Its Rate: A Room-by-Room Checklist",
+              "member_only": false
+            },
+            {
+              "id": "media-2",
+              "type": "image",
+              "file": "profiles/velvet-harbour/images/video-thumb2.svg",
+              "url": "profiles/velvet-harbour/images/video-thumb2.svg",
+              "thumbnail": "profiles/velvet-harbour/images/video-thumb2.svg",
+              "caption": "Cape Town's Best Kept Restaurants: My Private List",
+              "member_only": true
+            }
+          ],
+          "price": 0,
+          "auto_generated": true
         }
       ],
       "videos": [
@@ -884,10 +2215,10 @@
           "id": "video-vh-002",
           "title": "Cape Town's Best Kept Restaurants: My Private List",
           "description": "Restaurants I genuinely recommend — not sponsored, not paid for, just places I return to.",
+          "video_path": null,
           "thumbnail_path": "profiles/velvet-harbour/images/video-thumb2.svg",
           "published_at": "2026-06-15",
-          "member_only": true,
-          "video_path": null
+          "member_only": true
         }
       ],
       "blogs": [
@@ -922,10 +2253,11 @@
           "active": true
         }
       ],
-      "published": true
+      "published": true,
+      "folderName": "velvet-harbour"
     },
     {
-      "id": "velvet-voltage-001",
+      "id": "github_velvet-voltage",
       "slug": "velvet-voltage",
       "name": "VelvetVoltage",
       "tagline": "Turning second-hand into first-rate — fashion for every pocket.",
@@ -959,6 +2291,33 @@
           "description": "Photos from my Saturday workshops at the Khayelitsha community centre.",
           "cover_image": "profiles/velvet-voltage/images/album2-cover.svg",
           "media": []
+        },
+        {
+          "id": "album-all-videos",
+          "title": "All Videos",
+          "description": "Creator videos",
+          "media": [
+            {
+              "id": "media-1",
+              "type": "image",
+              "file": "profiles/velvet-voltage/images/video-thumb.svg",
+              "url": "profiles/velvet-voltage/images/video-thumb.svg",
+              "thumbnail": "profiles/velvet-voltage/images/video-thumb.svg",
+              "caption": "Thrift & Transform: Episode 1",
+              "member_only": false
+            },
+            {
+              "id": "media-2",
+              "type": "image",
+              "file": "profiles/velvet-voltage/images/video-thumb2.svg",
+              "url": "profiles/velvet-voltage/images/video-thumb2.svg",
+              "thumbnail": "profiles/velvet-voltage/images/video-thumb2.svg",
+              "caption": "How I Price My Sewing Services",
+              "member_only": true
+            }
+          ],
+          "price": 0,
+          "auto_generated": true
         }
       ],
       "videos": [
@@ -975,10 +2334,10 @@
           "id": "video-vv-002",
           "title": "How I Price My Sewing Services",
           "description": "Real numbers, real talk about charging what your work is worth.",
+          "video_path": null,
           "thumbnail_path": "profiles/velvet-voltage/images/video-thumb2.svg",
           "published_at": "2026-06-15",
-          "member_only": true,
-          "video_path": null
+          "member_only": true
         }
       ],
       "blogs": [
@@ -999,12 +2358,13 @@
           "slug": "pricing-your-work",
           "title": "Stop Undercharging: A Young Seamstress's Manifesto",
           "summary": "Why we underprice our creative work and how to stop.",
+          "content": null,
           "published_at": "2026-06-01",
+          "header_image": null,
           "author": "Zanele Nkomo",
           "member_only": true,
           "published": true,
-          "content": null,
-          "header_image": null
+          "image": null
         }
       ],
       "membership": {
@@ -1025,10 +2385,11 @@
           "active": true
         }
       ],
-      "published": true
+      "published": true,
+      "folderName": "velvet-voltage"
     },
     {
-      "id": "wild-juniper-001",
+      "id": "github_wild-juniper",
       "slug": "wild-juniper",
       "name": "WildJuniper",
       "tagline": "Baking as love language. South African flavour, contemporary form.",
@@ -1062,6 +2423,33 @@
           "description": "My experimental bakes — South African flavours in new forms.",
           "cover_image": "profiles/wild-juniper/images/album2-cover.svg",
           "media": []
+        },
+        {
+          "id": "album-all-videos",
+          "title": "All Videos",
+          "description": "Creator videos",
+          "media": [
+            {
+              "id": "media-1",
+              "type": "image",
+              "file": "profiles/wild-juniper/images/video-thumb.svg",
+              "url": "profiles/wild-juniper/images/video-thumb.svg",
+              "thumbnail": "profiles/wild-juniper/images/video-thumb.svg",
+              "caption": "Making Malva Pudding Three Ways",
+              "member_only": false
+            },
+            {
+              "id": "media-2",
+              "type": "image",
+              "file": "profiles/wild-juniper/images/video-thumb2.svg",
+              "url": "profiles/wild-juniper/images/video-thumb2.svg",
+              "thumbnail": "profiles/wild-juniper/images/video-thumb2.svg",
+              "caption": "How I Plan and Cost a Pop-Up Dinner",
+              "member_only": true
+            }
+          ],
+          "price": 0,
+          "auto_generated": true
         }
       ],
       "videos": [
@@ -1078,10 +2466,10 @@
           "id": "video-wj-002",
           "title": "How I Plan and Cost a Pop-Up Dinner",
           "description": "The full business side: menu costing, venue setup, ticketing, and what I have learned.",
+          "video_path": null,
           "thumbnail_path": "profiles/wild-juniper/images/video-thumb2.svg",
           "published_at": "2026-06-15",
-          "member_only": true,
-          "video_path": null
+          "member_only": true
         }
       ],
       "blogs": [
@@ -1116,7 +2504,8 @@
           "active": true
         }
       ],
-      "published": true
+      "published": true,
+      "folderName": "wild-juniper"
     }
   ]
 }
