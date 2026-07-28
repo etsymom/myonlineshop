@@ -277,6 +277,7 @@
     <!-- Videos will be injected here via JS -->
   </div>
 
+  <script src="curated-profiles.js"></script>
   <script>
     const supabaseClient = supabase.createClient(
       "https://ndfqavpmqahdqpsqndbz.supabase.co",
@@ -331,47 +332,40 @@
 
       // Fetch Static Curated Profiles
       try {
-        const res = await fetch('data/curated_profiles.json');
-        if (res.ok) {
-          const curated = await res.json();
-          if (curated && curated.profiles) {
-            curated.profiles.forEach(p => {
-              profilesMap[p.id] = { name: p.name, avatar: p.assets?.avatar || 'https://ui-avatars.com/api/?name=C' };
-              if (p.albums) {
-                p.albums.forEach(album => {
-                  allAlbums.push({
-                    id: album.id,
-                    user_id: p.id,
-                    title: album.title,
-                    description: album.description,
-                    price_zar: 0, 
-                    created_at: p.published_at || new Date().toISOString(),
-                    album_media: (album.media || []).map(m => ({
-                      media_url: m.file,
-                      media_type: m.type
-                    })),
-                    cover_image_url: album.cover_image
-                  });
-                });
-              }
-              // Also add standalone videos to a dummy album so they show in feed
-              if (p.videos && p.videos.length > 0) {
-                 allAlbums.push({
-                    id: p.id + "-videos",
-                    user_id: p.id,
-                    title: p.name + " Videos",
-                    description: p.membership?.free_content_description || "Watch this amazing free video from our community!",
-                    price_zar: 0,
-                    created_at: p.published_at || new Date().toISOString(),
-                    album_media: p.videos.map(v => ({
-                      media_url: v.video_path,
-                      media_type: 'video'
-                    }))
-                 });
-              }
+        const { profiles: curatedProfiles } = await CuratedProfiles.load();
+        curatedProfiles.forEach(p => {
+          profilesMap[p.id] = { name: p.name, avatar: p.assets.avatar_src || 'https://ui-avatars.com/api/?name=C' };
+          p.albums.forEach(album => {
+            allAlbums.push({
+              id: album.id,
+              user_id: p.id,
+              title: album.title,
+              description: album.description,
+              price_zar: 0,
+              created_at: p.published_at || new Date().toISOString(),
+              album_media: album.media.map(m => ({
+                media_url: m.src,
+                media_type: m.type
+              })),
+              cover_image_url: album.cover_src
+            });
+          });
+          // Also add standalone videos to a dummy album so they show in feed
+          if (p.videos.length > 0) {
+            allAlbums.push({
+              id: p.id + "-videos",
+              user_id: p.id,
+              title: p.name + " Videos",
+              description: p.membership?.free_content_description || "Watch this amazing free video from our community!",
+              price_zar: 0,
+              created_at: p.published_at || new Date().toISOString(),
+              album_media: p.videos.map(v => ({
+                media_url: v.video_src,
+                media_type: 'video'
+              }))
             });
           }
-        }
+        });
       } catch (e) {
         console.warn("Could not load curated profiles:", e);
       }

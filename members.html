@@ -417,6 +417,7 @@
 
   <div id="inkwell-footer-mount"></div>
   <script src="inkwell-layout.js"></script>
+  <script src="curated-profiles.js"></script>
   <script src="locale.js?v=3"></script>
   <script src="geo-pricing.js?v=3"></script>
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
@@ -481,32 +482,25 @@
 
       // Fetch Static Curated Profiles
       try {
-        const res = await fetch('data/curated_profiles.json');
-        if (res.ok) {
-          const curated = await res.json();
-          if (curated && curated.profiles) {
-            curated.profiles.forEach(p => {
-              profileMap[p.id] = { name: p.name, avatar: p.assets?.avatar || 'https://ui-avatars.com/api/?name=C' };
-              if (p.albums) {
-                p.albums.forEach(album => {
-                  allAlbums.push({
-                    id: album.id,
-                    user_id: p.id,
-                    title: album.title,
-                    description: album.description,
-                    price_zar: 0, 
-                    created_at: p.published_at || new Date().toISOString(),
-                    album_media: (album.media || []).map(m => ({
-                      media_url: m.file,
-                      media_type: m.type
-                    })),
-                    cover_image_url: album.cover_image
-                  });
-                });
-              }
+        const { profiles: curatedProfiles } = await CuratedProfiles.load();
+        curatedProfiles.forEach(p => {
+          profileMap[p.id] = { name: p.name, avatar: p.assets.avatar_src || 'https://ui-avatars.com/api/?name=C' };
+          p.albums.forEach(album => {
+            allAlbums.push({
+              id: album.id,
+              user_id: p.id,
+              title: album.title,
+              description: album.description,
+              price_zar: 0,
+              created_at: p.published_at || new Date().toISOString(),
+              album_media: album.media.map(m => ({
+                media_url: m.src,
+                media_type: m.type
+              })),
+              cover_image_url: album.cover_src
             });
-          }
-        }
+          });
+        });
       } catch (e) {
         console.warn("Could not load curated profiles:", e);
       }
