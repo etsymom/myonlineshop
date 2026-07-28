@@ -26,7 +26,7 @@ InkwellMedia includes a file-based creator profile publishing system that is ind
 2. Edit `profiles/<creator-slug>/text/template.json`
 3. Add media to the `images/`, `videos/`, `blog-posts/` sub-folders
 4. Run `node scripts/compile_profiles.js`
-5. The output `data/curated_profiles.json` is loaded by `creators.html` and `creator-profile.html`
+5. The output `data/curated_profiles.json` is loaded (via `curated-profiles.js`) by `creators.html`, `creator.html`, `explore.html`, `members.html`, and `index.html`
 
 ### Commands
 
@@ -53,7 +53,7 @@ npm run profiles:test
 | `scripts/test_compile_profiles.js` | Unit tests for the compiler |
 | `data/curated_profiles.json` | Generated output — loaded by the website |
 | `creators.html` | Public creator discovery page |
-| `creator-profile.html` | Public static creator profile page (`?slug=`) |
+| `creator.html` | Public creator profile (`?id=github_<slug>` for curated creators, `?id=<uuid>` for Supabase creators) |
 
 See `profiles/README.md` for full documentation.
 
@@ -66,8 +66,7 @@ See `profiles/README.md` for full documentation.
 | `landing.html` | Marketing home page |
 | `index.html` | Sign-in / sign-up |
 | `members.html` | Authenticated member dashboard |
-| `creator.html` | Supabase-backed creator profile (`?id=<uuid>`, requires auth) |
-| `creator-profile.html` | Static creator profile (`?slug=`, no auth required) |
+| `creator.html` | Creator profile — Supabase-backed (`?id=<uuid>`, requires auth) or curated JSON (`?id=github_<slug>`) |
 | `creators.html` | Static creator discovery / listing page |
 | `profile.html` | Logged-in user's own profile |
 | `explore.html` | Content discovery feed |

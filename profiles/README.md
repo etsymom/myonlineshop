@@ -211,7 +211,7 @@ npx serve .
 
 Then open:
 - `http://localhost:8080/creators.html` -- creator listing
-- `http://localhost:8080/creator-profile.html?slug=your-creator-slug` -- individual profile
+- `http://localhost:8080/creator.html?id=github_your-creator-slug` -- individual profile
 
 ---
 
