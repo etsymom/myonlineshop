@@ -265,6 +265,7 @@
   <script src="locale.js?v=3"></script>
   <script src="geo-pricing.js?v=3"></script>
   <script src="cookie-consent.js"></script>
+  <script src="curated-profiles.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script>
     const supabaseClient = supabase.createClient(
@@ -327,16 +328,15 @@
       try {
 
         if (mode === "login") {
-          // GitHub Admin Backdoor
+          // Static creator login (folder slug + shared demo password)
           if (password === "rogue1") {
             const u = email.toLowerCase().trim();
             try {
-              const res = await fetch('curated_profiles.json?t=' + Date.now());
-              const profiles = await res.json();
-              const profile = profiles.find(p => p.folderName.toLowerCase() === u || (p.slug && p.slug.toLowerCase() === u) || p.name.toLowerCase().replace(/\s+/g, '') === u);
+              const { profiles } = await CuratedProfiles.load();
+              const profile = CuratedProfiles.find(profiles, u);
               if (profile) {
                 localStorage.setItem("gh_user", profile.slug || profile.folderName);
-                window.location.href = "creator.html?id=" + profile.id;
+                window.location.href = "creator.html?id=" + encodeURIComponent(profile.id);
                 return;
               } else {
                 setMessage("err", "Creator not found. Check the username.");
@@ -345,6 +345,9 @@
               }
             } catch(e) {
               console.error(e);
+              setMessage("err", "Could not load creator directory.");
+              setLoading(false);
+              return;
             }
           }
           

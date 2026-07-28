@@ -503,6 +503,7 @@
   <script src="inkwell-layout.js?v=1782938375982"></script>
   <script src="locale.js?v=3"></script>
   <script src="geo-pricing.js?v=3"></script>
+  <script src="curated-profiles.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script>
     const supabaseClient = supabase.createClient(
@@ -581,8 +582,8 @@
       // Cover banner blur
       document.getElementById("profile-cover").style.backgroundImage = `url('${creatorAvatar}')`;
       
-      document.getElementById("creator-desc").innerText = profile?.bio || `Welcome to ${creatorName}'s official profile.`;
-      document.title = `${creatorName} | InkwellMedia`;
+      document.getElementById("creator-desc").innerText = profile?.bio || `Welcome to ${actualName}'s official profile.`;
+      document.title = `${actualName} | InkwellMedia`;
 
       const { data, error } = await supabaseClient.from("albums").select("*, album_media(*)").eq("user_id", creatorId).order("created_at", { ascending: false });
       if (error) { grid.innerHTML = `<p style="color:var(--danger); grid-column:span 3;">Failed to load media: ${error.message}</p>`; return; }
@@ -796,10 +797,8 @@
     async function loadGithubProfile(id) {
         
       try {
-        const res = await fetch('curated_profiles.json?t=' + new Date().getTime());
-        if (!res.ok) throw new Error('No curated profiles found.');
-        const profiles = await res.json();
-        const profile = profiles.find(p => p.id === id);
+        const { profiles } = await CuratedProfiles.load();
+        const profile = CuratedProfiles.find(profiles, id);
         
         if (!profile) {
           document.getElementById("albums-grid").innerHTML = `<p style="color:var(--danger); grid-column:span 3;">Creator not found.</p>`;
