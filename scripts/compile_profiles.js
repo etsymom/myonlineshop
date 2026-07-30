@@ -5,11 +5,16 @@
  * InkwellMedia profile compiler
  *
  * Reads profiles/<slug>/text/template.json (or text folder/template.json),
- * auto-discovers media in images/ and videos/ subfolders, and writes the
- * single canonical output:
- *   - data/curated_profiles.json  ({ _generated, _count, profiles })
+ * auto-discovers media in images/ and videos/ subfolders, and writes:
+ *   - data/curated_profiles.json  ({ _generated, _count, profiles }) — canonical
+ *   - share/<slug>.html + share/<slug>/<album-id>.html — static OG share-landing
+ *     pages (real per-creator/per-album meta tags for social crawlers, since
+ *     creator.html is one static file with no server-side rendering)
+ *   - share/assets/<slug>/*.jpg — compile-time-generated OG preview images
+ *     (dim + padlock "locked" teaser for member_only albums, real cover otherwise)
  *
- * All pages load this file via curated-profiles.js (window.CuratedProfiles).
+ * All pages load data/curated_profiles.json via curated-profiles.js
+ * (window.CuratedProfiles).
  *
  * Usage:
  *   node scripts/compile_profiles.js
@@ -18,14 +23,23 @@
 
 const fs = require('fs');
 const path = require('path');
+const sharp = require('sharp');
 
 const ROOT = path.join(__dirname, '..');
 const profilesDir = path.join(ROOT, 'profiles');
 const dataOutputFile = path.join(ROOT, 'data', 'curated_profiles.json');
+const shareDir = path.join(ROOT, 'share');
+const shareAssetsDir = path.join(shareDir, 'assets');
 
 const IMAGE_EXTS = new Set(['.jpg', '.jpeg', '.png', '.webp', '.gif', '.svg', '.avif']);
 const VIDEO_EXTS = new Set(['.mp4', '.webm', '.mov', '.m4v']);
 const SKIP_DIRS = new Set(['_template']);
+
+const SITE_BASE_URL = 'https://etsymom.github.io/myonlineshop';
+const OG_WIDTH = 1200;
+const OG_HEIGHT = 630;
+const BRAND_AUBERGINE = '#2D1B4E';
+const BRAND_AMBER = '#F5A623';
 
 function isSafePath(p) {
   if (p == null || p === '') return true;
@@ -317,6 +331,152 @@ function enrichProfile(folderName, raw) {
   return profile;
 }
 
+function escapeHtmlOg(str) {
+  return String(str || '')
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;');
+}
+
+function lockedOverlaySvg() {
+  const cx = OG_WIDTH / 2;
+  // Source covers (esp. auto-generated SVG placeholders) sometimes have their
+  // own baked-in title text — a solid backing plate behind our text (not just
+  // a translucent scrim) guarantees "Subscribe to unlock" stays legible
+  // regardless of what's underneath.
+  return Buffer.from(`
+    <svg width="${OG_WIDTH}" height="${OG_HEIGHT}" xmlns="http://www.w3.org/2000/svg">
+      <rect x="0" y="0" width="${OG_WIDTH}" height="${OG_HEIGHT}" fill="#000000" opacity="0.72" />
+      <g transform="translate(${cx - 36}, 210)">
+        <rect x="0" y="28" width="72" height="56" rx="8" fill="${BRAND_AMBER}" />
+        <path d="M14 28 V16 a22 22 0 0 1 44 0 V28" fill="none" stroke="${BRAND_AMBER}" stroke-width="10" />
+      </g>
+      <rect x="0" y="330" width="${OG_WIDTH}" height="70" fill="${BRAND_AUBERGINE}" />
+      <text x="${cx}" y="376" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="40" font-weight="700" fill="#FFFFFF">Subscribe to unlock</text>
+    </svg>
+  `);
+}
+
+/**
+ * Composites a source cover image (raster or SVG) onto a fixed 1200x630 OG
+ * canvas, letterboxed in brand aubergine. If `locked`, adds a dim scrim +
+ * padlock overlay so the shared link looks enticing without exposing the
+ * actual paid content (no blur — most curated covers are flat SVG placeholders
+ * today, where blur is a visual no-op; revisit once real photos are common).
+ */
+async function generateOgImage(sourceRelPath, outAbsPath, { locked }) {
+  fs.mkdirSync(path.dirname(outAbsPath), { recursive: true });
+
+  const composites = [];
+  const sourceAbs = sourceRelPath ? path.join(ROOT, sourceRelPath) : null;
+
+  if (sourceAbs && fs.existsSync(sourceAbs)) {
+    const resized = await sharp(sourceAbs)
+      .resize(OG_WIDTH, OG_HEIGHT, { fit: 'inside', withoutEnlargement: true })
+      .toBuffer();
+    composites.push({ input: resized, gravity: 'center' });
+  }
+
+  if (locked) {
+    composites.push({ input: lockedOverlaySvg(), left: 0, top: 0 });
+  }
+
+  await sharp({
+    create: { width: OG_WIDTH, height: OG_HEIGHT, channels: 3, background: BRAND_AUBERGINE },
+  })
+    .composite(composites)
+    .jpeg({ quality: 82 })
+    .toFile(outAbsPath);
+}
+
+function buildShareHtml({ title, description, imageUrl, canonicalUrl, redirectUrl }) {
+  const t = escapeHtmlOg(title);
+  const d = escapeHtmlOg(description);
+  return `<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>${t}</title>
+<meta name="description" content="${d}">
+<meta http-equiv="refresh" content="0; url=${redirectUrl}">
+<link rel="canonical" href="${canonicalUrl}">
+<meta property="og:type" content="profile">
+<meta property="og:title" content="${t}">
+<meta property="og:description" content="${d}">
+<meta property="og:image" content="${imageUrl}">
+<meta property="og:url" content="${canonicalUrl}">
+<meta property="og:site_name" content="InkwellMedia">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="${t}">
+<meta name="twitter:description" content="${d}">
+<meta name="twitter:image" content="${imageUrl}">
+<script>window.location.replace(${JSON.stringify(redirectUrl)});</script>
+</head>
+<body>
+<p>Redirecting to <a href="${redirectUrl}">${t}</a>&hellip;</p>
+</body>
+</html>
+`;
+}
+
+/**
+ * Generates the OG share-landing page + preview image for one curated profile
+ * (share/<slug>.html), plus one per album (share/<slug>/<album-id>.html) so a
+ * locked album's shared link shows a locked teaser and a free album's shows its
+ * real cover — both redirect to the same interactive creator.html?id=... page,
+ * no new in-app deep-linking. Failures are soft (pushed to warnings), since a
+ * missing share page shouldn't block the canonical JSON from compiling.
+ */
+async function generateShareAssets(profile, warnings) {
+  const slug = profile.slug;
+  const redirectUrl = `${SITE_BASE_URL}/creator.html?id=${encodeURIComponent(profile.id)}`;
+  const profileAssetsDir = path.join(shareAssetsDir, slug);
+  const profileTagline = profile.tagline || profile.short_bio || 'Discover this creator on InkwellMedia.';
+
+  try {
+    const profileImagePath = path.join(profileAssetsDir, 'profile.jpg');
+    await generateOgImage(profile.assets?.hero || profile.assets?.avatar || '', profileImagePath, { locked: false });
+
+    const shareHtml = buildShareHtml({
+      title: `${profile.name} | InkwellMedia`,
+      description: profileTagline,
+      imageUrl: `${SITE_BASE_URL}/share/assets/${slug}/profile.jpg`,
+      canonicalUrl: `${SITE_BASE_URL}/share/${slug}.html`,
+      redirectUrl,
+    });
+    fs.mkdirSync(shareDir, { recursive: true });
+    fs.writeFileSync(path.join(shareDir, `${slug}.html`), shareHtml);
+  } catch (err) {
+    warnings.push(`${slug}: failed to generate profile share assets: ${err.message}`);
+  }
+
+  const albumShareDir = path.join(shareDir, slug);
+  for (const album of profile.albums || []) {
+    if (!album.id) continue;
+    try {
+      const locked = !!album.member_only;
+      const imageName = `${album.id}-${locked ? 'teaser' : 'cover'}.jpg`;
+      const imageAbsPath = path.join(profileAssetsDir, imageName);
+      await generateOgImage(album.cover_image || profile.assets?.hero || '', imageAbsPath, { locked });
+
+      const albumHtml = buildShareHtml({
+        title: `${album.title || 'Album'} — ${profile.name} | InkwellMedia`,
+        description: album.description || profileTagline,
+        imageUrl: `${SITE_BASE_URL}/share/assets/${slug}/${imageName}`,
+        canonicalUrl: `${SITE_BASE_URL}/share/${slug}/${album.id}.html`,
+        redirectUrl,
+      });
+      fs.mkdirSync(albumShareDir, { recursive: true });
+      fs.writeFileSync(path.join(albumShareDir, `${album.id}.html`), albumHtml);
+    } catch (err) {
+      warnings.push(`${slug}: failed to generate share assets for album "${album.title || album.id}": ${err.message}`);
+    }
+  }
+}
+
 function readTemplate(folderPath) {
   const candidates = [
     path.join(folderPath, 'text', 'template.json'),
@@ -328,7 +488,7 @@ function readTemplate(folderPath) {
   return null;
 }
 
-function compileProfiles(options = {}) {
+async function compileProfiles(options = {}) {
   const validateOnly = !!options.validateOnly;
   const allProfiles = [];
   const globalErrors = [];
@@ -418,6 +578,15 @@ function compileProfiles(options = {}) {
   console.log(`\nSuccessfully compiled ${published.length} profiles`);
   console.log(`  → ${path.relative(ROOT, dataOutputFile)} (canonical)`);
 
+  // Full regen each run (mirrors the JSON output above) — avoids orphaned
+  // *-cover.jpg / *-teaser.jpg files left behind when member_only toggles.
+  fs.rmSync(shareDir, { recursive: true, force: true });
+
+  for (const profile of published) {
+    await generateShareAssets(profile, globalWarnings);
+  }
+  console.log(`  → share/ (OG share pages + preview images for ${published.length} profiles)`);
+
   if (globalWarnings.length) {
     console.log(`\nWarnings (${globalWarnings.length}):`);
     globalWarnings.slice(0, 20).forEach((w) => console.log(`  - ${w}`));
@@ -431,7 +600,10 @@ function compileProfiles(options = {}) {
 // CLI
 if (require.main === module) {
   const validateOnly = process.argv.includes('--validate');
-  compileProfiles({ validateOnly });
+  compileProfiles({ validateOnly }).catch((err) => {
+    console.error(err);
+    process.exitCode = 1;
+  });
 }
 
 module.exports = {
@@ -440,4 +612,7 @@ module.exports = {
   sanitizeForPublic,
   isSafePath,
   enrichProfile,
+  generateOgImage,
+  buildShareHtml,
+  escapeHtmlOg,
 };

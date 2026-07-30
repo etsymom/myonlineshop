@@ -23,18 +23,22 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
 
       - name: Compile profiles
         run: node scripts/compile_profiles.js
 
-      - name: Commit generated JSON if changed
+      - name: Commit generated output if changed
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add data/curated_profiles.json
+          git add data/curated_profiles.json share/
           if git diff --staged --quiet; then
-            echo "No changes to curated_profiles.json — skipping commit."
+            echo "No changes to compiled output — skipping commit."
           else
-            git commit -m "chore: update curated_profiles.json [skip ci]"
+            git commit -m "chore: update compiled profiles [skip ci]"
             git push
           fi

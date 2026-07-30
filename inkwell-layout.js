@@ -215,10 +215,18 @@
       }
       #inkwell-mobile-menu .ink-mobile-actions .ink-btn { flex: 1; justify-content: center; }
 
-      @media (max-width: 860px) {
+      /*
+       * The complete row needs substantially more room than the page-content
+       * tablet breakpoint, especially for signed-in users (four action
+       * buttons). Collapse it before the nowrap items can widen the viewport.
+       */
+      @media (max-width: 1340px) {
         .ink-nav-links { display: none; }
         .ink-nav-actions { display: none; }
         .ink-hamburger { display: flex; }
+      }
+      @media (min-width: 1341px) {
+        #inkwell-mobile-menu.open { display: none; }
       }
 
       /* ── FOOTER ─────────────────────────────── */

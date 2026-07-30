@@ -7,5 +7,8 @@
     "profiles:compile": "node scripts/compile_profiles.js",
     "profiles:validate": "node scripts/compile_profiles.js --validate",
     "profiles:test": "node scripts/test_compile_profiles.js"
+  },
+  "devDependencies": {
+    "sharp": "^0.35.3"
   }
 }
