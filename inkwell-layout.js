@@ -40,6 +40,8 @@
       }
 
       *, *::before, *::after { box-sizing: border-box; }
+      html, body { max-width: 100%; overflow-x: clip; }
+      html.ink-menu-open, body.ink-menu-open { overflow: hidden; }
 
       /* ── NAV ─────────────────────────────────── */
       #inkwell-nav {
@@ -172,48 +174,145 @@
         border-radius: 2px;
         transition: transform 0.25s, opacity 0.25s;
       }
-      .ink-hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
-      .ink-hamburger.open span:nth-child(2) { opacity: 0; }
-      .ink-hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
-
-      /* Mobile drawer */
-      #inkwell-mobile-menu {
-        display: none;
-        position: fixed;
-        top: var(--ink-nav-h);
-        left: 0; right: 0;
-        background: var(--ink-aubergine-deep);
-        border-bottom: 1px solid rgba(255,255,255,0.08);
-        padding: 16px 20px 24px;
-        z-index: 99;
-        flex-direction: column;
-        gap: 4px;
+      .ink-hamburger:focus-visible,
+      .ink-drawer-close:focus-visible,
+      #inkwell-mobile-menu a:focus-visible,
+      #inkwell-mobile-menu button:focus-visible {
+        outline: 3px solid var(--ink-amber);
+        outline-offset: 3px;
       }
-      #inkwell-mobile-menu.open { display: flex; }
-      #inkwell-mobile-menu a {
-        display: block;
-        padding: 12px 14px;
+
+      /* Responsive navigation drawer */
+      #inkwell-menu-backdrop {
+        position: fixed;
+        inset: 0;
+        z-index: 998;
+        background: rgba(15, 8, 28, 0.68);
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+        transition: opacity 0.22s ease, visibility 0.22s ease;
+        backdrop-filter: blur(3px);
+        -webkit-backdrop-filter: blur(3px);
+      }
+      #inkwell-menu-backdrop.open {
+        opacity: 1;
+        visibility: visible;
+        pointer-events: auto;
+      }
+      #inkwell-mobile-menu {
+        position: fixed;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        width: min(400px, 100vw);
+        height: 100vh;
+        height: 100dvh;
+        background: var(--ink-aubergine-deep);
+        border-left: 1px solid rgba(255,255,255,0.1);
+        box-shadow: -20px 0 60px rgba(0,0,0,0.4);
+        z-index: 999;
+        display: flex;
+        flex-direction: column;
+        transform: translateX(100%);
+        visibility: hidden;
+        transition: transform 0.25s ease, visibility 0.25s ease;
+        font-family: inherit;
+        overflow: hidden;
+        overscroll-behavior: contain;
+      }
+      #inkwell-mobile-menu.open {
+        transform: translateX(0);
+        visibility: visible;
+      }
+      .ink-drawer-header {
+        min-height: var(--ink-nav-h);
+        padding: 0 18px 0 20px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+        flex-shrink: 0;
+        background: var(--ink-aubergine);
+        border-bottom: 1px solid rgba(255,255,255,0.1);
+      }
+      .ink-drawer-close {
+        width: 40px;
+        height: 40px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+        border: 1px solid rgba(255,255,255,0.14);
         border-radius: 10px;
-        font-family: 'DM Sans', sans-serif;
+        background: rgba(255,255,255,0.08);
+        color: var(--ink-white);
+        font: inherit;
+        font-size: 26px;
+        line-height: 1;
+        cursor: pointer;
+        transition: background 0.15s, border-color 0.15s;
+      }
+      .ink-drawer-close:hover {
+        background: rgba(255,255,255,0.14);
+        border-color: rgba(255,255,255,0.25);
+      }
+      .ink-drawer-scroll {
+        flex: 1;
+        min-height: 0;
+        overflow-y: auto;
+        overflow-x: hidden;
+        padding: 22px 20px max(24px, env(safe-area-inset-bottom));
+        scrollbar-width: thin;
+        scrollbar-color: rgba(255,255,255,0.22) transparent;
+      }
+      .ink-drawer-section-label {
+        margin: 0 0 10px;
+        color: var(--ink-amber);
+        font-size: 11px;
+        font-weight: 800;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+      }
+      .ink-drawer-links {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+      }
+      .ink-drawer-links a {
+        display: flex;
+        align-items: center;
+        min-height: 46px;
+        padding: 11px 14px;
+        border-radius: 10px;
         font-size: 15px;
-        font-weight: 600;
+        font-weight: 700;
         color: rgba(255,255,255,0.82);
         text-decoration: none;
         transition: background 0.15s, color 0.15s;
       }
-      #inkwell-mobile-menu a:hover { background: rgba(255,255,255,0.08); color: #fff; }
-      #inkwell-mobile-menu a.active { color: var(--ink-amber); }
-      #inkwell-mobile-menu .ink-mobile-divider {
+      .ink-drawer-links a:hover { background: rgba(255,255,255,0.08); color: #fff; }
+      .ink-drawer-links a.active {
+        color: var(--ink-amber);
+        background: rgba(245,166,35,0.1);
+      }
+      .ink-mobile-divider {
         height: 1px;
         background: rgba(255,255,255,0.08);
-        margin: 8px 0;
+        margin: 22px 0;
       }
-      #inkwell-mobile-menu .ink-mobile-actions {
-        display: flex;
+      .ink-mobile-actions {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
         gap: 8px;
-        margin-top: 8px;
       }
-      #inkwell-mobile-menu .ink-mobile-actions .ink-btn { flex: 1; justify-content: center; }
+      .ink-mobile-actions .ink-btn {
+        width: 100%;
+        min-width: 0;
+        min-height: 46px;
+        padding: 10px 12px;
+        justify-content: center;
+      }
 
       /*
        * The complete row needs substantially more room than the page-content
@@ -226,7 +325,19 @@
         .ink-hamburger { display: flex; }
       }
       @media (min-width: 1341px) {
-        #inkwell-mobile-menu.open { display: none; }
+        #inkwell-menu-backdrop { display: none; }
+        #inkwell-mobile-menu { display: none; }
+      }
+      @media (max-width: 480px) {
+        #inkwell-mobile-menu {
+          width: 100vw;
+          border-left: 0;
+        }
+        .ink-mobile-actions { grid-template-columns: 1fr; }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        #inkwell-menu-backdrop,
+        #inkwell-mobile-menu { transition: none; }
       }
 
       /* ── FOOTER ─────────────────────────────── */
@@ -408,18 +519,34 @@
         </a>
         <ul class="ink-nav-links" role="list">${links}</ul>
         <div class="ink-nav-actions">${actions}</div>
-        <button class="ink-hamburger" id="ink-hamburger" aria-label="Toggle menu" aria-expanded="false">
+        <button class="ink-hamburger" id="ink-hamburger" type="button" aria-label="Open navigation" aria-controls="inkwell-mobile-menu" aria-expanded="false">
           <span></span><span></span><span></span>
         </button>
       </nav>
-      <div id="inkwell-mobile-menu" role="navigation" aria-label="Mobile navigation">
-        ${NAV_LINKS.map(l => {
-          const active = l.pages.includes(currentPage) ? ' active' : '';
-          return `<a href="${l.href}" class="${active}">${l.label}</a>`;
-        }).join('')}
-        <div class="ink-mobile-divider"></div>
-        <div class="ink-mobile-actions">${mobileActions}</div>
-      </div>
+      <div id="inkwell-menu-backdrop" aria-hidden="true"></div>
+      <aside id="inkwell-mobile-menu" role="dialog" aria-modal="true" aria-labelledby="inkwell-drawer-title" aria-hidden="true" tabindex="-1">
+        <div class="ink-drawer-header">
+          <a href="landing.html" class="ink-brand" id="inkwell-drawer-title" aria-label="InkwellMedia Home">
+            <div class="ink-brand-icon" aria-hidden="true">&#x1F58B;&#xFE0F;</div>
+            <div class="ink-brand-name">Inkwell<span>Media</span></div>
+          </a>
+          <button class="ink-drawer-close" id="ink-drawer-close" type="button" aria-label="Close navigation">&times;</button>
+        </div>
+        <div class="ink-drawer-scroll">
+          <div class="ink-drawer-section-label">Navigate</div>
+          <nav class="ink-drawer-links" aria-label="Responsive navigation">
+            ${NAV_LINKS.map(l => {
+              const active = l.pages.includes(currentPage) ? " active" : "";
+              return `<a href="${l.href}" class="${active}">${l.label}</a>`;
+            }).join("")}
+          </nav>
+          <div class="ink-mobile-divider"></div>
+          <section aria-labelledby="inkwell-account-actions-title">
+            <div class="ink-drawer-section-label" id="inkwell-account-actions-title">Account</div>
+            <div class="ink-mobile-actions">${mobileActions}</div>
+          </section>
+        </div>
+      </aside>
     `;
   }
 
@@ -530,22 +657,88 @@
       document.body.insertAdjacentHTML('beforeend', buildCookieBanner());
     }
 
-    // Wire hamburger
-    const ham = document.getElementById('ink-hamburger');
-    const mobileMenu = document.getElementById('inkwell-mobile-menu');
-    if (ham && mobileMenu) {
-      ham.addEventListener('click', () => {
-        const isOpen = mobileMenu.classList.toggle('open');
-        ham.classList.toggle('open', isOpen);
-        ham.setAttribute('aria-expanded', isOpen);
+    // Wire responsive navigation drawer
+    const ham = document.getElementById("ink-hamburger");
+    const mobileMenu = document.getElementById("inkwell-mobile-menu");
+    const backdrop = document.getElementById("inkwell-menu-backdrop");
+    const closeButton = document.getElementById("ink-drawer-close");
+    let lastFocusedElement = null;
+
+    if (ham && mobileMenu && backdrop && closeButton) {
+      const getFocusableElements = () => Array.from(mobileMenu.querySelectorAll(
+        "a[href], button:not([disabled]), [tabindex]:not([tabindex=\"-1\"])"
+      )).filter((element) => element.getClientRects().length > 0);
+
+      const openDrawer = () => {
+        lastFocusedElement = document.activeElement === document.body
+          ? ham
+          : document.activeElement;
+        mobileMenu.classList.add("open");
+        backdrop.classList.add("open");
+        mobileMenu.setAttribute("aria-hidden", "false");
+        ham.setAttribute("aria-expanded", "true");
+        ham.setAttribute("aria-label", "Close navigation");
+        document.documentElement.classList.add("ink-menu-open");
+        document.body.classList.add("ink-menu-open");
+        window.setTimeout(() => closeButton.focus({ preventScroll: true }), 0);
+      };
+
+      const closeDrawer = (restoreFocus = true) => {
+        if (!mobileMenu.classList.contains("open")) return;
+        mobileMenu.classList.remove("open");
+        backdrop.classList.remove("open");
+        mobileMenu.setAttribute("aria-hidden", "true");
+        ham.setAttribute("aria-expanded", "false");
+        ham.setAttribute("aria-label", "Open navigation");
+        document.documentElement.classList.remove("ink-menu-open");
+        document.body.classList.remove("ink-menu-open");
+        if (restoreFocus) {
+          const focusTarget = lastFocusedElement && typeof lastFocusedElement.focus === "function"
+            ? lastFocusedElement
+            : ham;
+          focusTarget.focus({ preventScroll: true });
+        }
+      };
+
+      ham.addEventListener("click", () => {
+        if (mobileMenu.classList.contains("open")) closeDrawer();
+        else openDrawer();
       });
-      // Close on link click
-      mobileMenu.querySelectorAll('a').forEach(a => {
-        a.addEventListener('click', () => {
-          mobileMenu.classList.remove('open');
-          ham.classList.remove('open');
-          ham.setAttribute('aria-expanded', 'false');
-        });
+      closeButton.addEventListener("click", () => closeDrawer());
+      backdrop.addEventListener("click", () => closeDrawer());
+
+      mobileMenu.querySelectorAll("a[href]").forEach((link) => {
+        link.addEventListener("click", () => closeDrawer(false));
+      });
+
+      document.addEventListener("keydown", (event) => {
+        if (!mobileMenu.classList.contains("open")) return;
+        if (event.key === "Escape") {
+          event.preventDefault();
+          closeDrawer();
+          return;
+        }
+        if (event.key !== "Tab") return;
+
+        const focusable = getFocusableElements();
+        if (!focusable.length) {
+          event.preventDefault();
+          mobileMenu.focus();
+          return;
+        }
+        const first = focusable[0];
+        const last = focusable[focusable.length - 1];
+        if (event.shiftKey && document.activeElement === first) {
+          event.preventDefault();
+          last.focus();
+        } else if (!event.shiftKey && document.activeElement === last) {
+          event.preventDefault();
+          first.focus();
+        }
+      });
+
+      window.addEventListener("resize", () => {
+        if (window.innerWidth > 1340) closeDrawer(false);
       });
     }
   }
