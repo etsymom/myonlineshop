@@ -1,0 +1,123 @@
+{
+  "id": "amara-vale-001",
+  "slug": "amara-vale",
+  "name": "Amara Vale",
+  "tagline": "Golden-hour fashion, private editorials and Cape Town nights",
+  "niche": "Fashion & Lifestyle",
+  "short_bio": "Cape Town fashion stories, quiet luxury and cinematic after-hours edits. Fictional synthetic creator, made for the InkWellMedia demo.",
+  "full_bio": "Amara Vale is a fictional synthetic creator made for the InkWellMedia demonstration experience. Her feed explores Cape Town style, beauty, travel and intimate editorial storytelling through photorealistic generated imagery and human-directed motion edits. Amara is portrayed as 25 years old and is not a real person.",
+  "location": "Cape Town, South Africa",
+  "verified": true,
+  "subscriber_count": 2480,
+  "social_links": {
+    "instagram": "@amaravale",
+    "tiktok": "@amaravale",
+    "youtube": "",
+    "facebook": "",
+    "twitter": "",
+    "website": ""
+  },
+  "assets": {
+    "avatar": "profiles/amara-vale/images/avatar.webp",
+    "hero": "profiles/amara-vale/images/hero.webp"
+  },
+  "albums": [
+    {
+      "id": "album-amara-001",
+      "title": "Cape Town in Gold",
+      "description": "A public fashion diary moving from rooftop coffee to the last light over Camps Bay.",
+      "cover_image": "profiles/amara-vale/images/rooftop-notes.webp",
+      "member_only": false,
+      "media": [
+        {
+          "id": "media-amara-001",
+          "file": "profiles/amara-vale/images/rooftop-notes.webp",
+          "type": "image",
+          "caption": "Rooftop Notes — late-afternoon calm above the city. Synthetic editorial image."
+        },
+        {
+          "id": "media-amara-002",
+          "file": "profiles/amara-vale/images/coastal-hour.webp",
+          "type": "image",
+          "caption": "Coastal Hour — the final warm light over Camps Bay. Synthetic editorial image."
+        }
+      ]
+    },
+    {
+      "id": "album-amara-002",
+      "title": "After Hours Preview",
+      "description": "A short public motion edit introducing Amara's evening editorial series.",
+      "cover_image": "profiles/amara-vale/images/midnight-room-teaser.webp",
+      "member_only": false,
+      "media": [
+        {
+          "id": "media-amara-003",
+          "file": "profiles/amara-vale/videos/after-hours-preview.mp4",
+          "type": "video",
+          "thumbnail": "profiles/amara-vale/images/midnight-room-teaser.webp",
+          "caption": "After Hours — a silent seven-second fashion-film preview."
+        }
+      ]
+    },
+    {
+      "id": "album-amara-premium-001",
+      "title": "The Private Edit: Midnight Rooms",
+      "description": "A locked members collection of twelve extended editorial images, three private motion cuts and Amara's styling notes. Preview artwork is visible; release files are withheld from the public dataset.",
+      "cover_image": "profiles/amara-vale/images/midnight-room-teaser.webp",
+      "member_only": true,
+      "price": 150,
+      "currency": "ZAR",
+      "media_count": 15,
+      "media": []
+    }
+  ],
+  "videos": [
+    {
+      "id": "video-amara-001",
+      "title": "After Hours Preview",
+      "description": "A cinematic fashion-film teaser moving from rooftop gold into Amara's midnight studio world.",
+      "video_path": "profiles/amara-vale/videos/after-hours-preview.mp4",
+      "thumbnail_path": "profiles/amara-vale/images/midnight-room-teaser.webp",
+      "published_at": "2026-08-04",
+      "member_only": false
+    }
+  ],
+  "blogs": [
+    {
+      "id": "blog-amara-001",
+      "slug": "the-city-after-golden-hour",
+      "title": "The City After Golden Hour",
+      "summary": "A small diary from the rooftop: soft light, strong silhouettes and the pieces I keep reaching for.",
+      "content": "Cape Town changes character in the hour before sunset. For this editorial I kept the palette warm and simple: amber knit, gold details and the mountain holding the background together. The result is less about an outfit than a feeling of arriving early and staying late.\n\nAmara Vale is a fictional synthetic creator; this editorial imagery was generated and curated for the InkWellMedia demo.",
+      "published_at": "2026-08-04",
+      "header_image": "profiles/amara-vale/images/rooftop-notes.webp",
+      "author": "Amara Vale (fictional synthetic creator)",
+      "member_only": false,
+      "published": true
+    },
+    {
+      "id": "blog-amara-premium-001",
+      "slug": "midnight-room-private-notes",
+      "title": "Midnight Room: Private Notes",
+      "summary": "Members-only styling notes, alternate frames and the private motion cut from the Midnight Rooms series.",
+      "content": "Premium demonstration content is intentionally withheld from the public build.",
+      "published_at": "2026-08-04",
+      "header_image": "profiles/amara-vale/images/midnight-room-teaser.webp",
+      "author": "Amara Vale (fictional synthetic creator)",
+      "member_only": true,
+      "published": true
+    }
+  ],
+  "membership": {
+    "enabled": false,
+    "beta_preview": true,
+    "price": 150,
+    "currency": "ZAR",
+    "billing_interval": "month",
+    "free_content_description": "Public fashion editorials, Cape Town lifestyle images and short motion previews.",
+    "premium_content_description": "The Private Edit: twelve extended editorial images, three motion cuts and behind-the-scenes styling notes.",
+    "main_cta": "Premium access coming after beta"
+  },
+  "products": [],
+  "published": true
+}
