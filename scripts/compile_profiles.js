@@ -138,6 +138,10 @@ function validate(profile, folderName, errors, warnings) {
 function sanitizeForPublic(profile) {
   const out = JSON.parse(JSON.stringify(profile));
 
+  if (Array.isArray(out.albums)) {
+    out.albums = out.albums.map((album) => album.member_only ? { ...album, media: (album.media || []).map((m) => ({ ...m, file: null, url: null, media_url: null, src: null, thumbnail: null })) } : album);
+  }
+
   if (Array.isArray(out.videos)) {
     out.videos = out.videos.map((v) => {
       if (v.member_only) {

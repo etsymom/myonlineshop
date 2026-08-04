@@ -1,5 +1,5 @@
 {
-  "_generated": "2026-08-04T11:21:52.561Z",
+  "_generated": "2026-08-04T11:50:17.612Z",
   "_count": 1,
   "profiles": [
     {
@@ -69,6 +69,17 @@
           ]
         },
         {
+          "id": "album-mara-premium-001",
+          "title": "The Nocturnal Archive",
+          "description": "A six-piece high-resolution collection with an extended motion film and creator process notes. Premium demo — release files are not present in the public dataset.",
+          "cover_image": "profiles/mara-voss/images/nocturnal-archive-teaser.webp",
+          "member_only": true,
+          "price": 120,
+          "currency": "ZAR",
+          "media_count": 7,
+          "media": []
+        },
+        {
           "id": "album-all-videos",
           "title": "All Videos",
           "description": "Creator videos",
@@ -110,13 +121,29 @@
           "author": "Mara Voss (fictional demo)",
           "member_only": false,
           "published": true
+        },
+        {
+          "id": "blog-mara-premium-001",
+          "slug": "building-the-nocturnal-archive",
+          "title": "Building the Nocturnal Archive",
+          "summary": "A members-only breakdown of the visual language, rejected frames and motion-editing decisions behind the collection.",
+          "content": null,
+          "published_at": "2026-08-04",
+          "header_image": null,
+          "author": "Mara Voss (fictional demo)",
+          "member_only": true,
+          "published": true,
+          "image": null
         }
       ],
       "membership": {
         "enabled": false,
+        "beta_preview": true,
+        "price": 120,
+        "currency": "ZAR",
         "free_content_description": "Public AI-art images, short films and process notes.",
-        "premium_content_description": "Membership is disabled during the closed beta.",
-        "main_cta": "Follow the studio"
+        "premium_content_description": "The Nocturnal Archive: six high-resolution artworks, an extended film and behind-the-scenes process notes.",
+        "main_cta": "Premium access coming after beta"
       },
       "products": [],
       "published": true,

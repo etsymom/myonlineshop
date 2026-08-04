@@ -7,7 +7,14 @@
   "short_bio": "A fictional demo creator exploring African futures through AI-assisted images and moving art.",
   "full_bio": "Mara Voss is a fictional InkWellMedia demonstration profile created to show how a complete creator page feels. Her work combines human art direction with generative image tools, editing and motion design. Every visual on this profile is AI-generated and curated for this demo; Mara is not a real person.",
   "location": "Cape Town, South Africa",
-  "social_links": {"instagram":"","tiktok":"","youtube":"","facebook":"","twitter":"","website":""},
+  "social_links": {
+    "instagram": "",
+    "tiktok": "",
+    "youtube": "",
+    "facebook": "",
+    "twitter": "",
+    "website": ""
+  },
   "assets": {
     "avatar": "profiles/mara-voss/images/avatar.webp",
     "hero": "profiles/mara-voss/images/hero.webp"
@@ -20,8 +27,18 @@
       "cover_image": "profiles/mara-voss/images/desert-conservatory.webp",
       "member_only": false,
       "media": [
-        {"id":"media-mara-001","file":"profiles/mara-voss/images/desert-conservatory.webp","type":"image","caption":"Desert Conservatory — AI-generated image, directed and curated for this demo."},
-        {"id":"media-mara-002","file":"profiles/mara-voss/images/ocean-memory.webp","type":"image","caption":"Ocean Memory — AI-generated image, directed and curated for this demo."}
+        {
+          "id": "media-mara-001",
+          "file": "profiles/mara-voss/images/desert-conservatory.webp",
+          "type": "image",
+          "caption": "Desert Conservatory — AI-generated image, directed and curated for this demo."
+        },
+        {
+          "id": "media-mara-002",
+          "file": "profiles/mara-voss/images/ocean-memory.webp",
+          "type": "image",
+          "caption": "Ocean Memory — AI-generated image, directed and curated for this demo."
+        }
       ]
     },
     {
@@ -31,17 +48,72 @@
       "cover_image": "profiles/mara-voss/images/showreel-thumbnail.webp",
       "member_only": false,
       "media": [
-        {"id":"media-mara-003","file":"profiles/mara-voss/videos/imagined-worlds.mp4","type":"video","caption":"Imagined Worlds — a silent 10-second AI-art showreel."}
+        {
+          "id": "media-mara-003",
+          "file": "profiles/mara-voss/videos/imagined-worlds.mp4",
+          "type": "video",
+          "caption": "Imagined Worlds — a silent 10-second AI-art showreel."
+        }
       ]
+    },
+    {
+      "id": "album-mara-premium-001",
+      "title": "The Nocturnal Archive",
+      "description": "A six-piece high-resolution collection with an extended motion film and creator process notes. Premium demo — release files are not present in the public dataset.",
+      "cover_image": "profiles/mara-voss/images/nocturnal-archive-teaser.webp",
+      "member_only": true,
+      "price": 120,
+      "currency": "ZAR",
+      "media_count": 7,
+      "media": []
     }
   ],
   "videos": [
-    {"id":"video-mara-001","title":"Imagined Worlds","description":"A cinematic AI-art study moving from a future Cape Town to desert and ocean dreamscapes.","video_path":"profiles/mara-voss/videos/imagined-worlds.mp4","thumbnail_path":"profiles/mara-voss/images/showreel-thumbnail.webp","published_at":"2026-08-04","member_only":false}
+    {
+      "id": "video-mara-001",
+      "title": "Imagined Worlds",
+      "description": "A cinematic AI-art study moving from a future Cape Town to desert and ocean dreamscapes.",
+      "video_path": "profiles/mara-voss/videos/imagined-worlds.mp4",
+      "thumbnail_path": "profiles/mara-voss/images/showreel-thumbnail.webp",
+      "published_at": "2026-08-04",
+      "member_only": false
+    }
   ],
   "blogs": [
-    {"id":"blog-mara-001","slug":"directing-a-machine-imagination","title":"Directing a Machine Imagination","summary":"The prompts are only the beginning; selection, sequencing and restraint make the world feel authored.","content":"This fictional studio note demonstrates long-form creator content. My process starts with a clear emotional idea, not a visual effect. I define place, light and material, then generate variations and keep only the frames that belong to the same world. The final step is editing: colour, crop, rhythm and the decision to leave things out.\n\nAll images on this demo profile were generated with AI and curated by InkWellMedia to test the creator experience.","published_at":"2026-08-04","header_image":"profiles/mara-voss/images/ocean-memory.webp","author":"Mara Voss (fictional demo)","member_only":false,"published":true}
+    {
+      "id": "blog-mara-001",
+      "slug": "directing-a-machine-imagination",
+      "title": "Directing a Machine Imagination",
+      "summary": "The prompts are only the beginning; selection, sequencing and restraint make the world feel authored.",
+      "content": "This fictional studio note demonstrates long-form creator content. My process starts with a clear emotional idea, not a visual effect. I define place, light and material, then generate variations and keep only the frames that belong to the same world. The final step is editing: colour, crop, rhythm and the decision to leave things out.\n\nAll images on this demo profile were generated with AI and curated by InkWellMedia to test the creator experience.",
+      "published_at": "2026-08-04",
+      "header_image": "profiles/mara-voss/images/ocean-memory.webp",
+      "author": "Mara Voss (fictional demo)",
+      "member_only": false,
+      "published": true
+    },
+    {
+      "id": "blog-mara-premium-001",
+      "slug": "building-the-nocturnal-archive",
+      "title": "Building the Nocturnal Archive",
+      "summary": "A members-only breakdown of the visual language, rejected frames and motion-editing decisions behind the collection.",
+      "content": "Premium demo content is intentionally withheld from the public build.",
+      "published_at": "2026-08-04",
+      "header_image": "profiles/mara-voss/images/nocturnal-archive-teaser.webp",
+      "author": "Mara Voss (fictional demo)",
+      "member_only": true,
+      "published": true
+    }
   ],
-  "membership": {"enabled":false,"free_content_description":"Public AI-art images, short films and process notes.","premium_content_description":"Membership is disabled during the closed beta.","main_cta":"Follow the studio"},
+  "membership": {
+    "enabled": false,
+    "beta_preview": true,
+    "price": 120,
+    "currency": "ZAR",
+    "free_content_description": "Public AI-art images, short films and process notes.",
+    "premium_content_description": "The Nocturnal Archive: six high-resolution artworks, an extended film and behind-the-scenes process notes.",
+    "main_cta": "Premium access coming after beta"
+  },
   "products": [],
   "published": true
 }
