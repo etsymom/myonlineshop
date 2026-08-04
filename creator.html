@@ -359,6 +359,7 @@
       display: block;
     }
   </style>
+  <link rel="stylesheet" href="creator-profile.css">
 </head>
 <body>
 
@@ -369,34 +370,22 @@
   <div class="profile-hero">
     <div class="profile-cover" id="profile-cover"></div>
     <div class="profile-avatar-container">
-      <img src="" id="profile-avatar" class="profile-avatar">
+      <span class="profile-avatar-fallback" aria-hidden="true">C</span><img src="" id="profile-avatar" class="profile-avatar" alt="Creator profile photo">
     </div>
   </div>
 
   <div id="main-content" class="container" style="margin-top: 10px; max-width: 600px;">
-    <div style="text-align: center;">
-      <h1 class="page-title" id="creator-name-title" style="font-size: 24px; margin-bottom: 2px;">Creator Profile</h1>
+    <div class="profile-summary">
+      <div class="profile-title-row"><h1 class="page-title" id="creator-name-title">Creator Profile</h1><span id="verified-badge" class="verified-badge" aria-label="Verified creator" aria-hidden="true">&#10003;</span></div>
       <p style="color: var(--slate); font-size: 14px; margin-bottom: 8px;" id="creator-username">@creator</p>
-      <p class="page-sub" id="creator-desc" style="margin-bottom: 16px;">Loading creator details...</p>
+      <div id="creator-category" class="profile-category"></div><p class="page-sub" id="creator-desc">Loading creator details...</p>
       
-      <div style="display: flex; justify-content: center; gap: 24px; margin-bottom: 20px;">
-        <div style="text-align: center;"><div style="font-weight: 900; font-size: 18px; color: var(--aubergine);" id="stat-posts">0</div><div style="font-size: 11px; color: var(--slate); font-weight: 700;">POSTS</div></div>
-        <div style="text-align: center;"><div style="font-weight: 900; font-size: 18px; color: var(--aubergine);" id="stat-media">0</div><div style="font-size: 11px; color: var(--slate); font-weight: 700;">MEDIA</div></div>
-      </div>
-
-      <button class="hbtn hbtn-ghost" onclick="copyProfileLink()" style="margin-bottom: 24px; color: var(--aubergine); border: 2px solid var(--slate-light); background: transparent; width: 100%; max-width: 300px;">📋 Copy Profile Link</button>
+      <div class="profile-stats" aria-label="Creator statistics"><div class="profile-stat"><div class="profile-stat-value" id="stat-posts">0</div><div class="profile-stat-label">POSTS</div></div><div class="profile-stat"><div class="profile-stat-value" id="stat-media">0</div><div class="profile-stat-label">MEDIA</div></div><div class="profile-stat"><div class="profile-stat-value" id="stat-subscribers">0</div><div class="profile-stat-label">SUBSCRIBERS</div></div></div>
+      <div class="profile-actions"><button class="hbtn profile-copy" onclick="copyProfileLink()">Copy profile link</button><button class="hbtn profile-login" onclick="CreatorProfileUI.creatorLogin()">Creator login</button></div>
     </div>
 
     <!-- SUBSCRIPTION BANNER -->
-    <div id="subscription-banner" style="background: var(--white); border-radius: 16px; padding: 20px; text-align: center; margin-bottom: 32px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); display: none; border: 2px solid var(--amber);">
-      <div style="font-size: 12px; font-weight: 900; color: var(--amber); letter-spacing: 1px; margin-bottom: 4px;">SUBSCRIPTION</div>
-      <div style="font-family: 'Playfair Display', serif; font-size: 20px; font-weight: 900; margin-bottom: 12px;">Limited offer - Unlock All Premium Content!</div>
-      <div style="display: flex; align-items: center; justify-content: center; gap: 8px; margin-bottom: 16px;">
-        <img src="" id="sub-avatar" style="width: 24px; height: 24px; border-radius: 50%;">
-        <span style="font-size: 14px; color: var(--slate);">Get instant access to my private feed 💜✨</span>
-      </div>
-      <button class="buy-btn" style="background: #00ADEF; color: var(--white); padding: 14px; border-radius: 12px; font-size: 16px;" onclick="subscribeToCreator()">SUBSCRIBE FOR ZAR 150</button>
-    </div>
+    <div id="subscription-banner" style="display:none"><div class="subscription-inner"><img src="" id="sub-avatar" class="subscription-avatar" alt=""><div><div class="subscription-eyebrow">Creator membership</div><div class="subscription-title">Unlock the complete creator library</div><p class="subscription-benefit">Get recurring access to premium releases, private posts and the creator library.</p></div><div class="subscription-action"><div class="subscription-price">ZAR 150 per month</div><button class="buy-btn subscription-cta" onclick="subscribeToCreator()">Subscribe for ZAR 150/month</button></div></div></div>
 
     <!-- WALLET -->
     <div class="wallet-card" style="margin-bottom: 32px; display: none;" id="wallet-ui">
@@ -411,16 +400,12 @@
     </div>
 
     <!-- TAB SWITCHER -->
-    <div style="display: flex; justify-content: center; gap: 40px; border-bottom: 1px solid var(--slate-light); margin-bottom: 20px; padding-bottom: 12px;">
-      <div id="tab-media" onclick="switchTab('media')" style="font-weight: 900; color: var(--aubergine); border-bottom: 2px solid var(--aubergine); padding-bottom: 10px; margin-bottom: -13px; cursor: pointer;">𐄹 ALL MEDIA</div>
-      <div id="tab-albums" onclick="switchTab('albums')" style="font-weight: 700; color: var(--slate); padding-bottom: 10px; cursor: pointer;">💿 ALBUMS</div>
-      <div id="tab-blogs" onclick="switchTab('blogs')" style="font-weight: 700; color: var(--slate); padding-bottom: 10px; cursor: pointer;">📝 BLOGS</div>
-    </div>
+    <div class="profile-tabs" role="tablist" aria-label="Creator content"><button class="profile-tab" id="tab-media" role="tab" aria-selected="true" aria-controls="media-tab-content" onclick="switchTab('media')">Media</button><button class="profile-tab" id="tab-blogs" role="tab" aria-selected="false" aria-controls="blogs-tab-content" onclick="switchTab('blogs')">Posts</button><button class="profile-tab" id="tab-albums" role="tab" aria-selected="false" aria-controls="albums-tab-content" onclick="switchTab('albums')">Collections</button><button class="profile-tab" id="tab-about" role="tab" aria-selected="false" aria-controls="about-tab-content" onclick="switchTab('about')">About</button></div>
 
     <!-- TAB 1: ALL MEDIA (Infinite Grid) -->
     <div id="media-tab-content">
       <div class="product-grid" id="albums-grid" style="grid-template-columns: repeat(3, 1fr); gap: 4px; margin-bottom: 0;">
-        <p style="font-size: 14px; color: var(--slate); grid-column: span 3; text-align: center;">Loading media...</p>
+        <div class="profile-empty">Loading creator media...</div>
       </div>
       <div id="scroll-sentinel" style="height: 40px; width: 100%; display: flex; justify-content: center; align-items: center; margin-top: 20px;">
         <p id="loading-text" style="font-size: 14px; color: var(--slate); display: none;">Loading more...</p>
@@ -437,9 +422,10 @@
     <!-- TAB 3: BLOGS -->
     <div id="blogs-tab-content" style="display: none;">
       <div class="product-grid" id="blogs-grid">
-        <p style="font-size: 14px; color: var(--slate); grid-column: span 3; text-align: center;">No blogs yet.</p>
+        <div class="profile-empty">This creator has not published any posts yet.</div>
       </div>
     </div>
+    <div id="about-tab-content" class="profile-content-panel" role="tabpanel" aria-labelledby="tab-about" hidden style="display:none"><article class="profile-about"><h2 id="about-name">About this creator</h2><p id="about-copy">Creator information is loading...</p></article></div>
   </div>
 
   <!-- DEPOSIT MODAL -->
@@ -499,11 +485,12 @@
 
   <!-- Bot Modals Removed -->
 
-  <div id="inkwell-footer-mount"></div>
+  <div id="profile-settings" aria-label="Display settings"></div><div id="inkwell-footer-mount"></div>
   <script src="inkwell-layout.js?v=1782938375982"></script>
   <script src="locale.js?v=3"></script>
   <script src="geo-pricing.js?v=3"></script>
   <script src="curated-profiles.js"></script>
+  <script src="creator-profile-ui.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script>
     const supabaseClient = supabase.createClient(
@@ -524,7 +511,7 @@
     async function loadUser() {
       const ghUser = localStorage.getItem("gh_user");
       const { data: { session } } = await supabaseClient.auth.getSession();
-      if (!session && !ghUser) { return; }
+      if (!session && !ghUser) { await loadAlbums(); return; }
       
       if (ghUser && !session) {
          currentUser = { id: "github_" + ghUser };
@@ -584,19 +571,20 @@
       
       document.getElementById("creator-desc").innerText = profile?.bio || `Welcome to ${actualName}'s official profile.`;
       document.title = `${actualName} | InkwellMedia`;
+      CreatorProfileUI.render({name:actualName,username:usernameStr,category:profile?.category||profile?.niche,bio:profile?.bio,fullBio:profile?.bio,verified:profile?.verified||profile?.is_verified,avatar:creatorAvatar,cover:profile?.cover_url||profile?.cover_image_url||creatorAvatar,subscribers:profile?.subscriber_count||profile?.subscribers_count});
 
       const { data, error } = await supabaseClient.from("albums").select("*, album_media(*)").eq("user_id", creatorId).order("created_at", { ascending: false });
       if (error) { grid.innerHTML = `<p style="color:var(--danger); grid-column:span 3;">Failed to load media: ${error.message}</p>`; return; }
       if (!data || data.length === 0) { grid.innerHTML = `<p style="color:var(--slate); grid-column:span 3;">This creator hasn't uploaded any media yet.</p>`; return; }
       
-      const { data: myPurchases } = await supabaseClient.from("purchases").select("product_key").eq("user_id", currentUser.id);
+      const { data: myPurchases } = currentUser ? await supabaseClient.from("purchases").select("product_key").eq("user_id", currentUser.id) : { data: [] };
       const purchasedSet = new Set((myPurchases || []).map(p => p.product_key));
 
       let totalMedia = 0;
       let isSubscribed = false;
 
       // Check subscription
-      if (purchasedSet.has(`sub_${creatorId}`) || currentUser.id === creatorId) {
+      if (purchasedSet.has(`sub_${creatorId}`) || currentUser?.id === creatorId) {
         isSubscribed = true;
       }
       
@@ -694,7 +682,7 @@
       
       if (!isSubscribed) {
         document.getElementById("subscription-banner").style.display = "block";
-        document.getElementById("wallet-ui").style.display = "flex";
+        document.getElementById("wallet-ui").style.display = currentUser ? "flex" : "none";
       } else {
         document.getElementById("wallet-ui").style.display = "none";
       }
@@ -746,52 +734,14 @@
     }
 
     window.switchTab = function(tab) {
-      const mediaTab = document.getElementById("tab-media");
-      const albumsTab = document.getElementById("tab-albums");
-      const blogsTab = document.getElementById("tab-blogs");
-      const mediaContent = document.getElementById("media-tab-content");
-      const albumsContent = document.getElementById("albums-tab-content");
-      const blogsContent = document.getElementById("blogs-tab-content");
-
-      // Reset all
-      mediaContent.style.display = 'none';
-      albumsContent.style.display = 'none';
-      blogsContent.style.display = 'none';
-      
-      mediaTab.style.fontWeight = '700';
-      mediaTab.style.color = 'var(--slate)';
-      mediaTab.style.borderBottom = 'none';
-      mediaTab.style.marginBottom = '0';
-      
-      albumsTab.style.fontWeight = '700';
-      albumsTab.style.color = 'var(--slate)';
-      albumsTab.style.borderBottom = 'none';
-      albumsTab.style.marginBottom = '0';
-      
-      blogsTab.style.fontWeight = '700';
-      blogsTab.style.color = 'var(--slate)';
-      blogsTab.style.borderBottom = 'none';
-      blogsTab.style.marginBottom = '0';
-
-      if (tab === 'media') {
-        mediaContent.style.display = 'block';
-        mediaTab.style.fontWeight = '900';
-        mediaTab.style.color = 'var(--aubergine)';
-        mediaTab.style.borderBottom = '2px solid var(--aubergine)';
-        mediaTab.style.marginBottom = '-13px';
-      } else if (tab === 'albums') {
-        albumsContent.style.display = 'block';
-        albumsTab.style.fontWeight = '900';
-        albumsTab.style.color = 'var(--aubergine)';
-        albumsTab.style.borderBottom = '2px solid var(--aubergine)';
-        albumsTab.style.marginBottom = '-13px';
-      } else if (tab === 'blogs') {
-        blogsContent.style.display = 'block';
-        blogsTab.style.fontWeight = '900';
-        blogsTab.style.color = 'var(--aubergine)';
-        blogsTab.style.borderBottom = '2px solid var(--aubergine)';
-        blogsTab.style.marginBottom = '-13px';
-      }
+      const names = ["media", "blogs", "albums", "about"];
+      names.forEach((name) => {
+        const button = document.getElementById("tab-" + name);
+        const panel = document.getElementById(name + "-tab-content");
+        const active = name === tab;
+        if (button) button.setAttribute("aria-selected", String(active));
+        if (panel) { panel.hidden = !active; panel.style.display = active ? "block" : "none"; }
+      });
     }
 
     async function loadGithubProfile(id) {
@@ -830,7 +780,7 @@
         // Add a discreet Creator Login button if not already logged in as GH admin
         if (!isOwner) {
            const loginBtn = document.createElement("button");
-           loginBtn.innerText = "Creator Login";
+           loginBtn.id = "creator-login-dynamic"; loginBtn.innerText = "Creator Login";
            loginBtn.style.fontSize = "10px";
            loginBtn.style.padding = "4px 8px";
            loginBtn.style.background = "transparent";
@@ -879,7 +829,7 @@
         } else {
            document.getElementById("profile-cover").style.backgroundImage = `url('${avatarUrl}')`;
         }
-        document.getElementById("creator-desc").innerText = `${profile.niche} | ${profile.social_links?.instagram || ''}`;
+        CreatorProfileUI.render({name:actualName,username:usernameStr,category:profile.niche,bio:profile.short_bio||profile.bio,fullBio:profile.full_bio||profile.bio,verified:profile.verified||profile.is_verified,avatar:avatarUrl,cover:profile.assets?.hero,subscribers:profile.subscriber_count||profile.subscribers_count});
 
         let totalMedia = 0;
         let allMediaNodes = [];
@@ -964,6 +914,7 @@
     }
 
     async function subscribeToCreator() {
+      if (!currentUser) { window.location.href = "join-beta.html"; return; }
       const urlParams = new URLSearchParams(window.location.search);
       const creatorId = urlParams.get('id');
       if (!creatorId) return;
