@@ -53,7 +53,7 @@
   <p>Please wait while we log you in.</p>
 
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-  <script src="inkwell-config.js"></script>
+  <script src="inkwell-config.js"></script><script src="beta.js"></script>
   <script>
     document.addEventListener("DOMContentLoaded", async () => {
       const sb = supabase.createClient(window.INK_CONFIG.SUPABASE_URL, window.INK_CONFIG.SUPABASE_ANON);
@@ -63,7 +63,7 @@
         if (event === 'SIGNED_IN' && session) {
           document.getElementById('statusText').textContent = 'Success!';
           setTimeout(() => {
-            window.location.href = 'members.html';
+            InkBeta.role().then(role=>window.location.replace(({member:'member-home.html',creator:'creator-studio.html',admin:'owner-overview.html'}[role])||'join-beta.html'));
           }, 1000);
         } else if (event === 'PASSWORD_RECOVERY') {
           window.location.href = 'reset-password.html';
@@ -73,12 +73,12 @@
       // Fallback check if already logged in
       const { data: { session } } = await sb.auth.getSession();
       if (session) {
-        window.location.href = 'members.html';
+        InkBeta.role().then(role=>window.location.replace(({member:'member-home.html',creator:'creator-studio.html',admin:'owner-overview.html'}[role])||'join-beta.html'));
       } else {
         // Wait a brief moment to see if the hash is processed by the listener
         setTimeout(() => {
           if (!window.location.hash.includes('access_token')) {
-            window.location.href = 'index.html';
+            window.location.href = 'join-beta.html?error=confirmation';
           }
         }, 3000);
       }

@@ -1,0 +1,29 @@
+:root { --beta-border: #ded8e8; --beta-soft: #f4f0f8; }
+.beta-banner { background:#fff4d8; border-bottom:1px solid #edca72; color:#5b4211; padding:10px 18px; text-align:center; font:700 13px/1.4 'DM Sans',sans-serif; }
+.beta-shell { width:min(1120px,calc(100% - 32px)); margin:40px auto 72px; }
+.beta-hero { max-width:760px; margin-bottom:30px; }
+.beta-eyebrow { color:#a85f00; font-weight:800; text-transform:uppercase; letter-spacing:.09em; font-size:12px; }
+.beta-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr)); gap:18px; }
+.beta-card { background:#fff; border:1px solid var(--beta-border); border-radius:18px; padding:22px; box-shadow:0 8px 24px rgba(45,27,78,.06); }
+.beta-card h2,.beta-card h3 { margin-top:0; color:#2d1b4e; }
+.beta-form { display:grid; gap:16px; }
+.beta-form label { display:grid; gap:7px; color:#2d1b4e; font-weight:700; }
+.beta-form input,.beta-form select,.beta-form textarea { width:100%; box-sizing:border-box; padding:12px 14px; border:1.5px solid #cfc6db; border-radius:11px; background:#fff; color:#2d1b4e; font:inherit; }
+.beta-form textarea { min-height:130px; resize:vertical; }
+.beta-form input:focus,.beta-form select:focus,.beta-form textarea:focus { outline:3px solid rgba(245,166,35,.28); border-color:#f5a623; }
+.beta-button { display:inline-flex; justify-content:center; align-items:center; min-height:44px; border:0; border-radius:11px; padding:11px 18px; background:#f5a623; color:#2d1b4e; font:800 14px 'DM Sans',sans-serif; cursor:pointer; text-decoration:none; }
+.beta-button.secondary { background:#2d1b4e; color:#fff; }
+.beta-button.danger { background:#e3394a; color:#fff; }
+.beta-button:disabled { opacity:.55; cursor:not-allowed; }
+.beta-status { display:none; margin-top:14px; padding:12px 14px; border-radius:10px; line-height:1.5; }
+.beta-status.success { display:block; background:#e9f8f1; color:#075d3c; }
+.beta-status.error { display:block; background:#fff0f1; color:#8d1722; }
+.beta-table-wrap { overflow:auto; border:1px solid var(--beta-border); border-radius:14px; }
+.beta-table { width:100%; border-collapse:collapse; min-width:680px; }
+.beta-table th,.beta-table td { padding:12px; border-bottom:1px solid var(--beta-border); text-align:left; vertical-align:top; }
+.beta-table th { background:var(--beta-soft); color:#2d1b4e; font-size:12px; text-transform:uppercase; letter-spacing:.04em; }
+.beta-stat { font:800 32px 'Playfair Display',serif; color:#2d1b4e; }
+.beta-muted { color:#6f657e; }
+.beta-actions { display:flex; flex-wrap:wrap; gap:8px; }
+.beta-finance-locked { padding:14px; border:1px solid #edca72; border-radius:12px; background:#fff4d8; color:#5b4211; }
+@media (max-width:600px) { .beta-shell{width:min(100% - 22px,1120px);margin-top:24px}.beta-card{padding:17px}.beta-actions{display:grid}.beta-actions>*{width:100%} }

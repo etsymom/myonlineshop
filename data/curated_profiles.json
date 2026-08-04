@@ -1,5 +1,126 @@
 {
-  "_generated": "2026-07-31T13:18:44.639Z",
-  "_count": 0,
-  "profiles": []
+  "_generated": "2026-08-04T11:16:29.779Z",
+  "_count": 1,
+  "profiles": [
+    {
+      "id": "github_mara-voss",
+      "slug": "mara-voss",
+      "name": "Mara Voss",
+      "tagline": "Imagined worlds, shaped with AI",
+      "niche": "AI Images & Video",
+      "short_bio": "A fictional demo creator exploring African futures through AI-assisted images and moving art.",
+      "full_bio": "Mara Voss is a fictional InkWellMedia demonstration profile created to show how a complete creator page feels. Her work combines human art direction with generative image tools, editing and motion design. Every visual on this profile is AI-generated and curated for this demo; Mara is not a real person.",
+      "location": "Cape Town, South Africa",
+      "social_links": {
+        "instagram": "",
+        "tiktok": "",
+        "youtube": "",
+        "facebook": "",
+        "twitter": "",
+        "website": ""
+      },
+      "assets": {
+        "avatar": "profiles/mara-voss/images/avatar.webp",
+        "hero": "profiles/mara-voss/images/hero.webp"
+      },
+      "albums": [
+        {
+          "id": "album-mara-001",
+          "title": "Future Ecologies",
+          "description": "AI-generated environments imagining technology growing in conversation with land and water.",
+          "cover_image": "profiles/mara-voss/images/desert-conservatory.webp",
+          "member_only": false,
+          "media": [
+            {
+              "id": "media-mara-001",
+              "type": "image",
+              "file": "profiles/mara-voss/images/desert-conservatory.webp",
+              "url": "profiles/mara-voss/images/desert-conservatory.webp",
+              "thumbnail": "profiles/mara-voss/images/desert-conservatory.webp",
+              "caption": "Desert Conservatory — AI-generated image, directed and curated for this demo.",
+              "member_only": false
+            },
+            {
+              "id": "media-mara-002",
+              "type": "image",
+              "file": "profiles/mara-voss/images/ocean-memory.webp",
+              "url": "profiles/mara-voss/images/ocean-memory.webp",
+              "thumbnail": "profiles/mara-voss/images/ocean-memory.webp",
+              "caption": "Ocean Memory — AI-generated image, directed and curated for this demo.",
+              "member_only": false
+            }
+          ]
+        },
+        {
+          "id": "album-mara-002",
+          "title": "Moving Worlds",
+          "description": "A short AI-art motion study assembled from original generated frames.",
+          "cover_image": "profiles/mara-voss/images/showreel-thumbnail.webp",
+          "member_only": false,
+          "media": [
+            {
+              "id": "media-mara-003",
+              "type": "video",
+              "file": "profiles/mara-voss/videos/imagined-worlds.mp4",
+              "url": "profiles/mara-voss/videos/imagined-worlds.mp4",
+              "caption": "Imagined Worlds — a silent 10-second AI-art showreel.",
+              "member_only": false
+            }
+          ]
+        },
+        {
+          "id": "album-all-videos",
+          "title": "All Videos",
+          "description": "Creator videos",
+          "media": [
+            {
+              "id": "media-1",
+              "type": "video",
+              "file": "profiles/mara-voss/videos/imagined-worlds.mp4",
+              "url": "profiles/mara-voss/videos/imagined-worlds.mp4",
+              "thumbnail": "profiles/mara-voss/images/showreel-thumbnail.webp",
+              "caption": "Imagined Worlds",
+              "member_only": false
+            }
+          ],
+          "price": 0,
+          "auto_generated": true
+        }
+      ],
+      "videos": [
+        {
+          "id": "video-mara-001",
+          "title": "Imagined Worlds",
+          "description": "A cinematic AI-art study moving from a future Cape Town to desert and ocean dreamscapes.",
+          "video_path": "profiles/mara-voss/videos/imagined-worlds.mp4",
+          "thumbnail_path": "profiles/mara-voss/images/showreel-thumbnail.webp",
+          "published_at": "2026-08-04",
+          "member_only": false
+        }
+      ],
+      "blogs": [
+        {
+          "id": "blog-mara-001",
+          "slug": "directing-a-machine-imagination",
+          "title": "Directing a Machine Imagination",
+          "summary": "The prompts are only the beginning; selection, sequencing and restraint make the world feel authored.",
+          "content": "This fictional studio note demonstrates long-form creator content. My process starts with a clear emotional idea, not a visual effect. I define place, light and material, then generate variations and keep only the frames that belong to the same world. The final step is editing: colour, crop, rhythm and the decision to leave things out.\n\nAll images on this demo profile were generated with AI and curated by InkWellMedia to test the creator experience.",
+          "published_at": "2026-08-04",
+          "header_image": "profiles/mara-voss/images/ocean-memory.webp",
+          "author": "Mara Voss (fictional demo)",
+          "member_only": false,
+          "published": true
+        }
+      ],
+      "membership": {
+        "enabled": false,
+        "free_content_description": "Public AI-art images, short films and process notes.",
+        "premium_content_description": "Membership is disabled during the closed beta.",
+        "main_cta": "Follow the studio"
+      },
+      "products": [],
+      "published": true,
+      "folderName": "mara-voss"
+    }
+  ]
 }

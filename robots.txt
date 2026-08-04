@@ -1,0 +1,11 @@
+User-agent: *
+Allow: /
+Disallow: /admin.html
+Disallow: /beta-admin.html
+Disallow: /beta-register.html
+Disallow: /creator-launch.html
+Disallow: /members.html
+Disallow: /profile.html
+Disallow: /auth-redirect.html
+Disallow: /reset-password.html
+Sitemap: https://etsymom.github.io/myonlineshop/sitemap.xml
