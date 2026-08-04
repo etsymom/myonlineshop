@@ -59,12 +59,12 @@
     {
       "id": "album-mara-premium-001",
       "title": "The Nocturnal Archive",
-      "description": "A six-piece high-resolution collection with an extended motion film and creator process notes. Premium demo — release files are not present in the public dataset.",
+      "description": "A protected collection with three high-resolution nocturnal artworks, an extended motion cut and creator process notes. Originals are delivered from protected storage.",
       "cover_image": "profiles/mara-voss/images/nocturnal-archive-teaser.webp",
       "member_only": true,
       "price": 120,
       "currency": "ZAR",
-      "media_count": 7,
+      "media_count": 4,
       "media": []
     }
   ],
@@ -111,7 +111,7 @@
     "price": 120,
     "currency": "ZAR",
     "free_content_description": "Public AI-art images, short films and process notes.",
-    "premium_content_description": "The Nocturnal Archive: six high-resolution artworks, an extended film and behind-the-scenes process notes.",
+    "premium_content_description": "The Nocturnal Archive: three high-resolution artworks, an extended motion cut and behind-the-scenes process notes.",
     "main_cta": "Premium access coming after beta"
   },
   "products": [],

@@ -5,6 +5,16 @@ window.INK_CONFIG = {
   ADMIN_EMAILS:  ["iedereesfrancis@gmail.com"],
   CREATOR_PASS_PRICE: 150,
   PLATFORM_CUT: 0.15,
+  MANUAL_PAYMENTS: {
+    bank: "Nedbank",
+    accountHolder: "InkWellMedia",
+    accountType: "Savings",
+    accountNumber: "1236268857",
+    branchCode: "198765",
+    currency: "ZAR",
+    minimumDeposit: 50,
+    xrpEnabled: false
+  },
 };
 if ('serviceWorker' in navigator) {
   navigator.serviceWorker.register('inkwell-sw.js').catch(()=>{});

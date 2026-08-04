@@ -62,12 +62,12 @@
     {
       "id": "album-amara-premium-001",
       "title": "The Private Edit: Midnight Rooms",
-      "description": "A locked members collection of twelve extended editorial images, three private motion cuts and Amara's styling notes. Preview artwork is visible; release files are withheld from the public dataset.",
+      "description": "A locked members collection with three high-resolution evening editorials, a private motion cut and Amara's styling notes. Preview artwork is visible; originals are delivered from protected storage.",
       "cover_image": "profiles/amara-vale/images/midnight-room-teaser.webp",
       "member_only": true,
       "price": 150,
       "currency": "ZAR",
-      "media_count": 15,
+      "media_count": 4,
       "media": []
     }
   ],
@@ -115,7 +115,7 @@
     "currency": "ZAR",
     "billing_interval": "month",
     "free_content_description": "Public fashion editorials, Cape Town lifestyle images and short motion previews.",
-    "premium_content_description": "The Private Edit: twelve extended editorial images, three motion cuts and behind-the-scenes styling notes.",
+    "premium_content_description": "The Private Edit: three high-resolution evening editorials, a private motion cut and behind-the-scenes styling notes.",
     "main_cta": "Premium access coming after beta"
   },
   "products": [],

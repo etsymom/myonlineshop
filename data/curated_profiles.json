@@ -1,5 +1,5 @@
 {
-  "_generated": "2026-08-04T13:00:06.436Z",
+  "_generated": "2026-08-04T13:38:27.110Z",
   "_count": 2,
   "profiles": [
     {
@@ -74,12 +74,12 @@
         {
           "id": "album-amara-premium-001",
           "title": "The Private Edit: Midnight Rooms",
-          "description": "A locked members collection of twelve extended editorial images, three private motion cuts and Amara's styling notes. Preview artwork is visible; release files are withheld from the public dataset.",
+          "description": "A locked members collection with three high-resolution evening editorials, a private motion cut and Amara's styling notes. Preview artwork is visible; originals are delivered from protected storage.",
           "cover_image": "profiles/amara-vale/images/midnight-room-teaser.webp",
           "member_only": true,
           "price": 150,
           "currency": "ZAR",
-          "media_count": 15,
+          "media_count": 4,
           "media": []
         },
         {
@@ -146,7 +146,7 @@
         "currency": "ZAR",
         "billing_interval": "month",
         "free_content_description": "Public fashion editorials, Cape Town lifestyle images and short motion previews.",
-        "premium_content_description": "The Private Edit: twelve extended editorial images, three motion cuts and behind-the-scenes styling notes.",
+        "premium_content_description": "The Private Edit: three high-resolution evening editorials, a private motion cut and behind-the-scenes styling notes.",
         "main_cta": "Premium access coming after beta"
       },
       "products": [],
@@ -222,12 +222,12 @@
         {
           "id": "album-mara-premium-001",
           "title": "The Nocturnal Archive",
-          "description": "A six-piece high-resolution collection with an extended motion film and creator process notes. Premium demo — release files are not present in the public dataset.",
+          "description": "A protected collection with three high-resolution nocturnal artworks, an extended motion cut and creator process notes. Originals are delivered from protected storage.",
           "cover_image": "profiles/mara-voss/images/nocturnal-archive-teaser.webp",
           "member_only": true,
           "price": 120,
           "currency": "ZAR",
-          "media_count": 7,
+          "media_count": 4,
           "media": []
         },
         {
@@ -293,7 +293,7 @@
         "price": 120,
         "currency": "ZAR",
         "free_content_description": "Public AI-art images, short films and process notes.",
-        "premium_content_description": "The Nocturnal Archive: six high-resolution artworks, an extended film and behind-the-scenes process notes.",
+        "premium_content_description": "The Nocturnal Archive: three high-resolution artworks, an extended motion cut and behind-the-scenes process notes.",
         "main_cta": "Premium access coming after beta"
       },
       "products": [],
